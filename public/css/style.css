@@ -4793,6 +4793,120 @@ body.admin-mode-active #adminStandaloneDashboard {
   }
 }
 
+/* ===== HIGH-END B2B CORPORATE LUXURY DESIGN SYSTEM & ANIMATIONS ===== */
+
+/* Typography & Titles */
+.section-title {
+  font-family: 'Cinzel', Georgia, serif !important;
+  font-weight: 700 !important;
+  color: var(--royal-emerald) !important;
+  letter-spacing: 0.5px !important;
+  position: relative !important;
+  display: inline-block !important;
+  margin-bottom: 12px !important;
+}
+
+.section-subtitle {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--text-muted) !important;
+  font-size: 1.05rem !important;
+  max-width: 680px !important;
+  margin: 0 auto 35px auto !important;
+}
+
+.eyebrow-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2.2px !important;
+  text-transform: uppercase !important;
+  color: var(--accent-gold) !important;
+  background: rgba(198, 139, 89, 0.1) !important;
+  padding: 6px 16px !important;
+  border-radius: 30px !important;
+  border: 1px solid rgba(198, 139, 89, 0.3) !important;
+  margin-bottom: 14px !important;
+}
+
+/* Luxury Product & Catalogue Cards */
+.product-card, .catalogue-card, .spice-card, .cert-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(198, 139, 89, 0.22) !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 25px rgba(45, 90, 39, 0.05) !important;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+  position: relative !important;
+}
+
+.product-card:hover, .catalogue-card:hover, .spice-card:hover, .cert-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 45px rgba(45, 90, 39, 0.14), 0 0 20px rgba(198, 139, 89, 0.25) !important;
+  border-color: var(--accent-gold) !important;
+}
+
+/* Image Zoom inside Card Containers */
+.product-card .product-image img,
+.catalogue-card .cat-thumb-wrapper img,
+.spice-card .spice-img img {
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.product-card:hover .product-image img,
+.catalogue-card:hover .cat-thumb-wrapper img,
+.spice-card:hover .spice-img img {
+  transform: scale(1.08) !important;
+}
+
+/* Professional Buttons & Action CTAs */
+.btn-main, .btn-gold, .rfq-btn-primary, .auth-submit-btn {
+  background: linear-gradient(135deg, #1e431c 0%, #2d5a27 50%, #3a6b35 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--bright-gold) !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  padding: 12px 24px !important;
+  box-shadow: 0 6px 20px rgba(45, 90, 39, 0.18) !important;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  cursor: pointer !important;
+}
+
+.btn-main:hover, .btn-gold:hover, .rfq-btn-primary:hover, .auth-submit-btn:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 30px rgba(198, 139, 89, 0.35) !important;
+  border-color: #ffffff !important;
+}
+
+/* Smooth Entrance Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(198, 139, 89, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(198, 139, 89, 0.5);
+  }
+}
+
+.hero-section, .products-section, .catalogue-section, .certifications-section {
+  animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) ease-out !important;
+}
+
+
 
 
 
