@@ -1,0 +1,120 @@
+{
+  "heroTagline": "VERIFIED GOLD MANUFACTURER & EXPORTER • EST. 2014",
+  "heroTitle": "Bulk Ayurvedic & Herbal Extracts Direct From Manufacturer",
+  "heroDesc": "Source premium Himalayan Shilajit, Ashwagandha capsules, Moringa powders & adaptogens at tiered factory wholesale pricing. Low MOQ, Custom OEM Private Labeling & Global Sea/Air Shipping.",
+  "heroSlide2Title": "OEM & Private Label Contract Manufacturing",
+  "heroSlide2Desc": "Custom logo branding, custom bottle packaging, and tailored herbal extraction formulations for global distributors, brands & wholesalers.",
+  "heroSlide3Title": "ISO 22000 & GMP Certified Quality Assurance",
+  "heroSlide3Desc": "Every bulk batch comes with COA, Heavy Metal Analysis & HPLC Purity Reports. Exporting to 45+ countries worldwide.",
+  "marqueeText": "🏭 VERIFIED GOLD MANUFACTURER • LOW MOQ 100-500 PCS • TIERED VOLUME DISCOUNTING • OEM & PRIVATE LABELING AVAILABLE • GLOBAL SEA & AIR FREIGHT • COA & ISO/GMP CERTIFIED",
+  "aboutPill": "🏭 ESTABLISHED 2014 • LUCKNOW, INDIA (EXPORTS WORLDWIDE)",
+  "aboutTitle": "Leading Herbal Contract Manufacturer & Bulk Supplier",
+  "aboutP1": "Kiyan Exports & Herbal Manufacturing is a premier B2B contract manufacturer and bulk supplier operating since 2014. We specialize in contract manufacturing, OEM private label formulation, and bulk supply of organic herbal extracts, Shilajit resin, Ashwagandha, and health supplements.",
+  "aboutP2": "Equipped with state-of-the-art GMP certified extraction plants, we serve international buyers, Amazon sellers, wellness brands, and pharmaceutical distributors with custom packaging and factory-direct volume pricing.",
+  "contactEmail": "sales@kiyanexports.com",
+  "contactAddress": "Industrial Export Zone, Lucknow, UP - 226010, India",
+  "contactPhone": "+91 9876543210 / +91 9123456789",
+  "footerDesc": "Established in 2014, Kiyan Exports is a leading B2B contract manufacturer & wholesale exporter of 100% pure organic herbal extracts and dietary supplements.",
+  "catalogues": [
+    {
+      "id": 1,
+      "title": "Herbal & Botanical Extracts Catalogue",
+      "category": "Herbal Extracts",
+      "pdfUrl": "/Catelouges/Extract Catalogue 1_watermark.pdf",
+      "description": "Comprehensive specifications & wholesale pricing for standardized herbal extracts."
+    },
+    {
+      "id": 2,
+      "title": "Nutraceutical Herbal Gummies Catalogue",
+      "category": "Gummies & Supplements",
+      "pdfUrl": "/Catelouges/Gummies Catalogue_watermark.pdf",
+      "description": "Pectin & gelatin herbal gummies with custom flavors & private label packaging."
+    },
+    {
+      "id": 3,
+      "title": "Ayurvedic Capsules & Tablets Catalogue",
+      "category": "Capsules",
+      "pdfUrl": "/Catelouges/Herbal Capsules Catalogue.pdf",
+      "description": "Vegetable & HPMC capsules including Shilajit, Ashwagandha & Moringa."
+    },
+    {
+      "id": 4,
+      "title": "Organic Shilajit Honey Sticks Catalogue",
+      "category": "Honey & Resin",
+      "pdfUrl": "/Catelouges/Honey Sticks Catalogue_watermark.pdf",
+      "description": "Pure Himalayan Shilajit infused raw honey sachet sticks for retail export."
+    },
+    {
+      "id": 5,
+      "title": "Handcrafted Copperware & Bottling Catalogue",
+      "category": "Copperware",
+      "pdfUrl": "/Catelouges/Kiyan Export Catalogue of Copper bottles etc._watermark.pdf",
+      "description": "Ayurvedic copper drinkware, pure copper bottles, jugs and handcrafted copperware range."
+    },
+    {
+      "id": 6,
+      "title": "Sports & Gym Supplements Wholesale Catalogue",
+      "category": "Sports Nutrition",
+      "pdfUrl": "/Catelouges/gym supplement catalogue 1_watermark.pdf",
+      "description": "Plant proteins, BCAA blends, and herbal workout booster formulations."
+    },
+    {
+      "id": 7,
+      "title": "Nutraceutical Formulations & OEM Catalogue",
+      "category": "Nutraceuticals",
+      "pdfUrl": "/Catelouges/nutra cap cat 1.pdf",
+      "description": "Custom OEM contract manufacturing capabilities & laboratory specs."
+    },
+    {
+      "id": 8,
+      "title": "Softgles & Softgel Capsules Catalogue",
+      "category": "Encapsulation",
+      "pdfUrl": "/Catelouges/Softgles catalogue KIYAN EXPORT_.pdf",
+      "description": "Premium dietary softgels, herbal extract oil capsules & OEM custom private label softgels."
+    }
+  ],
+  "certificates": [
+    {
+      "id": 1,
+      "title": "GMP (Good Manufacturing Practice) Certificate",
+      "authority": "PQC International",
+      "pdfUrl": "/Certificates/47214_KIYAN EXPORT_GMP_PQC (1) (1).pdf",
+      "description": "Verified GMP compliance for hygienic herbal extract production & bottling."
+    },
+    {
+      "id": 2,
+      "title": "US-FDA Facility Registration",
+      "authority": "US Food & Drug Administration",
+      "pdfUrl": "/Certificates/47214_KIYAN EXPORT_US- FDA_PQC (2) (1).pdf",
+      "description": "Official FDA facility registration for exporting herbal supplements to USA."
+    },
+    {
+      "id": 3,
+      "title": "ISO 22000:2018 Food Safety Management",
+      "authority": "ISO Standard Board",
+      "pdfUrl": "/Certificates/KIYAN EXPORT ISO 22000 FINAL (1) (1).pdf",
+      "description": "International accreditation for food safety management systems & hazard control."
+    },
+    {
+      "id": 4,
+      "title": "FSSAI Government Food Safety License",
+      "authority": "FSSAI India",
+      "pdfUrl": "/Certificates/Kiyan Fssai Renewal 2025.pdf",
+      "description": "Central FSSAI manufacturing license for organic dietary food products."
+    },
+    {
+      "id": 5,
+      "title": "IndiaMart Verified TrustSeal Certificate",
+      "authority": "IndiaMart Verified",
+      "pdfUrl": "/Certificates/TrustSeal_certificate.pdf",
+      "description": "Gold verified supplier & exporter credential endorsement."
+    },
+    {
+      "id": 6,
+      "title": "Government Udyam MSME Certificate",
+      "authority": "Ministry of MSME Govt of India",
+      "pdfUrl": "/Certificates/Udyam Registration Certificate.pdf",
+      "description": "Government of India registered herbal manufacturing enterprise."
+    }
+  ]
+}

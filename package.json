@@ -1,0 +1,32 @@
+{
+  "name": "kiora-wellness",
+  "version": "1.0.0",
+  "description": "Kiora Wellness - Premium B2C Herbal & Wellness E-Commerce Platform (Est. 2014)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "kiora-wellness",
+    "herbal",
+    "supplements",
+    "wellness",
+    "shilajit",
+    "ashwagandha",
+    "b2c-retail"
+  ],
+  "author": "Kiora Wellness",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.4",
+    "nodemailer": "^10.0.1",
+    "razorpay": "^2.9.8"
+  }
+}

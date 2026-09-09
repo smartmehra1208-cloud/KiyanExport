@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiyan Export - Premium Herbal, Spices & Copperware</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #1b4332;
+            --mid-green: #2d6a4f;
+            --light-green: #95d5b2;
+            --accent-brown: #b08968;
+            --light-brown: #ddb892;
+            --off-white: #fefae0;
+            --soft-bg: #f7f3e9;
+            --text-dark: #2f3e2e;
+            --text-gray: #6b7c6f;
+            --white: #ffffff;
+            --orange-accent: #e76f51;
+            --amazon-yellow: #ffd814;
+            --amazon-orange: #ffa41c;
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 30px 70px rgba(0, 0, 0, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; font-weight: 600; }
+        a { text-decoration: none; transition: all 0.4s ease; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1320px; margin: 0 auto; padding: 0 30px; }
+
+        @keyframes kenburns { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.15) translate(-10px, 10px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .page-section { display: none; }
+        .page-section.active-page { display: block; animation: fadeIn 0.5s ease; }
+
+        /* MARQUEE */
+        .marquee-section {
+            background: var(--primary-green);
+            color: white;
+            padding: 15px 0;
+            overflow: hidden;
+            border-top: 3px solid var(--accent-brown);
+            border-bottom: 3px solid var(--accent-brown);
+        }
+        .marquee-track {
+            display: flex;
+            gap: 50px;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee-track span {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .marquee-track i { color: var(--light-brown); }
+
+        /* CHATBOT */
+        .chatbot-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-green), var(--mid-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 10px 30px rgba(27,67,50,0.4);
+            transition: 0.3s;
+            border: 3px solid white;
+            animation: pulse 3s infinite;
+        }
+        .chatbot-btn:hover { transform: scale(1.15); }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 120px;
+            left: 30px;
+            width: 380px;
+            max-height: 550px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: fadeIn 0.3s ease;
+        }
+        .chatbot-window.active { display: flex; }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary-green), var(--mid-green));
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .chatbot-header-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+        }
+        .chatbot-header-title { flex: 1; }
+        .chatbot-header-title h4 { font-size: 1.2rem; margin-bottom: 5px; }
+        .chatbot-header-title span { font-size: 0.85rem; opacity: 0.8; }
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 350px;
+            background: var(--off-white);
+        }
+        .chatbot-msg {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .chatbot-msg.bot .msg-bubble {
+            background: white;
+            border-radius: 15px 15px 15px 0;
+            padding: 12px 15px;
+            max-width: 80%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            font-size: 0.9rem;
+        }
+        .chatbot-msg.user .msg-bubble {
+            background: var(--primary-green);
+            color: white;
+            border-radius: 15px 15px 0 15px;
+            padding: 12px 15px;
+            max-width: 80%;
+            margin-left: auto;
+            font-size: 0.9rem;
+        }
+
+        .chatbot-input {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid var(--soft-bg);
+            display: flex;
+            gap: 10px;
+        }
+        .chatbot-input input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid var(--light-brown);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .chatbot-input button {
+            background: var(--primary-green);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* PRODUCT MODAL */
+        .product-modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 5000;
+            display: none;
+            opacity: 0;
+            transition: 0.3s;
+            overflow-y: auto;
+        }
+        .product-modal-overlay.active { display: block; opacity: 1; }
+
+        .product-modal {
+            position: relative;
+            background: var(--white);
+            max-width: 1400px;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            overflow: hidden;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .pm-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            width: 45px; height: 45px;
+            background: var(--off-white);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+        .pm-close:hover { background: var(--orange-accent); color: white; transform: rotate(90deg); }
+
+        .pm-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1.3fr 0.8fr;
+            gap: 0;
+        }
+
+        .pm-images {
+            padding: 30px;
+            background: var(--off-white);
+            border-right: 1px solid var(--soft-bg);
+            display: flex;
+            gap: 20px;
+        }
+        .pm-thumbnail-col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .pm-thumb {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+        .pm-thumb:hover, .pm-thumb.active {
+            border-color: var(--orange-accent);
+        }
+        .pm-main-img-wrap {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        .pm-main-img {
+            max-width: 100%;
+            max-height: 450px;
+            object-fit: contain;
+            transition: 0.3s;
+        }
+
+        .pm-details {
+            padding: 40px;
+        }
+        .pm-title {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            line-height: 1.3;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        .pm-rating {
+            color: #fbbf24;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        .pm-rating span { color: var(--text-gray); font-size: 0.9rem; margin-left: 8px; }
+        .pm-price-section {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid var(--light-brown);
+        }
+        .pm-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+        }
+        .pm-old-price {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            text-decoration: line-through;
+            margin-left: 15px;
+        }
+        .pm-discount {
+            background: var(--orange-accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        .pm-tax-note {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-top: 10px;
+        }
+        .pm-offers {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        .pm-offers-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pm-offer-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--soft-bg);
+        }
+        .pm-offer-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent-brown);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        .pm-offer-text {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+        .pm-offer-text strong { color: var(--primary-green); }
+
+        .pm-desc-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+        .pm-desc {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .pm-sections {
+            margin-bottom: 25px;
+        }
+        .pm-section-title {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-family: 'Inter', sans-serif;
+            border-bottom: 2px solid var(--soft-bg);
+            padding-bottom: 8px;
+        }
+        .pm-ingredients ul, .pm-specs ul {
+            list-style: none;
+        }
+        .pm-ingredients li, .pm-specs li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--soft-bg);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        .pm-ingredients li i, .pm-specs li i {
+            color: var(--accent-brown);
+        }
+
+        .pm-purchase-box {
+            padding: 30px;
+            background: var(--off-white);
+            border-left: 1px solid var(--soft-bg);
+            display: flex;
+            flex-direction: column;
+        }
+        .pm-delivery-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pm-delivery-date {
+            font-size: 1.1rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .pm-delivery-note {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+        .pm-location {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .pm-qty-section {
+            margin-bottom: 25px;
+        }
+        .pm-qty-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        .pm-qty-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-brown);
+            border-radius: 10px;
+            background: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .pm-add-cart {
+            background: var(--amazon-yellow);
+            color: #111;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .pm-add-cart:hover { background: #f7ca00; transform: scale(1.02); }
+        
+        .pm-buy-now {
+            background: var(--amazon-orange);
+            color: #111;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .pm-buy-now:hover { background: #fa8900; transform: scale(1.02); }
+
+        .pm-seller-info {
+            border-top: 1px solid var(--soft-bg);
+            padding-top: 20px;
+        }
+        .pm-seller-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+        .pm-seller-row strong { color: var(--text-dark); }
+
+        .pm-warranty-icons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .pm-warranty-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid var(--soft-bg);
+        }
+        .pm-warranty-item i {
+            font-size: 1.5rem;
+            color: var(--accent-brown);
+            margin-bottom: 5px;
+        }
+        .pm-warranty-item span {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* CART */
+        .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: none; opacity: 0; transition: 0.3s; }
+        .cart-overlay.active { display: block; opacity: 1; }
+        .cart-drawer { position: fixed; top: 0; right: -450px; width: 450px; height: 100%; background: var(--white); z-index: 2001; box-shadow: -5px 0 30px rgba(0,0,0,0.2); transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; padding: 30px; }
+        .cart-drawer.active { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--soft-bg); padding-bottom: 20px; margin-bottom: 20px; }
+        .cart-header h3 { font-size: 1.8rem; color: var(--text-dark); }
+        .close-cart { background: none; border: none; font-size: 2rem; color: var(--text-gray); cursor: pointer; transition: 0.3s; }
+        .close-cart:hover { color: var(--orange-accent); transform: rotate(90deg); }
+        .cart-items { flex: 1; overflow-y: auto; margin-bottom: 20px; }
+        .cart-item { display: flex; align-items: center; gap: 15px; background: var(--off-white); padding: 15px; border-radius: 15px; margin-bottom: 15px; border: 1px solid var(--light-brown); transition: transform 0.2s; animation: fadeIn 0.3s ease; }
+        .cart-item:hover { transform: scale(1.02); }
+        .cart-item img { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; }
+        .cart-item-info { flex: 1; }
+        .cart-item-info h4 { font-size: 1.1rem; margin-bottom: 5px; }
+        .cart-item-info .price { color: var(--accent-brown); font-weight: 700; }
+        .cart-item-qty { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+        .qty-btn { background: var(--mid-green); color: white; border: none; width: 25px; height: 25px; border-radius: 50%; cursor: pointer; font-size: 1rem; transition: 0.2s; }
+        .qty-btn:hover { background: var(--accent-brown); transform: scale(1.1); }
+        .cart-item-remove { background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 1.2rem; }
+        .cart-totals { border-top: 2px dashed var(--light-brown); padding-top: 20px; }
+        .total-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 1.1rem; color: var(--text-gray); }
+        .total-row.grand-total { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); border-top: 2px solid var(--soft-bg); padding-top: 15px; margin-top: 15px; }
+        .total-row.grand-total span:last-child { color: var(--primary-green); }
+        .checkout-btn { background: var(--primary-green); color: white; border: none; padding: 18px; width: 100%; border-radius: 15px; font-size: 1.2rem; font-weight: 700; cursor: pointer; margin-top: 20px; transition: 0.3s; animation: pulse 2s infinite; }
+        .checkout-btn:hover { background: var(--accent-brown); transform: scale(0.98); }
+
+        /* CHECKOUT */
+        .checkout-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); width: 90%; max-width: 600px; background: var(--white); border-radius: 30px; padding: 40px; z-index: 2002; opacity: 0; pointer-events: none; transition: 0.4s; box-shadow: 0 30px 80px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto; }
+        .checkout-modal.active { opacity: 1; pointer-events: all; transform: translate(-50%, -50%) scale(1); }
+        .checkout-modal h2 { font-size: 2.5rem; margin-bottom: 20px; text-align: center; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 15px; border: 2px solid var(--light-brown); border-radius: 10px; font-size: 1rem; transition: 0.3s; background: var(--off-white); }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--accent-brown); background: white; }
+        .payment-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .payment-option { border: 2px solid var(--light-brown); border-radius: 15px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; background: var(--off-white); }
+        .payment-option:hover { border-color: var(--accent-brown); transform: translateY(-5px); box-shadow: var(--shadow); }
+        .payment-option.selected { border-color: var(--primary-green); background: var(--light-green); }
+        .payment-option i { font-size: 2rem; margin-bottom: 10px; display: block; color: var(--primary-green); }
+        .payment-option h4 { font-size: 1.1rem; }
+        .order-success { text-align: center; padding: 40px; display: none; }
+        .order-success.active { display: block; }
+        .order-success i { font-size: 5rem; color: #27ae60; margin-bottom: 20px; animation: pulse 2s infinite; }
+        .order-success h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .order-success p { font-size: 1.2rem; color: var(--text-gray); }
+
+        /* TOP BAR */
+        .top-bar { background: var(--primary-green); color: #e8f0eb; font-size: 0.85rem; padding: 12px 0; border-bottom: 3px solid var(--accent-brown); }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-info { display: flex; gap: 30px; align-items: center; }
+        .top-info span { display: flex; align-items: center; gap: 8px; }
+        .top-info i { color: var(--light-brown); }
+        .top-social a { color: #e8f0eb; margin-left: 15px; font-size: 1rem; transition: 0.3s; }
+        .top-social a:hover { color: var(--light-brown); transform: translateY(-3px); }
+
+        /* NAVBAR */
+        .navbar { 
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 0; 
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.08); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-svg { width: 160px; height: auto; transition: 0.3s; }
+        .logo-svg:hover { transform: scale(1.05); }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { color: var(--text-dark); font-weight: 600; font-size: 0.95rem; position: relative; padding: 8px 0; cursor: pointer; transition: 0.3s; }
+        .nav-links a.active, .nav-links a:hover { color: var(--primary-green); }
+        .nav-links a.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--primary-green), var(--accent-brown)); }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: var(--white); min-width: 250px; box-shadow: var(--shadow-hover); border-radius: 15px; z-index: 100; border-top: 3px solid var(--accent-brown); padding: 10px 0; animation: fadeIn 0.3s ease; }
+        .dropdown-content a { color: var(--text-dark); padding: 12px 20px; display: block; font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid var(--soft-bg); }
+        .dropdown-content a:hover { background-color: var(--off-white); color: var(--primary-green); padding-left: 25px; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .nav-help {
+            background: var(--accent-brown);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .nav-help:hover { background: var(--primary-green); transform: scale(1.05); }
+        .nav-help i { font-size: 1.2rem; }
+        .cart-icon-btn { position: relative; background: var(--white); border: 1px solid var(--light-brown); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .cart-icon-btn:hover { background: var(--accent-brown); color: white; transform: scale(1.1); }
+        .cart-icon-btn i { font-size: 1.5rem; color: var(--primary-green); }
+        .cart-icon-btn:hover i { color: white; }
+        .cart-count { position: absolute; top: -5px; right: -5px; background: var(--orange-accent); color: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; border: 2px solid white; }
+
+        /* HERO */
+        .hero-section { position: relative; height: 90vh; min-height: 650px; overflow: hidden; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; display: flex; align-items: center; }
+        .slide.active { opacity: 1; z-index: 2; }
+        .slide-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; animation: kenburns 15s linear infinite alternate; }
+        .slide-1 .slide-bg { background-image: url('https://images.unsplash.com/photo-1616198498893-8d5aa2c8f31e?q=80&w=2000&auto=format&fit=crop'); }
+        .slide-2 .slide-bg { background-image: url('https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=2000&auto=format&fit=crop'); }
+        .slide-3 .slide-bg { background-image: url('https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2000&auto=format&fit=crop'); }
+        .slide-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(27,67,50,0.8) 0%, rgba(27,67,50,0.3) 70%, transparent 100%); }
+        .slide-content { position: relative; z-index: 10; color: white; max-width: 700px; }
+        .slide-content h1 { font-size: 4.5rem; line-height: 1.15; margin-bottom: 25px; font-weight: 700; animation: fadeIn 1s ease; }
+        .slide-content h1 span { color: var(--light-brown); font-style: italic; }
+        .slide-content p { font-size: 1.3rem; margin-bottom: 35px; color: rgba(255,255,255,0.9); max-width: 550px; animation: slideInRight 1s ease; }
+        .btn-main { background: var(--accent-brown); color: white; padding: 16px 45px; font-size: 1.1rem; font-weight: 700; border-radius: 50px; display: inline-block; border: none; cursor: pointer; box-shadow: 0 10px 30px rgba(176,137,104,0.3); transition: 0.3s; animation: pulse 3s infinite; }
+        .btn-main:hover { background: var(--primary-green); transform: translateY(-5px); }
+        .slider-dots { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 30; }
+        .dot { width: 14px; height: 14px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); cursor: pointer; transition: 0.3s; border: 2px solid transparent; }
+        .dot.active { background: var(--light-brown); border-color: white; transform: scale(1.3); box-shadow: 0 0 15px rgba(221,184,146,0.5); }
+
+        /* ABOUT */
+        .about-section { padding: 100px 0; background: var(--white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .about-img { position: relative; border-radius: 30px; overflow: hidden; box-shadow: var(--shadow-hover); }
+        .about-img img { width: 100%; height: 600px; object-fit: cover; transition: transform 0.5s; }
+        .about-img:hover img { transform: scale(1.05); }
+        .about-badge { position: absolute; bottom: 30px; left: 30px; background: var(--primary-green); color: white; padding: 20px; border-radius: 20px; font-size: 1.2rem; font-weight: 700; box-shadow: 0 15px 30px rgba(0,0,0,0.2); border-left: 4px solid var(--accent-brown); animation: pulse 3s infinite; }
+        .about-badge p { font-size: 0.85rem; font-weight: 400; color: var(--light-brown); margin-top: 5px; }
+        .about-text h2 { font-size: 3.5rem; color: var(--text-dark); margin-bottom: 25px; line-height: 1.2; }
+        .about-text h2 span { color: var(--orange-accent); }
+        .about-text p { font-size: 1.05rem; color: var(--text-gray); margin-bottom: 20px; line-height: 1.8; }
+
+        /* PRODUCTS */
+        .products-section { padding: 100px 0; background: var(--soft-bg); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header span { background: var(--accent-brown); color: white; padding: 8px 25px; border-radius: 30px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; display: inline-block; }
+        .section-header h2 { font-size: 3.5rem; color: var(--text-dark); margin-top: 20px; }
+        .section-header p { color: var(--text-gray); font-size: 1.1rem; margin-top: 10px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        .product-card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid var(--soft-bg); display: flex; flex-direction: column; cursor: pointer; }
+        .product-card:hover { transform: translateY(-15px) rotate(1deg); box-shadow: var(--shadow-hover); border-color: var(--light-brown); }
+        .product-image { position: relative; height: 250px; overflow: hidden; background: var(--soft-bg); }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .product-card:hover .product-image img { transform: scale(1.15); }
+        .product-badge { position: absolute; top: 15px; left: 15px; background: var(--accent-brown); color: white; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; z-index: 2; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .product-info { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+        .product-info .category { color: var(--orange-accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 10px; }
+        .product-info h3 { font-size: 1.6rem; color: var(--text-dark); margin-bottom: 10px; }
+        .product-rating { color: #fbbf24; margin-bottom: 15px; font-size: 0.9rem; }
+        .product-rating span { color: var(--text-gray); font-size: 0.85rem; margin-left: 8px; }
+        .product-desc { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; flex: 1; }
+        .product-price-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .product-price { font-size: 1.8rem; font-weight: 800; color: var(--primary-green); }
+        .product-price small { font-size: 0.9rem; color: var(--text-gray); text-decoration: line-through; margin-left: 10px; font-weight: 400; }
+        .add-to-cart-btn { background: var(--primary-green); color: white; border: none; padding: 12px 25px; border-radius: 50px; font-weight: 700; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: auto; }
+        .add-to-cart-btn:hover { background: var(--accent-brown); transform: scale(1.05); }
+
+        /* FOOTER */
+        .main-footer { background: var(--primary-green); color: #d4e5da; padding: 80px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 60px; }
+        .footer-col h4 { color: white; font-size: 1.6rem; margin-bottom: 25px; font-family: 'Inter', sans-serif; font-weight: 700; position: relative; padding-bottom: 12px; }
+        .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 3px; background: linear-gradient(90deg, var(--accent-brown), var(--light-brown)); border-radius: 3px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: #b0c8ba; font-size: 1rem; display: flex; align-items: center; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--light-brown); padding-left: 10px; }
+        .footer-col ul li i { color: var(--accent-brown); margin-right: 10px; font-size: 0.85rem; }
+        .green-box { background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 35px; color: white; border: 1px solid rgba(255, 255, 255, 0.2); }
+        .green-box i { font-size: 2.5rem; margin-bottom: 15px; display: block; color: var(--light-brown); }
+        .green-box h3 { font-size: 1.8rem; margin-bottom: 15px; line-height: 1.3; }
+        .green-box p { font-size: 1rem; margin-bottom: 20px; color: #c0d5c8; }
+        .green-box button { background: var(--light-brown); border: none; padding: 12px 25px; border-radius: 50px; font-weight: 700; color: white; cursor: pointer; width: 100%; display: flex; justify-content: space-between; align-items: center; font-size: 1rem; transition: 0.3s; }
+        .green-box button:hover { background: white; color: var(--text-dark); transform: scale(1.02); }
+        .footer-contact-strip { background: rgba(0, 0, 0, 0.2); padding: 35px; border-radius: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; border-left: 5px solid var(--accent-brown); }
+        .contact-item { display: flex; align-items: center; gap: 15px; }
+        .contact-icon { width: 60px; height: 60px; border: 2px dashed var(--light-brown); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.8rem; color: var(--light-brown); }
+        .contact-item h5 { color: var(--light-brown); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; letter-spacing: 1px; }
+        .contact-item p { font-size: 1.1rem; color: white; font-weight: 600; }
+        .bottom-footer { background: #233e33; padding: 20px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .bottom-container { display: flex; justify-content: space-between; align-items: center; color: #93b3a3; font-size: 0.95rem; }
+        .bottom-links a { color: #93b3a3; margin-left: 20px; transition: 0.3s; }
+        .bottom-links a:hover { color: var(--light-brown); }
+        .scroll-top { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--primary-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.4rem; box-shadow: var(--shadow-hover); cursor: pointer; z-index: 1000; border: 2px solid var(--accent-brown); transition: 0.3s; animation: pulse 3s infinite; }
+        .scroll-top:hover { background: var(--accent-brown); transform: translateY(-5px); }
+        .sub-page-header { background: linear-gradient(135deg, var(--primary-green), var(--mid-green)); color: white; padding: 80px 0; text-align: center; position: relative; overflow: hidden; }
+        .sub-page-header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 500px; height: 500px; background: rgba(255,255,255,0.1); border-radius: 50%; animation: pulse 10s infinite; }
+        .sub-page-header h1 { font-size: 3.5rem; margin-bottom: 15px; }
+        .sub-page-header p { font-size: 1.2rem; color: #c0d5c8; }
+
+        @media (max-width: 1200px) { .nav-links { display: none; } .slide-content h1 { font-size: 3.5rem; } .pm-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1024px) { .about-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr 1fr; } .footer-contact-strip { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { 
+            .top-bar .container { flex-direction: column; gap: 10px; } 
+            .top-info { flex-wrap: wrap; justify-content: center; gap: 15px; } 
+            .navbar .container { flex-direction: column; gap: 12px; } 
+            .slide-content h1 { font-size: 2.8rem; } 
+            .footer-grid { grid-template-columns: 1fr; }
+            .cart-drawer { width: 100%; right: -100%; }
+            .pm-grid { grid-template-columns: 1fr; }
+            .pm-details { padding: 20px; }
+            .chatbot-window { width: 90%; left: 5%; }
+            .sub-page-header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-info">
+                <span><i class="fas fa-envelope"></i> <a href="mailto:info@kiyanexportonline.com" style="color: inherit;">info@kiyanexportonline.com</a></span>
+                <span><i class="fas fa-map-marker-alt"></i> Vinay Khand 2, Gomti Nagar, Lucknow, UP - 226010</span>
+            </div>
+            <div class="top-social">
+                <a href="https://www.instagram.com/kiyanexport" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.flipkart.com" target="_blank"><i class="fab fa-flipkart"></i></a>
+                <a href="https://www.amazon.in" target="_blank"><i class="fab fa-amazon"></i></a>
+                <a href="https://www.facebook.com/kiyanexport" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/kiyanexport" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/kiyanexport" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <a href="#home" onclick="showPage('home', this)">
+                    <img src="Logo-2.webp" alt="Kiyan Export Logo" style="width: 160px; height: auto;">
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <a href="#home" class="active" onclick="showPage('home', this)">Home</a>
+                <a href="#about" onclick="showPage('about', this)">About Us</a>
+                <a href="#services" onclick="showPage('services', this)">Services</a>
+                <div class="dropdown">
+                    <a href="#products" onclick="showPage('products', this)">Our Products <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#products" onclick="showPage('products', this)">Herbal Products</a>
+                        <a href="#spices" onclick="showPage('spices', this)">Spices</a>
+                        <a href="#copperware" onclick="showPage('copperware', this)">Copperware</a>
+                        <a href="#products" onclick="showPage('products', this)">Woodenware</a>
+                        <a href="#products" onclick="showPage('products', this)">Kitchenware</a>
+                        <a href="#products" onclick="showPage('products', this)">Flatware</a>
+                    </div>
+                </div>
+                <a href="#catalogue" onclick="showPage('catalogue', this)">Cataloge</a>
+                <a href="#certifications" onclick="showPage('certifications', this)">Certifications</a>
+                <a href="#contact" onclick="showPage('help-center', this)">Contact Us</a>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="nav-help" onclick="showPage('help-center', null)">
+                    <i class="fas fa-headset"></i> Help Center
+                </div>
+                <div class="cart-icon-btn" onclick="openCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MARQUEE SECTION -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <span><i class="fas fa-leaf"></i> 100% ORGANIC</span>
+            <span><i class="fas fa-globe"></i> 25+ COUNTRIES</span>
+            <span><i class="fas fa-box"></i> 100+ PRODUCTS</span>
+            <span><i class="fas fa-shipping-fast"></i> 4K+ DELIVERIES</span>
+            <span><i class="fas fa-certificate"></i> ISO CERTIFIED</span>
+            <span><i class="fas fa-clock"></i> 24/7 SUPPORT</span>
+            <span><i class="fas fa-leaf"></i> 100% ORGANIC</span>
+            <span><i class="fas fa-globe"></i> 25+ COUNTRIES</span>
+            <span><i class="fas fa-box"></i> 100+ PRODUCTS</span>
+            <span><i class="fas fa-shipping-fast"></i> 4K+ DELIVERIES</span>
+            <span><i class="fas fa-certificate"></i> ISO CERTIFIED</span>
+            <span><i class="fas fa-clock"></i> 24/7 SUPPORT</span>
+        </div>
+    </div>
+
+    <!-- CHATBOT -->
+    <div class="chatbot-btn" onclick="toggleChatbot()">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <div class="chatbot-header-icon"><i class="fas fa-headset"></i></div>
+            <div class="chatbot-header-title">
+                <h4>Kiyan Help Assistant</h4>
+                <span>Online • 24/7 Support</span>
+            </div>
+            <button class="chatbot-close" onclick="toggleChatbot()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-msg bot">
+                <div class="msg-bubble">Namaste! 🙏 Welcome to Kiyan Export. How can I help you today?<br><br>You can ask about:<br>• Our Products<br>• Services<br>• Shipping<br>• Partnerships<br>• Company Info</div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="Type your question here..." onkeypress="if(event.key === 'Enter') sendChatbotMessage()">
+            <button onclick="sendChatbotMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- PRODUCT MODAL OVERLAY -->
+    <div class="product-modal-overlay" id="productModalOverlay" onclick="closeProductModal(event)">
+        <div class="product-modal" onclick="event.stopPropagation()">
+            <button class="pm-close" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+            <div class="pm-grid">
+                <div class="pm-images">
+                    <div class="pm-thumbnail-col" id="pmThumbnails"></div>
+                    <div class="pm-main-img-wrap">
+                        <div>
+                            <img class="pm-main-img" id="pmMainImg" src="" alt="Product Image">
+                            <div class="pm-view-full">Click to see full view</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pm-details">
+                    <div class="pm-category" id="pmCategory" style="background: var(--light-green); color: var(--primary-green); display: inline-block; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Category</div>
+                    <h1 class="pm-title" id="pmTitle">Product Title</h1>
+                    <div class="pm-rating" id="pmRating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div>
+                    <div class="pm-price-section">
+                        <span class="pm-price" id="pmPrice">₹0</span>
+                        <span class="pm-old-price" id="pmOldPrice">₹0</span>
+                        <span class="pm-discount" id="pmDiscount">0% OFF</span>
+                        <div class="pm-tax-note">Inclusive of all taxes</div>
+                    </div>
+                    <div class="pm-offers">
+                        <div class="pm-offers-title"><i class="fas fa-tags"></i> Offers</div>
+                        <div class="pm-offer-item"><div class="pm-offer-icon"><i class="fas fa-cash-register"></i></div><div class="pm-offer-text"><strong>Cashback</strong> Upto ₹500 cashback using HDFC Bank Credit Card</div></div>
+                        <div class="pm-offer-item"><div class="pm-offer-icon"><i class="fas fa-credit-card"></i></div><div class="pm-offer-text"><strong>No Cost EMI</strong> Upto ₹70.35 EMI interest savings</div></div>
+                        <div class="pm-offer-item"><div class="pm-offer-icon"><i class="fas fa-percentage"></i></div><div class="pm-offer-text"><strong>Bank Offer</strong> 10% instant discount on select Credit Cards</div></div>
+                    </div>
+                    <div class="pm-desc-title">About this item</div>
+                    <p class="pm-desc" id="pmDesc">Product Description</p>
+                    <div class="pm-sections pm-ingredients">
+                        <h3 class="pm-section-title">Ingredients</h3>
+                        <ul id="pmIngredients"><li><i class="fas fa-circle"></i> Ingredient 1</li></ul>
+                    </div>
+                    <div class="pm-sections pm-specs">
+                        <h3 class="pm-section-title">Specifications</h3>
+                        <ul id="pmSpecs"><li><i class="fas fa-check-circle"></i> Spec 1</li></ul>
+                    </div>
+                </div>
+                <div class="pm-purchase-box">
+                    <div class="pm-delivery-title"><i class="fas fa-truck-fast"></i> Delivery</div>
+                    <div class="pm-delivery-date" id="pmDeliveryDate">Expected Delivery: Tomorrow</div>
+                    <div class="pm-delivery-note">FREE delivery on orders above ₹999</div>
+                    <div class="pm-location"><i class="fas fa-map-marker-alt"></i> Delivering to Lucknow 226016</div>
+                    <div class="pm-qty-section">
+                        <div class="pm-qty-label">Quantity:</div>
+                        <select class="pm-qty-select" id="pmQtySelect">
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+                        </select>
+                    </div>
+                    <button class="pm-add-cart" onclick="addToCartFromModal()"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    <button class="pm-buy-now" onclick="buyNow()"><i class="fas fa-bolt"></i> Buy Now</button>
+                    <div class="pm-seller-info">
+                        <div class="pm-seller-row"><span>Ships from</span><strong>Kiyan Export</strong></div>
+                        <div class="pm-seller-row"><span>Sold by</span><strong>Kiyan Export</strong></div>
+                        <div class="pm-seller-row"><span>Payment</span><strong>Secure transaction</strong></div>
+                    </div>
+                    <div class="pm-warranty-icons">
+                        <div class="pm-warranty-item"><i class="fas fa-shield-alt"></i><span>10 Days Service Centre</span></div>
+                        <div class="pm-warranty-item"><i class="fas fa-truck"></i><span>Free Delivery</span></div>
+                        <div class="pm-warranty-item"><i class="fas fa-redo-alt"></i><span>7 Day Replacement</span></div>
+                        <div class="pm-warranty-item"><i class="fas fa-lock"></i><span>Secure transaction</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART DRAWER -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Your Cart (₹)</h3>
+            <button class="close-cart" onclick="closeCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems"><p style="text-align: center; color: var(--text-gray); padding: 40px;">Your cart is empty.</p></div>
+        <div class="cart-totals" id="cartTotals" style="display: none;">
+            <div class="total-row"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
+            <div class="total-row"><span>SGST (9%)</span><span id="cartSGST">₹0</span></div>
+            <div class="total-row"><span>IGST (9%)</span><span id="cartIGST">₹0</span></div>
+            <div class="total-row grand-total"><span>Total</span><span id="cartTotal">₹0</span></div>
+            <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="order-success" id="orderSuccess">
+            <i class="fas fa-check-circle"></i>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for shopping with Kiyan Export. Your order has been received.</p>
+            <button class="btn-main" style="margin-top: 20px;" onclick="closeCheckout()">Continue Shopping</button>
+        </div>
+        <div id="checkoutFormContainer">
+            <h2>Checkout</h2>
+            <form id="checkoutForm" onsubmit="placeOrder(event)">
+                <div class="form-group"><label>Full Name</label><input type="text" id="customerName" required placeholder="Enter your full name"></div>
+                <div class="form-group"><label>Email</label><input type="email" id="customerEmail" required placeholder="Enter your email"></div>
+                <div class="form-group"><label>Delivery Address</label><textarea id="customerAddress" rows="3" required placeholder="Enter your complete address"></textarea></div>
+                <div class="form-group"><label>City</label><input type="text" id="customerCity" required placeholder="Enter your city"></div>
+                <div class="form-group"><label>Pin Code</label><input type="text" id="customerPin" required placeholder="Enter PIN code"></div>
+                <h3 style="margin-bottom: 15px; font-size: 1.5rem;">Payment Method</h3>
+                <div class="payment-options">
+                    <div class="payment-option selected" onclick="selectPayment('cod', this)"><i class="fas fa-money-bill-wave"></i><h4>Cash on Delivery</h4></div>
+                    <div class="payment-option" onclick="selectPayment('upi', this)"><i class="fas fa-mobile-alt"></i><h4>UPI</h4></div>
+                    <div class="payment-option" onclick="selectPayment('card', this)"><i class="fas fa-credit-card"></i><h4>Card</h4></div>
+                    <div class="payment-option" onclick="selectPayment('netbanking', this)"><i class="fas fa-university"></i><h4>Net Banking</h4></div>
+                </div>
+                <div style="background: var(--off-white); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+                    <h4 style="margin-bottom: 15px;">Order Summary (incl. GST)</h4>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;"><span>Subtotal</span><span id="modalSubtotal">₹0</span></div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;"><span>SGST (9%)</span><span id="modalSGST">₹0</span></div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;"><span>IGST (9%)</span><span id="modalIGST">₹0</span></div>
+                    <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1.3rem; border-top: 2px solid var(--soft-bg); padding-top: 10px;"><span>Total Payable</span><span id="modalTotal" style="color: var(--primary-green);">₹0</span></div>
+                </div>
+                <button type="submit" class="checkout-btn" style="margin-top: 10px;">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page-section active-page">
+        <section class="hero-section">
+            <div class="slide slide-1 active">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                <div class="container" style="position: relative; z-index: 10;">
+                    <div class="slide-content">
+                        <h1>Premium <span>Shilajit</span> for<br>Strength & Vitality</h1>
+                        <p>Experience the purest Himalayan Shilajit, crafted with modern extraction and ancient wisdom.</p>
+                        <a href="#products" class="btn-main" onclick="showPage('products', null)">Explore Collection <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide slide-2">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                <div class="container" style="position: relative; z-index: 10;">
+                    <div class="slide-content">
+                        <h1>Trusted <span>Global Export</span> with<br>Reliable Delivery</h1>
+                        <p>We ensure safe and timely delivery across 25+ countries including USA, Germany, France, Switzerland, and more.</p>
+                        <a href="#services" class="btn-main" onclick="showPage('services', null)">Our Services <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide slide-3">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                <div class="container" style="position: relative; z-index: 10;">
+                    <div class="slide-content">
+                        <h1>Premium Quality with<br>Complete <span>Traceability</span></h1>
+                        <p>From farm to shelf, we maintain the highest standards of quality and freshness.</p>
+                        <a href="#certifications" class="btn-main" onclick="showPage('certifications', null)">Get in Touch <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-dots">
+                <div class="dot active" onclick="goToSlide(0)"></div>
+                <div class="dot" onclick="goToSlide(1)"></div>
+                <div class="dot" onclick="goToSlide(2)"></div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-img reveal-left">
+                        <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=1200&auto=format&fit=crop" alt="Kiyan Export Operations">
+                        <div class="about-badge"><i class="fas fa-award"></i> Since 2005</div>
+                    </div>
+                    <div class="about-text reveal-right">
+                        <div style="background: var(--accent-brown); color: white; display: inline-block; padding: 8px 25px; border-radius: 30px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">About Kiyan Export</div>
+                        <h2>Trusted Global Wellness <span>Partner</span></h2>
+                        <p>Kiyan Export, incepted in 2005, gradually evolved from a spice-trading company into a trusted worldwide exporter of herbal supplements and natural wellness products.</p>
+                        <p>We operate on the very basic principles of high-quality work, trustworthiness, and India's ancient heritage of herbal practices, focusing extensively on third-party production and private labeling services for wellness brands, startups, and companies across the globe.</p>
+                        <p><strong>Location:</strong> Gomti Nagar, Lucknow, India (with additional international coordination networks).</p>
+                        <p><strong>Leadership:</strong> Headed by CEO Aparna Batra.</p>
+                        <a href="#about" class="btn-main" onclick="showPage('about', null)">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page-section">
+        <div class="sub-page-header"><h1>About Kiyan Export</h1><p>Trusted Since 2005</p></div>
+        <section class="about-section" style="padding: 60px 0;">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-img"><img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=1200&auto=format&fit=crop" alt="About"></div>
+                    <div class="about-text">
+                        <h2>About Kiyan Export</h2>
+                        <p>Kiyan Export, incepted in 2005, gradually evolved from a spice-trading company into a trusted worldwide exporter of herbal supplements and natural wellness products. We operate on the very basic principles of high-quality work, trustworthiness, and India's ancient heritage of herbal practices, focusing extensively on third-party production and private labeling services for wellness brands, startups, and companies across the globe.</p>
+                        <p>Herbal capsules, powders, oils, resins, teas, and natural supplements are prepared from ethically sourced ingredients and manufactured in certified factories following stringent quality standards.</p>
+                        <p><strong>Location:</strong> Gomti Nagar, Lucknow, India (with additional international coordination networks).</p>
+                        <p><strong>Leadership:</strong> Headed by CEO Aparna Batra.</p>
+                        <p><strong>Core Products:</strong> Herbal powders, bamboo salt, natural herbal extracts, copper products, and traditional brass items like urli.</p>
+                        <p><strong>Services:</strong> Supplier, wholesaler, and global exporter offering natural wellness products and private labeling/bulk distribution.</p>
+                        <p>Kiyan Export offers a seamless one-window solution from product development to packaging and onwards to international delivery. It is recognized across the globe for timely delivery and for fostering business relationships, especially in exports to the USA, Germany, France, Switzerland, Ireland, Brazil, Turkey, and Romania.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SERVICES PAGE -->
+    <div id="services" class="page-section">
+        <div class="sub-page-header"><h1>Our Services</h1><p>End-to-end solutions</p></div>
+        <section class="products-section">
+            <div class="container">
+                <div class="section-header"><h2>What We Offer</h2></div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                    <div style="background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: var(--shadow); transition: 0.3s;"><i class="fas fa-globe" style="font-size: 3rem; color: var(--accent-brown); margin-bottom: 20px;"></i><h3 style="font-size: 1.5rem;">Global Sourcing</h3><p style="color: var(--text-gray);">Premium products from certified farmers.</p></div>
+                    <div style="background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: var(--shadow); transition: 0.3s;"><i class="fas fa-truck" style="font-size: 3rem; color: var(--accent-brown); margin-bottom: 20px;"></i><h3 style="font-size: 1.5rem;">Safe Shipping</h3><p style="color: var(--text-gray);">Real-time tracking and on-time delivery.</p></div>
+                    <div style="background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: var(--shadow); transition: 0.3s;"><i class="fas fa-headset" style="font-size: 3rem; color: var(--accent-brown); margin-bottom: 20px;"></i><h3 style="font-size: 1.5rem;">27/7 Support</h3><p style="color: var(--text-gray);">Dedicated support team available round the clock.</p></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- HELP CENTER PAGE -->
+    <div id="help-center" class="page-section">
+        <div class="sub-page-header"><h1>Contact Us / Help Center</h1><p>We would love to hear from you</p></div>
+        <section class="products-section">
+            <div class="container">
+                <div class="footer-contact-strip" style="background: var(--white); border: 2px solid var(--light-brown);">
+                    <div class="contact-item"><div class="contact-icon" style="border: 2px solid var(--accent-brown); color: var(--accent-brown);"><i class="fas fa-envelope-open-text"></i></div><div><h5 style="color: var(--accent-brown);">E-Mail Us</h5><p style="color: var(--text-dark);">info@kiyanexportonline.com</p></div></div>
+                    <div class="contact-item"><div class="contact-icon" style="border: 2px solid var(--accent-brown); color: var(--accent-brown);"><i class="fas fa-headset"></i></div><div><h5 style="color: var(--accent-brown);">Chatbot Support</h5><p style="color: var(--text-dark);">Click on chatbot icon at bottom-left</p></div></div>
+                    <div class="contact-item"><div class="contact-icon" style="border: 2px solid var(--accent-brown); color: var(--accent-brown);"><i class="fas fa-map-marker-alt"></i></div><div><h5 style="color: var(--accent-brown);">Head Office</h5><p style="color: var(--text-dark);">Vinay Khand 2, Gomti Nagar, Lucknow, UP - 226010</p></div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PRODUCTS PAGE (HERBAL - 35 Products) -->
+    <div id="products" class="page-section">
+        <div class="sub-page-header"><h1>Herbal Products</h1><p>Pure, Organic & Effective</p></div>
+        <section class="products-section">
+            <div class="container">
+                <div class="section-header"><span>Our Herbal Range</span><h2>Premium Herbal Products</h2></div>
+                <div class="product-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card" onclick="openProductModal(1, 'Herbal/arjuna.webp', ['Herbal/arjuna.webp', 'Herbal/arjunapowder.webp', 'Herbal/Aswagandha.webp', 'Herbal/Aswagandhacapsule.webp'], 'ARJUNA CAPSULE', 'Herbal Supplement', '100% Pure Arjuna Extract Naturally Rich in Antioxidants.', [' Arjuna Extract', 'No Additives'], ['60 Capsules', '100% Vegan', 'Made in India'], 599, 1999)">
+                        <div class="product-image"><img src="Herbal/arjuna.webp" alt="ARJUNA CAPSULE"><div class="product-badge">Best Seller</div></div>
+                        <div class="product-info"><div class="category">Herbal</div><h3>ARJUNA CAPSULE</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">100% Pure Arjuna Extract Naturally Rich in Antioxidants.</p><div class="product-price-row"><div class="product-price">₹599 <small>₹1,999</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(1, 'ARJUNA', 1999, 'Herbal/arjuna.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="product-card" onclick="openProductModal(2, 'Herbal/arjunapowder.webp', ['Herbal/arjunapowder.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/Aswagandhacapsule.webp'], 'ARJUNAPOWDER', 'Herbal Supplement', '100% Pure & Organic Moringa. 60 capsules.', ['Pure Arjuna Extract', 'No Additives'], ['60 Capsules', '100% Vegan', 'Made in India'], 1499, 1800)">
+                        <div class="product-image"><img src="Herbal/arjunapowder.webp" alt="ARJUNAPOWDER"><div class="product-badge">New</div></div>
+                        <div class="product-info"><div class="category">Herbal</div><h3>ARJUNAPOWDER</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">100% Pure & Organic Moringa. 60 capsules.</p><div class="product-price-row"><div class="product-price">₹1,499 <small>₹1,800</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(2, 'ARJUNAPOWDER', 1499, 'Herbal/arjunapowder.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="product-card" onclick="openProductModal(3, 'Herbal/Aswagandha.webp', ['Herbal/Aswagandha.webp', 'Herbal/arjuna.webp', 'Herbal/arjunapowder.webp', 'Herbal/Aswagandhacapsule.webp'], 'ASWAGANDHA', 'Herbal Supplement', 'Radiance-Boosting Skin Complex.', ['Pure Ashwagandha Extract', 'No Additives'], ['30 Gummies', '100% Vegan', 'Made in India'], 2499, 3000)">
+                        <div class="product-image"><img src="Herbal/Aswagandha.webp" alt="ASWAGANDHA"><div class="product-badge">Vegan</div></div>
+                        <div class="product-info"><div class="category">Beauty</div><h3>ASWAGANDHA</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.7/5)</span></div><p class="product-desc">Radiance-Boosting Skin Complex.</p><div class="product-price-row"><div class="product-price">₹2,499 <small>₹3,000</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(3, 'ASWAGANDHA', 2499, 'Herbal/Aswagandha.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 4 -->
+                    <div class="product-card" onclick="openProductModal(4, 'Herbal/Aswagandhacapsule.webp', ['Herbal/Aswagandhacapsule.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'ASWAGANDHA CAPSULE', 'Herbal Supplement', 'Handcrafted organic wellness jars.', ['Pure Ashwagandha Extract', 'No Additives'], ['60 Capsules', '100% Vegan', 'Made in India'], 4999, 6000)">
+                        <div class="product-image"><img src="Herbal/Aswagandhacapsule.webp" alt="ASWAGANDHA CAPSULE"><div class="product-badge">Luxury</div></div>
+                        <div class="product-info"><div class="category">Wellness</div><h3>ASWAGANDHA CAPSULE</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Handcrafted organic wellness jars.</p><div class="product-price-row"><div class="product-price">₹4,999 <small>₹6,000</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(4, 'ASWAGANDHA CAPSULE', 4999, 'Herbal/Aswagandhacapsule.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 5 -->
+                    <div class="product-card" onclick="openProductModal(5, 'Herbal/Aswagandhagummies.webp', ['Herbal/Aswagandhagummies.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'ASWAGANDHA GUMMIES', 'Herbal Supplement', 'Sour Watermelon flavor. 1250mg creatine.', ['Pure Ashwagandha Extract', 'No Additives'], ['30 Gummies', '100% Vegan', 'Made in India'], 2999, 3500)">
+                        <div class="product-image"><img src="Herbal/Aswagandhagummies.webp" alt="ASWAGANDHA GUMMIES"><div class="product-badge">Fitness</div></div>
+                        <div class="product-info"><div class="category">Sports</div><h3>ASWAGANDHA GUMMIES</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.6/5)</span></div><p class="product-desc">Sour Watermelon flavor. 1250mg creatine.</p><div class="product-price-row"><div class="product-price">₹2,999 <small>₹3,500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(5, 'ASWAGANDHA GUMMIES', 2999, 'Herbal/Aswagandhagummies.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 6 -->
+                    <div class="product-card" onclick="openProductModal(6, 'Herbal/bacopa.webp', ['Herbal/bacopa.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'BACOPA', 'Herbal Supplement', 'Pure Ashwagandha extract for stress relief.', ['Pure Bacopa Extract', 'No Additives'], ['60 Capsules', '100% Vegan', 'Made in India'], 1299, 1600)">
+                        <div class="product-image"><img src="Herbal/bacopa.webp" alt="BACOPA"><div class="product-badge">Ayurveda</div></div>
+                        <div class="product-info"><div class="category">Herbal</div><h3>BACOPA</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Pure Ashwagandha extract for stress relief.</p><div class="product-price-row"><div class="product-price">₹1,299 <small>₹1,600</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(6, 'BACOPA', 1299, 'Herbal/bacopa.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 7 -->
+                    <div class="product-card" onclick="openProductModal(7, 'Herbal/bamboosalt1.webp', ['Herbal/bamboosalt1.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'BAMBOOSALTI', 'Herbal Supplement', 'Rich in vitamins, flavonoids and omega fatty acids.', ['Bamboo Salt', 'No Additives'], ['60 Capsules', '100% Vegan', 'Made in India'], 1799, 2200)">
+                        <div class="product-image"><img src="Herbal/bamboosalt1.webp" alt="BAMBOOSALTI"><div class="product-badge">Superfood</div></div>
+                        <div class="product-info"><div class="category">Wellness</div><h3>BAMBOOSALTI</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Rich in vitamins, flavonoids and omega fatty acids.</p><div class="product-price-row"><div class="product-price">₹1,799 <small>₹2,200</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(7, 'BAMBOOSALTI', 1799, 'Herbal/bamboosalt1.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 8 -->
+                    <div class="product-card" onclick="openProductModal(8, 'Herbal/boswellia.webp', ['Herbal/boswellia.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'BOSWELLIA', 'Herbal Supplement', 'Antioxidant rich, farm sourced green tea.', ['Boswellia Extract', 'No Additives'], ['60 Capsules', '100% Vegan', 'Made in India'], 899, 1100)">
+                        <div class="product-image"><img src="Herbal/boswellia.webp" alt="BOSWELLIA"><div class="product-badge">Organic</div></div>
+                        <div class="product-info"><div class="category">Beverage</div><h3>BOSWELLIA</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(4.9/5)</span></div><p class="product-desc">Antioxidant rich, farm sourced green tea.</p><div class="product-price-row"><div class="product-price">₹899 <small>₹1,100</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(8, 'BOSWELLIA', 899, 'Herbal/boswellia.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 9 -->
+                    <div class="product-card" onclick="openProductModal(9, 'Herbal/fado.webp', ['Herbal/fado.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'FADO', 'Herbal Supplement', 'Strawberry flavored for stronger hair.', ['Fado Extract', 'No Additives'], ['60 Capsules', '100% Vegan', 'Made in India'], 1499, 1800)">
+                        <div class="product-image"><img src="Herbal/fado.webp" alt="FADO"><div class="product-badge">Beauty</div></div>
+                        <div class="product-info"><div class="category">Beauty</div><h3>FADO</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.7/5)</span></div><p class="product-desc">Strawberry flavored for stronger hair.</p><div class="product-price-row"><div class="product-price">₹1,499 <small>₹1,800</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(9, 'FADO', 1499, 'Herbal/fado.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 10 -->
+                    <div class="product-card" onclick="openProductModal(10, 'Herbal/fadogiakiyan1.webp', ['Herbal/fadogiakiyan1.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'FADOGIAKIYAN', 'Herbal Supplement', 'Vitamin + Mineral + Adaptogen blend.', ['Fadogia Extract', 'No Additives'], ['60 Capsules', '100% Vegan', 'Made in India'], 2199, 2500)">
+                        <div class="product-image"><img src="Herbal/fadogiakiyan1.webp" alt="FADOGIAKIYAN"><div class="product-badge">Health</div></div>
+                        <div class="product-info"><div class="category">Wellness</div><h3>FADOGIAKIYAN</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Vitamin + Mineral + Adaptogen blend.</p><div class="product-price-row"><div class="product-price">₹2,199 <small>₹2,500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(10, 'FADOGIAKIYAN', 2199, 'Herbal/fadogiakiyan1.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 11 -->
+                    <div class="product-card" onclick="openProductModal(11, 'Herbal/ginger1.webp', ['Herbal/ginger1.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'GINGER', 'Herbal Supplement', 'Vitamin B6 + Passionfruit flavor, 60 gummies.', ['Ginger Extract', 'No Additives'], ['60 Gummies', '100% Vegan', 'Made in India'], 1299, 1600)">
+                        <div class="product-image"><img src="Herbal/ginger1.webp" alt="GINGER"><div class="product-badge">Sleep</div></div>
+                        <div class="product-info"><div class="category">Wellness</div><h3>GINGER</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Vitamin B6 + Passionfruit flavor, 60 gummies.</p><div class="product-price-row"><div class="product-price">₹1,299 <small>₹1,600</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(11, 'GINGER', 1299, 'Herbal/ginger1.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 12 -->
+                    <div class="product-card" onclick="openProductModal(12, 'Herbal/ginkgo.webp', ['Herbal/ginkgo.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'GINKGO', 'Herbal Supplement', 'Gold Standard Whey. 24g protein per serving.', ['Ginkgo Extract', 'No Additives'], ['500g', '100% Vegan', 'Made in India'], 5999, 7000)">
+                        <div class="product-image"><img src="Herbal/ginkgo.webp" alt="GINKGO"><div class="product-badge">Fitness</div></div>
+                        <div class="product-info"><div class="category">Sports</div><h3>GINKGO</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(4.9/5)</span></div><p class="product-desc">Gold Standard Whey. 24g protein per serving.</p><div class="product-price-row"><div class="product-price">₹5,999 <small>₹7,000</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(12, 'GINKGO', 5999, 'Herbal/ginkgo.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 13 -->
+                    <div class="product-card" onclick="openProductModal(13, 'Herbal/gummies.webp', ['Herbal/gummies.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'GUMMIES', 'Herbal Supplement', 'Mixed Berries, 35g plant protein.', ['Plant Protein', 'No Additives'], ['500g', '100% Vegan', 'Made in India'], 3499, 4000)">
+                        <div class="product-image"><img src="Herbal/gummies.webp" alt="GUMMIES"><div class="product-badge">Vegan</div></div>
+                        <div class="product-info"><div class="category">Sports</div><h3>GUMMIES</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.7/5)</span></div><p class="product-desc">Mixed Berries, 35g plant protein.</p><div class="product-price-row"><div class="product-price">₹3,499 <small>₹4,000</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(13, 'GUMMIES', 3499, 'Herbal/gummies.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 14 -->
+                    <div class="product-card" onclick="openProductModal(14, 'Herbal/maca-root-artwor.webp', ['Herbal/maca-root-artwor.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'MACA-ROOT-ARTWOR', 'Herbal Supplement', 'Pea, Hemp, Moringa blend. 500g.', ['Maca Root', 'No Additives'], ['500g', '100% Vegan', 'Made in India'], 2999, 3500)">
+                        <div class="product-image"><img src="Herbal/maca-root-artwor.webp" alt="MACA-ROOT-ARTWOR"><div class="product-badge">Organic</div></div>
+                        <div class="product-info"><div class="category">Sports</div><h3>MACA-ROOT-ARTWOR</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Pea, Hemp, Moringa blend. 500g.</p><div class="product-price-row"><div class="product-price">₹2,999 <small>₹3,500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(14, 'MACA-ROOT-ARTWOR', 2999, 'Herbal/maca-root-artwor.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 15 -->
+                    <div class="product-card" onclick="openProductModal(15, 'Herbal/macaroot.webp', ['Herbal/macaroot.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'MACAROOT', 'Herbal Supplement', 'Clinical strength prostate support.', ['Maca Root', 'No Additives'], ['60 Capsules', '100% Vegan', 'Made in India'], 3999, 4800)">
+                        <div class="product-image"><img src="Herbal/macaroot.webp" alt="MACAROOT"><div class="product-badge">Clinical</div></div>
+                        <div class="product-info"><div class="category">Supplement</div><h3>MACAROOT</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Clinical strength prostate support.</p><div class="product-price-row"><div class="product-price">₹3,999 <small>₹4,800</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(15, 'MACAROOT', 3999, 'Herbal/macaroot.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 16 -->
+                    <div class="product-card" onclick="openProductModal(16, 'Herbal/Moringa.webp', ['Herbal/Moringa.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'MORINGA', 'Herbal Supplement', 'Multivitamin complex serum. 30ml.', ['Moringa Extract', 'No Additives'], ['30ml', '100% Vegan', 'Made in India'], 1999, 2500)">
+                        <div class="product-image"><img src="Herbal/Moringa.webp" alt="MORINGA"><div class="product-badge">Skincare</div></div>
+                        <div class="product-info"><div class="category">Beauty</div><h3>MORINGA</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Multivitamin complex serum. 30ml.</p><div class="product-price-row"><div class="product-price">₹1,999 <small>₹2,500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(16, 'MORINGA', 1999, 'Herbal/Moringa.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 17 -->
+                    <div class="product-card" onclick="openProductModal(17, 'Herbal/moringacap.webp', ['Herbal/moringacap.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'MORINGACAP', 'Herbal Supplement', 'Strawberry flavored, 30 gummies.', ['Moringa Extract', 'No Additives'], ['30 Gummies', '100% Vegan', 'Made in India'], 1799, 2200)">
+                        <div class="product-image"><img src="Herbal/moringacap.webp" alt="MORINGACAP"><div class="product-badge">Beauty</div></div>
+                        <div class="product-info"><div class="category">Beauty</div><h3>MORINGACAP</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.7/5)</span></div><p class="product-desc">Strawberry flavored, 30 gummies.</p><div class="product-price-row"><div class="product-price">₹1,799 <small>₹2,200</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(17, 'MORINGACAP', 1799, 'Herbal/moringacap.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 18 -->
+                    <div class="product-card" onclick="openProductModal(18, 'Herbal/seamoss.webp', ['Herbal/seamoss.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'SEAMOSS', 'Herbal Supplement', 'Folate + strawberry. 60 gummies.', ['Seamoss Extract', 'No Additives'], ['60 Gummies', '100% Vegan', 'Made in India'], 2499, 3000)">
+                        <div class="product-image"><img src="Herbal/seamoss.webp" alt="SEAMOSS"><div class="product-badge">Wellness</div></div>
+                        <div class="product-info"><div class="category">Wellness</div><h3>SEAMOSS</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(4.9/5)</span></div><p class="product-desc">Folate + strawberry. 60 gummies.</p><div class="product-price-row"><div class="product-price">₹2,499 <small>₹3,000</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(18, 'SEAMOSS', 2499, 'Herbal/seamoss.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 19 -->
+                    <div class="product-card" onclick="openProductModal(19, 'Herbal/seamoss1.webp', ['Herbal/seamoss1.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'SEAMOSS', 'Herbal Supplement', 'Zero sugar, tutti-frutti flavor. 60 gummies.', ['Seamoss Extract', 'No Additives'], ['60 Gummies', '100% Vegan', 'Made in India'], 1899, 2300)">
+                        <div class="product-image"><img src="Herbal/seamoss1.webp" alt="SEAMOSS"><div class="product-badge">Zero Sugar</div></div>
+                        <div class="product-info"><div class="category">Beauty</div><h3>SEAMOSS</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Zero sugar, tutti-frutti flavor. 60 gummies.</p><div class="product-price-row"><div class="product-price">₹1,899 <small>₹2,300</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(19, 'SEAMOSS', 1899, 'Herbal/seamoss1.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 20 -->
+                    <div class="product-card" onclick="openProductModal(20, 'Herbal/seamoss3.webp', ['Herbal/seamoss3.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'SEAMOSS3', 'Herbal Supplement', '100% Natural, mess-free, farm inspired.', ['Seamoss Extract', 'No Additives'], ['60 Gummies', '100% Vegan', 'Made in India'], 699, 850)">
+                        <div class="product-image"><img src="Herbal/seamoss3.webp" alt="SEAMOSS3"><div class="product-badge">On-the-Go</div></div>
+                        <div class="product-info"><div class="category">Honey</div><h3>SEAMOSS3</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">100% Natural, mess-free, farm inspired.</p><div class="product-price-row"><div class="product-price">₹699 <small>₹850</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(20, 'SEAMOSS3', 699, 'Herbal/seamoss3.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 21 -->
+                    <div class="product-card" onclick="openProductModal(21, 'Herbal/shilajit.webp', ['Herbal/shilajit.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'SHILAJIT', 'Herbal Supplement', 'Nourish your hair from within. 30 gummies.', ['Shilajit Extract', 'No Additives'], ['30 Gummies', '100% Vegan', 'Made in India'], 1399, 1700)">
+                        <div class="product-image"><img src="Herbal/shilajit.webp" alt="SHILAJIT"><div class="product-badge">Hair</div></div>
+                        <div class="product-info"><div class="category">Beauty</div><h3>SHILAJIT</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(4.9/5)</span></div><p class="product-desc">Nourish your hair from within. 30 gummies.</p><div class="product-price-row"><div class="product-price">₹1,399 <small>₹1,700</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(21, 'SHILAJIT', 1399, 'Herbal/shilajit.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 22 -->
+                    <div class="product-card" onclick="openProductModal(22, 'Herbal/shilajit2.webp', ['Herbal/shilajit2.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'SHILAJIT2', 'Herbal Supplement', 'Easy to consume. Backed by Ayurvedic science.', ['Shilajit Extract', 'No Additives'], ['30 Gummies', '100% Vegan', 'Made in India'], 2999, 3800)">
+                        <div class="product-image"><img src="Herbal/shilajit2.webp" alt="SHILAJIT2"><div class="product-badge">Ayurveda</div></div>
+                        <div class="product-info"><div class="category">Shilajit</div><h3>SHILAJIT2</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Easy to consume. Backed by Ayurvedic science.</p><div class="product-price-row"><div class="product-price">₹2,999 <small>₹3,800</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(22, 'SHILAJIT2', 2999, 'Herbal/shilajit2.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 23 -->
+                    <div class="product-card" onclick="openProductModal(23, 'Herbal/Shilajit3.webp', ['Herbal/Shilajit3.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'SHILAJIT3', 'Herbal Supplement', 'Lab tested, 75% Fulvic Acid. 30g.', ['Shilajit Extract', 'No Additives'], ['30g', '100% Vegan', 'Made in India'], 3499, 4500)">
+                        <div class="product-image"><img src="Herbal/Shilajit3.webp" alt="SHILAJIT3"><div class="product-badge">75% Fulvic</div></div>
+                        <div class="product-info"><div class="category">Shilajit</div><h3>SHILAJIT3</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Lab tested, 75% Fulvic Acid. 30g.</p><div class="product-price-row"><div class="product-price">₹3,499 <small>₹4,500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(23, 'SHILAJIT3', 3499, 'Herbal/Shilajit3.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 24 -->
+                    <div class="product-card" onclick="openProductModal(24, 'Herbal/shilajitcap.webp', ['Herbal/shilajitcap.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'SHILAJITCAP', 'Herbal Supplement', 'Ancient Himalayan Resin. 20g.', ['Shilajit Extract', 'No Additives'], ['20g', '100% Vegan', 'Made in India'], 3999, 5000)">
+                        <div class="product-image"><img src="Herbal/shilajitcap.webp" alt="SHILAJITCAP"><div class="product-badge">Premium</div></div>
+                        <div class="product-info"><div class="category">Shilajit</div><h3>SHILAJITCAP</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(4.9/5)</span></div><p class="product-desc">Ancient Himalayan Resin. 20g.</p><div class="product-price-row"><div class="product-price">₹3,999 <small>₹5,000</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(24, 'SHILAJITCAP', 3999, 'Herbal/shilajitcap.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 25 -->
+                    <div class="product-card" onclick="openProductModal(25, 'Herbal/shilajithoney.webp', ['Herbal/shilajithoney.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'SHILAJITHONEY', 'Herbal Supplement', 'Gold level resin, pure Himalayan. 30g.', ['Shilajit Extract', 'No Additives'], ['30g', '100% Vegan', 'Made in India'], 4499, 5500)">
+                        <div class="product-image"><img src="Herbal/shilajithoney.webp" alt="SHILAJITHONEY"><div class="product-badge">Gold</div></div>
+                        <div class="product-info"><div class="category">Shilajit</div><h3>SHILAJITHONEY</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Gold level resin, pure Himalayan. 30g.</p><div class="product-price-row"><div class="product-price">₹4,499 <small>₹5,500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(25, 'SHILAJITHONEY', 4499, 'Herbal/shilajithoney.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 26 -->
+                    <div class="product-card" onclick="openProductModal(26, 'Herbal/shilakiyan1.webp', ['Herbal/shilakiyan1.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'SHILAKIYAN', 'Herbal Supplement', 'Safe, resin form, lab tested. 30g.', ['Shilajit Extract', 'No Additives'], ['30g', '100% Vegan', 'Made in India'], 2899, 3600)">
+                        <div class="product-image"><img src="Herbal/shilakiyan1.webp" alt="SHILAKIYAN"><div class="product-badge">Lab Tested</div></div>
+                        <div class="product-info"><div class="category">Shilajit</div><h3>SHILAKIYAN</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Safe, resin form, lab tested. 30g.</p><div class="product-price-row"><div class="product-price">₹2,899 <small>₹3,600</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(26, 'SHILAKIYAN', 2899, 'Herbal/shilakiyan1.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 27 -->
+                    <div class="product-card" onclick="openProductModal(27, 'Herbal/shilaswa.webp', ['Herbal/shilaswa.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'SHILASWA', 'Herbal Supplement', 'Pure Himalayan, dietary supplement. 25g.', ['Shilajit Extract', 'No Additives'], ['25g', '100% Vegan', 'Made in India'], 3299, 4200)">
+                        <div class="product-image"><img src="Herbal/shilaswa.webp" alt="SHILASWA"><div class="product-badge">Organic</div></div>
+                        <div class="product-info"><div class="category">Shilajit</div><h3>SHILASWA</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.9/5)</span></div><p class="product-desc">Pure Himalayan, dietary supplement. 25g.</p><div class="product-price-row"><div class="product-price">₹3,299 <small>₹4,200</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(27, 'SHILASWA', 3299, 'Herbal/shilaswa.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 28 -->
+                    <div class="product-card" onclick="openProductModal(28, 'Herbal/silaj.webp', ['Herbal/silaj.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'SILAJ', 'Herbal Supplement', 'Anti-aging, protects from UV, fastens healing.', ['Shilajit Extract', 'No Additives'], ['30g', '100% Vegan', 'Made in India'], 1499, 1900)">
+                        <div class="product-image"><img src="Herbal/silaj.webp" alt="SILAJ"><div class="product-badge">Skin</div></div>
+                        <div class="product-info"><div class="category">Wellness</div><h3>SILAJ</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Anti-aging, protects from UV, fastens healing.</p><div class="product-price-row"><div class="product-price">₹1,499 <small>₹1,900</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(28, 'SILAJ', 1499, 'Herbal/silaj.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 29 -->
+                    <div class="product-card" onclick="openProductModal(29, 'Herbal/tong.webp', ['Herbal/tong.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'TONG', 'Herbal Supplement', 'All-in-one Rejuvenol Glass Serum.', ['Tong Extract', 'No Additives'], ['30ml', '100% Vegan', 'Made in India'], 2299, 2800)">
+                        <div class="product-image"><img src="Herbal/tong.webp" alt="TONG"><div class="product-badge">Organic</div></div>
+                        <div class="product-info"><div class="category">Beauty</div><h3>TONG</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">All-in-one Rejuvenol Glass Serum.</p><div class="product-price-row"><div class="product-price">₹2,299 <small>₹2,800</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(29, 'TONG', 2299, 'Herbal/tong.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 30 -->
+                    <div class="product-card" onclick="openProductModal(30, 'Herbal/triphala-cap.webp', ['Herbal/triphala-cap.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'TRIPHALA-CAP', 'Herbal Supplement', 'Handmade with love. Face and body oil.', ['Triphala Extract', 'No Additives'], ['60 Capsules', '100% Vegan', 'Made in India'], 1299, 1600)">
+                        <div class="product-image"><img src="Herbal/triphala-cap.webp" alt="TRIPHALA-CAP"><div class="product-badge">Handmade</div></div>
+                        <div class="product-info"><div class="category">Skincare</div><h3>TRIPHALA-CAP</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Handmade with love. Face and body oil.</p><div class="product-price-row"><div class="product-price">₹1,299 <small>₹1,600</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(30, 'TRIPHALA-CAP', 1299, 'Herbal/triphala-cap.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 31 -->
+                    <div class="product-card" onclick="openProductModal(31, 'Herbal/triphala-powder1.webp', ['Herbal/triphala-powder1.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'TRIPHLA-POWER', 'Herbal Supplement', 'Magic gentle baby balm. 100% natural.', ['Triphala Extract', 'No Additives'], ['100g', '100% Vegan', 'Made in India'], 899, 1100)">
+                        <div class="product-image"><img src="Herbal/triphala-powder1.webp" alt="TRIPHLA-POWER"><div class="product-badge">Baby</div></div>
+                        <div class="product-info"><div class="category">Baby Care</div><h3>TRIPHLA-POWER</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Magic gentle baby balm. 100% natural.</p><div class="product-price-row"><div class="product-price">₹899 <small>₹1,100</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(31, 'TRIPHLA-POWER', 899, 'Herbal/triphala-powder1.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 32 -->
+                    <div class="product-card" onclick="openProductModal(32, 'Herbal/truminga.webp', ['Herbal/truminga.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'TURMINGA', 'Herbal Supplement', 'Fragrance of the soul. Premium packaging.', ['Turminga Extract', 'No Additives'], ['100ml', '100% Vegan', 'Made in India'], 5999, 7500)">
+                        <div class="product-image"><img src="Herbal/truminga.webp" alt="TURMINGA"><div class="product-badge">Luxury</div></div>
+                        <div class="product-info"><div class="category">Fragrance</div><h3>TURMINGA</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.9/5)</span></div><p class="product-desc">Fragrance of the soul. Premium packaging.</p><div class="product-price-row"><div class="product-price">₹5,999 <small>₹7,500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(32, 'TURMINGA', 5999, 'Herbal/truminga.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 33 -->
+                    <div class="product-card" onclick="openProductModal(33, 'Herbal/turm.webp', ['Herbal/turm.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'TURM', 'Herbal Supplement', 'Sun protection with luxury.', ['Turmeric Extract', 'No Additives'], ['100ml', '100% Vegan', 'Made in India'], 4299, 5200)">
+                        <div class="product-image"><img src="Herbal/turm.webp" alt="TURM"><div class="product-badge">SPF 2</div></div>
+                        <div class="product-info"><div class="category">Skincare</div><h3>TURM</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Sun protection with luxury.</p><div class="product-price-row"><div class="product-price">₹4,299 <small>₹5,200</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(33, 'TURM', 4299, 'Herbal/turm.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 34 -->
+                    <div class="product-card" onclick="openProductModal(34, 'Herbal/turmeric.webp', ['Herbal/turmeric.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'TURMERIC', 'Herbal Supplement', 'Vitamin + Mineral + Adaptogen Blend. 30 capsules.', ['Turmeric Extract', 'No Additives'], ['30 Capsules', '100% Vegan', 'Made in India'], 2999, 3600)">
+                        <div class="product-image"><img src="Herbal/turmeric.webp" alt="TURMERIC"><div class="product-badge">Support</div></div>
+                        <div class="product-info"><div class="category">Wellness</div><h3>TURMERIC</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Vitamin + Mineral + Adaptogen Blend. 30 capsules.</p><div class="product-price-row"><div class="product-price">₹2,999 <small>₹3,600</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(34, 'TURMERIC', 2999, 'Herbal/turmeric.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Product 35 -->
+                    <div class="product-card" onclick="openProductModal(35, 'Herbal/vitamin.webp', ['Herbal/vitamin.webp', 'Herbal/arjuna.webp', 'Herbal/Aswagandha.webp', 'Herbal/arjunapowder.webp'], 'VITAMIN', 'Herbal Supplement', 'Earth\'s natural superfood. 500g.', ['Vitamin Extract', 'No Additives'], ['500g', '100% Vegan', 'Made in India'], 3899, 4800)">
+                        <div class="product-image"><img src="Herbal/vitamin.webp" alt="VITAMIN"><div class="product-badge">Superfood</div></div>
+                        <div class="product-info"><div class="category">Nutrition</div><h3>VITAMIN</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Earth's natural superfood. 500g.</p><div class="product-price-row"><div class="product-price">₹3,899 <small>₹4,800</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(35, 'VITAMIN', 3899, 'Herbal/vitamin.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SPICES PAGE (15 Products) -->
+    <div id="spices" class="page-section">
+        <div class="sub-page-header"><h1>Our Spices</h1><p>Premium Indian Spices</p></div>
+        <section class="products-section">
+            <div class="container">
+                <div class="section-header"><span>Spices Collection</span><h2>Authentic Indian Spices</h2></div>
+                <div class="product-grid">
+                    <!-- Spice 1 -->
+                    <div class="product-card" onclick="openProductModal(36, 'spices/BAY.jpeg', ['spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg', 'spices/CELERY SEEDS.jpeg'], 'BAY LEAF', 'Spices', '100% Pure & Organic, premium quality.', ['Bay Leaf', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 249, 350)">
+                        <div class="product-image"><img src="spices/BAY.jpeg" alt="BAY LEAF"><div class="product-badge">Pure</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>BAY LEAF</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">100% Pure & Organic, premium quality.</p><div class="product-price-row"><div class="product-price">₹249 <small>₹350</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(36, 'BAY LEAF', 249, 'spices/BAY.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 2 -->
+                    <div class="product-card" onclick="openProductModal(37, 'spices/BLACK CARDUMUM.jpeg', ['spices/BLACK CARDUMUM.jpeg', 'spices/BAY.jpeg', 'spices/BLACK PEPER.jpeg', 'spices/CELERY SEEDS.jpeg'], 'BLACK CARDAMUM', 'Spices', 'Premium quality, rich in aroma.', ['Black Cardamom', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 499, 650)">
+                        <div class="product-image"><img src="spices/BLACK CARDUMUM.jpeg" alt="BLACK CARDAMUM"><div class="product-badge">Premium</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>BLACK CARDAMUM</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.9/5)</span></div><p class="product-desc">Premium quality, rich in aroma.</p><div class="product-price-row"><div class="product-price">₹499 <small>₹650</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(37, 'BLACK CARDAMUM', 499, 'spices/BLACK CARDUMUM.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 3 -->
+                    <div class="product-card" onclick="openProductModal(38, 'spices/BLACK PEPER.jpeg', ['spices/BLACK PEPER.jpeg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/CELERY SEEDS.jpeg'], 'BLACK PAPER', 'Spices', 'Whole black peppercorns, strong and pungent.', ['Black Pepper', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 349, 450)">
+                        <div class="product-image"><img src="spices/BLACK PEPER.jpeg" alt="BLACK PAPER"><div class="product-badge">Best Seller</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>BLACK PAPER</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Whole black peppercorns, strong and pungent.</p><div class="product-price-row"><div class="product-price">₹349 <small>₹450</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(38, 'BLACK PAPER', 349, 'spices/BLACK PEPER.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 4 -->
+                    <div class="product-card" onclick="openProductModal(39, 'spices/CELERY SEEDS.jpeg', ['spices/CELERY SEEDS.jpeg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'CELERY SEEDS', 'Spices', 'Aromatic seeds, perfect for pickles.', ['Celery Seeds', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 199, 280)">
+                        <div class="product-image"><img src="spices/CELERY SEEDS.jpeg" alt="CELERY SEEDS"><div class="product-badge">Fresh</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>CELERY SEEDS</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(4.8/5)</span></div><p class="product-desc">Aromatic seeds, perfect for pickles.</p><div class="product-price-row"><div class="product-price">₹199 <small>₹280</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(39, 'CELERY SEEDS', 199, 'spices/CELERY SEEDS.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 5 -->
+                    <div class="product-card" onclick="openProductModal(40, 'spices/WhatsApp Image 2026-09-01 at 3.49.24 PM (4).jpg', ['spices/WhatsApp Image 2026-09-01 at 3.49.24 PM (4).jpg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'CINNAMON', 'Spices', 'Premium Cinnamon sticks, aromatic and sweet.', ['Cinnamon', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 179, 250)">
+                        <div class="product-image"><img src="spices/WhatsApp Image 2026-09-01 at 3.49.24 PM (4).jpg" alt="CINNAMON"><div class="product-badge">Hot</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>CINNAMON</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.7/5)</span></div><p class="product-desc">Premium Cinnamon sticks, aromatic and sweet.</p><div class="product-price-row"><div class="product-price">₹179 <small>₹250</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(40, 'CINNAMON', 179, 'spices/WhatsApp Image 2026-09-01 at 3.49.24 PM (4).jpg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 6 -->
+                    <div class="product-card" onclick="openProductModal(41, 'spices/WhatsApp Image 2026-09-01 at 3.49.24 PM (5).jpg', ['spices/WhatsApp Image 2026-09-01 at 3.49.24 PM (5).jpg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'CLOVE', 'Spices', 'Handpicked cloves, rich in oil.', ['Cloves', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 299, 400)">
+                        <div class="product-image"><img src="spices/WhatsApp Image 2026-09-01 at 3.49.24 PM (5).jpg" alt="CLOVE"><div class="product-badge">Pure</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>CLOVE</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Handpicked cloves, rich in oil.</p><div class="product-price-row"><div class="product-price">₹299 <small>₹400</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(41, 'CLOVE', 299, 'spices/WhatsApp Image 2026-09-01 at 3.49.24 PM (5).jpg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 7 -->
+                    <div class="product-card" onclick="openProductModal(42, 'spices/CORIANDER SEED.jpeg', ['spices/CORIANDER SEED.jpeg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'CORIANDER SEEDS', 'Spices', 'Aromatic coriander seeds and powder.', ['Coriander Seeds', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 399, 500)">
+                        <div class="product-image"><img src="spices/CORIANDER SEED.jpeg" alt="CORIANDER"><div class="product-badge">Whole</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>CORIANDER SEEDS</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Aromatic coriander seeds and powder.</p><div class="product-price-row"><div class="product-price">₹399 <small>₹500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(42, 'CORIANDER SEEDS', 399, 'spices/CORIANDER SEED.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 8 -->
+                    <div class="product-card" onclick="openProductModal(43, 'spices/CUMIN_SEED.jpeg', ['spices/CUMIN_SEED.jpeg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'CUMIN SEEDS', 'Spices', 'Rich and spicy cumin seeds, essential for curries.', ['Cumin Seeds', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 249, 320)">
+                        <div class="product-image"><img src="spices/CUMIN_SEED.jpeg" alt="CUMIN"><div class="product-badge">Special</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>CUMIN SEEDS</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Rich and spicy cumin seeds, essential for curries.</p><div class="product-price-row"><div class="product-price">₹249 <small>₹320</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(43, 'CUMIN SEEDS', 249, 'spices/CUMIN_SEED.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 9 -->
+                    <div class="product-card" onclick="openProductModal(44, 'spices/FENNEL.jpeg', ['spices/FENNEL.jpeg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'FENNEL SEEDS', 'Spices', 'Sweet fennel seeds, perfect for after meals.', ['Fennel Seeds', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 599, 750)">
+                        <div class="product-image"><img src="spices/FENNEL.jpeg" alt="FENNEL"><div class="product-badge">Premium</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>FENNEL SEEDS</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.9/5)</span></div><p class="product-desc">Sweet fennel seeds, perfect for after meals.</p><div class="product-price-row"><div class="product-price">₹599 <small>₹750</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(44, 'FENNEL SEEDS', 599, 'spices/FENNEL.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 10 -->
+                    <div class="product-card" onclick="openProductModal(45, 'spices/GREEN CARD.jpeg', ['spices/GREEN CARD.jpeg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'GREEN CARDAMUM', 'Spices', 'Aromatic green cardamom pods.', ['Green Cardamom', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 279, 360)">
+                        <div class="product-image"><img src="spices/GREEN CARD.jpeg" alt="GREEN CARD"><div class="product-badge">Fresh</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>GREEN CARDAMUM</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Aromatic green cardamom pods.</p><div class="product-price-row"><div class="product-price">₹279 <small>₹360</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(45, 'GREEN CARDAMUM', 279, 'spices/GREEN CARD.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 11 -->
+                    <div class="product-card" onclick="openProductModal(46, 'spices/INDIAN ASO.jpeg', ['spices/INDIAN ASO.jpeg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'INDIAN ASAFOETIDA', 'Spices', 'Strong and aromatic asafoetida powder.', ['Asafoetida', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 349, 450)">
+                        <div class="product-image"><img src="spices/INDIAN ASO.jpeg" alt="INDIAN ASAFOETIDA"><div class="product-badge">Herbal</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>INDIAN ASAFOETIDA</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Strong and aromatic asafoetida powder.</p><div class="product-price-row"><div class="product-price">₹349 <small>₹450</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(46, 'INDIAN ASAFOETIDA', 349, 'spices/INDIAN ASO.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 12 -->
+                    <div class="product-card" onclick="openProductModal(47, 'spices/INDIAN MASE.jpeg', ['spices/INDIAN MASE.jpeg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'INDIAN MACE', 'Spices', 'Premium mace, aromatic and warming.', ['Mace', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 399, 520)">
+                        <div class="product-image"><img src="spices/INDIAN MASE.jpeg" alt="INDIAN MACE"><div class="product-badge">Fresh</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>INDIAN MACE</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Premium mace, aromatic and warming.</p><div class="product-price-row"><div class="product-price">₹399 <small>₹520</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(47, 'INDIAN MACE', 399, 'spices/INDIAN MASE.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 13 -->
+                    <div class="product-card" onclick="openProductModal(48, 'spices/kesar.jpeg', ['spices/kesar.jpeg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'INDIAN SAFFRON', 'Spices', 'Premium Kashmiri saffron, rich in color.', ['Saffron', 'No Preservatives'], ['1g Pack', 'Air Tight Jar', 'Premium Quality'], 229, 300)">
+                        <div class="product-image"><img src="spices/kesar.jpeg" alt="INDIAN SAFFRON"><div class="product-badge">Whole</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>INDIAN SAFFRON</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.7/5)</span></div><p class="product-desc">Premium Kashmiri saffron, rich in color.</p><div class="product-price-row"><div class="product-price">₹229 <small>₹300</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(48, 'INDIAN SAFFRON', 229, 'spices/kesar.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 14 -->
+                    <div class="product-card" onclick="openProductModal(49, 'spices/NUTMEG.jpeg', ['spices/NUTMEG.jpeg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'NUTMEG WHOLE', 'Spices', 'Whole nutmeg, sweet and aromatic.', ['Nutmeg', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 329, 420)">
+                        <div class="product-image"><img src="spices/NUTMEG.jpeg" alt="NUTMEG"><div class="product-badge">Premium</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>NUTMEG WHOLE</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Whole nutmeg, sweet and aromatic.</p><div class="product-price-row"><div class="product-price">₹329 <small>₹420</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(49, 'NUTMEG WHOLE', 329, 'spices/NUTMEG.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Spice 15 -->
+                    <div class="product-card" onclick="openProductModal(50, 'spices/PEPPY SEEDS.jpeg', ['spices/PEPPY SEEDS.jpeg', 'spices/BAY.jpeg', 'spices/BLACK CARDUMUM.jpeg', 'spices/BLACK PEPER.jpeg'], 'POPPY SEEDS', 'Spices', 'Premium poppy seeds, rich in nutrients.', ['Poppy Seeds', 'No Preservatives'], ['50g Pack', 'Air Tight Jar', 'Premium Quality'], 269, 350)">
+                        <div class="product-image"><img src="spices/PEPPY SEEDS.jpeg" alt="POPPY SEEDS"><div class="product-badge">Special</div></div>
+                        <div class="product-info"><div class="category">Spices</div><h3>POPPY SEEDS</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.9/5)</span></div><p class="product-desc">Premium poppy seeds, rich in nutrients.</p><div class="product-price-row"><div class="product-price">₹269 <small>₹350</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(50, 'POPPY SEEDS', 269, 'spices/PEPPY SEEDS.jpeg')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- COPPERWARE PAGE (20 Products) -->
+    <div id="copperware" class="page-section">
+        <div class="sub-page-header"><h1>Copperware</h1><p>Premium Copper Utensils</p></div>
+        <section class="products-section">
+            <div class="container">
+                <div class="section-header"><span>Copperware Collection</span><h2>Premium Copper Utensils</h2></div>
+                <div class="product-grid">
+                    <!-- Copper 1 -->
+                    <div class="product-card" onclick="openProductModal(51, 'copper/brass3.webp', ['copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp', 'copper/Copper.webp'], 'Copper Bottle', 'Copperware', 'Pure copper bottle, 1 litre. Enhances water quality.', ['100% Pure Copper', 'Lead Free'], ['1 Litre Capacity', 'Handcrafted', 'Rust Proof'], 1299, 1600)">
+                        <div class="product-image"><img src="copper/brass3.webp" alt="Copper Bottle"><div class="product-badge">Best Seller</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Bottle</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Pure copper bottle, 1 litre. Enhances water quality.</p><div class="product-price-row"><div class="product-price">₹1,299 <small>₹1,600</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(51, 'Copper Bottle', 1299, 'copper/brass3.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 2 -->
+                    <div class="product-card" onclick="openProductModal(52, 'copper/wedglass.webp', ['copper/wedglass.webp', 'copper/brass3.webp', 'copper/copperwater.webp', 'copper/Copper.webp'], 'Copper Glass', 'Copperware', 'Set of 2 pure copper tumblers, perfect for daily use.', ['100% Pure Copper', 'Lead Free'], ['Set of 2', 'Handcrafted', 'Rust Proof'], 799, 1000)">
+                        <div class="product-image"><img src="copper/wedglass.webp" alt="Copper Glass"><div class="product-badge">Premium</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Glass</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.9/5)</span></div><p class="product-desc">Set of 2 pure copper tumblers, perfect for daily use.</p><div class="product-price-row"><div class="product-price">₹799 <small>₹1,000</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(52, 'Copper Glass', 799, 'copper/wedglass.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 3 -->
+                    <div class="product-card" onclick="openProductModal(53, 'copper/copperwater.webp', ['copper/copperwater.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/Copper.webp'], 'Copper Jug (2L)', 'Copperware', 'Large copper jug with lid, perfect for family.', ['100% Pure Copper', 'Lead Free'], ['2 Litre Capacity', 'Handcrafted', 'Rust Proof'], 2299, 2800)">
+                        <div class="product-image"><img src="copper/copperwater.webp" alt="Copper Jug"><div class="product-badge">Large</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Jug (2L)</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Large copper jug with lid, perfect for family.</p><div class="product-price-row"><div class="product-price">₹2,299 <small>₹2,800</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(53, 'Copper Jug (2L)', 2299, 'copper/copperwater.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 4 -->
+                    <div class="product-card" onclick="openProductModal(54, 'copper/Copper.webp', ['copper/Copper.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Bowl', 'Copperware', 'Elegant copper bowl for serving and decor.', ['100% Pure Copper', 'Lead Free'], ['Medium Size', 'Handcrafted', 'Rust Proof'], 1499, 1900)">
+                        <div class="product-image"><img src="copper/Copper.webp" alt="Copper Bowl"><div class="product-badge">Decor</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Bowl</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Elegant copper bowl for serving and decor.</p><div class="product-price-row"><div class="product-price">₹1,499 <small>₹1,900</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(54, 'Copper Bowl', 1499, 'copper/Copper.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 5 -->
+                    <div class="product-card" onclick="openProductModal(55, 'copper/glass2.webp', ['copper/glass2.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Mug', 'Copperware', 'Classic copper mug for cocktails and beverages.', ['100% Pure Copper', 'Lead Free'], ['350ml', 'Handcrafted', 'Rust Proof'], 899, 1200)">
+                        <div class="product-image"><img src="copper/glass2.webp" alt="Copper Mug"><div class="product-badge">Trend</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Mug</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Classic copper mug for cocktails and beverages.</p><div class="product-price-row"><div class="product-price">₹899 <small>₹1,200</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(55, 'Copper Mug', 899, 'copper/glass2.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 6 -->
+                    <div class="product-card" onclick="openProductModal(56, 'copper/copglass.webp', ['copper/copglass.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Pitcher', 'Copperware', 'Handcrafted copper pitcher for water storage.', ['100% Pure Copper', 'Lead Free'], ['1.5 Litre Capacity', 'Handcrafted', 'Rust Proof'], 1899, 2400)">
+                        <div class="product-image"><img src="copper/copglass.webp" alt="Copper Pitcher"><div class="product-badge">Traditional</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Pitcher</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.9/5)</span></div><p class="product-desc">Handcrafted copper pitcher for water storage.</p><div class="product-price-row"><div class="product-price">₹1,899 <small>₹2,400</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(56, 'Copper Pitcher', 1899, 'copper/copglass.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 7 -->
+                    <div class="product-card" onclick="openProductModal(57, 'copper/coppermarble.webp', ['copper/coppermarble.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Tray', 'Copperware', 'Elegant copper tray, perfect for serving guests.', ['100% Pure Copper', 'Lead Free'], ['Large Size', 'Handcrafted', 'Rust Proof'], 1599, 2000)">
+                        <div class="product-image"><img src="copper/coppermarble.webp" alt="Copper Tray"><div class="product-badge">Elegant</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Tray</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Elegant copper tray, perfect for serving guests.</p><div class="product-price-row"><div class="product-price">₹1,599 <small>₹2,000</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(57, 'Copper Tray', 1599, 'copper/coppermarble.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 8 -->
+                    <div class="product-card" onclick="openProductModal(58, 'copper/tounge.webp', ['copper/tounge.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Glass Set (4)', 'Copperware', 'Set of 4 pure copper glasses, unique design.', ['100% Pure Copper', 'Lead Free'], ['Set of 4', 'Handcrafted', 'Rust Proof'], 1999, 2500)">
+                        <div class="product-image"><img src="copper/tounge.webp" alt="Copper Glass Set"><div class="product-badge">Set</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Glass Set (4)</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Set of 4 pure copper glasses, unique design.</p><div class="product-price-row"><div class="product-price">₹1,999 <small>₹2,500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(58, 'Copper Glass Set (4)', 1999, 'copper/tounge.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 9 -->
+                    <div class="product-card" onclick="openProductModal(59, 'copper/waterbottle.webp', ['copper/waterbottle.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Kadai', 'Copperware', 'Traditional copper kadai for cooking.', ['100% Pure Copper', 'Lead Free'], ['Medium Size', 'Handcrafted', 'Rust Proof'], 3499, 4500)">
+                        <div class="product-image"><img src="copper/waterbottle.webp" alt="Copper Kadai"><div class="product-badge">Kitchen</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Kadai</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Traditional copper kadai for cooking.</p><div class="product-price-row"><div class="product-price">₹3,499 <small>₹4,500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(59, 'Copper Kadai', 3499, 'copper/waterbottle.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 10 -->
+                    <div class="product-card" onclick="openProductModal(60, 'copper/design2.webp', ['copper/design2.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Dinner Plate', 'Copperware', 'Large copper plate, traditional thali style.', ['100% Pure Copper', 'Lead Free'], ['Large Size', 'Handcrafted', 'Rust Proof'], 1299, 1700)">
+                        <div class="product-image"><img src="copper/design2.webp" alt="Copper Plate"><div class="product-badge">Thali</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Dinner Plate</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.9/5)</span></div><p class="product-desc">Large copper plate, traditional thali style.</p><div class="product-price-row"><div class="product-price">₹1,299 <small>₹1,700</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(60, 'Copper Dinner Plate', 1299, 'copper/design2.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 11 -->
+                    <div class="product-card" onclick="openProductModal(61, 'copper/2bottle.webp', ['copper/2bottle.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Flask', 'Copperware', 'Insulated copper flask, keeps water cool.', ['100% Pure Copper', 'Lead Free'], ['500ml', 'Handcrafted', 'Rust Proof'], 2499, 3200)">
+                        <div class="product-image"><img src="copper/2bottle.webp" alt="Copper Flask"><div class="product-badge">Travel</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Flask</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Insulated copper flask, keeps water cool.</p><div class="product-price-row"><div class="product-price">₹2,499 <small>₹3,200</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(61, 'Copper Flask', 2499, 'copper/2bottle.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 12 -->
+                    <div class="product-card" onclick="openProductModal(62, 'copper/mug3.webp', ['copper/mug3.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Decorative Vessel', 'Copperware', 'Beautiful copper vessel for home decor.', ['100% Pure Copper', 'Lead Free'], ['Medium Size', 'Handcrafted', 'Rust Proof'], 3999, 5000)">
+                        <div class="product-image"><img src="copper/mug3.webp" alt="Copper Vessel"><div class="product-badge">Decor</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Decorative Vessel</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Beautiful copper vessel for home decor.</p><div class="product-price-row"><div class="product-price">₹3,999 <small>₹5,000</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(62, 'Copper Decorative Vessel', 3999, 'copper/mug3.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 13 -->
+                    <div class="product-card" onclick="openProductModal(63, 'copper/glass.webp', ['copper/glass.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Cup Set (6)', 'Copperware', 'Set of 6 copper cups for drinks and decor.', ['100% Pure Copper', 'Lead Free'], ['Set of 6', 'Handcrafted', 'Rust Proof'], 2899, 3600)">
+                        <div class="product-image"><img src="copper/glass.webp" alt="Copper Cup"><div class="product-badge">Set</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Cup Set (6)</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Set of 6 copper cups for drinks and decor.</p><div class="product-price-row"><div class="product-price">₹2,899 <small>₹3,600</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(63, 'Copper Cup Set (6)', 2899, 'copper/glass.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 14 -->
+                    <div class="product-card" onclick="openProductModal(64, 'copper/color.webp', ['copper/color.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Water Bucket', 'Copperware', 'Large copper bucket for water storage.', ['100% Pure Copper', 'Lead Free'], ['5 Litre Capacity', 'Handcrafted', 'Rust Proof'], 4999, 6500)">
+                        <div class="product-image"><img src="copper/color.webp" alt="Copper Bucket"><div class="product-badge">Large</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Water Bucket</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.9/5)</span></div><p class="product-desc">Large copper bucket for water storage.</p><div class="product-price-row"><div class="product-price">₹4,999 <small>₹6,500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(64, 'Copper Water Bucket', 4999, 'copper/color.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 15 -->
+                    <div class="product-card" onclick="openProductModal(65, 'copper/water.webp', ['copper/water.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Gift Set', 'Copperware', 'Premium copper gift set with bottle and glass.', ['100% Pure Copper', 'Lead Free'], ['Set of 2', 'Handcrafted', 'Rust Proof'], 3299, 4200)">
+                        <div class="product-image"><img src="copper/water.webp" alt="Copper Bottle Gift"><div class="product-badge">Gift</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Gift Set</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Premium copper gift set with bottle and glass.</p><div class="product-price-row"><div class="product-price">₹3,299 <small>₹4,200</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(65, 'Copper Gift Set', 3299, 'copper/water.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 16 -->
+                    <div class="product-card" onclick="openProductModal(66, 'copper/kashmirglass.webp', ['copper/kashmirglass.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Lota (Kalash)', 'Copperware', 'Traditional copper lota for rituals and pooja.', ['100% Pure Copper', 'Lead Free'], ['500ml', 'Handcrafted', 'Rust Proof'], 699, 900)">
+                        <div class="product-image"><img src="copper/kashmirglass.webp" alt="Copper Lota"><div class="product-badge">Traditional</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Lota (Kalash)</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Traditional copper lota for rituals and pooja.</p><div class="product-price-row"><div class="product-price">₹699 <small>₹900</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(66, 'Copper Lota', 699, 'copper/kashmirglass.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 17 -->
+                    <div class="product-card" onclick="openProductModal(67, 'copper/copperjug.webp', ['copper/copperjug.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Soup Bowl', 'Copperware', 'Elegant copper soup bowl set.', ['100% Pure Copper', 'Lead Free'], ['Set of 2', 'Handcrafted', 'Rust Proof'], 1099, 1400)">
+                        <div class="product-image"><img src="copper/copperjug.webp" alt="Copper Soup Bowl"><div class="product-badge">Dining</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Soup Bowl</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Elegant copper soup bowl set.</p><div class="product-price-row"><div class="product-price">₹1,099 <small>₹1,400</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(67, 'Copper Soup Bowl', 1099, 'copper/copperjug.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 18 -->
+                    <div class="product-card" onclick="openProductModal(68, 'copper/sets.webp', ['copper/sets.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Ice Bucket', 'Copperware', 'Stylish copper bucket for ice and bottles.', ['100% Pure Copper', 'Lead Free'], ['Medium Size', 'Handcrafted', 'Rust Proof'], 2799, 3500)">
+                        <div class="product-image"><img src="copper/sets.webp" alt="Copper Ice Bucket"><div class="product-badge">Party</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Ice Bucket</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.9/5)</span></div><p class="product-desc">Stylish copper bucket for ice and bottles.</p><div class="product-price-row"><div class="product-price">₹2,799 <small>₹3,500</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(68, 'Copper Ice Bucket', 2799, 'copper/sets.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 19 -->
+                    <div class="product-card" onclick="openProductModal(69, 'copper/design.png', ['copper/design.png', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Frying Pan', 'Copperware', 'Copper bottom frying pan for even cooking.', ['100% Pure Copper', 'Lead Free'], ['Medium Size', 'Handcrafted', 'Rust Proof'], 2199, 2800)">
+                        <div class="product-image"><img src="copper/design.png" alt="Copper Frying Pan"><div class="product-badge">Kitchen</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Frying Pan</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(5/5)</span></div><p class="product-desc">Copper bottom frying pan for even cooking.</p><div class="product-price-row"><div class="product-price">₹2,199 <small>₹2,800</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(69, 'Copper Frying Pan', 2199, 'copper/design.png')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                    <!-- Copper 20 -->
+                    <div class="product-card" onclick="openProductModal(70, 'copper/mugs.webp', ['copper/mugs.webp', 'copper/brass3.webp', 'copper/wedglass.webp', 'copper/copperwater.webp'], 'Copper Bottle Stand', 'Copperware', 'Elegant stand for displaying copper bottles.', ['100% Pure Copper', 'Lead Free'], ['Medium Size', 'Handcrafted', 'Rust Proof'], 1799, 2200)">
+                        <div class="product-image"><img src="copper/mugs.webp" alt="Copper Stand"><div class="product-badge">Display</div></div>
+                        <div class="product-info"><div class="category">Copperware</div><h3>Copper Bottle Stand</h3><div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(4.8/5)</span></div><p class="product-desc">Elegant stand for displaying copper bottles.</p><div class="product-price-row"><div class="product-price">₹1,799 <small>₹2,200</small></div></div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(70, 'Copper Bottle Stand', 1799, 'copper/mugs.webp')"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CATALOGUE PAGE -->
+    <div id="catalogue" class="page-section">
+        <div class="sub-page-header"><h1>Product Catalogue</h1><p>Click on 'Our Products' to view full list</p></div>
+    </div>
+
+    <!-- CERTIFICATIONS PAGE -->
+    <div id="certifications" class="page-section">
+        <div class="sub-page-header"><h1>Certifications & Quality</h1><p>Trusted and certified</p></div>
+        <section class="products-section">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 900px; margin: 0 auto;">
+                    <div style="background: var(--white); border: 2px solid var(--light-brown); padding: 40px; text-align: center; border-radius: 20px; box-shadow: var(--shadow);"><i class="fas fa-leaf" style="font-size: 3rem; color: var(--primary-green); margin-bottom: 20px;"></i><h3 style="font-size: 2rem;">USDA</h3><p style="color: var(--text-gray);">Organic</p></div>
+                    <div style="background: var(--white); border: 2px solid var(--light-brown); padding: 40px; text-align: center; border-radius: 20px; box-shadow: var(--shadow);"><i class="fas fa-globe" style="font-size: 3rem; color: var(--primary-green); margin-bottom: 20px;"></i><h3 style="font-size: 2rem;">ISO</h3><p style="color: var(--text-gray);">22000:2018</p></div>
+                    <div style="background: var(--white); border: 2px solid var(--light-brown); padding: 40px; text-align: center; border-radius: 20px; box-shadow: var(--shadow);"><i class="fas fa-certificate" style="font-size: 3rem; color: var(--primary-green); margin-bottom: 20px;"></i><h3 style="font-size: 2rem;">GMP</h3><p style="color: var(--text-gray);">Good Manufacturing</p></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><div class="green-box"><i class="fas fa-truck-fast"></i><h3>Get best rate</h3><p>We believe in partnership.</p><button>Get the best rate <i class="fas fa-check"></i></button></div></div>
+                <div class="footer-col"><h4>Industry Served</h4><ul><li><i class="fas fa-arrow-right"></i> <a href="#">Frozen Food</a></li><li><i class="fas fa-arrow-right"></i> <a href="#">Automobile</a></li><li><i class="fas fa-arrow-right"></i> <a href="#">Export Import</a></li><li><i class="fas fa-arrow-right"></i> <a href="#">Cargo Freight</a></li></ul></div>
+                <div class="footer-col"><h4>Company Info</h4><ul><li><i class="fas fa-arrow-right"></i> <a href="#" onclick="showPage('about', null)">About Us</a></li><li><i class="fas fa-arrow-right"></i> <a href="#" onclick="showPage('products', null)">Herbal Products</a></li><li><i class="fas fa-arrow-right"></i> <a href="#" onclick="showPage('spices', null)">Spices</a></li><li><i class="fas fa-arrow-right"></i> <a href="#" onclick="showPage('copperware', null)">Copperware</a></li></ul></div>
+                <div class="footer-col"><h4>Our Services</h4><ul><li><i class="fas fa-arrow-right"></i> <a href="#">Shipping</a></li><li><i class="fas fa-arrow-right"></i> <a href="#">Sourcing</a></li><li><i class="fas fa-arrow-right"></i> <a href="#">Market Analysis</a></li></ul></div>
+            </div>
+            <div class="footer-contact-strip">
+                <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope-open-text"></i></div><div><h5>E-Mail Us</h5><p>info@kiyanexportonline.com</p></div></div>
+                <div class="contact-item"><div class="contact-icon"><i class="fas fa-headset"></i></div><div><h5>Help Center</h5><p>Use Chatbot for Support</p></div></div>
+                <div class="contact-item"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><h5>Kiyan Export</h5><p>Vinay Khand 2, Gomti Nagar, Lucknow, UP - 226010</p></div></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTTOM FOOTER -->
+    <div class="bottom-footer">
+        <div class="container bottom-container">
+            <p>© 2026 Kiyan Export Online Developed By Glydeup Techsolution</p>
+            <div class="bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></div>
+        </div>
+    </div>
+
+    <!-- SCROLL TOP -->
+    <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        // CHATBOT
+        function toggleChatbot() {
+            document.getElementById('chatbotWindow').classList.toggle('active');
+        }
+
+        function sendChatbotMessage() {
+            const input = document.getElementById('chatbotInput');
+            const message = input.value.trim();
+            if(!message) return;
+            const messagesContainer = document.getElementById('chatbotMessages');
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chatbot-msg user';
+            userMsg.innerHTML = `<div class="msg-bubble">${message}</div>`;
+            messagesContainer.appendChild(userMsg);
+            input.value = '';
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chatbot-msg bot';
+                botMsg.innerHTML = `<div class="msg-bubble">${getBotResponse(message)}</div>`;
+                messagesContainer.appendChild(botMsg);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 800);
+        }
+
+        function getBotResponse(query) {
+            const q = query.toLowerCase();
+            if(q.includes('product') || q.includes('buy')) return "We offer a wide range of premium products! 🌿\n\n• Herbal Supplements (35+ products)\n• Indian Spices (15 varieties)\n• Copperware & Brass items (20+ utensils)\n\nClick on 'Our Products' in the menu to explore all!";
+            if(q.includes('shipping') || q.includes('delivery')) return "We ship worldwide! 🌍\n\n• USA, Germany, France, Switzerland, Ireland, Brazil, Turkey, Romania\n• FREE delivery on orders above ₹999\n• Delivery in 3-5 business days in India\n• International delivery in 7-15 days";
+            if(q.includes('service') || q.includes('private label') || q.includes('bulk')) return "We offer comprehensive services! 🏭\n\n• Third-party production\n• Private labeling\n• Bulk distribution\n• One-window solution from product development to packaging\n• International delivery";
+            if(q.includes('company') || q.includes('about') || q.includes('kiyan')) return "Kiyan Export, incepted in 2005, is a trusted worldwide exporter of herbal supplements and natural wellness products. 🏢\n\n• Location: Gomti Nagar, Lucknow\n• CEO: Aparna Batra\n• 25+ countries served\n• 100+ products";
+            if(q.includes('contact') || q.includes('help') || q.includes('support')) return "You can reach us through:\n\n📧 Email: info@kiyanexportonline.com\n📍 Location: Vinay Khand 2, Gomti Nagar, Lucknow\n\nOur chatbot is available 24/7!";
+            if(q.includes('payment') || q.includes('cod') || q.includes('upi')) return "We accept multiple payment methods! 💳\n\n• Cash on Delivery (COD)\n• UPI\n• Credit/Debit Cards\n• Net Banking\n\nAll transactions are secure!";
+            if(q.includes('return') || q.includes('refund')) return "We offer customer-friendly policies! ✅\n\n• 10 Days Service Centre\n• 7 Day Replacement\n• Free Delivery on orders above ₹999\n• Secure transaction";
+            return "Thank you for your question! 😊\n\nOur team will get back to you shortly. For immediate assistance, please email us at info@kiyanexportonline.com or explore our 'Help Center' page.";
+        }
+
+        // PAGE MANAGEMENT
+        function showPage(pageId, element) {
+            document.querySelectorAll('.page-section').forEach(page => page.classList.remove('active-page'));
+            const selectedPage = document.getElementById(pageId);
+            if(selectedPage) selectedPage.classList.add('active-page');
+            if(element) {
+                document.querySelectorAll('.nav-links > a').forEach(link => link.classList.remove('active'));
+                element.classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // CART SYSTEM
+        let cart = [];
+
+        function addToCart(id, name, price, image) {
+            const existingItem = cart.find(item => item.id === id);
+            if(existingItem) existingItem.quantity += 1;
+            else cart.push({ id, name, price, image, quantity: 1 });
+            updateCart();
+            openCart();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+
+        function updateQuantity(id, change) {
+            const item = cart.find(item => item.id === id);
+            if(item) {
+                item.quantity += change;
+                if(item.quantity <= 0) removeFromCart(id);
+                else updateCart();
+            }
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotals = document.getElementById('cartTotals');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.innerText = totalItems;
+            if(cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: var(--text-gray); padding: 40px;">Your cart is empty.</p>';
+                cartTotals.style.display = 'none';
+                return;
+            }
+            cartTotals.style.display = 'block';
+            let cartHTML = '';
+            let subtotal = 0;
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                cartHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <div class="price">₹${item.price.toLocaleString('en-IN')}</div>
+                            <div class="cart-item-qty">
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <span>${item.quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                                <button class="cart-item-remove" onclick="removeFromCart(${item.id})"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            cartItems.innerHTML = cartHTML;
+            const sgst = subtotal * 0.09;
+            const igst = subtotal * 0.09;
+            const total = subtotal + sgst + igst;
+            document.getElementById('cartSubtotal').innerText = '₹' + subtotal.toLocaleString('en-IN');
+            document.getElementById('cartSGST').innerText = '₹' + sgst.toLocaleString('en-IN');
+            document.getElementById('cartIGST').innerText = '₹' + igst.toLocaleString('en-IN');
+            document.getElementById('cartTotal').innerText = '₹' + total.toLocaleString('en-IN');
+            document.getElementById('modalSubtotal').innerText = '₹' + subtotal.toLocaleString('en-IN');
+            document.getElementById('modalSGST').innerText = '₹' + sgst.toLocaleString('en-IN');
+            document.getElementById('modalIGST').innerText = '₹' + igst.toLocaleString('en-IN');
+            document.getElementById('modalTotal').innerText = '₹' + total.toLocaleString('en-IN');
+        }
+
+        function openCart() {
+            document.getElementById('cartOverlay').classList.add('active');
+            document.getElementById('cartDrawer').classList.add('active');
+        }
+
+        function closeCart() {
+            document.getElementById('cartOverlay').classList.remove('active');
+            document.getElementById('cartDrawer').classList.remove('active');
+        }
+
+        function openCheckout() {
+            if(cart.length === 0) { alert('Your cart is empty!'); return; }
+            closeCart();
+            document.getElementById('checkoutModal').classList.add('active');
+            document.getElementById('checkoutFormContainer').style.display = 'block';
+            document.getElementById('orderSuccess').classList.remove('active');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.remove('active');
+            cart = [];
+            updateCart();
+        }
+
+        function selectPayment(method, element) {
+            document.querySelectorAll('.payment-option').forEach(option => option.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function placeOrder(event) {
+            event.preventDefault();
+            const name = document.getElementById('customerName').value;
+            const email = document.getElementById('customerEmail').value;
+            const address = document.getElementById('customerAddress').value;
+            if(!name || !email || !address) { alert('Please fill all required fields!'); return; }
+            document.getElementById('checkoutFormContainer').style.display = 'none';
+            document.getElementById('orderSuccess').classList.add('active');
+        }
+
+        // PRODUCT MODAL
+        let currentModalProduct = null;
+
+        function openProductModal(id, mainImg, thumbnails, title, category, desc, ingredients, specs, price, oldPrice) {
+            currentModalProduct = { id, mainImg, thumbnails, title, category, desc, ingredients, specs, price, oldPrice };
+            document.getElementById('pmMainImg').src = mainImg;
+            const thumbContainer = document.getElementById('pmThumbnails');
+            thumbContainer.innerHTML = '';
+            thumbnails.forEach((thumb, index) => {
+                const img = document.createElement('img');
+                img.src = thumb;
+                img.alt = `Thumbnail ${index + 1}`;
+                img.className = 'pm-thumb' + (index === 0 ? ' active' : '');
+                img.onclick = () => {
+                    document.getElementById('pmMainImg').src = thumb;
+                    document.querySelectorAll('.pm-thumb').forEach(t => t.classList.remove('active'));
+                    img.classList.add('active');
+                };
+                thumbContainer.appendChild(img);
+            });
+            document.getElementById('pmCategory').textContent = category;
+            document.getElementById('pmTitle').textContent = title;
+            document.getElementById('pmDesc').textContent = desc;
+            document.getElementById('pmPrice').textContent = '₹' + price.toLocaleString('en-IN');
+            document.getElementById('pmOldPrice').textContent = '₹' + oldPrice.toLocaleString('en-IN');
+            const discount = Math.round(((oldPrice - price) / oldPrice) * 100);
+            document.getElementById('pmDiscount').textContent = discount + '% OFF';
+            const ingContainer = document.getElementById('pmIngredients');
+            ingContainer.innerHTML = '';
+            ingredients.forEach(ing => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-circle"></i> ${ing}`;
+                ingContainer.appendChild(li);
+            });
+            const specContainer = document.getElementById('pmSpecs');
+            specContainer.innerHTML = '';
+            specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check-circle"></i> ${spec}`;
+                specContainer.appendChild(li);
+            });
+            const deliveryDate = new Date();
+            deliveryDate.setDate(deliveryDate.getDate() + 3);
+            document.getElementById('pmDeliveryDate').textContent = `Expected Delivery: ${deliveryDate.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' })}`;
+            document.getElementById('productModalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal(event) {
+            if(event && event.target !== event.currentTarget) return;
+            document.getElementById('productModalOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentModalProduct = null;
+        }
+
+        function addToCartFromModal() {
+            if(currentModalProduct) {
+                addToCart(currentModalProduct.id, currentModalProduct.title, currentModalProduct.price, currentModalProduct.mainImg);
+                closeProductModal();
+            }
+        }
+
+        function buyNow() {
+            if(currentModalProduct) {
+                addToCart(currentModalProduct.id, currentModalProduct.title, currentModalProduct.price, currentModalProduct.mainImg);
+                closeProductModal();
+                openCheckout();
+            }
+        }
+
+        // SLIDER
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('#home .slide');
+        const dots = document.querySelectorAll('#home .dot');
+        const totalSlides = slides.length;
+
+        function goToSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        setInterval(() => {
+            if(document.getElementById('home').classList.contains('active-page')) {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                goToSlide(currentSlide);
+            }
+        }, 5000);
+
+        // INIT
+        updateCart();
+    </script>
+</body>
+</html>

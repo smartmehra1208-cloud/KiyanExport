@@ -1,0 +1,3152 @@
+[
+  {
+    "id": 1,
+    "name": "ARJUNA CAPSULE",
+    "category": "Herbal",
+    "badge": "Best Seller",
+    "rating": 4.8,
+    "price": 599,
+    "oldPrice": 1999,
+    "image": "Herbal/arjuna.webp",
+    "thumbnails": [
+      "Herbal/arjuna.webp",
+      "Herbal/arjunapowder.webp",
+      "Herbal/Aswagandha.webp",
+      "Herbal/Aswagandhacapsule.webp"
+    ],
+    "description": "100% Pure Arjuna Extract Naturally Rich in Antioxidants for cardiovascular wellness.",
+    "ingredients": [
+      "Arjuna Extract",
+      "No Additives",
+      "Vegetable Cellulose Capsule"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "GMP Certified"
+    ],
+    "moq": 100,
+    "priceRange": "₹300 - ₹599 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 599,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 431,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 300,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 509,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 2,
+    "name": "ARJUNAPOWDER",
+    "category": "Herbal",
+    "badge": "New",
+    "rating": 5,
+    "price": 1499,
+    "oldPrice": 1800,
+    "image": "Herbal/arjunapowder.webp",
+    "thumbnails": [
+      "Herbal/arjunapowder.webp",
+      "Herbal/arjuna.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Pure organic Arjuna bark powder for natural heart health and immunity support.",
+    "ingredients": [
+      "100% Organic Arjuna Bark Powder"
+    ],
+    "specs": [
+      "200g Pack",
+      "100% Organic",
+      "Made in India",
+      "Non-GMO"
+    ],
+    "moq": 100,
+    "priceRange": "₹750 - ₹1499 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 1499,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1079,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 750,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1274,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 3,
+    "name": "ASWAGANDHA",
+    "category": "Herbal",
+    "badge": "Vegan",
+    "rating": 4.7,
+    "price": 2499,
+    "oldPrice": 3000,
+    "image": "Herbal/Aswagandha.webp",
+    "thumbnails": [
+      "Herbal/Aswagandha.webp",
+      "Herbal/Aswagandhacapsule.webp",
+      "Herbal/Aswagandhagummies.webp"
+    ],
+    "description": "Radiance-Boosting Skin & Stress-Relief Organic Ashwagandha supplement.",
+    "ingredients": [
+      "Pure Ashwagandha Root Extract",
+      "Withanolides 5%"
+    ],
+    "specs": [
+      "30 Gummies",
+      "100% Vegan",
+      "Made in India",
+      "Lab Tested"
+    ],
+    "moq": 100,
+    "priceRange": "₹1250 - ₹2499 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 2499,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1799,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 1250,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 2124,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 4,
+    "name": "ASWAGANDHA CAPSULE",
+    "category": "Herbal",
+    "badge": "Luxury",
+    "rating": 5,
+    "price": 4999,
+    "oldPrice": 6000,
+    "image": "Herbal/Aswagandhacapsule.webp",
+    "thumbnails": [
+      "Herbal/Aswagandhacapsule.webp",
+      "Herbal/Aswagandha.webp",
+      "Herbal/Aswagandhagummies.webp"
+    ],
+    "description": "Premium handcrafted organic wellness capsules for stamina, vitality, and focus.",
+    "ingredients": [
+      "Pure KSM-66 Ashwagandha Extract"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "ISO Certified"
+    ],
+    "moq": 50,
+    "priceRange": "₹2500 - ₹4999 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 50,
+        "maxQty": 249,
+        "price": 4999,
+        "label": "50-249 pcs"
+      },
+      {
+        "minQty": 250,
+        "maxQty": 499,
+        "price": 3599,
+        "label": "250-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": null,
+        "price": 2500,
+        "label": "500+ pcs"
+      }
+    ],
+    "samplePrice": 4249,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 5,
+    "name": "ASWAGANDHA GUMMIES",
+    "category": "Herbal",
+    "badge": "Fitness",
+    "rating": 4.6,
+    "price": 2999,
+    "oldPrice": 3500,
+    "image": "Herbal/Aswagandhagummies.webp",
+    "thumbnails": [
+      "Herbal/Aswagandhagummies.webp",
+      "Herbal/Aswagandha.webp",
+      "Herbal/Aswagandhacapsule.webp"
+    ],
+    "description": "Delicious Sour Watermelon flavored Ashwagandha gummies with 1250mg potency.",
+    "ingredients": [
+      "Ashwagandha Extract",
+      "Pectin",
+      "Natural Flavors"
+    ],
+    "specs": [
+      "30 Gummies",
+      "100% Vegan",
+      "Gelatin Free",
+      "Made in India"
+    ],
+    "moq": 100,
+    "priceRange": "₹1500 - ₹2999 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 2999,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 2159,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 1500,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 2549,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 6,
+    "name": "BACOPA",
+    "category": "Herbal",
+    "badge": "Ayurveda",
+    "rating": 5,
+    "price": 1299,
+    "oldPrice": 1600,
+    "image": "Herbal/bacopa.webp",
+    "thumbnails": [
+      "Herbal/bacopa.webp",
+      "Herbal/arjuna.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Pure Bacopa Monnieri (Brahmi) extract to support cognitive health, memory and focus.",
+    "ingredients": [
+      "Pure Bacopa Extract",
+      "Bacosides 20%"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "GMP Facility"
+    ],
+    "moq": 100,
+    "priceRange": "₹650 - ₹1299 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 1299,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 935,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 650,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1104,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 7,
+    "name": "BAMBOOSALTI",
+    "category": "Herbal",
+    "badge": "Superfood",
+    "rating": 4.8,
+    "price": 1799,
+    "oldPrice": 2200,
+    "image": "Herbal/bamboosalt1.webp",
+    "thumbnails": [
+      "Herbal/bamboosalt1.webp",
+      "Herbal/arjuna.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Traditional roasted Bamboo Salt rich in essential minerals, flavonoids and antioxidants.",
+    "ingredients": [
+      "9-Times Roasted Bamboo Salt"
+    ],
+    "specs": [
+      "100g Jar",
+      "100% Natural",
+      "Alkalizing",
+      "Made in India"
+    ],
+    "moq": 100,
+    "priceRange": "₹900 - ₹1799 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 1799,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1295,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 900,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1529,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 8,
+    "name": "BOSWELLIA",
+    "category": "Herbal",
+    "badge": "Organic",
+    "rating": 4.9,
+    "price": 899,
+    "oldPrice": 1100,
+    "image": "Herbal/boswellia.webp",
+    "thumbnails": [
+      "Herbal/boswellia.webp",
+      "Herbal/arjuna.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Boswellia Serrata extract to promote healthy joints, flexibility and anti-inflammatory response.",
+    "ingredients": [
+      "Boswellia Serrata Extract (65% Boswellic Acid)"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Pesticide Free"
+    ],
+    "moq": 100,
+    "priceRange": "₹450 - ₹899 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 899,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 647,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 450,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 764,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 9,
+    "name": "FADO",
+    "category": "Herbal",
+    "badge": "Beauty",
+    "rating": 4.7,
+    "price": 1499,
+    "oldPrice": 1800,
+    "image": "Herbal/fado.webp",
+    "thumbnails": [
+      "Herbal/fado.webp",
+      "Herbal/fadogiakiyan1.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Strawberry flavored herbal blend designed for stronger hair, glowing skin and nails.",
+    "ingredients": [
+      "Fadogia Agrestis Extract",
+      "Biotin",
+      "Natural Strawberry Extract"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "FDA Registered Facility"
+    ],
+    "moq": 100,
+    "priceRange": "₹750 - ₹1499 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 1499,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1079,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 750,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1274,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 10,
+    "name": "FADOGIA KIORA",
+    "category": "Herbal",
+    "badge": "Health",
+    "rating": 5,
+    "price": 2199,
+    "oldPrice": 2500,
+    "image": "Herbal/fadogiakiyan1.webp",
+    "thumbnails": [
+      "Herbal/fadogiakiyan1.webp",
+      "Herbal/fado.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "High potency Vitamin + Mineral + Adaptogen herbal formula for energy and strength.",
+    "ingredients": [
+      "Pure Fadogia Agrestis Extract 10:1",
+      "Zinc Picolinate"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Heavy Metal Tested"
+    ],
+    "moq": 100,
+    "priceRange": "₹1100 - ₹2199 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 2199,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1583,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 1100,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1869,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 11,
+    "name": "GINGER",
+    "category": "Herbal",
+    "badge": "Digestive",
+    "rating": 4.8,
+    "price": 1299,
+    "oldPrice": 1600,
+    "image": "Herbal/ginger1.webp",
+    "thumbnails": [
+      "Herbal/ginger1.webp",
+      "Herbal/arjuna.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Ginger Root Extract gummies infused with Vitamin B6 & Passionfruit flavor.",
+    "ingredients": [
+      "Ginger Root Extract",
+      "Vitamin B6",
+      "Passionfruit Juice"
+    ],
+    "specs": [
+      "60 Gummies",
+      "100% Vegan",
+      "Made in India",
+      "Gluten Free"
+    ],
+    "moq": 100,
+    "priceRange": "₹650 - ₹1299 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 1299,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 935,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 650,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1104,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 12,
+    "name": "GINKGO",
+    "category": "Herbal",
+    "badge": "Focus",
+    "rating": 4.9,
+    "price": 5999,
+    "oldPrice": 7000,
+    "image": "Herbal/ginkgo.webp",
+    "thumbnails": [
+      "Herbal/ginkgo.webp",
+      "Herbal/arjuna.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Gold Standard Ginkgo Biloba extract for mental clarity, alertness and micro-circulation.",
+    "ingredients": [
+      "Ginkgo Biloba Standardized Leaf Extract"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Ultra Pure"
+    ],
+    "moq": 50,
+    "priceRange": "₹3000 - ₹5999 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 50,
+        "maxQty": 249,
+        "price": 5999,
+        "label": "50-249 pcs"
+      },
+      {
+        "minQty": 250,
+        "maxQty": 499,
+        "price": 4319,
+        "label": "250-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": null,
+        "price": 3000,
+        "label": "500+ pcs"
+      }
+    ],
+    "samplePrice": 5099,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 13,
+    "name": "GUMMIES",
+    "category": "Herbal",
+    "badge": "Wellness",
+    "rating": 4.7,
+    "price": 3499,
+    "oldPrice": 4000,
+    "image": "Herbal/gummies.webp",
+    "thumbnails": [
+      "Herbal/gummies.webp",
+      "Herbal/arjuna.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Mixed Berries flavored daily multivitamin and plant protein wellness gummies.",
+    "ingredients": [
+      "Multivitamins",
+      "Plant Protein Extract",
+      "Mixed Berries Flavor"
+    ],
+    "specs": [
+      "60 Gummies",
+      "100% Vegan",
+      "Made in India",
+      "Pectin Based"
+    ],
+    "moq": 50,
+    "priceRange": "₹1750 - ₹3499 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 50,
+        "maxQty": 249,
+        "price": 3499,
+        "label": "50-249 pcs"
+      },
+      {
+        "minQty": 250,
+        "maxQty": 499,
+        "price": 2519,
+        "label": "250-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": null,
+        "price": 1750,
+        "label": "500+ pcs"
+      }
+    ],
+    "samplePrice": 2974,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 14,
+    "name": "MACA-ROOT-ARTWOR",
+    "category": "Herbal",
+    "badge": "Organic",
+    "rating": 5,
+    "price": 2999,
+    "oldPrice": 3500,
+    "image": "Herbal/maca-root-artwor.webp",
+    "thumbnails": [
+      "Herbal/maca-root-artwor.webp",
+      "Herbal/macaroot.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Organic Peruvian Yellow & Red Maca Root powder for endurance and balance.",
+    "ingredients": [
+      "Organic Maca Root Powder"
+    ],
+    "specs": [
+      "250g Jar",
+      "100% Organic",
+      "Made in India",
+      "Non-GMO"
+    ],
+    "moq": 100,
+    "priceRange": "₹1500 - ₹2999 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 2999,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 2159,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 1500,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 2549,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 15,
+    "name": "MACAROOT",
+    "category": "Herbal",
+    "badge": "Clinical",
+    "rating": 4.8,
+    "price": 3999,
+    "oldPrice": 4800,
+    "image": "Herbal/macaroot.webp",
+    "thumbnails": [
+      "Herbal/macaroot.webp",
+      "Herbal/maca-root-artwor.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Clinical strength concentrated Maca Root capsules for hormonal balance and vigor.",
+    "ingredients": [
+      "Concentrated Maca Extract 4:1"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Lab Tested"
+    ],
+    "moq": 50,
+    "priceRange": "₹2000 - ₹3999 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 50,
+        "maxQty": 249,
+        "price": 3999,
+        "label": "50-249 pcs"
+      },
+      {
+        "minQty": 250,
+        "maxQty": 499,
+        "price": 2879,
+        "label": "250-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": null,
+        "price": 2000,
+        "label": "500+ pcs"
+      }
+    ],
+    "samplePrice": 3399,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 16,
+    "name": "MORINGA",
+    "category": "Herbal",
+    "badge": "Superfood",
+    "rating": 5,
+    "price": 1999,
+    "oldPrice": 2500,
+    "image": "Herbal/Moringa.webp",
+    "thumbnails": [
+      "Herbal/Moringa.webp",
+      "Herbal/moringacap.webp",
+      "Herbal/truminga.webp"
+    ],
+    "description": "Multivitamin nutrient-rich Organic Moringa Oleifera leaf powder supplement.",
+    "ingredients": [
+      "100% Organic Moringa Oleifera Leaf Powder"
+    ],
+    "specs": [
+      "200g Pack",
+      "100% Organic",
+      "Made in India",
+      "Raw & Sun-Dried"
+    ],
+    "moq": 100,
+    "priceRange": "₹1000 - ₹1999 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 1999,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1439,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 1000,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1699,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 17,
+    "name": "MORINGACAP",
+    "category": "Herbal",
+    "badge": "Beauty",
+    "rating": 4.7,
+    "price": 1799,
+    "oldPrice": 2200,
+    "image": "Herbal/moringacap.webp",
+    "thumbnails": [
+      "Herbal/moringacap.webp",
+      "Herbal/Moringa.webp",
+      "Herbal/truminga.webp"
+    ],
+    "description": "Convenient organic Moringa leaf extract capsules for daily detoxification and energy.",
+    "ingredients": [
+      "Pure Moringa Leaf Extract"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Rich in Iron & Vit C"
+    ],
+    "moq": 100,
+    "priceRange": "₹900 - ₹1799 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 1799,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1295,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 900,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1529,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 18,
+    "name": "SEAMOSS",
+    "category": "Herbal",
+    "badge": "Wellness",
+    "rating": 4.9,
+    "price": 2499,
+    "oldPrice": 3000,
+    "image": "Herbal/seamoss.webp",
+    "thumbnails": [
+      "Herbal/seamoss.webp",
+      "Herbal/seamoss1.webp",
+      "Herbal/seamoss3.webp"
+    ],
+    "description": "Wildcrafted Irish Sea Moss gummies with 92 key minerals, Folate and strawberry taste.",
+    "ingredients": [
+      "Wildcrafted Sea Moss Extract",
+      "Folate",
+      "Natural Strawberry Juice"
+    ],
+    "specs": [
+      "60 Gummies",
+      "100% Vegan",
+      "Made in India",
+      "92 Minerals"
+    ],
+    "moq": 100,
+    "priceRange": "₹1250 - ₹2499 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 2499,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1799,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 1250,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 2124,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 19,
+    "name": "SEAMOSS (Zero Sugar)",
+    "category": "Herbal",
+    "badge": "Zero Sugar",
+    "rating": 4.8,
+    "price": 1899,
+    "oldPrice": 2300,
+    "image": "Herbal/seamoss1.webp",
+    "thumbnails": [
+      "Herbal/seamoss1.webp",
+      "Herbal/seamoss.webp",
+      "Herbal/seamoss3.webp"
+    ],
+    "description": "Keto-friendly, zero sugar tutti-frutti flavored Sea Moss extract gummies.",
+    "ingredients": [
+      "Sea Moss Extract",
+      "Stevia",
+      "Tutti-Frutti Extract"
+    ],
+    "specs": [
+      "60 Gummies",
+      "Zero Sugar",
+      "100% Vegan",
+      "Made in India"
+    ],
+    "moq": 100,
+    "priceRange": "₹950 - ₹1899 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 1899,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1367,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 950,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1614,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 20,
+    "name": "SEAMOSS3",
+    "category": "Herbal",
+    "badge": "On-the-Go",
+    "rating": 5,
+    "price": 699,
+    "oldPrice": 850,
+    "image": "Herbal/seamoss3.webp",
+    "thumbnails": [
+      "Herbal/seamoss3.webp",
+      "Herbal/seamoss.webp",
+      "Herbal/seamoss1.webp"
+    ],
+    "description": "100% Natural, mess-free Sea Moss & Bladderwrack travel sachet powder.",
+    "ingredients": [
+      "Irish Sea Moss",
+      "Bladderwrack",
+      "Burdock Root"
+    ],
+    "specs": [
+      "15 Sachets",
+      "100% Organic",
+      "Made in India",
+      "Pure Cleanse"
+    ],
+    "moq": 100,
+    "priceRange": "₹350 - ₹699 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 699,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 503,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 350,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 594,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 21,
+    "name": "SHILAJIT",
+    "category": "Herbal",
+    "badge": "Best Seller",
+    "rating": 4.9,
+    "price": 1399,
+    "oldPrice": 1700,
+    "image": "Herbal/shilajit.webp",
+    "thumbnails": [
+      "Herbal/shilajit.webp",
+      "Herbal/shilajit2.webp",
+      "Herbal/Shilajit3.webp",
+      "Herbal/shilajitcap.webp"
+    ],
+    "description": "Purified Himalayan Shilajit resin containing 80+ trace minerals and 70% Fulvic Acid.",
+    "ingredients": [
+      "100% Pure Himalayan Shilajit Resin"
+    ],
+    "specs": [
+      "20g Jar",
+      "70% Fulvic Acid",
+      "Made in India",
+      "Lab Certified"
+    ],
+    "moq": 100,
+    "priceRange": "₹700 - ₹1399 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 1399,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1007,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 700,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1189,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 22,
+    "name": "SHILAJIT2",
+    "category": "Herbal",
+    "badge": "Ayurveda",
+    "rating": 5,
+    "price": 2999,
+    "oldPrice": 3800,
+    "image": "Herbal/shilajit2.webp",
+    "thumbnails": [
+      "Herbal/shilajit2.webp",
+      "Herbal/shilajit.webp",
+      "Herbal/Shilajit3.webp"
+    ],
+    "description": "Authentic Himalayan Shilajit softgel capsules backed by traditional Ayurvedic science.",
+    "ingredients": [
+      "Pure Shilajit Extract (Gold Grade)"
+    ],
+    "specs": [
+      "30 Softgels",
+      "100% Natural",
+      "Made in India",
+      "GMP Facility"
+    ],
+    "moq": 100,
+    "priceRange": "₹1500 - ₹2999 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 2999,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 2159,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 1500,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 2549,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 23,
+    "name": "SHILAJIT3",
+    "category": "Herbal",
+    "badge": "75% Fulvic",
+    "rating": 4.8,
+    "price": 3499,
+    "oldPrice": 4500,
+    "image": "Herbal/Shilajit3.webp",
+    "thumbnails": [
+      "Herbal/Shilajit3.webp",
+      "Herbal/shilajit.webp",
+      "Herbal/shilajit2.webp"
+    ],
+    "description": "Highest purity 75% Fulvic Acid grade Himalayan Shilajit resin for peak performance.",
+    "ingredients": [
+      "High Altitude Himalayan Shilajit Resin"
+    ],
+    "specs": [
+      "30g Jar",
+      "75% Fulvic Acid",
+      "Made in India",
+      "Iso 9001:2015"
+    ],
+    "moq": 50,
+    "priceRange": "₹1750 - ₹3499 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 50,
+        "maxQty": 249,
+        "price": 3499,
+        "label": "50-249 pcs"
+      },
+      {
+        "minQty": 250,
+        "maxQty": 499,
+        "price": 2519,
+        "label": "250-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": null,
+        "price": 1750,
+        "label": "500+ pcs"
+      }
+    ],
+    "samplePrice": 2974,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 24,
+    "name": "SHILAJITCAP",
+    "category": "Herbal",
+    "badge": "Premium",
+    "rating": 4.9,
+    "price": 3999,
+    "oldPrice": 5000,
+    "image": "Herbal/shilajitcap.webp",
+    "thumbnails": [
+      "Herbal/shilajitcap.webp",
+      "Herbal/shilajit.webp",
+      "Herbal/Shilajit3.webp"
+    ],
+    "description": "Ancient Himalayan Shilajit extract standard capsules for daily cellular energy.",
+    "ingredients": [
+      "Pure Shilajit Extract 500mg"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Zero Additives"
+    ],
+    "moq": 50,
+    "priceRange": "₹2000 - ₹3999 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 50,
+        "maxQty": 249,
+        "price": 3999,
+        "label": "50-249 pcs"
+      },
+      {
+        "minQty": 250,
+        "maxQty": 499,
+        "price": 2879,
+        "label": "250-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": null,
+        "price": 2000,
+        "label": "500+ pcs"
+      }
+    ],
+    "samplePrice": 3399,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 25,
+    "name": "SHILAJITHONEY",
+    "category": "Herbal",
+    "badge": "Gold",
+    "rating": 4.8,
+    "price": 4499,
+    "oldPrice": 5500,
+    "image": "Herbal/shilajithoney.webp",
+    "thumbnails": [
+      "Herbal/shilajithoney.webp",
+      "Herbal/shilajit.webp",
+      "Herbal/Shilajit3.webp"
+    ],
+    "description": "Infused Pure Raw Organic Honey with Himalayan Shilajit Resin for immune power.",
+    "ingredients": [
+      "Raw Himalayan Honey",
+      "Gold Grade Shilajit Resin"
+    ],
+    "specs": [
+      "250g Glass Jar",
+      "100% Pure",
+      "Made in India",
+      "No Added Sugar"
+    ],
+    "moq": 50,
+    "priceRange": "₹2250 - ₹4499 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 50,
+        "maxQty": 249,
+        "price": 4499,
+        "label": "50-249 pcs"
+      },
+      {
+        "minQty": 250,
+        "maxQty": 499,
+        "price": 3239,
+        "label": "250-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": null,
+        "price": 2250,
+        "label": "500+ pcs"
+      }
+    ],
+    "samplePrice": 3824,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 26,
+    "name": "SHILAKIORA PURE",
+    "category": "Herbal",
+    "badge": "Lab Tested",
+    "rating": 5,
+    "price": 2899,
+    "oldPrice": 3600,
+    "image": "Herbal/shilakiyan1.webp",
+    "thumbnails": [
+      "Herbal/shilakiyan1.webp",
+      "Herbal/shilajit.webp",
+      "Herbal/shilaswa.webp"
+    ],
+    "description": "Kiora Wellness signature safe, purified resin form Shilajit, third-party lab tested for purity.",
+    "ingredients": [
+      "Purified Shilajit Exudate"
+    ],
+    "specs": [
+      "30g Jar",
+      "Lab Certified",
+      "Made in India",
+      "Ayush Approved"
+    ],
+    "moq": 100,
+    "priceRange": "₹1450 - ₹2899 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 2899,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 2087,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 1450,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 2464,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 27,
+    "name": "SHILASWA",
+    "category": "Herbal",
+    "badge": "Organic",
+    "rating": 4.9,
+    "price": 3299,
+    "oldPrice": 4200,
+    "image": "Herbal/shilaswa.webp",
+    "thumbnails": [
+      "Herbal/shilaswa.webp",
+      "Herbal/shilakiyan1.webp",
+      "Herbal/shilajit.webp"
+    ],
+    "description": "Synergistic Ayurvedic combination of Shilajit & Ashwagandha for double vitality.",
+    "ingredients": [
+      "Shilajit Extract 250mg",
+      "Ashwagandha Extract 250mg"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Dual Power Formula"
+    ],
+    "moq": 50,
+    "priceRange": "₹1650 - ₹3299 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 50,
+        "maxQty": 249,
+        "price": 3299,
+        "label": "50-249 pcs"
+      },
+      {
+        "minQty": 250,
+        "maxQty": 499,
+        "price": 2375,
+        "label": "250-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": null,
+        "price": 1650,
+        "label": "500+ pcs"
+      }
+    ],
+    "samplePrice": 2804,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 28,
+    "name": "SILAJ",
+    "category": "Herbal",
+    "badge": "Skin",
+    "rating": 5,
+    "price": 1499,
+    "oldPrice": 1900,
+    "image": "Herbal/silaj.webp",
+    "thumbnails": [
+      "Herbal/silaj.webp",
+      "Herbal/shilajit.webp",
+      "Herbal/shilaswa.webp"
+    ],
+    "description": "Nutrient rich Shilajit face balm and skin serum to protect from UV and boost collagen.",
+    "ingredients": [
+      "Shilajit Infused Oil",
+      "Aloe Vera",
+      "Vitamin E"
+    ],
+    "specs": [
+      "50ml Jar",
+      "Dermatologist Tested",
+      "Made in India",
+      "100% Organic"
+    ],
+    "moq": 100,
+    "priceRange": "₹750 - ₹1499 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 1499,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1079,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 750,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1274,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 29,
+    "name": "TONG",
+    "category": "Herbal",
+    "badge": "Organic",
+    "rating": 4.8,
+    "price": 2299,
+    "oldPrice": 2800,
+    "image": "Herbal/tong.webp",
+    "thumbnails": [
+      "Herbal/tong.webp",
+      "Herbal/arjuna.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Pure Tongkat Ali (Eurycoma Longifolia) extract for natural energy and vigor.",
+    "ingredients": [
+      "Tongkat Ali Extract 200:1"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Potent Formula"
+    ],
+    "moq": 100,
+    "priceRange": "₹1150 - ₹2299 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 2299,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 1655,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 1150,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1954,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 30,
+    "name": "TRIPHALA-CAP",
+    "category": "Herbal",
+    "badge": "Handmade",
+    "rating": 5,
+    "price": 1299,
+    "oldPrice": 1600,
+    "image": "Herbal/triphala-cap.webp",
+    "thumbnails": [
+      "Herbal/triphala-cap.webp",
+      "Herbal/triphala-powder1.webp",
+      "Herbal/arjuna.webp"
+    ],
+    "description": "Classic Ayurvedic Triphala (Amalaki, Bibhitaki, Haritaki) capsules for gut health.",
+    "ingredients": [
+      "Amalaki Extract",
+      "Bibhitaki Extract",
+      "Haritaki Extract"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Gentle Detox"
+    ],
+    "moq": 100,
+    "priceRange": "₹650 - ₹1299 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 1299,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 935,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 650,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 1104,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 31,
+    "name": "TRIPHLA-POWER",
+    "category": "Herbal",
+    "badge": "Baby",
+    "rating": 5,
+    "price": 899,
+    "oldPrice": 1100,
+    "image": "Herbal/triphala-powder1.webp",
+    "thumbnails": [
+      "Herbal/triphala-powder1.webp",
+      "Herbal/triphala-cap.webp",
+      "Herbal/arjuna.webp"
+    ],
+    "description": "Ultra-fine organic Triphala powder for digestive comfort and colon cleanse.",
+    "ingredients": [
+      "100% Organic Triphala Fruit Powder"
+    ],
+    "specs": [
+      "100g Pack",
+      "100% Organic",
+      "Made in India",
+      "Non-GMO"
+    ],
+    "moq": 100,
+    "priceRange": "₹450 - ₹899 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 899,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 647,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 450,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 764,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 32,
+    "name": "TURMINGA",
+    "category": "Herbal",
+    "badge": "Luxury",
+    "rating": 4.9,
+    "price": 5999,
+    "oldPrice": 7500,
+    "image": "Herbal/truminga.webp",
+    "thumbnails": [
+      "Herbal/truminga.webp",
+      "Herbal/turmeric.webp",
+      "Herbal/turm.webp"
+    ],
+    "description": "Proprietary fusion of Organic Turmeric & Moringa oleifera with Curcumin 95%.",
+    "ingredients": [
+      "Organic Turmeric Extract (95% Curcuminoids)",
+      "Organic Moringa Extract"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Patented Blend"
+    ],
+    "moq": 50,
+    "priceRange": "₹3000 - ₹5999 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 50,
+        "maxQty": 249,
+        "price": 5999,
+        "label": "50-249 pcs"
+      },
+      {
+        "minQty": 250,
+        "maxQty": 499,
+        "price": 4319,
+        "label": "250-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": null,
+        "price": 3000,
+        "label": "500+ pcs"
+      }
+    ],
+    "samplePrice": 5099,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 33,
+    "name": "TURM",
+    "category": "Herbal",
+    "badge": "SPF 20",
+    "rating": 5,
+    "price": 4299,
+    "oldPrice": 5200,
+    "image": "Herbal/turm.webp",
+    "thumbnails": [
+      "Herbal/turm.webp",
+      "Herbal/turmeric.webp",
+      "Herbal/truminga.webp"
+    ],
+    "description": "Golden Turmeric oil elixir for skin brightening, anti-blemish and natural protection.",
+    "ingredients": [
+      "Cold-Pressed Turmeric Seed Oil",
+      "Jojoba Oil"
+    ],
+    "specs": [
+      "50ml Bottle",
+      "100% Natural",
+      "Made in India",
+      "Non-Greasy"
+    ],
+    "moq": 50,
+    "priceRange": "₹2150 - ₹4299 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 50,
+        "maxQty": 249,
+        "price": 4299,
+        "label": "50-249 pcs"
+      },
+      {
+        "minQty": 250,
+        "maxQty": 499,
+        "price": 3095,
+        "label": "250-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": null,
+        "price": 2150,
+        "label": "500+ pcs"
+      }
+    ],
+    "samplePrice": 3654,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 34,
+    "name": "TURMERIC",
+    "category": "Herbal",
+    "badge": "Support",
+    "rating": 4.8,
+    "price": 2999,
+    "oldPrice": 3600,
+    "image": "Herbal/turmeric.webp",
+    "thumbnails": [
+      "Herbal/turmeric.webp",
+      "Herbal/turm.webp",
+      "Herbal/truminga.webp"
+    ],
+    "description": "High potency Turmeric Curcumin capsules with Black Pepper (Piperine) for high absorption.",
+    "ingredients": [
+      "Turmeric Curcumin 95%",
+      "Organic Black Pepper Extract (BioPerine)"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Maximum Absorption"
+    ],
+    "moq": 100,
+    "priceRange": "₹1500 - ₹2999 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 2999,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 2159,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 1500,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 2549,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 35,
+    "name": "VITAMIN",
+    "category": "Herbal",
+    "badge": "Superfood",
+    "rating": 5,
+    "price": 3899,
+    "oldPrice": 4800,
+    "image": "Herbal/vitamin.webp",
+    "thumbnails": [
+      "Herbal/vitamin.webp",
+      "Herbal/arjuna.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "description": "Complete plant-based daily multivitamin complex derived from organic herbs and superfoods.",
+    "ingredients": [
+      "Amla Extract",
+      "Spirulina",
+      "Wheatgrass",
+      "Moringa"
+    ],
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "Wholefood Sourced"
+    ],
+    "moq": 50,
+    "priceRange": "₹1950 - ₹3899 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 50,
+        "maxQty": 249,
+        "price": 3899,
+        "label": "50-249 pcs"
+      },
+      {
+        "minQty": 250,
+        "maxQty": 499,
+        "price": 2807,
+        "label": "250-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": null,
+        "price": 1950,
+        "label": "500+ pcs"
+      }
+    ],
+    "samplePrice": 3314,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 36,
+    "name": "BAY LEAF",
+    "category": "Spices",
+    "badge": "Pure",
+    "rating": 5,
+    "price": 249,
+    "oldPrice": 350,
+    "image": "spices/BAY.jpeg",
+    "thumbnails": [
+      "spices/BAY.jpeg",
+      "spices/BLACK CARDUMUM.jpeg",
+      "spices/BLACK PEPER.jpeg"
+    ],
+    "description": "100% Pure & Organic hand-selected Indian Bay Leaves (Tejpatta) rich in aroma.",
+    "ingredients": [
+      "Pure Indian Bay Leaves"
+    ],
+    "specs": [
+      "50g Pack",
+      "Air Tight Jar",
+      "Premium Quality",
+      "100% Natural"
+    ],
+    "moq": 500,
+    "priceRange": "₹125 - ₹249 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 249,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 179,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 125,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 212,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 37,
+    "name": "BLACK CARDAMUM",
+    "category": "Spices",
+    "badge": "Premium",
+    "rating": 4.9,
+    "price": 499,
+    "oldPrice": 650,
+    "image": "spices/BLACK CARDUMUM.jpeg",
+    "thumbnails": [
+      "spices/BLACK CARDUMUM.jpeg",
+      "spices/BAY.jpeg",
+      "spices/GREEN CARD.jpeg"
+    ],
+    "description": "Whole smoky Black Cardamom pods (Badi Elaichi) from the hills of Sikkim.",
+    "ingredients": [
+      "Whole Black Cardamom Pods"
+    ],
+    "specs": [
+      "100g Pack",
+      "Sun Dried",
+      "Premium Quality",
+      "Rich Aroma"
+    ],
+    "moq": 500,
+    "priceRange": "₹250 - ₹499 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 499,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 359,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 250,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 424,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 38,
+    "name": "BLACK PAPER",
+    "category": "Spices",
+    "badge": "Best Seller",
+    "rating": 5,
+    "price": 349,
+    "oldPrice": 450,
+    "image": "spices/BLACK PEPER.jpeg",
+    "thumbnails": [
+      "spices/BLACK PEPER.jpeg",
+      "spices/BAY.jpeg",
+      "spices/CUMIN_SEED.jpeg"
+    ],
+    "description": "Whole Malabar Black Peppercorns (Kali Mirch), strong, bold and pungent.",
+    "ingredients": [
+      "Grade A Black Peppercorns"
+    ],
+    "specs": [
+      "100g Pack",
+      "Air Tight Glass Jar",
+      "High Essential Oils",
+      "100% Pure"
+    ],
+    "moq": 500,
+    "priceRange": "₹175 - ₹349 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 349,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 251,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 175,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 297,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 39,
+    "name": "CELERY SEEDS",
+    "category": "Spices",
+    "badge": "Fresh",
+    "rating": 4.8,
+    "price": 199,
+    "oldPrice": 280,
+    "image": "spices/CELERY SEEDS.jpeg",
+    "thumbnails": [
+      "spices/CELERY SEEDS.jpeg",
+      "spices/BAY.jpeg",
+      "spices/FENNEL.jpeg"
+    ],
+    "description": "Aromatic Celery Seeds (Ajmod) perfect for seasoning, soups and pickles.",
+    "ingredients": [
+      "Pure Celery Seeds"
+    ],
+    "specs": [
+      "100g Pack",
+      "Air Tight Container",
+      "Raw & Fresh"
+    ],
+    "moq": 500,
+    "priceRange": "₹100 - ₹199 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 199,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 143,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 100,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 169,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 40,
+    "name": "CINNAMON",
+    "category": "Spices",
+    "badge": "Hot",
+    "rating": 4.7,
+    "price": 179,
+    "oldPrice": 250,
+    "image": "spices/CINAMUN.jpeg",
+    "thumbnails": [
+      "spices/CINAMUN.jpeg",
+      "spices/BAY.jpeg",
+      "spices/CLOVE.jpeg"
+    ],
+    "description": "Authentic Ceylon Cinnamon sticks (Dalchini), aromatic, sweet and mild.",
+    "ingredients": [
+      "100% Organic Ceylon Cinnamon Quills"
+    ],
+    "specs": [
+      "100g Pack",
+      "Non-Cassia",
+      "Rich in Antioxidants"
+    ],
+    "moq": 500,
+    "priceRange": "₹90 - ₹179 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 179,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 129,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 90,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 152,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 41,
+    "name": "CLOVE",
+    "category": "Spices",
+    "badge": "Pure",
+    "rating": 5,
+    "price": 299,
+    "oldPrice": 400,
+    "image": "spices/CLOVE.jpeg",
+    "thumbnails": [
+      "spices/CLOVE.jpeg",
+      "spices/BLACK CARDUMUM.jpeg",
+      "spices/BAY.jpeg"
+    ],
+    "description": "Handpicked aromatic Cloves (Laung) with intact crowns, high eugenol oil content.",
+    "ingredients": [
+      "Whole Handpicked Cloves"
+    ],
+    "specs": [
+      "100g Pack",
+      "Air Tight Jar",
+      "High Eugenol Oil"
+    ],
+    "moq": 500,
+    "priceRange": "₹150 - ₹299 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 299,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 215,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 150,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 254,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 42,
+    "name": "CORIANDER SEEDS",
+    "category": "Spices",
+    "badge": "Whole",
+    "rating": 4.8,
+    "price": 399,
+    "oldPrice": 500,
+    "image": "spices/CORIANDER SEED.jpeg",
+    "thumbnails": [
+      "spices/CORIANDER SEED.jpeg",
+      "spices/CUMIN_SEED.jpeg",
+      "spices/BAY.jpeg"
+    ],
+    "description": "Sun-dried whole Coriander Seeds (Dhania) cultivated organically in Rajasthan.",
+    "ingredients": [
+      "Whole Coriander Seeds"
+    ],
+    "specs": [
+      "200g Pack",
+      "100% Organic",
+      "Farm Fresh"
+    ],
+    "moq": 500,
+    "priceRange": "₹200 - ₹399 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 399,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 287,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 200,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 339,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 43,
+    "name": "CUMIN SEEDS",
+    "category": "Spices",
+    "badge": "Special",
+    "rating": 5,
+    "price": 249,
+    "oldPrice": 320,
+    "image": "spices/CUMIN_SEED.jpeg",
+    "thumbnails": [
+      "spices/CUMIN_SEED.jpeg",
+      "spices/CORIANDER SEED.jpeg",
+      "spices/BLACK PEPER.jpeg"
+    ],
+    "description": "Rich and aromatic Cumin Seeds (Jeera), an indispensable staple in Indian cuisine.",
+    "ingredients": [
+      "Pure Cumin Seeds"
+    ],
+    "specs": [
+      "200g Pack",
+      "Machine Cleaned",
+      "Pesticide Free"
+    ],
+    "moq": 500,
+    "priceRange": "₹125 - ₹249 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 249,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 179,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 125,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 212,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 44,
+    "name": "FENNEL SEEDS",
+    "category": "Spices",
+    "badge": "Premium",
+    "rating": 4.9,
+    "price": 599,
+    "oldPrice": 750,
+    "image": "spices/FENNEL.jpeg",
+    "thumbnails": [
+      "spices/FENNEL.jpeg",
+      "spices/GREEN CARD.jpeg",
+      "spices/BAY.jpeg"
+    ],
+    "description": "Sweet Lucknowi Fennel Seeds (Saunf), bright green and fragrant for cooking & mouth freshener.",
+    "ingredients": [
+      "Lucknowi Green Fennel Seeds"
+    ],
+    "specs": [
+      "250g Jar",
+      "Sweet Flavor",
+      "100% Natural"
+    ],
+    "moq": 100,
+    "priceRange": "₹300 - ₹599 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 100,
+        "maxQty": 499,
+        "price": 599,
+        "label": "100-499 pcs"
+      },
+      {
+        "minQty": 500,
+        "maxQty": 999,
+        "price": 431,
+        "label": "500-999 pcs"
+      },
+      {
+        "minQty": 1000,
+        "maxQty": null,
+        "price": 300,
+        "label": "1000+ pcs"
+      }
+    ],
+    "samplePrice": 509,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 45,
+    "name": "GREEN CARDAMUM",
+    "category": "Spices",
+    "badge": "Fresh",
+    "rating": 5,
+    "price": 279,
+    "oldPrice": 360,
+    "image": "spices/GREEN CARD.jpeg",
+    "thumbnails": [
+      "spices/GREEN CARD.jpeg",
+      "spices/BLACK CARDUMUM.jpeg",
+      "spices/kesar.jpeg"
+    ],
+    "description": "Extra large 8mm+ Green Cardamom pods (Choti Elaichi) sourced from Idukki, Kerala.",
+    "ingredients": [
+      "Whole Green Cardamom Pods"
+    ],
+    "specs": [
+      "50g Pack",
+      "8mm Size Pods",
+      "Export Quality"
+    ],
+    "moq": 500,
+    "priceRange": "₹140 - ₹279 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 279,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 201,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 140,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 237,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 46,
+    "name": "INDIAN ASAFOETIDA",
+    "category": "Spices",
+    "badge": "Herbal",
+    "rating": 4.8,
+    "price": 349,
+    "oldPrice": 450,
+    "image": "spices/INDIAN ASO.jpeg",
+    "thumbnails": [
+      "spices/INDIAN ASO.jpeg",
+      "spices/CUMIN_SEED.jpeg",
+      "spices/BAY.jpeg"
+    ],
+    "description": "Strong, authentic compounding Asafoetida powder (Hing) for digestive wellness.",
+    "ingredients": [
+      "Pure Asafoetida Resin",
+      "Edible Gum"
+    ],
+    "specs": [
+      "50g Jar",
+      "Strong Fragrance",
+      "Zero Preservatives"
+    ],
+    "moq": 500,
+    "priceRange": "₹175 - ₹349 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 349,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 251,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 175,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 297,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 47,
+    "name": "INDIAN MACE",
+    "category": "Spices",
+    "badge": "Fresh",
+    "rating": 5,
+    "price": 399,
+    "oldPrice": 520,
+    "image": "spices/INDIAN MASE.jpeg",
+    "thumbnails": [
+      "spices/INDIAN MASE.jpeg",
+      "spices/NUTMEG.jpeg",
+      "spices/CLOVE.jpeg"
+    ],
+    "description": "Golden orange whole Indian Mace blades (Javitri), delicate and warming spice.",
+    "ingredients": [
+      "Whole Mace Blades"
+    ],
+    "specs": [
+      "50g Pack",
+      "Hand Picked",
+      "Pure Aroma"
+    ],
+    "moq": 500,
+    "priceRange": "₹200 - ₹399 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 399,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 287,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 200,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 339,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 48,
+    "name": "INDIAN SAFFRON",
+    "category": "Spices",
+    "badge": "Whole",
+    "rating": 4.7,
+    "price": 229,
+    "oldPrice": 300,
+    "image": "spices/kesar.jpeg",
+    "thumbnails": [
+      "spices/kesar.jpeg",
+      "spices/GREEN CARD.jpeg",
+      "spices/BAY.jpeg"
+    ],
+    "description": "100% Pure Mongra Kashmiri Saffron strands (Kesar) for food, milk & skin care.",
+    "ingredients": [
+      "Pure Kashmiri Mongra Saffron Strands"
+    ],
+    "specs": [
+      "1g Sealed Container",
+      "A++ Grade",
+      "Lab Tested"
+    ],
+    "moq": 500,
+    "priceRange": "₹115 - ₹229 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 229,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 165,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 115,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 195,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 49,
+    "name": "NUTMEG WHOLE",
+    "category": "Spices",
+    "badge": "Premium",
+    "rating": 5,
+    "price": 329,
+    "oldPrice": 420,
+    "image": "spices/NUTMEG.jpeg",
+    "thumbnails": [
+      "spices/NUTMEG.jpeg",
+      "spices/INDIAN MASE.jpeg",
+      "spices/CLOVE.jpeg"
+    ],
+    "description": "Whole shelled Nutmeg nuts (Jaiphal), rich in essential oils and sweet warm fragrance.",
+    "ingredients": [
+      "Whole Nutmeg Nuts"
+    ],
+    "specs": [
+      "100g Pack",
+      "Unpolished",
+      "Natural Oils"
+    ],
+    "moq": 500,
+    "priceRange": "₹165 - ₹329 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 329,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 237,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 165,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 280,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 50,
+    "name": "POPPY SEEDS",
+    "category": "Spices",
+    "badge": "Special",
+    "rating": 4.9,
+    "price": 269,
+    "oldPrice": 350,
+    "image": "spices/PEPPY SEEDS.jpeg",
+    "thumbnails": [
+      "spices/PEPPY SEEDS.jpeg",
+      "spices/BAY.jpeg",
+      "spices/SESAME.jpeg"
+    ],
+    "description": "Clean White Poppy Seeds (Khus Khus) rich in dietary fiber, calcium and healthy fats.",
+    "ingredients": [
+      "100% White Poppy Seeds"
+    ],
+    "specs": [
+      "100g Pack",
+      "Triple Filtered",
+      "Pure Natural"
+    ],
+    "moq": 500,
+    "priceRange": "₹135 - ₹269 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 269,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 194,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 135,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 229,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 51,
+    "name": "RED CHILI",
+    "category": "Spices",
+    "badge": "Spicy",
+    "rating": 4.8,
+    "price": 219,
+    "oldPrice": 290,
+    "image": "spices/RED CHILI.jpeg",
+    "thumbnails": [
+      "spices/RED CHILI.jpeg",
+      "spices/BAY.jpeg",
+      "spices/BLACK PEPER.jpeg"
+    ],
+    "description": "Sun dried stemless Indian Whole Red Chilis (Lal Mirch) for rich red color and heat.",
+    "ingredients": [
+      "100% Whole Red Chilis"
+    ],
+    "specs": [
+      "100g Pack",
+      "Natural Red Color",
+      "Sun Dried"
+    ],
+    "moq": 500,
+    "priceRange": "₹110 - ₹219 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 219,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 158,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 110,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 186,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 52,
+    "name": "SESAME SEEDS",
+    "category": "Spices",
+    "badge": "Healthy",
+    "rating": 4.9,
+    "price": 189,
+    "oldPrice": 250,
+    "image": "spices/SESAME.jpeg",
+    "thumbnails": [
+      "spices/SESAME.jpeg",
+      "spices/PEPPY SEEDS.jpeg",
+      "spices/BAY.jpeg"
+    ],
+    "description": "Hull-less natural white Sesame Seeds (Til) rich in calcium and omega fatty acids.",
+    "ingredients": [
+      "100% White Sesame Seeds"
+    ],
+    "specs": [
+      "150g Pack",
+      "Triple Washed",
+      "Rich Oil Content"
+    ],
+    "moq": 500,
+    "priceRange": "₹95 - ₹189 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 189,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 136,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 95,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 161,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 53,
+    "name": "STAR ANISE",
+    "category": "Spices",
+    "badge": "Aromatic",
+    "rating": 5,
+    "price": 319,
+    "oldPrice": 400,
+    "image": "spices/STAR.jpeg",
+    "thumbnails": [
+      "spices/STAR.jpeg",
+      "spices/CLOVE.jpeg",
+      "spices/CINAMUN.jpeg"
+    ],
+    "description": "Eight-pointed Whole Star Anise pods (Chakra Phool) for biryani and garam masala.",
+    "ingredients": [
+      "Whole Star Anise Pods"
+    ],
+    "specs": [
+      "50g Pack",
+      "Intact Pods",
+      "Export Grade"
+    ],
+    "moq": 500,
+    "priceRange": "₹160 - ₹319 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 319,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 230,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 160,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 271,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  },
+  {
+    "id": 54,
+    "name": "TURMERIC POWDER",
+    "category": "Spices",
+    "badge": "Ayurvedic",
+    "rating": 5,
+    "price": 199,
+    "oldPrice": 260,
+    "image": "spices/turmeric.jpeg",
+    "thumbnails": [
+      "spices/turmeric.jpeg",
+      "spices/CUMIN_SEED.jpeg",
+      "spices/CORIANDER SEED.jpeg"
+    ],
+    "description": "Pure High-Curcumin Alleppey Turmeric Powder for vibrant color and immunity.",
+    "ingredients": [
+      "100% Pure Organic Turmeric Powder"
+    ],
+    "specs": [
+      "200g Pack",
+      "5%+ Curcumin",
+      "No Artificial Color"
+    ],
+    "moq": 500,
+    "priceRange": "₹100 - ₹199 / Piece",
+    "priceTiers": [
+      {
+        "minQty": 500,
+        "maxQty": 2499,
+        "price": 199,
+        "label": "500-2499 pcs"
+      },
+      {
+        "minQty": 2500,
+        "maxQty": 4999,
+        "price": 143,
+        "label": "2500-4999 pcs"
+      },
+      {
+        "minQty": 5000,
+        "maxQty": null,
+        "price": 100,
+        "label": "5000+ pcs"
+      }
+    ],
+    "samplePrice": 169,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
+    "supplyCapacity": "100,000 Units / Month",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "verifiedSupplier": true,
+    "factoryDirect": true
+  }
+]
