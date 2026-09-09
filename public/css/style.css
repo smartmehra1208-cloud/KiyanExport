@@ -4599,6 +4599,201 @@ body.admin-mode-active #adminStandaloneDashboard {
   background: #e74c3c !important;
 }
 
+/* ===== LUXURY MOBILE NAVIGATION & RESPONSIVE UI ===== */
+.mobile-menu-toggle {
+  display: none !important;
+  background: var(--royal-emerald) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--accent-gold) !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  font-size: 1.25rem !important;
+  cursor: pointer !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+}
+
+.mobile-menu-toggle:hover {
+  background: var(--deep-green) !important;
+  color: var(--champagne-gold) !important;
+}
+
+@media (max-width: 992px) {
+  .mobile-menu-toggle {
+    display: flex !important;
+  }
+  .nav-links-desktop, .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Mobile Nav Overlay */
+.mobile-nav-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  z-index: 9998 !important;
+  display: none;
+}
+
+.mobile-nav-overlay.active {
+  display: block !important;
+}
+
+/* Mobile Nav Drawer Sidebar */
+.mobile-nav-drawer {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: 320px !important;
+  max-width: 88vw !important;
+  height: 100vh !important;
+  background: #ffffff !important;
+  z-index: 9999 !important;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.35) !important;
+  display: none;
+  flex-direction: column !important;
+  overflow-y: auto !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.mobile-nav-drawer.active {
+  display: flex !important;
+}
+
+.mobile-nav-header {
+  padding: 16px 20px !important;
+  background: var(--royal-emerald) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border-bottom: 2px solid var(--accent-gold) !important;
+}
+
+.mobile-nav-close {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  border: none !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  font-size: 1.1rem !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+}
+
+.mobile-nav-close:hover {
+  background: #e74c3c !important;
+}
+
+.mobile-drawer-search {
+  padding: 14px 18px !important;
+  background: var(--soft-cream) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.mobile-drawer-search input {
+  width: 100% !important;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--bright-gold) !important;
+  font-size: 0.92rem !important;
+  background: #ffffff !important;
+  color: var(--text-dark) !important;
+}
+
+.mobile-nav-links {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 10px 0 !important;
+}
+
+.mobile-nav-links a {
+  padding: 15px 22px !important;
+  color: var(--text-dark) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  transition: background 0.2s ease !important;
+}
+
+.mobile-nav-links a i {
+  color: var(--royal-emerald) !important;
+  width: 22px !important;
+  font-size: 1.15rem !important;
+  text-align: center !important;
+}
+
+.mobile-nav-links a:hover, .mobile-nav-links a.active {
+  background: rgba(45, 90, 39, 0.08) !important;
+  color: var(--royal-emerald) !important;
+}
+
+/* Mobile Layout Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 110px 16px 50px !important;
+    text-align: center !important;
+  }
+  .hero-title {
+    font-size: 1.85rem !important;
+    line-height: 1.3 !important;
+  }
+  .hero-subtitle {
+    font-size: 0.95rem !important;
+  }
+  .product-grid, .spices-grid, .catalogue-grid, .certifications-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+    gap: 16px !important;
+  }
+  .container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+  .factory-telemetry-bar {
+    font-size: 0.76rem !important;
+    padding: 8px 10px !important;
+    text-align: center !important;
+  }
+  .search-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid, .spices-grid, .catalogue-grid, .certifications-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .pm-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .cart-drawer {
+    width: 100% !important;
+  }
+  .user-orders-content {
+    width: 95% !important;
+    padding: 16px !important;
+  }
+}
+
+
 
 
 

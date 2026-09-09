@@ -28,5 +28,8 @@
     "mongoose": "^9.9.4",
     "nodemailer": "^10.0.1",
     "razorpay": "^2.9.8"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
   }
 }
