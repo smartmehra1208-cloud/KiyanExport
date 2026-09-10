@@ -2,36 +2,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap');
 
 :root {
-  /* Vibrant & Elegant Herbal Green Palette (User Requested Palette) */
-  --royal-emerald: #008631;       /* Deep Vibrant Forest Green */
-  --deep-green: #00ab41;          /* Primary Emerald Herbal Green */
-  --mid-emerald: #00c04b;         /* Fresh Bright Leaf Green */
-  --bright-mint: #1fd655;         /* Mint Accent Highlight */
-  --soft-mint-bg: #cefad0;        /* Soft Creamy Light Mint Background */
-  --mint-tint: #abf7b1;           /* Soft Pastel Mint Tint */
+  /* Exact Light Pistachio / Lime Green Palette (User Uploaded Image) */
+  --royal-emerald: #1e4a10;       /* Deep Forest Dark Green for Crisp Text */
+  --deep-green: #2d681b;          /* Primary Headings Green */
+  --mid-emerald: #8bdc22;         /* Fresh Vibrant Lime Accent */
+  --bright-mint: #9de42b;         /* Lime Green Border Accent */
+  --soft-mint-bg: #d7f59e;        /* Light Pistachio Green Background */
+  --mint-tint: #e4f9b8;           /* Light Pastel Pistachio Tint */
   --accent-gold: #c68b59;         /* Warm Light Earth Brown */
   --bright-gold: #d4a373;         /* Light Sand Terracotta */
   --champagne-gold: #f5ebe0;      /* Warm Beige Cream */
   --gold-gradient: linear-gradient(135deg, #c68b59 0%, #d4a373 50%, #a37854 100%);
-  --emerald-gradient: linear-gradient(135deg, #008631 0%, #00ab41 50%, #00c04b 100%);
-  --header-green-bg: linear-gradient(135deg, #008631 0%, #00ab41 100%);
+  --emerald-gradient: linear-gradient(135deg, #e4f9b8 0%, #d7f59e 50%, #cbf285 100%);
+  --header-green-bg: linear-gradient(135deg, #e6f9be 0%, #d7f59e 100%);
   --glass-bg: rgba(255, 255, 255, 0.96);
-  --glass-dark: rgba(0, 134, 49, 0.88);
+  --glass-dark: rgba(30, 74, 16, 0.88);
   --soft-cream: #f9f6f0;          /* Clean Light Beige Background */
   --card-bg: #ffffff;
-  --text-dark: #1a2a1a;           /* Crisp Dark Text */
-  --text-muted: #4a5d4a;          /* Soft Muted Leaf Green */
+  --text-dark: #1e4a10;           /* Crisp Dark Greenish Text */
+  --text-muted: #486638;          /* Soft Muted Leaf Green */
   --text-light: #f5ebe0;          /* Light Cream Text */
   --orange-accent: #c68b59;
   --amazon-yellow: #d4a373;
   --amazon-orange: #a37854;
   
   /* Shadows & Layout Protection */
-  --shadow-sm: 0 4px 15px rgba(0, 134, 49, 0.05);
-  --shadow-md: 0 10px 30px rgba(0, 134, 49, 0.10);
-  --shadow-lg: 0 20px 50px rgba(0, 134, 49, 0.15);
+  --shadow-sm: 0 4px 15px rgba(157, 228, 43, 0.10);
+  --shadow-md: 0 10px 30px rgba(157, 228, 43, 0.15);
+  --shadow-lg: 0 20px 50px rgba(157, 228, 43, 0.20);
   --shadow-gold: 0 10px 30px rgba(198, 139, 89, 0.25);
-  --glass-border: 1px solid rgba(198, 139, 89, 0.25);
+  --glass-border: 1px solid rgba(157, 228, 43, 0.35);
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
@@ -713,12 +713,12 @@ img.loaded {
 
 /* ===== MARQUEE TICKER ===== */
 .marquee-section {
-  background: linear-gradient(90deg, #f2faf4 0%, #e1f7e7 50%, #cefad0 100%) !important;
-  color: #005a20 !important;
+  background: linear-gradient(90deg, #e4f9b8 0%, #d7f59e 50%, #cbf285 100%) !important;
+  color: #1e4a10 !important;
   padding: 6px 0 !important;
   overflow: hidden;
-  border-top: 1px solid #abf7b1 !important;
-  border-bottom: 1px solid #abf7b1 !important;
+  border-top: 1px solid #9de42b !important;
+  border-bottom: 1px solid #9de42b !important;
 }
 
 .marquee-track {
@@ -734,11 +734,11 @@ img.loaded {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #005a20 !important;
+  color: #1e4a10 !important;
 }
 
 .marquee-track i {
-  color: #00ab41 !important;
+  color: #2d681b !important;
 }
 
 /* ===== HERO SECTION ===== */
@@ -2466,29 +2466,29 @@ img.loaded {
 }
 
 .sub-page-header {
-  background: linear-gradient(135deg, #f2faf4 0%, #e1f7e7 50%, #cefad0 100%) !important;
-  color: #005a20 !important;
-  padding: 14px 20px 12px !important;
+  background: linear-gradient(135deg, #e6f9be 0%, #d7f59e 50%, #cbf285 100%) !important;
+  color: #1e4a10 !important;
+  padding: 12px 20px 10px !important;
   text-align: center !important;
-  border-bottom: 2px solid #abf7b1 !important;
-  border-top: 1px solid #e1f7e7 !important;
-  box-shadow: 0 2px 8px rgba(0, 134, 49, 0.05) !important;
+  border-bottom: 3px solid #9de42b !important;
+  border-top: 1px solid #e4f9b8 !important;
+  box-shadow: 0 2px 10px rgba(157, 228, 43, 0.15) !important;
   margin-bottom: 15px !important;
   border-radius: 0 0 12px 12px !important;
 }
 
 .sub-page-header h1 {
-  font-size: 1.35rem !important;
+  font-size: 1.3rem !important;
   margin-bottom: 2px !important;
-  color: #005a20 !important;
+  color: #1e4a10 !important;
   font-weight: 800 !important;
   letter-spacing: 0.3px !important;
 }
 
 .sub-page-header p {
   font-size: 0.85rem !important;
-  color: #2e6435 !important;
-  font-weight: 600 !important;
+  color: #2d681b !important;
+  font-weight: 700 !important;
   margin: 0 !important;
 }
 
@@ -4051,11 +4051,11 @@ body.admin-mode-active #adminStandaloneDashboard {
 /* Glassmorphism Header & Factory Telemetry Strip */
 /* Glassmorphism Header & Factory Telemetry Strip (Clean Organic Theme) */
 .factory-telemetry-bar {
-  background: linear-gradient(90deg, #eaf7ed 0%, #dcf5df 50%, #cefad0 100%) !important;
-  color: #005a20 !important;
+  background: linear-gradient(90deg, #e4f9b8 0%, #d7f59e 50%, #cbf285 100%) !important;
+  color: #1e4a10 !important;
   font-size: 0.78rem;
   padding: 5px 0;
-  border-bottom: 1px solid #abf7b1;
+  border-bottom: 1px solid #9de42b;
   overflow: hidden;
 }
 
@@ -4071,9 +4071,9 @@ body.admin-mode-active #adminStandaloneDashboard {
   display: inline-block;
   width: 8px;
   height: 8px;
-  background: #00ab41;
+  background: #2d681b;
   border-radius: 50%;
-  box-shadow: 0 0 10px #00ab41;
+  box-shadow: 0 0 10px #2d681b;
   animation: pulseDot 1.5s infinite;
   margin-right: 6px;
 }
@@ -4088,17 +4088,17 @@ body.admin-mode-active #adminStandaloneDashboard {
   background: rgba(255, 255, 255, 0.98) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(198, 139, 89, 0.25) !important;
+  border-bottom: 1px solid rgba(157, 228, 43, 0.35) !important;
 }
 
 .top-bar {
-  background: linear-gradient(90deg, #f2faf4 0%, #e1f7e7 100%) !important;
-  border-bottom: 1px solid #cefad0 !important;
-  color: #005a20 !important;
+  background: linear-gradient(90deg, #eaf9c4 0%, #d7f59e 100%) !important;
+  border-bottom: 1px solid #9de42b !important;
+  color: #1e4a10 !important;
 }
 
 .top-info span, .top-info a, .top-social span {
-  color: #005a20 !important;
+  color: #1e4a10 !important;
 }
 
 /* Scroll Reveal Animations */
