@@ -36,6 +36,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files with production cache control & PDF view-only protection
+app.use(['/catalogues', '/Catelouges', '/catelouges'], express.static(path.join(__dirname, 'public/catalogues'), {
+  maxAge: '1y',
+  etag: true,
+  setHeaders: (res, filePath) => {
+    if (filePath.toLowerCase().endsWith('.pdf')) {
+      res.setHeader('Content-Disposition', 'inline');
+      res.setHeader('X-Content-Type-Options', 'nosniff');
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+    }
+  }
+}));
+
+app.use(['/certificates', '/Certificates'], express.static(path.join(__dirname, 'public/certificates'), {
+  maxAge: '1y',
+  etag: true,
+  setHeaders: (res, filePath) => {
+    if (filePath.toLowerCase().endsWith('.pdf')) {
+      res.setHeader('Content-Disposition', 'inline');
+      res.setHeader('X-Content-Type-Options', 'nosniff');
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+    }
+  }
+}));
+
 app.use(express.static(path.join(__dirname, 'public'), {
   maxAge: '1y',
   etag: true,

@@ -84,42 +84,49 @@ const defaultSiteContent = {
       id: 1,
       title: 'Herbal & Botanical Extracts Catalogue',
       category: 'Herbal Extracts',
-      pdfUrl: '/Catelouges/Extract Catalogue 1_watermark.pdf',
+      pdfUrl: '/catalogues/Extract Catalogue 1_watermark.pdf',
       description: 'Comprehensive specifications & wholesale pricing for standardized herbal extracts.'
     },
     {
       id: 2,
       title: 'Nutraceutical Herbal Gummies Catalogue',
       category: 'Gummies & Supplements',
-      pdfUrl: '/Catelouges/Gummies Catalogue_watermark.pdf',
+      pdfUrl: '/catalogues/Gummies Catalogue_watermark.pdf',
       description: 'Pectin & gelatin herbal gummies with custom flavors & private label packaging.'
     },
     {
       id: 3,
       title: 'Ayurvedic Capsules & Tablets Catalogue',
       category: 'Capsules',
-      pdfUrl: '/Catelouges/Herbal Capsules Catalogue.pdf',
+      pdfUrl: '/catalogues/Herbal Capsules Catalogue.pdf',
       description: 'Vegetable & HPMC capsules including Shilajit, Ashwagandha & Moringa.'
     },
     {
       id: 4,
       title: 'Organic Shilajit Honey Sticks Catalogue',
       category: 'Honey & Resin',
-      pdfUrl: '/Catelouges/Honey Sticks Catalogue_watermark.pdf',
+      pdfUrl: '/catalogues/Honey Sticks Catalogue_watermark.pdf',
       description: 'Pure Himalayan Shilajit infused raw honey sachet sticks for retail export.'
+    },
+    {
+      id: 5,
+      title: 'Pure Copper Bottles & Drinkware Catalogue',
+      category: 'Copperware',
+      pdfUrl: '/catalogues/Kiyan Export Catalogue of Copper bottles etc._watermark.pdf',
+      description: 'Pure handmade Indian copper bottles, jugs, tumblers & copper drinkware for wholesale export.'
     },
     {
       id: 6,
       title: 'Sports & Gym Supplements Wholesale Catalogue',
       category: 'Sports Nutrition',
-      pdfUrl: '/Catelouges/gym supplement catalogue 1_watermark.pdf',
+      pdfUrl: '/catalogues/gym supplement catalogue 1_watermark.pdf',
       description: 'Plant proteins, BCAA blends, and herbal workout booster formulations.'
     },
     {
       id: 7,
       title: 'Nutraceutical Formulations & OEM Catalogue',
       category: 'Nutraceuticals',
-      pdfUrl: '/Catelouges/nutra cap cat 1.pdf',
+      pdfUrl: '/catalogues/nutra cap cat 1.pdf',
       description: 'Custom OEM contract manufacturing capabilities & laboratory specs.'
     }
   ],
@@ -128,42 +135,42 @@ const defaultSiteContent = {
       id: 1,
       title: 'GMP (Good Manufacturing Practice) Certificate',
       authority: 'PQC International',
-      pdfUrl: '/Certificates/47214_KIYAN EXPORT_GMP_PQC (1) (1).pdf',
+      pdfUrl: '/certificates/47214_KIYAN EXPORT_GMP_PQC (1) (1).pdf',
       description: 'Verified GMP compliance for hygienic herbal extract production & bottling.'
     },
     {
       id: 2,
       title: 'US-FDA Facility Registration',
       authority: 'US Food & Drug Administration',
-      pdfUrl: '/Certificates/47214_KIYAN EXPORT_US- FDA_PQC (2) (1).pdf',
+      pdfUrl: '/certificates/47214_KIYAN EXPORT_US- FDA_PQC (2) (1).pdf',
       description: 'Official FDA facility registration for exporting herbal supplements to USA.'
     },
     {
       id: 3,
       title: 'ISO 22000:2018 Food Safety Management',
       authority: 'ISO Standard Board',
-      pdfUrl: '/Certificates/KIYAN EXPORT ISO 22000 FINAL (1) (1).pdf',
+      pdfUrl: '/certificates/KIYAN EXPORT ISO 22000 FINAL (1) (1).pdf',
       description: 'International accreditation for food safety management systems & hazard control.'
     },
     {
       id: 4,
       title: 'FSSAI Government Food Safety License',
       authority: 'FSSAI India',
-      pdfUrl: '/Certificates/Kiyan Fssai Renewal 2025.pdf',
+      pdfUrl: '/certificates/Kiyan Fssai Renewal 2025.pdf',
       description: 'Central FSSAI manufacturing license for organic dietary food products.'
     },
     {
       id: 5,
       title: 'IndiaMart Verified TrustSeal Certificate',
       authority: 'IndiaMart InterMESH',
-      pdfUrl: '/Certificates/TrustSeal_certificate.pdf',
+      pdfUrl: '/certificates/TrustSeal_certificate.pdf',
       description: 'Verified Gold Supplier TrustSeal status for export credibility.'
     },
     {
       id: 6,
       title: 'MSME Udyam Registration Certificate',
       authority: 'Ministry of MSME, Govt of India',
-      pdfUrl: '/Certificates/Udyam Registration Certificate.pdf',
+      pdfUrl: '/certificates/Udyam Registration Certificate.pdf',
       description: 'Government registered manufacturing enterprise for global export.'
     }
   ]
