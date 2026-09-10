@@ -1080,23 +1080,99 @@
 
   <!-- ABOUT PAGE -->
   <div id="about" class="page-section">
-    <div class="sub-page-header">
-      <h1>About Kiyan Wellness</h1>
-      <p>Pioneering 100% Pure Organic Herbal Wellness & Supplements Since 2014</p>
+    <div class="sub-page-header" style="text-align: center; padding: 50px 20px; background: linear-gradient(135deg, #0b1a17 0%, #1a3d36 100%); color: white;">
+      <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--bright-gold); font-weight: 800; margin-bottom: 8px;">
+        <i class="fas fa-industry"></i> VERIFIED GOLD MANUFACTURER • ESTABLISHED 2014
+      </div>
+      <h1 style="color: white; font-size: 2.4rem; margin-bottom: 10px;">About Kiyan Exports & Herbal Manufacturing</h1>
+      <p style="color: #c0e0d8; font-size: 1.05rem; max-width: 800px; margin: 0 auto;">Pioneering 100% Pure Organic Herbal Extracts, Shilajit Processing, OEM Contract Manufacturing & Global B2B Export</p>
     </div>
-    <section class="about-section">
+
+    <!-- KIYAN EXPORTS REAL FACTORY INFRASTRUCTURE GALLERY -->
+    <section class="about-section" style="background: #f8fafc; padding: 50px 0; border-bottom: 2px solid #d8e2dc;">
+      <div class="container">
+        <div class="section-header text-center" style="margin-bottom: 30px;">
+          <span style="color: var(--royal-emerald); font-weight: 800; letter-spacing: 2px;">FACTORY & CLEANROOM INFRASTRUCTURE</span>
+          <h2 style="font-size: 2.2rem; color: var(--royal-emerald);"><i class="fas fa-industry" style="color: var(--accent-gold);"></i> Kiyan Export Manufacturing Plant (Lucknow, UP)</h2>
+          <p style="color: var(--text-muted); font-size: 1.05rem;">Direct view of our GMP certified extraction plant, class 100,000 sterile packaging cleanrooms, and automated machinery.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px;">
+          <!-- Factory Card 1 -->
+          <div style="background: white; border-radius: 16px; overflow: hidden; border: 1.5px solid #d8e2dc; box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s ease;">
+            <div style="position: relative; height: 230px; overflow: hidden; cursor: pointer;" onclick="openImageModal('/images/factory/factory-1-packaging-team.jpg', 'GMP Cleanroom Bottling & Packaging Team')">
+              <img src="/images/factory/factory-1-packaging-team.jpg" alt="Kiyan Export GMP Cleanroom Packaging Team" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 12px; left: 12px; background: rgba(30,89,103,0.95); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;"><i class="fas fa-shield-alt"></i> Class 100K Cleanroom</span>
+            </div>
+            <div style="padding: 18px;">
+              <h3 style="margin: 0 0 6px 0; font-size: 1.15rem; color: var(--royal-emerald);">GMP Bottling & Packaging Line</h3>
+              <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">Trained packaging technicians wearing sterile PPE caps & masks bottling herbal supplements for global export.</p>
+            </div>
+          </div>
+
+          <!-- Factory Card 2 -->
+          <div style="background: white; border-radius: 16px; overflow: hidden; border: 1.5px solid #d8e2dc; box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s ease;">
+            <div style="position: relative; height: 230px; overflow: hidden; cursor: pointer;" onclick="openImageModal('/images/factory/factory-2-machinery-room.jpg', 'Automated Extraction & Form-Fill Machinery')">
+              <img src="/images/factory/factory-2-machinery-room.jpg" alt="Automated Extraction & Form-Fill Machinery" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 12px; left: 12px; background: rgba(30,89,103,0.95); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;"><i class="fas fa-cogs"></i> Automated Machinery</span>
+            </div>
+            <div style="padding: 18px;">
+              <h3 style="margin: 0 0 6px 0; font-size: 1.15rem; color: var(--royal-emerald);">Automated Form-Fill Plant</h3>
+              <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">State-of-the-art automated liquid, resin & sachet filling machinery room with sealed epoxy flooring.</p>
+            </div>
+          </div>
+
+          <!-- Factory Card 3 -->
+          <div style="background: white; border-radius: 16px; overflow: hidden; border: 1.5px solid #d8e2dc; box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s ease;">
+            <div style="position: relative; height: 230px; overflow: hidden; cursor: pointer;" onclick="openImageModal('/images/factory/factory-3-cleanroom-corridor.jpg', 'Sterile GMP Production Corridor')">
+              <img src="/images/factory/factory-3-cleanroom-corridor.jpg" alt="Sterile GMP Production Corridor" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 12px; left: 12px; background: rgba(30,89,103,0.95); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;"><i class="fas fa-check-circle"></i> ISO 22000 Facility</span>
+            </div>
+            <div style="padding: 18px;">
+              <h3 style="margin: 0 0 6px 0; font-size: 1.15rem; color: var(--royal-emerald);">Sterile Production Corridor</h3>
+              <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">Class 100,000 cleanroom production corridor with airlock doors & positive pressure ventilation.</p>
+            </div>
+          </div>
+
+          <!-- Factory Card 4 -->
+          <div style="background: white; border-radius: 16px; overflow: hidden; border: 1.5px solid #d8e2dc; box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s ease;">
+            <div style="position: relative; height: 230px; overflow: hidden; cursor: pointer;" onclick="openImageModal('/images/factory/factory-4-packaging-machine.jpg', 'Shilajit Sachet Stick Packaging Machine')">
+              <img src="/images/factory/factory-4-packaging-machine.jpg" alt="Shilajit Sachet Stick Packaging Machine" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 12px; left: 12px; background: rgba(30,89,103,0.95); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;"><i class="fas fa-bolt"></i> Shilajit Stick Plant</span>
+            </div>
+            <div style="padding: 18px;">
+              <h3 style="margin: 0 0 6px 0; font-size: 1.15rem; color: var(--royal-emerald);">Shilajit Sachet Stick Plant</h3>
+              <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">Precision automated multi-lane sachet stick packaging plant for pure Himalayan Shilajit & honey.</p>
+            </div>
+          </div>
+
+          <!-- Factory Card 5 -->
+          <div style="background: white; border-radius: 16px; overflow: hidden; border: 1.5px solid #d8e2dc; box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s ease;">
+            <div style="position: relative; height: 230px; overflow: hidden; cursor: pointer;" onclick="openImageModal('/images/factory/factory-5-assembly-hall.jpg', 'Stainless Steel Inspection & Quality Audit Hall')">
+              <img src="/images/factory/factory-5-assembly-hall.jpg" alt="Stainless Steel Inspection Hall" style="width: 100%; height: 100%; object-fit: cover;">
+              <span style="position: absolute; top: 12px; left: 12px; background: rgba(30,89,103,0.95); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;"><i class="fas fa-flask"></i> Quality Control</span>
+            </div>
+            <div style="padding: 18px;">
+              <h3 style="margin: 0 0 6px 0; font-size: 1.15rem; color: var(--royal-emerald);">Stainless Inspection Hall</h3>
+              <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">Dedicated hygienic stainless steel inspection & quality assurance hall for master export orders.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" style="padding: 60px 0;">
       <div class="container">
         <div class="about-grid">
           <div class="about-img-wrap skeleton-wrapper">
-            <img src="/images/facility-bg.jpg" alt="Kiyan Wellness Facility & Quality Assurance" width="600" height="480" loading="lazy" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this, '/images/kiyan-logo.jpg')">
-            <div class="about-badge"><i class="fas fa-certificate"></i> FSSAI & Ayush Approved</div>
+            <img src="/images/factory/factory-1-packaging-team.jpg" alt="Kiyan Export Plant & Quality Assurance" width="600" height="480" loading="lazy" class="img-loading" onload="onImageLoad(this)">
+            <div class="about-badge"><i class="fas fa-certificate"></i> GMP & ISO 22000 Certified Plant</div>
           </div>
           <div class="about-text">
-            <div class="about-header-pill">WHO WE ARE</div>
-            <h2>Uncompromising Herbal Purity <span>Direct To You</span></h2>
-            <p>Established in 2014 in Lucknow, India, <strong>Kiyan Wellness</strong> was founded with a clear vision: to make authentic, lab-certified organic herbal remedies accessible directly to health-conscious retail consumers everywhere.</p>
-            <p>As a specialized B2C wellness company, Kiyan Wellness offers a signature collection of pure Himalayan Shilajit, KSM-66 Ashwagandha, Moringa, Bacopa, Sea Moss, organic herbal powders, gummies, and natural health care essentials.</p>
-            <p>Our certified processing facilities follow strict ISO 9001 and FSSAI standards, ensuring third-party lab verification for heavy metal safety, active ingredient potency, and 100% natural purity.</p>
+            <div class="about-header-pill" id="siteAboutPill">🏭 ESTABLISHED 2014 • LUCKNOW, INDIA</div>
+            <h2 id="siteAboutTitle">Leading Herbal Contract Manufacturer & Bulk Supplier</h2>
+            <p id="siteAboutP1"><strong>Kiyan Exports & Herbal Manufacturing</strong> is a premier B2B contract manufacturer and bulk supplier operating since 2014. We specialize in contract manufacturing, OEM private label formulation, and bulk supply of organic herbal extracts, Shilajit resin, Ashwagandha, and health supplements.</p>
+            <p id="siteAboutP2">Equipped with state-of-the-art GMP certified extraction plants, we serve international buyers, Amazon sellers, wellness brands, and pharmaceutical distributors with custom packaging and factory-direct volume pricing.</p>
           </div>
         </div>
 
@@ -1104,13 +1180,13 @@
         <div class="mission-vision-container">
           <div class="mv-card">
             <i class="fas fa-bullseye"></i>
-            <h3>Our Retail Mission</h3>
-            <p>To deliver 100% pure, potent, and ethically sourced herbal supplements directly to households, helping people live healthier lives naturally.</p>
+            <h3>Manufacturing Mission</h3>
+            <p>To manufacture 100% pure, lab-tested, and standardized herbal extracts with low MOQ and tier wholesale pricing for global wellness brands.</p>
           </div>
           <div class="mv-card">
             <i class="fas fa-eye"></i>
-            <h3>Our Brand Vision</h3>
-            <p>To be India's most trusted direct-to-consumer organic wellness brand, setting the benchmark for transparency, quality, and customer satisfaction.</p>
+            <h3>Global Export Vision</h3>
+            <p>To be India's premier certified contract manufacturer & OEM private label exporter, trusted across 45+ countries worldwide.</p>
           </div>
         </div>
       </div>
