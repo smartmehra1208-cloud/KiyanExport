@@ -2144,7 +2144,17 @@ function loadPdfJsEngine() {
 }
 
 async function openPdfModal(rawPdfUrl, title = 'PDF Document Viewer') {
-  let pdfUrl = rawPdfUrl.replace(/^["']|["']$/g, '').trim();
+  let pdfUrl = rawPdfUrl ? rawPdfUrl.replace(/^["']|["']$/g, '').trim() : '';
+  try {
+    pdfUrl = decodeURIComponent(pdfUrl);
+  } catch (e) {}
+  if (pdfUrl.startsWith('/Catelouges/')) {
+    pdfUrl = pdfUrl.replace('/Catelouges/', '/catalogues/');
+  }
+  if (pdfUrl.startsWith('/Certificates/')) {
+    pdfUrl = pdfUrl.replace('/Certificates/', '/certificates/');
+  }
+
   let modal = document.getElementById('pdfPreviewModal');
   if (!modal) {
     modal = document.createElement('div');
@@ -2198,11 +2208,13 @@ async function openPdfModal(rawPdfUrl, title = 'PDF Document Viewer') {
       </div>`;
   }
 
+  const encodedUrl = encodeURI(pdfUrl);
+
   try {
     const pdfLib = await loadPdfJsEngine();
     if (pdfLib) {
       pdfLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-      const loadingTask = pdfLib.getDocument(pdfUrl);
+      const loadingTask = pdfLib.getDocument(encodedUrl);
       const pdf = await loadingTask.promise;
 
       if (counterEl) counterEl.textContent = `${pdf.numPages} Page${pdf.numPages > 1 ? 's' : ''}`;
@@ -2230,11 +2242,11 @@ async function openPdfModal(rawPdfUrl, title = 'PDF Document Viewer') {
         if (bodyEl) bodyEl.appendChild(canvas);
       }
     } else {
-      if (bodyEl) bodyEl.innerHTML = `<iframe id="pdfModalIframe" src="${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0" width="100%" height="100%" style="border: none;" oncontextmenu="return false;"></iframe>`;
+      if (bodyEl) bodyEl.innerHTML = `<iframe id="pdfModalIframe" src="${encodedUrl}#toolbar=0&navpanes=0&scrollbar=0" width="100%" height="100%" style="border: none;" oncontextmenu="return false;"></iframe>`;
     }
   } catch (err) {
     console.error('Error rendering protected PDF:', err);
-    if (bodyEl) bodyEl.innerHTML = `<iframe id="pdfModalIframe" src="${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0" width="100%" height="100%" style="border: none;" oncontextmenu="return false;"></iframe>`;
+    if (bodyEl) bodyEl.innerHTML = `<iframe id="pdfModalIframe" src="${encodedUrl}#toolbar=0&navpanes=0&scrollbar=0" width="100%" height="100%" style="border: none;" oncontextmenu="return false;"></iframe>`;
   }
 }
 
@@ -2353,7 +2365,7 @@ Please send me a detailed quotation.`;
 
 // ===== STANDALONE ADMIN DASHBOARD TAB SWITCHING =====
 function switchStandaloneAdminTab(tabName) {
-  const tabs = ['products', 'content', 'catalogues', 'certificates', 'orders'];
+  const tabs = ['products', 'content', 'catalogues', 'certificates', 'orders', 'users'];
   tabs.forEach(t => {
     const btn = document.getElementById('tabBtn' + t.charAt(0).toUpperCase() + t.slice(1));
     const panel = document.getElementById('standaloneTab' + t.charAt(0).toUpperCase() + t.slice(1));
@@ -2376,6 +2388,7 @@ function switchStandaloneAdminTab(tabName) {
   if (tabName === 'catalogues') renderAdminCataloguesTable();
   if (tabName === 'certificates') renderAdminCertificatesTable();
   if (tabName === 'orders') loadStandaloneAdminOrders();
+  if (tabName === 'users') loadStandaloneAdminUsers();
 }
 
 let currentSiteContentData = null;
@@ -2749,7 +2762,7 @@ function openAdminCatalogueModal(id = null) {
     if (idEl) idEl.value = '';
     if (titleInput) titleInput.value = '';
     if (catInput) catInput.value = 'Herbal Range';
-    if (pdfInput) pdfInput.value = '/Catelouges/Extract Catalogue 1_watermark.pdf';
+    if (pdfInput) pdfInput.value = '/catalogues/Extract Catalogue 1_watermark.pdf';
     if (descInput) descInput.value = '';
   }
 
@@ -2878,7 +2891,7 @@ function openAdminCertificateModal(id = null) {
     if (idEl) idEl.value = '';
     if (titleInput) titleInput.value = '';
     if (authInput) authInput.value = 'ISO / GMP Authority';
-    if (pdfInput) pdfInput.value = '/Certificates/TrustSeal_certificate.pdf';
+    if (pdfInput) pdfInput.value = '/certificates/TrustSeal_certificate.pdf';
     if (descInput) descInput.value = '';
   }
 
@@ -3227,12 +3240,41 @@ async function updateAdminOrderStatus(orderId, newStatus) {
     });
     const data = await res.json();
     if (data.success) {
-      alert(`Order #${orderId} status updated to: ${newStatus}`);
+      alert(`Order ${orderId} status updated to ${newStatus}`);
     } else {
       alert('Failed to update status: ' + data.message);
     }
   } catch (err) {
     alert('Error updating order status: ' + err.message);
+  }
+}
+
+async function loadStandaloneAdminUsers() {
+  const tbody = document.getElementById('dashStandaloneUsersTableBody');
+  if (!tbody) return;
+
+  try {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 25px;">Connecting to MongoDB Atlas...</td></tr>';
+    const res = await fetch('/api/admin/users');
+    const data = await res.json();
+
+    if (data.success && data.users && data.users.length > 0) {
+      tbody.innerHTML = data.users.map((u, idx) => `
+        <tr>
+          <td><strong>${idx + 1}</strong></td>
+          <td style="font-size: 0.82rem; color: #555;">${u.createdAtIST || new Date(u.createdAt || Date.now()).toLocaleString()}</td>
+          <td><strong>${u.fullName}</strong></td>
+          <td><a href="mailto:${u.email}" style="color: var(--royal-emerald); font-weight: 600;">${u.email}</a></td>
+          <td><a href="tel:${u.phone}" style="color: var(--text-dark);">${u.phone || 'N/A'}</a></td>
+          <td style="font-size: 0.85rem; color: #555;">${u.address ? `${u.address}, ${u.city} ${u.pin}` : 'Not provided'}</td>
+          <td><span style="font-size: 0.8rem; font-weight: 700; background: ${u.role === 'admin' ? '#e74c3c' : '#27ae60'}; color: white; padding: 4px 10px; border-radius: 12px;">${(u.role || 'USER').toUpperCase()}</span></td>
+        </tr>
+      `).join('');
+    } else {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 25px;">No registered customers found in database.</td></tr>';
+    }
+  } catch (err) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: red; padding: 25px;">Failed to load users from database.</td></tr>';
   }
 }
 

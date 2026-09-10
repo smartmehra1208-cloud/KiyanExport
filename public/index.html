@@ -142,6 +142,9 @@
           <button class="admin-tab-btn" id="tabBtnOrders" onclick="switchStandaloneAdminTab('orders')" style="padding: 10px 20px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: #f0f4f2; color: var(--deep-green); transition: all 0.2s;">
             <i class="fas fa-receipt"></i> 📋 Customer Orders & RFQs
           </button>
+          <button class="admin-tab-btn" id="tabBtnUsers" onclick="switchStandaloneAdminTab('users')" style="padding: 10px 20px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: #f0f4f2; color: var(--deep-green); transition: all 0.2s;">
+            <i class="fas fa-users"></i> 👥 Registered Customers & Database Users
+          </button>
         </div>
 
         <!-- TAB 1: PRODUCTS & INVENTORY -->
@@ -418,6 +421,38 @@
           </div>
         </div>
 
+        <!-- TAB 6: REGISTERED CUSTOMERS / DATABASE USERS -->
+        <div id="standaloneTabUsers" class="standalone-admin-tab-panel" style="display: none;">
+          <div class="admin-card" style="padding: 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+              <div>
+                <h2 style="font-size: 1.5rem; color: var(--deep-green); margin: 0;"><i class="fas fa-users" style="color: var(--accent-gold);"></i> MongoDB Atlas Registered Customers & Users</h2>
+                <p style="color: var(--text-muted); margin-top: 4px; font-size: 0.9rem;">Live list of all user accounts registered on Kiyan Wellness website and saved in MongoDB Atlas database.</p>
+              </div>
+              <button class="btn-main" onclick="loadStandaloneAdminUsers()" style="padding: 10px 24px;"><i class="fas fa-sync-alt"></i> Refresh Users</button>
+            </div>
+
+            <div class="admin-table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Registered Date & Time</th>
+                    <th>Customer Name</th>
+                    <th>Email Address</th>
+                    <th>Mobile Phone</th>
+                    <th>Address & Location</th>
+                    <th>Role</th>
+                  </tr>
+                </thead>
+                <tbody id="dashStandaloneUsersTableBody">
+                  <tr><td colspan="7" style="text-align: center; padding: 25px;">Loading registered customers from MongoDB Atlas...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -441,7 +476,7 @@
         </div>
         <div class="form-group" style="margin-bottom: 15px;">
           <label style="font-weight: 700;">PDF File Path or URL *</label>
-          <input type="text" id="adminCatPdfUrl" required placeholder="/Catelouges/Extract Catalogue 1_watermark.pdf">
+          <input type="text" id="adminCatPdfUrl" required placeholder="/catalogues/Extract Catalogue 1_watermark.pdf">
         </div>
         <div class="form-group" style="margin-bottom: 20px;">
           <label style="font-weight: 700;">Description</label>
@@ -474,7 +509,7 @@
         </div>
         <div class="form-group" style="margin-bottom: 15px;">
           <label style="font-weight: 700;">PDF Certificate File Link *</label>
-          <input type="text" id="adminCertPdfUrl" required placeholder="/Certificates/KIYAN EXPORT ISO 22000 FINAL.pdf">
+          <input type="text" id="adminCertPdfUrl" required placeholder="/certificates/KIYAN EXPORT ISO 22000 FINAL.pdf">
         </div>
         <div class="form-group" style="margin-bottom: 20px;">
           <label style="font-weight: 700;">Description</label>
@@ -1098,7 +1133,7 @@
           <!-- Card 1: ISO 22000 -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Certificates/KIYAN%20EXPORT%20ISO%2022000%20FINAL%20(1)%20(1).pdf', 'ISO 22000:2018 Quality Certificate')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/KIYAN%20EXPORT%20ISO%2022000%20FINAL%20(1)%20(1).pdf', 'ISO 22000:2018 Quality Certificate')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/KIYAN_EXPORT_ISO_22000_FINAL_1_1_page1.jpg" alt="ISO 22000 Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1109,14 +1144,14 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Food Safety Management System Quality Audit Final Certificate for Kiyan Export.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Certificates/KIYAN%20EXPORT%20ISO%22000%20FINAL%20(1)%20(1).pdf', 'ISO 22000:2018 Quality Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/certificates/KIYAN%20EXPORT%20ISO22000%20FINAL%20(1)%20(1).pdf', 'ISO 22000:2018 Quality Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
 
           <!-- Card 2: GMP Certificate -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Certificates/47214_KIYAN%20EXPORT_GMP_PQC%20(1)%20(1).pdf', 'GMP Good Manufacturing Practice Certificate')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/47214_KIYAN%20EXPORT_GMP_PQC%20(1)%20(1).pdf', 'GMP Good Manufacturing Practice Certificate')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/47214_KIYAN_EXPORT_GMP_PQC_1_1_page1.jpg" alt="GMP Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1127,14 +1162,14 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Good Manufacturing Practice Compliance Certification for Herbal Extraction & Encapsulation.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Certificates/47214_KIYAN%20EXPORT_GMP_PQC%20(1)%20(1).pdf', 'GMP Good Manufacturing Practice Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/certificates/47214_KIYAN%20EXPORT_GMP_PQC%20(1)%20(1).pdf', 'GMP Good Manufacturing Practice Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
 
           <!-- Card 3: US-FDA Registration -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Certificates/47214_KIYAN%20EXPORT_US-%20FDA_PQC%20(2)%20(1).pdf', 'US-FDA Facility Registration Certificate')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/47214_KIYAN%20EXPORT_US-%20FDA_PQC%20(2)%20(1).pdf', 'US-FDA Facility Registration Certificate')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/47214_KIYAN_EXPORT_US-_FDA_PQC_2_1_page1.jpg" alt="US-FDA Registration Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1145,14 +1180,14 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">United States Food and Drug Administration Registration Dossier for Global Export Compliance.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Certificates/47214_KIYAN%20EXPORT_US-%20FDA_PQC%20(2)%20(1).pdf', 'US-FDA Facility Registration Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/certificates/47214_KIYAN%20EXPORT_US-%20FDA_PQC%20(2)%20(1).pdf', 'US-FDA Facility Registration Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
 
           <!-- Card 4: FSSAI License -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Certificates/Kiyan%20Fssai%20Renewal%202025.pdf', 'FSSAI Export License Renewal 2025')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/Kiyan%20Fssai%20Renewal%202025.pdf', 'FSSAI Export License Renewal 2025')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/Kiyan_Fssai_Renewal_2025_page1.jpg" alt="FSSAI Renewal Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1163,14 +1198,14 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Food Safety and Standards Authority of India (FSSAI) Central Export License Renewal.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Certificates/Kiyan%20Fssai%20Renewal%202025.pdf', 'FSSAI Export License Renewal 2025')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/certificates/Kiyan%20Fssai%20Renewal%202025.pdf', 'FSSAI Export License Renewal 2025')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
 
           <!-- Card 5: TrustSeal Certificate -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Certificates/TrustSeal_certificate.pdf', 'IndiaMART TrustSeal Verified Certificate')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/TrustSeal_certificate.pdf', 'IndiaMART TrustSeal Verified Certificate')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/TrustSeal_certificate_page1.jpg" alt="TrustSeal Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1181,14 +1216,14 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">TrustSeal Verification Certificate for B2B Wholesale Exporter Credibility.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Certificates/TrustSeal_certificate.pdf', 'IndiaMART TrustSeal Verified Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/certificates/TrustSeal_certificate.pdf', 'IndiaMART TrustSeal Verified Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
 
           <!-- Card 6: Udyam Registration -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Certificates/Udyam%20Registration%20Certificate.pdf', 'Udyam MSME Government Registration Certificate')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/Udyam%20Registration%20Certificate.pdf', 'Udyam MSME Government Registration Certificate')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/Udyam_Registration_Certificate_page1.jpg" alt="Udyam MSME Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1199,7 +1234,7 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Government of India Ministry of MSME Udyam Registration Certificate.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Certificates/Udyam%20Registration%20Certificate.pdf', 'Udyam MSME Government Registration Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/certificates/Udyam%20Registration%20Certificate.pdf', 'Udyam MSME Government Registration Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
         </div>
@@ -1225,7 +1260,7 @@
           <!-- Cat 1: Extract Catalogue -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Catelouges/Extract%20Catalogue%201_watermark.pdf', 'Herbal Extracts Official Catalogue')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/Extract%20Catalogue%201_watermark.pdf', 'Herbal Extracts Official Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/Extract_Catalogue_1_watermark_page1.jpg" alt="Herbal Extracts Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1236,14 +1271,14 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Standardized organic herbal powders, bark extracts, and liquid extract formulations.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Catelouges/Extract%20Catalogue%201_watermark.pdf', 'Herbal Extracts Official Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/catalogues/Extract%20Catalogue%201_watermark.pdf', 'Herbal Extracts Official Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
 
           <!-- Cat 2: Gummies Catalogue -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Catelouges/Gummies%20Catalogue_watermark.pdf', 'Wellness Gummies Official Catalogue')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/Gummies%20Catalogue_watermark.pdf', 'Wellness Gummies Official Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/Gummies_Catalogue_watermark_page1.jpg" alt="Wellness Gummies Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1254,14 +1289,14 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Vegan Ashwagandha, Vitamin, and Adaptogen pectin gummies range.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Catelouges/Gummies%20Catalogue_watermark.pdf', 'Wellness Gummies Official Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/catalogues/Gummies%20Catalogue_watermark.pdf', 'Wellness Gummies Official Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
 
           <!-- Cat 3: Herbal Capsules -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Catelouges/Herbal%20Capsules%20Catalogue.pdf', 'Herbal Capsules Official Catalogue')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/Herbal%20Capsules%20Catalogue.pdf', 'Herbal Capsules Official Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/Herbal_Capsules_Catalogue_page1.jpg" alt="Herbal Capsules Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1272,14 +1307,14 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Pure Arjuna, Ashwagandha, Bacopa, and Shilajit vegetable cellulose capsules.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Catelouges/Herbal%20Capsules%20Catalogue.pdf', 'Herbal Capsules Official Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/catalogues/Herbal%20Capsules%20Catalogue.pdf', 'Herbal Capsules Official Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
 
           <!-- Cat 4: Honey Sticks -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Catelouges/Honey%20Sticks%20Catalogue_watermark.pdf', 'Honey & Shilajit Sticks Catalogue')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/Honey%20Sticks%20Catalogue_watermark.pdf', 'Honey & Shilajit Sticks Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/Honey_Sticks_Catalogue_watermark_page1.jpg" alt="Honey Sticks Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1290,7 +1325,7 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Pure organic Himalayan Shilajit honey sticks and organic botanical honey.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Catelouges/Honey%20Sticks%20Catalogue_watermark.pdf', 'Honey & Shilajit Sticks Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/catalogues/Honey%20Sticks%20Catalogue_watermark.pdf', 'Honey & Shilajit Sticks Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
 
@@ -1299,7 +1334,7 @@
           <!-- Cat 6: Gym Supplements -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Catelouges/gym%20supplement%20catalogue%201_watermark.pdf', 'Gym & Fitness Supplements Catalogue')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/gym%20supplement%20catalogue%201_watermark.pdf', 'Gym & Fitness Supplements Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/gym_supplement_catalogue_1_watermark_page1.jpg" alt="Gym Supplements Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1310,14 +1345,14 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Sports nutrition, herbal performance boosters, and adaptogen blends.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Catelouges/gym%20supplement%20catalogue%201_watermark.pdf', 'Gym & Fitness Supplements Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/catalogues/gym%20supplement%20catalogue%201_watermark.pdf', 'Gym & Fitness Supplements Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
 
           <!-- Cat 7: Nutra Cap -->
           <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
             <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/Catelouges/nutra%20cap%20cat%201.pdf', 'Nutraceutical Capsules Catalogue')">
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/nutra%20cap%20cat%201.pdf', 'Nutraceutical Capsules Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
                 <img src="/pdf_thumbnails/nutra_cap_cat_1_page1.jpg" alt="Nutraceutical Capsules Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
                 <div class="pdf-hover-overlay">
@@ -1328,7 +1363,7 @@
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Bespoke OEM nutraceutical formulations, softgels, and hard gel capsules.</p>
             </div>
             <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/Catelouges/nutra%20cap%20cat%201.pdf', 'Nutraceutical Capsules Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+              <button onclick="openPdfModal('/catalogues/nutra%20cap%20cat%201.pdf', 'Nutraceutical Capsules Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
         </div>

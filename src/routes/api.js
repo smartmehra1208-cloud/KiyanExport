@@ -1301,5 +1301,40 @@ router.get('/admin/rfqs', (req, res) => {
   res.json({ success: true, count: memoryRfqs.length, rfqs: memoryRfqs });
 });
 
+// GET Admin All Registered Users / Customers (MongoDB Atlas Direct Sync)
+router.get('/admin/users', async (req, res) => {
+  try {
+    await ensureDbConnected();
+    let allUsers = [];
+    try {
+      allUsers = await User.find({}, '-password').sort({ createdAt: -1 }).lean();
+    } catch (e) {
+      allUsers = memoryUsers.map(u => {
+        const copy = { ...u };
+        delete copy.password;
+        return copy;
+      });
+    }
+
+    const formatted = allUsers.map(user => {
+      const createdDate = user.createdAt ? new Date(user.createdAt) : new Date();
+      const createdAtIST = createdDate.toLocaleString('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      }) + ' IST';
+      return { ...user, createdAtIST };
+    });
+
+    res.json({ success: true, count: formatted.length, users: formatted });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to fetch registered users', error: err.message });
+  }
+});
+
 module.exports = router;
 
