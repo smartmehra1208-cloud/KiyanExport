@@ -2073,6 +2073,58 @@
           </div>
         </div>
       </div>
+
+      <!-- PRODUCT RATINGS & REVIEWS SECTION -->
+      <div class="pm-reviews-container" style="margin-top: 25px; padding-top: 20px; border-top: 2px solid #eef2f0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
+          <div>
+            <h3 style="font-size: 1.25rem; color: #1e4d2b; margin: 0; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-star" style="color: #f39c12;"></i> Customer Ratings & Reviews
+            </h3>
+            <p style="font-size: 0.85rem; color: #666; margin: 4px 0 0 0;" id="pmReviewSummaryText">Overall Rating: 5.0 / 5.0 based on verified B2B customer reviews</p>
+          </div>
+          <button type="button" class="btn-primary" onclick="toggleReviewForm()" style="padding: 8px 18px; font-size: 0.88rem; border-radius: 20px;">
+            <i class="fas fa-pen"></i> Write a Review
+          </button>
+        </div>
+
+        <!-- Write Review Collapsible Form -->
+        <div id="pmReviewFormBox" style="display: none; background: #f9fbf9; border: 1.5px solid #d4a373; border-radius: 12px; padding: 20px; margin-bottom: 25px; transition: all 0.3s ease;">
+          <h4 style="margin: 0 0 12px 0; color: #1e4d2b; font-size: 1rem;"><i class="fas fa-comment-dots"></i> Write Your Product Review</h4>
+          <form onsubmit="submitProductReview(event)">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+              <div>
+                <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #444; margin-bottom: 4px;">Your Name / Company</label>
+                <input type="text" id="reviewAuthorInput" placeholder="e.g. Rahul Sharma" style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc; font-size: 0.9rem;" required>
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #444; margin-bottom: 4px;">Your Rating (1 to 5 Stars)</label>
+                <div class="star-rating-select" id="starRatingSelect" style="display: flex; gap: 6px; font-size: 1.4rem; color: #f39c12; cursor: pointer; padding-top: 4px;">
+                  <i class="fas fa-star" data-rating="1" onclick="setReviewStarRating(1)" onmouseover="hoverReviewStarRating(1)" onmouseout="resetReviewStarRating()"></i>
+                  <i class="fas fa-star" data-rating="2" onclick="setReviewStarRating(2)" onmouseover="hoverReviewStarRating(2)" onmouseout="resetReviewStarRating()"></i>
+                  <i class="fas fa-star" data-rating="3" onclick="setReviewStarRating(3)" onmouseover="hoverReviewStarRating(3)" onmouseout="resetReviewStarRating()"></i>
+                  <i class="fas fa-star" data-rating="4" onclick="setReviewStarRating(4)" onmouseover="hoverReviewStarRating(4)" onmouseout="resetReviewStarRating()"></i>
+                  <i class="fas fa-star" data-rating="5" onclick="setReviewStarRating(5)" onmouseover="hoverReviewStarRating(5)" onmouseout="resetReviewStarRating()"></i>
+                </div>
+                <input type="hidden" id="reviewRatingInput" value="5">
+              </div>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #444; margin-bottom: 4px;">Review Comments & Quality Feedback</label>
+              <textarea id="reviewCommentInput" rows="3" placeholder="Share your experience regarding extract quality, packaging, lead time, or bulk pricing..." style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 0.9rem; font-family: inherit;" required></textarea>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+              <button type="button" onclick="toggleReviewForm()" style="padding: 8px 16px; background: #eee; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem;">Cancel</button>
+              <button type="submit" id="submitReviewBtn" style="padding: 8px 22px; background: #1e4d2b; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 0.88rem;"><i class="fas fa-paper-plane"></i> Submit Review</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Existing Reviews List -->
+        <div id="pmReviewsList" style="display: flex; flex-direction: column; gap: 12px;">
+          <!-- Dynamically populated review cards -->
+        </div>
+      </div>
     </div>
   </div>
 

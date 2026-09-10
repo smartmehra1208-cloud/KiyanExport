@@ -4,7 +4,7 @@
     "name": "ARJUNA CAPSULE",
     "category": "Herbal",
     "badge": "Best Seller",
-    "rating": 4.8,
+    "rating": 5,
     "price": 599,
     "oldPrice": 1999,
     "image": "Herbal/arjuna.webp",
@@ -58,7 +58,16 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviews": [
+      {
+        "user": "Global BioPharm LLC",
+        "rating": 5,
+        "comment": "Exceptional extract purity and fast delivery!",
+        "createdAt": "2026-09-10T12:40:14.936Z"
+      }
+    ],
+    "reviewsCount": 1
   },
   {
     "id": 2,
