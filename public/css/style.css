@@ -713,12 +713,12 @@ img.loaded {
 
 /* ===== MARQUEE TICKER ===== */
 .marquee-section {
-  background: linear-gradient(135deg, #008631 0%, #00ab41 100%);
-  color: #ffffff;
-  padding: 8px 0;
+  background: linear-gradient(90deg, #f2faf4 0%, #e1f7e7 50%, #cefad0 100%) !important;
+  color: #005a20 !important;
+  padding: 6px 0 !important;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid #abf7b1 !important;
+  border-bottom: 1px solid #abf7b1 !important;
 }
 
 .marquee-track {
@@ -729,16 +729,16 @@ img.loaded {
 }
 
 .marquee-track span {
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #ffffff;
+  color: #005a20 !important;
 }
 
 .marquee-track i {
-  color: #1fd655;
+  color: #00ab41 !important;
 }
 
 /* ===== HERO SECTION ===== */
@@ -2466,28 +2466,29 @@ img.loaded {
 }
 
 .sub-page-header {
-  background: linear-gradient(135deg, #008631 0%, #00ab41 100%) !important;
-  color: white !important;
-  padding: 30px 20px 22px !important;
+  background: linear-gradient(135deg, #f2faf4 0%, #e1f7e7 50%, #cefad0 100%) !important;
+  color: #005a20 !important;
+  padding: 14px 20px 12px !important;
   text-align: center !important;
-  border-bottom: 3px solid #1fd655 !important;
-  box-shadow: 0 4px 15px rgba(0, 134, 49, 0.15);
-  margin-bottom: 20px !important;
-  border-radius: 0 0 16px 16px;
+  border-bottom: 2px solid #abf7b1 !important;
+  border-top: 1px solid #e1f7e7 !important;
+  box-shadow: 0 2px 8px rgba(0, 134, 49, 0.05) !important;
+  margin-bottom: 15px !important;
+  border-radius: 0 0 12px 12px !important;
 }
 
 .sub-page-header h1 {
-  font-size: 1.75rem !important;
-  margin-bottom: 4px !important;
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.5px;
+  font-size: 1.35rem !important;
+  margin-bottom: 2px !important;
+  color: #005a20 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.3px !important;
 }
 
 .sub-page-header p {
-  font-size: 0.95rem !important;
-  color: #cefad0 !important;
-  opacity: 0.95;
+  font-size: 0.85rem !important;
+  color: #2e6435 !important;
+  font-weight: 600 !important;
   margin: 0 !important;
 }
 
@@ -4050,11 +4051,11 @@ body.admin-mode-active #adminStandaloneDashboard {
 /* Glassmorphism Header & Factory Telemetry Strip */
 /* Glassmorphism Header & Factory Telemetry Strip (Clean Organic Theme) */
 .factory-telemetry-bar {
-  background: linear-gradient(90deg, #008631 0%, #00ab41 50%, #008631 100%);
-  color: #ffffff;
-  font-size: 0.8rem;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(90deg, #eaf7ed 0%, #dcf5df 50%, #cefad0 100%) !important;
+  color: #005a20 !important;
+  font-size: 0.78rem;
+  padding: 5px 0;
+  border-bottom: 1px solid #abf7b1;
   overflow: hidden;
 }
 
@@ -4070,9 +4071,9 @@ body.admin-mode-active #adminStandaloneDashboard {
   display: inline-block;
   width: 8px;
   height: 8px;
-  background: #1fd655;
+  background: #00ab41;
   border-radius: 50%;
-  box-shadow: 0 0 10px #1fd655;
+  box-shadow: 0 0 10px #00ab41;
   animation: pulseDot 1.5s infinite;
   margin-right: 6px;
 }
@@ -4091,9 +4092,13 @@ body.admin-mode-active #adminStandaloneDashboard {
 }
 
 .top-bar {
-  background: #008631 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important;
+  background: linear-gradient(90deg, #f2faf4 0%, #e1f7e7 100%) !important;
+  border-bottom: 1px solid #cefad0 !important;
+  color: #005a20 !important;
+}
+
+.top-info span, .top-info a, .top-social span {
+  color: #005a20 !important;
 }
 
 /* Scroll Reveal Animations */
