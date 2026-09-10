@@ -49,15 +49,13 @@ const syncAtlasDatabase = async () => {
   }
 };
 
+const DEFAULT_MONGO_URI = 'mongodb+srv://shubhammehra1208:Shaurya1208@ac-l8lvv7w-shard-00-00.sxts5to.mongodb.net/Sanjeevani-roots?retryWrites=true&w=majority';
+
 const connectDB = async () => {
   try {
-    const connStr = process.env.MONGO_URI || process.env.MONGODB_URI;
-    if (!connStr || connStr.includes('cluster0.mongodb.net')) {
-      console.log('💡 Notice: Set valid MongoDB Atlas URI in .env (MONGO_URI) to connect cloud DB.');
-      return false;
-    }
+    const connStr = process.env.MONGO_URI || process.env.MONGODB_URI || DEFAULT_MONGO_URI;
     const conn = await mongoose.connect(connStr, {
-      serverSelectionTimeoutMS: 8000
+      serverSelectionTimeoutMS: 12000
     });
     console.log(`🍃 MongoDB Atlas Connected Successfully: ${conn.connection.host}/${conn.connection.name}`);
     await syncAtlasDatabase();
