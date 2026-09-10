@@ -5,12 +5,22 @@ const fs = require('fs');
 const path = require('path');
 const { sendRfqEmail, RECIPIENT_EMAIL } = require('../config/mailer');
 
+const mongoose = require('mongoose');
+const connectDB = require('../config/db');
+
 // Models
 const Product = require('../models/Product');
 const User = require('../models/User');
 const Order = require('../models/Order');
 const Contact = require('../models/Contact');
 const SiteContent = require('../models/SiteContent');
+
+async function ensureDbConnected() {
+  if (mongoose.connection.readyState !== 1) {
+    console.log('🔄 Live Auto-Reconnecting to MongoDB Atlas...');
+    await connectDB();
+  }
+}
 
 const PRODUCTS_FILE = path.join(__dirname, '../data/products_store.json');
 const SITE_CONTENT_FILE = path.join(__dirname, '../data/site_content.json');
@@ -246,6 +256,7 @@ router.get('/products/:id', async (req, res) => {
 // AUTH - Register New User
 router.post('/auth/register', async (req, res) => {
   try {
+    await ensureDbConnected();
     const { fullName, email, phone, password, address, city, pin } = req.body;
 
     if (!fullName || !email || !password) {
@@ -294,9 +305,14 @@ router.post('/auth/register', async (req, res) => {
         pin: pin || '',
         role: userRole
       });
+      console.log(`👤 New User registered in MongoDB Atlas: ${newUser.email}`);
     } catch (dbErr) {
+      console.error('❌ MongoDB Atlas User.create Error:', dbErr.message);
       if (dbErr.code === 11000) {
         return res.status(400).json({ success: false, message: 'This email address is already registered. Please click Login or use a different email.' });
+      }
+      if (mongoose.connection.readyState === 1) {
+        return res.status(400).json({ success: false, message: 'Database save failed: ' + dbErr.message });
       }
       newUser = {
         _id: memoryUsers.length + 1,
