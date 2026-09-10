@@ -2279,6 +2279,51 @@ function closePdfModal() {
   document.body.style.overflow = 'auto';
 }
 
+// ===== FACTORY & ASSET IMAGE LIGHTBOX PREVIEW MODAL =====
+function openImageModal(imageUrl, caption = 'Factory Manufacturing Facility') {
+  let modal = document.getElementById('factoryImageModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'factoryImageModal';
+    modal.style.cssText = 'position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.85); z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px);';
+    modal.innerHTML = `
+      <div style="position: relative; max-width: 1000px; width: 90vw; max-height: 85vh; display: flex; flex-direction: column; align-items: center; background: #0b1a17; border-radius: 16px; overflow: hidden; border: 1.5px solid var(--accent-gold); box-shadow: 0 25px 60px rgba(0,0,0,0.7);">
+        <div style="width: 100%; padding: 14px 20px; background: #06110f; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212,175,55,0.3);">
+          <h3 id="factoryImgModalTitle" style="margin:0; font-size: 1.1rem; color: #ffd700; font-weight: 700;"><i class="fas fa-industry"></i> Factory Facility Preview</h3>
+          <button onclick="closeImageModal()" style="background: rgba(255,255,255,0.1); border: none; font-size: 1.4rem; color: white; cursor: pointer; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">&times;</button>
+        </div>
+        <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 15px; overflow: hidden; width: 100%;">
+          <img id="factoryImgModalSrc" src="" alt="Factory Preview" style="max-width: 100%; max-height: 70vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        </div>
+        <div style="width: 100%; padding: 12px 20px; background: #06110f; border-top: 1px solid rgba(212,175,55,0.2); text-align: center;">
+          <p id="factoryImgModalCaption" style="margin:0; font-size: 0.9rem; color: #c0e0d8; font-weight: 600;"></p>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeImageModal();
+    });
+  }
+
+  const titleEl = document.getElementById('factoryImgModalTitle');
+  const imgEl = document.getElementById('factoryImgModalSrc');
+  const capEl = document.getElementById('factoryImgModalCaption');
+
+  if (imgEl) imgEl.src = imageUrl;
+  if (capEl) capEl.textContent = caption;
+  if (titleEl) titleEl.innerHTML = `<i class="fas fa-industry"></i> ${caption}`;
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImageModal() {
+  const modal = document.getElementById('factoryImageModal');
+  if (modal) modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
 // ===== WHATSAPP B2B INQUIRY INTEGRATION (Phone: 9305834431) =====
 const WHATSAPP_PHONE = '919305834431';
 
