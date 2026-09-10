@@ -49,7 +49,7 @@ const syncAtlasDatabase = async () => {
   }
 };
 
-const DEFAULT_MONGO_URI = 'mongodb+srv://shubhammehra1208:Shaurya1208@ac-l8lvv7w-shard-00-00.sxts5to.mongodb.net/Sanjeevani-roots?retryWrites=true&w=majority';
+const DEFAULT_MONGO_URI = 'mongodb+srv://smartmehra1208_db_user:pAD2x6JIOkfawFDv@sanjeevani-roots.sxts5to.mongodb.net/Sanjeevani-roots?retryWrites=true&w=majority';
 
 const connectDB = async () => {
   try {
