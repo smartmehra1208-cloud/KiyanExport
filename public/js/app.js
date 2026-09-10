@@ -2122,21 +2122,28 @@ function updateB2BCalculator() {
 // ===== PDF FULLSCREEN PREVIEW MODAL (LAZY-LOADED CANVAS PROTECTED VIEW) =====
 let pdfJsLoadingPromise = null;
 function loadPdfJsEngine() {
-  if (typeof pdfjsLib !== 'undefined') return Promise.resolve(pdfjsLib);
+  if (typeof pdfjsLib !== 'undefined') {
+    try {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = '/js/pdf.worker.min.js';
+    } catch(e) {}
+    return Promise.resolve(pdfjsLib);
+  }
   if (pdfJsLoadingPromise) return pdfJsLoadingPromise;
 
   pdfJsLoadingPromise = new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+    script.src = '/js/pdf.min.js';
     script.onload = () => {
       if (typeof pdfjsLib !== 'undefined') {
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        try {
+          pdfjsLib.GlobalWorkerOptions.workerSrc = '/js/pdf.worker.min.js';
+        } catch(e) {}
       }
       resolve(pdfjsLib);
     };
     script.onerror = (err) => {
       pdfJsLoadingPromise = null;
-      reject(err);
+      resolve(null);
     };
     document.head.appendChild(script);
   });
@@ -2155,6 +2162,8 @@ async function openPdfModal(rawPdfUrl, title = 'PDF Document Viewer') {
     pdfUrl = pdfUrl.replace('/Certificates/', '/certificates/');
   }
 
+  const encodedUrl = encodeURI(pdfUrl);
+
   let modal = document.getElementById('pdfPreviewModal');
   if (!modal) {
     modal = document.createElement('div');
@@ -2162,7 +2171,7 @@ async function openPdfModal(rawPdfUrl, title = 'PDF Document Viewer') {
     modal.className = 'custom-pdf-modal';
     modal.innerHTML = `
       <div class="custom-pdf-modal-content" style="max-width: 950px; width: 95vw; height: 92vh; display: flex; flex-direction: column; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
-        <div class="custom-pdf-modal-header" style="padding: 14px 20px; border-bottom: 1.5px solid #d8e2dc; background: #f9f6f0; display: flex; justify-content: space-between; align-items: center;">
+        <div class="custom-pdf-modal-header" style="padding: 14px 20px; border-bottom: 1.5px solid #d8e2dc; background: #f9f6f0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
           <div style="display: flex; align-items: center; gap: 12px;">
             <img src="/images/kiyan-logo.jpg" alt="Kiyan Export Logo" style="height: 34px; width: auto; background: white; padding: 3px 8px; border-radius: 6px; border: 1px solid #d8e2dc;">
             <div>
@@ -2170,9 +2179,9 @@ async function openPdfModal(rawPdfUrl, title = 'PDF Document Viewer') {
               <span style="font-size: 0.75rem; color: #666;"><i class="fas fa-shield-alt" style="color: #e74c3c;"></i> Official Kiyan Export Protected PDF (View Only)</span>
             </div>
           </div>
-          <div style="display: flex; gap: 10px; align-items: center;">
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
             <span id="pdfPageCounter" style="padding: 5px 14px; font-size: 0.8rem; background: #eef7f6; color: #1e5967; border-radius: 20px; font-weight: 700;">Loading...</span>
-            <span style="padding: 5px 14px; font-size: 0.8rem; background: #e74c3c; color: white; border-radius: 20px; font-weight: 600;"><i class="fas fa-lock"></i> Protected View Only</span>
+            <a id="pdfDirectLink" href="${encodedUrl}" target="_blank" style="padding: 5px 14px; font-size: 0.8rem; background: #1e5967; color: white; border-radius: 20px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 5px;"><i class="fas fa-external-link-alt"></i> Open Full PDF</a>
             <button onclick="closePdfModal()" style="background: rgba(0,0,0,0.06); border: none; font-size: 1.4rem; color: #333; cursor: pointer; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;" aria-label="Close PDF Modal">&times;</button>
           </div>
         </div>
@@ -2195,8 +2204,10 @@ async function openPdfModal(rawPdfUrl, title = 'PDF Document Viewer') {
   const titleEl = document.getElementById('pdfModalTitle');
   const bodyEl = document.getElementById('pdfModalCanvasBody');
   const counterEl = document.getElementById('pdfPageCounter');
+  const directLinkEl = document.getElementById('pdfDirectLink');
 
   if (titleEl) titleEl.textContent = title;
+  if (directLinkEl) directLinkEl.href = encodedUrl;
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
 
@@ -2208,12 +2219,20 @@ async function openPdfModal(rawPdfUrl, title = 'PDF Document Viewer') {
       </div>`;
   }
 
-  const encodedUrl = encodeURI(pdfUrl);
+  function renderIframeFallback() {
+    if (counterEl) counterEl.textContent = 'Standard Viewer';
+    if (bodyEl) {
+      bodyEl.innerHTML = `<iframe id="pdfModalIframe" src="${encodedUrl}#toolbar=0&navpanes=0&scrollbar=0" width="100%" height="100%" style="border: none; background: white;" oncontextmenu="return false;"></iframe>`;
+    }
+  }
 
   try {
     const pdfLib = await loadPdfJsEngine();
     if (pdfLib) {
-      pdfLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      try {
+        pdfLib.GlobalWorkerOptions.workerSrc = '/js/pdf.worker.min.js';
+      } catch(e) {}
+
       const loadingTask = pdfLib.getDocument(encodedUrl);
       const pdf = await loadingTask.promise;
 
@@ -2242,11 +2261,11 @@ async function openPdfModal(rawPdfUrl, title = 'PDF Document Viewer') {
         if (bodyEl) bodyEl.appendChild(canvas);
       }
     } else {
-      if (bodyEl) bodyEl.innerHTML = `<iframe id="pdfModalIframe" src="${encodedUrl}#toolbar=0&navpanes=0&scrollbar=0" width="100%" height="100%" style="border: none;" oncontextmenu="return false;"></iframe>`;
+      renderIframeFallback();
     }
   } catch (err) {
-    console.error('Error rendering protected PDF:', err);
-    if (bodyEl) bodyEl.innerHTML = `<iframe id="pdfModalIframe" src="${encodedUrl}#toolbar=0&navpanes=0&scrollbar=0" width="100%" height="100%" style="border: none;" oncontextmenu="return false;"></iframe>`;
+    console.error('Error rendering protected PDF with Canvas, using iframe fallback:', err);
+    renderIframeFallback();
   }
 }
 
