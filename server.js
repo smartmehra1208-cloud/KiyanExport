@@ -61,17 +61,17 @@ app.use(['/certificates', '/Certificates'], express.static(path.join(__dirname, 
 }));
 
 app.use(express.static(path.join(__dirname, 'public'), {
-  maxAge: '1y',
+  maxAge: 0,
   etag: true,
   setHeaders: (res, filePath) => {
-    if (filePath.endsWith('.html')) {
-      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+    if (filePath.endsWith('.html') || filePath.endsWith('.css') || filePath.endsWith('.js')) {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     } else if (filePath.toLowerCase().endsWith('.pdf')) {
       res.setHeader('Content-Disposition', 'inline');
       res.setHeader('X-Content-Type-Options', 'nosniff');
       res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
     } else {
-      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
     }
   }
 }));
