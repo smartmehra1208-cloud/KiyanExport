@@ -731,12 +731,47 @@ router.post('/rfq', async (req, res) => {
 
     memoryRfqs.unshift(rfqEntry);
 
+    // Ensure MongoDB Database Connection & Insert RFQ Record to Atlas Database
+    try {
+      await ensureDbConnected();
+      await Order.create({
+        orderId: rfqId,
+        customerName: contactName || 'Valued Buyer',
+        customerEmail: email,
+        customerPhone: phone || 'N/A',
+        customerAddress: shippingCountry || 'International Export',
+        companyName: companyName || 'N/A',
+        paymentMethod: 'B2B Wholesale Inquiry / RFQ Quote',
+        paymentStatus: 'Quote Requested',
+        financials: {
+          subtotal: 0,
+          sgst: 0,
+          igst: 0,
+          totalPayable: Number(targetPrice) || 0
+        },
+        items: [
+          {
+            id: Number(productId) || 1,
+            name: productName || 'Bulk Herbal Product',
+            price: Number(targetPrice) || 0,
+            quantity: Number(targetQuantity) || 100,
+            itemTotal: Number(targetPrice) || 0
+          }
+        ],
+        status: 'RFQ Received',
+        estimatedDelivery: '7 - 12 Days (Port Dispatch)'
+      });
+      console.log(`🍃 Successfully saved RFQ ${rfqId} to MongoDB Atlas Database!`);
+    } catch (dbErr) {
+      console.warn('⚠️ MongoDB Atlas RFQ insertion fallback:', dbErr.message);
+    }
+
     // Dispatch SMTP Email Notification to kiyanexport54@gmail.com
     const emailResult = await sendRfqEmail(rfqEntry);
 
     res.json({
       success: true,
-      message: `Thank you ${contactName}! Your Bulk RFQ inquiry (${rfqId}) has been received & emailed via SMTP to ${RECIPIENT_EMAIL}!`,
+      message: `Thank you ${contactName}! Your Bulk RFQ inquiry (${rfqId}) has been received & saved!`,
       rfqId,
       recipientEmail: RECIPIENT_EMAIL,
       emailDispatched: emailResult.success
@@ -970,6 +1005,7 @@ router.post('/contact', async (req, res) => {
     const ticketId = `TKT-${Math.floor(100000 + Math.random() * 900000)}`;
 
     try {
+      await ensureDbConnected();
       await Contact.create({
         name,
         email,
@@ -978,7 +1014,10 @@ router.post('/contact', async (req, res) => {
         message,
         ticketId
       });
-    } catch (e) {}
+      console.log(`🍃 Saved contact ticket ${ticketId} to MongoDB Atlas Database!`);
+    } catch (e) {
+      console.warn('⚠️ Contact DB insertion notice:', e.message);
+    }
 
     res.json({
       success: true,
