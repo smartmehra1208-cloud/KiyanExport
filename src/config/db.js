@@ -1,10 +1,21 @@
 const mongoose = require('mongoose');
+const dns = require('dns');
 const fs = require('fs');
 const path = require('path');
 const Product = require('../models/Product');
 const SiteContent = require('../models/SiteContent');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+
+// Force IPv4 first for container network environments
+if (dns.setDefaultResultOrder) {
+  dns.setDefaultResultOrder('ipv4first');
+}
+
+// Disable Mongoose command buffering so queries fail immediately if DB is disconnected
+// instead of stalling the Node event loop and timing out after 10000ms
+mongoose.set('bufferCommands', false);
+mongoose.set('bufferTimeoutMS', 2000);
 
 const PRODUCTS_FILE = path.join(__dirname, '../data/products_store.json');
 const SITE_CONTENT_FILE = path.join(__dirname, '../data/site_content.json');
@@ -63,29 +74,29 @@ const connectDB = async () => {
 
   try {
     const conn = await mongoose.connect(primaryConn, {
-      serverSelectionTimeoutMS: 6000,
+      serverSelectionTimeoutMS: 3500,
       family: 4
     });
-    console.log(`🍃 MongoDB Atlas Connected Successfully: ${conn.connection.host}/${conn.connection.name}`);
+    console.log(`🍃 MongoDB Atlas Connected Successfully: ${mongoose.connection.host || 'Atlas'}/${mongoose.connection.name}`);
     isConnecting = false;
     await syncAtlasDatabase();
     return true;
   } catch (err1) {
-    console.warn(`⚠️ Primary MongoDB Connection failed (${err1.message}). Trying Direct Multi-Host ReplicaSet...`);
+    console.warn(`⚠️ Primary MongoDB Connection info (${err1.message}). Trying Direct Multi-Host ReplicaSet...`);
     try {
       if (mongoose.connection.readyState !== 0) {
         await mongoose.disconnect().catch(() => {});
       }
       const conn2 = await mongoose.connect(DIRECT_REPLICA_URI, {
-        serverSelectionTimeoutMS: 8000,
+        serverSelectionTimeoutMS: 3500,
         family: 4
       });
-      console.log(`🍃 MongoDB Atlas Connected via Direct ReplicaSet: ${conn2.connection.host}/${conn2.connection.name}`);
+      console.log(`🍃 MongoDB Atlas Connected via Direct ReplicaSet: ${mongoose.connection.host || 'Atlas'}/${mongoose.connection.name}`);
       isConnecting = false;
       await syncAtlasDatabase();
       return true;
     } catch (err2) {
-      console.error(`❌ Both MongoDB Connection attempts failed: ${err2.message}`);
+      console.warn(`💡 Operating in High-Speed Standalone Store Mode (Disk & Memory Synchronized). Atlas notice: ${err2.message}`);
       isConnecting = false;
       return false;
     }

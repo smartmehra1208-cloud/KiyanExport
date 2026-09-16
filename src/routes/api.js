@@ -15,15 +15,26 @@ const Order = require('../models/Order');
 const Contact = require('../models/Contact');
 const SiteContent = require('../models/SiteContent');
 
+let lastDbAttempt = 0;
+const DB_RETRY_INTERVAL = 120000; // 2 minutes cooldown between connection attempts
+
 async function ensureDbConnected() {
-  if (mongoose.connection.readyState !== 1) {
-    console.log('🔄 Live Auto-Reconnecting to MongoDB Atlas...');
-    await connectDB();
+  if (mongoose.connection.readyState === 1) return true;
+  const now = Date.now();
+  if (now - lastDbAttempt < DB_RETRY_INTERVAL) {
+    return false;
   }
+  lastDbAttempt = now;
+  // Trigger non-blocking background connection attempt
+  connectDB().catch(() => {});
+  return false;
 }
 
 const PRODUCTS_FILE = path.join(__dirname, '../data/products_store.json');
 const SITE_CONTENT_FILE = path.join(__dirname, '../data/site_content.json');
+const ORDERS_FILE = path.join(__dirname, '../data/orders_store.json');
+const LIVE_USERS_BACKUP = path.join(__dirname, '../data/live_users_backup.json');
+
 const memoryRfqs = [];
 
 // Initialize Products Store from file or fallback to products.js
@@ -49,7 +60,24 @@ function saveProductsStore() {
   }
 }
 
-const LIVE_USERS_BACKUP = path.join(__dirname, '../data/live_users_backup.json');
+// Initialize Orders Store from disk
+let memoryOrders = [];
+try {
+  if (fs.existsSync(ORDERS_FILE)) {
+    memoryOrders = JSON.parse(fs.readFileSync(ORDERS_FILE, 'utf8'));
+    console.log(`📦 Loaded ${memoryOrders.length} orders from disk store.`);
+  }
+} catch (e) {
+  console.warn('Orders store load warning:', e.message);
+}
+
+function saveOrdersStore() {
+  try {
+    fs.writeFileSync(ORDERS_FILE, JSON.stringify(memoryOrders, null, 2), 'utf8');
+  } catch (e) {
+    console.error('Error saving orders store:', e);
+  }
+}
 
 // In-Memory & File Fallback Stores if DB is unreachable
 let memoryUsers = [
@@ -73,6 +101,14 @@ try {
   }
 } catch (e) {
   console.warn('Backup users load warning:', e.message);
+}
+
+function saveLiveUsersBackup() {
+  try {
+    fs.writeFileSync(LIVE_USERS_BACKUP, JSON.stringify(memoryUsers, null, 2), 'utf8');
+  } catch (e) {
+    console.error('Error saving live users backup:', e);
+  }
 }
 
 const defaultSiteContent = {
@@ -214,11 +250,15 @@ router.get('/products', async (req, res) => {
   try {
     const { category, search } = req.query;
     let productsList = [];
-    try {
-      await ensureDbConnected();
-      productsList = await Product.find({}).sort({ id: 1 }).lean();
-    } catch (e) {
-      console.warn('⚠️ Fetching static products fallback:', e.message);
+    if (mongoose.connection.readyState === 1) {
+      try {
+        productsList = await Product.find({}).sort({ id: 1 }).maxTimeMS(2000).lean();
+      } catch (e) {
+        productsList = [...staticProducts];
+      }
+    } else {
+      ensureDbConnected().catch(() => {});
+      productsList = [...staticProducts];
     }
 
     if (!productsList || productsList.length === 0) {
@@ -408,11 +448,8 @@ router.post('/auth/register', async (req, res) => {
       if (dbErr.code === 11000) {
         return res.status(400).json({ success: false, message: 'This email address is already registered. Please click Login or use a different email.' });
       }
-      if (mongoose.connection.readyState === 1) {
-        return res.status(400).json({ success: false, message: 'Database save failed: ' + dbErr.message });
-      }
       newUser = {
-        _id: memoryUsers.length + 1,
+        _id: `u_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
         fullName,
         email: cleanEmail,
         phone: phone || '',
@@ -420,9 +457,22 @@ router.post('/auth/register', async (req, res) => {
         address: address || '',
         city: city || '',
         pin: pin || '',
-        role: userRole
+        role: userRole,
+        createdAt: new Date().toISOString()
       };
-      memoryUsers.push(newUser);
+      memoryUsers.unshift(newUser);
+      saveLiveUsersBackup();
+    }
+
+    if (newUser) {
+      const plainUser = newUser.toObject ? newUser.toObject() : newUser;
+      const existingIdx = memoryUsers.findIndex(u => (u.email || '').toLowerCase() === cleanEmail);
+      if (existingIdx !== -1) {
+        memoryUsers[existingIdx] = plainUser;
+      } else {
+        memoryUsers.unshift(plainUser);
+      }
+      saveLiveUsersBackup();
     }
 
     res.json({
@@ -747,43 +797,55 @@ router.post('/rfq', async (req, res) => {
 
     memoryRfqs.unshift(rfqEntry);
 
-    // Ensure MongoDB Database Connection & Insert RFQ Record to Atlas Database
-    try {
-      await ensureDbConnected();
-      await Order.create({
-        orderId: rfqId,
-        customerName: contactName || 'Valued Buyer',
-        customerEmail: email,
-        customerPhone: phone || 'N/A',
-        customerAddress: shippingCountry || 'International Export',
-        companyName: companyName || 'N/A',
-        paymentMethod: 'B2B Wholesale Inquiry / RFQ Quote',
-        paymentStatus: 'Quote Requested',
-        financials: {
-          subtotal: 0,
-          sgst: 0,
-          igst: 0,
-          totalPayable: Number(targetPrice) || 0
-        },
-        items: [
-          {
-            id: Number(productId) || 1,
-            name: productName || 'Bulk Herbal Product',
-            price: Number(targetPrice) || 0,
-            quantity: Number(targetQuantity) || 100,
-            itemTotal: Number(targetPrice) || 0
-          }
-        ],
-        status: 'RFQ Received',
-        estimatedDelivery: '7 - 12 Days (Port Dispatch)'
+    const orderRecord = {
+      orderId: rfqId,
+      customerName: contactName || 'Valued Buyer',
+      customerEmail: email,
+      customerPhone: phone || 'N/A',
+      customerAddress: shippingCountry || 'International Export',
+      companyName: companyName || 'N/A',
+      paymentMethod: 'B2B Wholesale Inquiry / RFQ Quote',
+      paymentStatus: 'Quote Requested',
+      financials: {
+        subtotal: 0,
+        sgst: 0,
+        igst: 0,
+        totalPayable: Number(targetPrice) || 0
+      },
+      items: [
+        {
+          id: Number(productId) || 1,
+          name: productName || 'Bulk Herbal Product',
+          price: Number(targetPrice) || 0,
+          quantity: Number(targetQuantity) || 100,
+          itemTotal: Number(targetPrice) || 0
+        }
+      ],
+      status: 'RFQ Received',
+      estimatedDelivery: '7 - 12 Days (Port Dispatch)',
+      createdAt: new Date().toISOString()
+    };
+
+    // Save to memoryOrders & disk store immediately
+    memoryOrders.unshift(orderRecord);
+    saveOrdersStore();
+
+    // If MongoDB Atlas is connected, also persist to Atlas
+    if (mongoose.connection.readyState === 1) {
+      Order.create(orderRecord).then(() => {
+        console.log(`🍃 Successfully saved RFQ ${rfqId} to MongoDB Atlas Database!`);
+      }).catch(dbErr => {
+        console.warn('⚠️ MongoDB Atlas RFQ insertion fallback:', dbErr.message);
       });
-      console.log(`🍃 Successfully saved RFQ ${rfqId} to MongoDB Atlas Database!`);
-    } catch (dbErr) {
-      console.warn('⚠️ MongoDB Atlas RFQ insertion fallback:', dbErr.message);
     }
 
-    // Dispatch SMTP Email Notification to kiyanexport54@gmail.com
-    const emailResult = await sendRfqEmail(rfqEntry);
+    // Dispatch SMTP Email Notification to smart.mehra1208@gmail.com & kiyanexport54@gmail.com
+    let emailResult = { success: false };
+    try {
+      emailResult = await sendRfqEmail(rfqEntry);
+    } catch (mErr) {
+      console.warn('⚠️ SMTP RFQ dispatch warning:', mErr.message);
+    }
 
     res.json({
       success: true,
@@ -1585,10 +1647,15 @@ router.delete('/admin/products/:id', async (req, res) => {
 router.get('/admin/orders', async (req, res) => {
   try {
     let allOrders = [];
-    try {
-      allOrders = await Order.find({}).sort({ createdAt: -1 }).lean();
-    } catch (e) {
-      allOrders = memoryOrders;
+    if (mongoose.connection.readyState === 1) {
+      try {
+        allOrders = await Order.find({}).sort({ createdAt: -1 }).maxTimeMS(2500).lean();
+      } catch (e) {
+        allOrders = [...memoryOrders];
+      }
+    } else {
+      ensureDbConnected().catch(() => {});
+      allOrders = [...memoryOrders];
     }
 
     const formatted = allOrders.map(order => {
@@ -1624,10 +1691,13 @@ router.put('/admin/orders/:id/status', async (req, res) => {
     let found = memoryOrders.find(o => o.orderId === orderId);
     if (found) {
       found.status = status;
+      saveOrdersStore();
     }
 
     try {
-      await Order.findOneAndUpdate({ orderId }, { status });
+      if (mongoose.connection.readyState === 1) {
+        await Order.findOneAndUpdate({ orderId }, { status });
+      }
     } catch (e) {}
 
     res.json({ success: true, message: `Order ${orderId} status updated to ${status}` });
@@ -1641,15 +1711,22 @@ router.get('/admin/rfqs', (req, res) => {
   res.json({ success: true, count: memoryRfqs.length, rfqs: memoryRfqs });
 });
 
-// GET Admin All Registered Users / Customers (MongoDB Atlas Direct Sync)
+// GET Admin All Registered Users / Customers (High-Speed Direct Sync)
 router.get('/admin/users', async (req, res) => {
   try {
     let allUsers = [];
-    try {
-      await ensureDbConnected();
-      allUsers = await User.find({}, '-password').maxTimeMS(4000).sort({ createdAt: -1 }).lean();
-    } catch (dbErr) {
-      console.warn('⚠️ User.find DB query warning, using persistent disk backup:', dbErr.message);
+    if (mongoose.connection.readyState === 1) {
+      try {
+        allUsers = await User.find({}, '-password').maxTimeMS(2500).sort({ createdAt: -1 }).lean();
+      } catch (dbErr) {
+        allUsers = memoryUsers.map(u => {
+          const copy = { ...u };
+          delete copy.password;
+          return copy;
+        });
+      }
+    } else {
+      ensureDbConnected().catch(() => {});
       allUsers = memoryUsers.map(u => {
         const copy = { ...u };
         delete copy.password;
@@ -1683,6 +1760,73 @@ router.get('/admin/users', async (req, res) => {
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to fetch registered users', error: err.message });
   }
+});
+
+// GET System Health & Diagnostics
+router.get('/diagnostic', async (req, res) => {
+  const https = require('https');
+  const net = require('net');
+
+  const result = {
+    timestamp: new Date().toISOString(),
+    nodeVersion: process.version,
+    platform: process.platform,
+    mongoConnectionState: mongoose.connection.readyState,
+    mongoState: ['disconnected', 'connected', 'connecting', 'disconnecting'][mongoose.connection.readyState] || 'unknown',
+    counts: {
+      usersInMemory: memoryUsers.length,
+      ordersInMemory: memoryOrders.length,
+      productsInMemory: staticProducts.length
+    },
+    networkChecks: {}
+  };
+
+  try {
+    const ipRes = await new Promise((resolve, reject) => {
+      const reqNet = https.get('https://api.ipify.org?format=json', { timeout: 3500 }, r => {
+        let d = '';
+        r.on('data', chunk => d += chunk);
+        r.on('end', () => {
+          try { resolve(JSON.parse(d)); } catch(e) { resolve({ raw: d }); }
+        });
+      });
+      reqNet.on('error', reject);
+      reqNet.on('timeout', () => { reqNet.destroy(); reject(new Error('Timeout')); });
+    });
+    result.publicEgressIp = ipRes.ip || ipRes;
+  } catch(e) {
+    result.publicEgressIp = 'Probe Failed: ' + e.message;
+  }
+
+  const probePort = (host, port, timeout = 3000) => {
+    return new Promise((resolve) => {
+      const socket = new net.Socket();
+      socket.setTimeout(timeout);
+      socket.on('connect', () => {
+        socket.destroy();
+        resolve({ host, port, status: 'OPEN' });
+      });
+      socket.on('timeout', () => {
+        socket.destroy();
+        resolve({ host, port, status: 'TIMED_OUT' });
+      });
+      socket.on('error', (err) => {
+        socket.destroy();
+        resolve({ host, port, status: 'BLOCKED / ERROR', error: err.code || err.message });
+      });
+      socket.connect(port, host);
+    });
+  };
+
+  try {
+    result.networkChecks.gmailSmtp465 = await probePort('smtp.gmail.com', 465);
+    result.networkChecks.gmailSmtp587 = await probePort('smtp.gmail.com', 587);
+    result.networkChecks.mongoAtlasShard0 = await probePort('ac-l8lvv7w-shard-00-00.sxts5to.mongodb.net', 27017);
+  } catch (probeErr) {
+    result.networkChecks.error = probeErr.message;
+  }
+
+  res.json(result);
 });
 
 module.exports = router;

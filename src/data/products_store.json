@@ -1,5 +1,6 @@
 [
   {
+    "_id": "6a991eddf69cf2fa4f37b9e2",
     "id": 1,
     "name": "ARJUNA CAPSULE",
     "category": "Herbal Products",
@@ -26,6 +27,28 @@
       "Made in India",
       "GMP Certified"
     ],
+    "inStock": true,
+    "__v": 1,
+    "createdAt": "2026-09-03T07:16:45.510Z",
+    "updatedAt": "2026-09-16T05:30:23.448Z",
+    "reviews": [
+      {
+        "user": "Global BioPharm LLC",
+        "rating": 5,
+        "comment": "Exceptional extract purity and fast delivery!",
+        "createdAt": "2026-09-10T12:40:14.936Z",
+        "_id": "6aaa296f40db1b1d4528e267"
+      }
+    ],
+    "reviewsCount": 20,
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹509 - ₹599 / Pieces",
     "priceTiers": [
@@ -33,48 +56,34 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 599,
+        "_id": "6aaa296f40db1b1d4528e268",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 539,
+        "_id": "6aaa296f40db1b1d4528e269",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 509,
+        "_id": "6aaa296f40db1b1d4528e26a",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 509,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviews": [
-      {
-        "user": "Global BioPharm LLC",
-        "rating": 5,
-        "comment": "Exceptional extract purity and fast delivery!",
-        "createdAt": "2026-09-10T12:40:14.936Z"
-      }
-    ],
-    "reviewsCount": 20,
-    "tag": "HERBAL CARE",
     "isBestseller": true,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9e3",
     "id": 2,
     "name": "ARJUNA POWDER",
     "category": "Herbal Products",
@@ -98,6 +107,18 @@
       "Made in India",
       "Non-GMO"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.512Z",
+    "updatedAt": "2026-09-16T05:30:23.697Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹510 - ₹600 / Kg",
     "priceTiers": [
@@ -105,40 +126,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 600,
+        "_id": "6aaa296f40db1b1d4528e26b",
         "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 540,
+        "_id": "6aaa296f40db1b1d4528e26c",
         "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 510,
+        "_id": "6aaa296f40db1b1d4528e26d",
         "label": "1000+ Kg"
       }
     ],
     "samplePrice": 1274,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Kg"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9e4",
     "id": 3,
     "name": "ASWAGANDHA POWDER",
     "category": "Herbal Products",
@@ -163,6 +179,18 @@
       "Made in India",
       "Lab Tested"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.512Z",
+    "updatedAt": "2026-09-16T05:30:23.847Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹1913 - ₹2250 / Kg",
     "priceTiers": [
@@ -170,40 +198,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 2250,
+        "_id": "6aaa296f40db1b1d4528e26e",
         "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 2025,
+        "_id": "6aaa296f40db1b1d4528e26f",
         "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 1913,
+        "_id": "6aaa296f40db1b1d4528e270",
         "label": "1000+ Kg"
       }
     ],
     "samplePrice": 2124,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Kg"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9e5",
     "id": 4,
     "name": "ASWAGANDHA CAPSULE",
     "category": "Herbal Products",
@@ -227,6 +250,18 @@
       "Made in India",
       "ISO Certified"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.512Z",
+    "updatedAt": "2026-09-16T05:30:23.893Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
     "priceRange": "₹679 - ₹799 / Pieces",
     "priceTiers": [
@@ -234,40 +269,35 @@
         "minQty": 50,
         "maxQty": 249,
         "price": 799,
+        "_id": "6aaa296f40db1b1d4528e271",
         "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
         "price": 719,
+        "_id": "6aaa296f40db1b1d4528e272",
         "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
         "price": 679,
+        "_id": "6aaa296f40db1b1d4528e273",
         "label": "500+ Pieces"
       }
     ],
     "samplePrice": 4249,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9e6",
     "id": 5,
     "name": "ASWAGANDHA GUMMIES",
     "category": "Herbal Products",
@@ -293,6 +323,18 @@
       "Gelatin Free",
       "Made in India"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.512Z",
+    "updatedAt": "2026-09-16T05:30:23.959Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹468 - ₹550 / Pieces",
     "priceTiers": [
@@ -300,40 +342,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 550,
+        "_id": "6aaa296f40db1b1d4528e274",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 495,
+        "_id": "6aaa296f40db1b1d4528e275",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 468,
+        "_id": "6aaa296f40db1b1d4528e276",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 2549,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9e7",
     "id": 6,
     "name": "BACOPA CAPSULE",
     "category": "Herbal Products",
@@ -358,6 +395,18 @@
       "Made in India",
       "GMP Facility"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.512Z",
+    "updatedAt": "2026-09-16T05:30:24.006Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹723 - ₹850 / Pieces",
     "priceTiers": [
@@ -365,40 +414,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 850,
+        "_id": "6aaa297040db1b1d4528e277",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 765,
+        "_id": "6aaa297040db1b1d4528e278",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 723,
+        "_id": "6aaa297040db1b1d4528e279",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1104,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9e8",
     "id": 7,
     "name": "BAMBOO SALT",
     "category": "Herbal Products",
@@ -422,6 +466,18 @@
       "Alkalizing",
       "Made in India"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.512Z",
+    "updatedAt": "2026-09-16T05:30:24.053Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹6375 - ₹7500 / Kg",
     "priceTiers": [
@@ -429,40 +485,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 7500,
+        "_id": "6aaa297040db1b1d4528e27a",
         "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 6750,
+        "_id": "6aaa297040db1b1d4528e27b",
         "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 6375,
+        "_id": "6aaa297040db1b1d4528e27c",
         "label": "1000+ Kg"
       }
     ],
     "samplePrice": 1529,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Kg"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9e9",
     "id": 8,
     "name": "BOSWELLIA CAPSULE",
     "category": "Herbal Products",
@@ -486,6 +537,18 @@
       "Made in India",
       "Pesticide Free"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.512Z",
+    "updatedAt": "2026-09-16T05:30:24.098Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹723 - ₹850 / Pieces",
     "priceTiers": [
@@ -493,40 +556,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 850,
+        "_id": "6aaa297040db1b1d4528e27d",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 765,
+        "_id": "6aaa297040db1b1d4528e27e",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 723,
+        "_id": "6aaa297040db1b1d4528e27f",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 764,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9eb",
     "id": 10,
     "name": "Fadogia Agrestis Capsules",
     "category": "Herbal Products",
@@ -551,6 +609,18 @@
       "Made in India",
       "500 mg"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.512Z",
+    "updatedAt": "2026-09-16T05:30:24.156Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹638 - ₹750 / Pieces",
     "priceTiers": [
@@ -558,40 +628,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 750,
+        "_id": "6aaa297040db1b1d4528e280",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 675,
+        "_id": "6aaa297040db1b1d4528e281",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 638,
+        "_id": "6aaa297040db1b1d4528e282",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1869,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true,
-    "tag": "HERBAL CARE",
     "stockQuantity": 15,
-    "reviewsCount": 28,
+    "supplyCapacity": "100,000 Units / Month",
+    "tag": "HERBAL CARE",
+    "verifiedSupplier": true,
     "isBestseller": false,
-    "inStock": true,
+    "reviewsCount": 28,
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9ec",
     "id": 11,
     "name": "GINGER TURMERIC CAPSULE",
     "category": "Herbal Products",
@@ -617,6 +682,18 @@
       "Made in India",
       "Gluten Free"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.512Z",
+    "updatedAt": "2026-09-16T05:30:24.203Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹765 - ₹900 / Pieces",
     "priceTiers": [
@@ -624,40 +701,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 900,
+        "_id": "6aaa297040db1b1d4528e283",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 810,
+        "_id": "6aaa297040db1b1d4528e284",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 765,
+        "_id": "6aaa297040db1b1d4528e285",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1104,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9ed",
     "id": 12,
     "name": "GINKGO BILOBA CAPSULE",
     "category": "Herbal Products",
@@ -681,6 +753,18 @@
       "Made in India",
       "Ultra Pure"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.512Z",
+    "updatedAt": "2026-09-16T05:30:24.248Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
     "priceRange": "₹638 - ₹750 / Pieces",
     "priceTiers": [
@@ -688,40 +772,35 @@
         "minQty": 50,
         "maxQty": 249,
         "price": 750,
+        "_id": "6aaa297040db1b1d4528e286",
         "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
         "price": 675,
+        "_id": "6aaa297040db1b1d4528e287",
         "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
         "price": 638,
+        "_id": "6aaa297040db1b1d4528e288",
         "label": "500+ Pieces"
       }
     ],
     "samplePrice": 5099,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9ee",
     "id": 13,
     "name": "SHILAJIT GUMMIES",
     "category": "Herbal Products",
@@ -747,6 +826,18 @@
       "Made in India",
       "Pectin Based"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.512Z",
+    "updatedAt": "2026-09-16T05:30:24.298Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
     "priceRange": "₹344 - ₹405 / Pieces",
     "priceTiers": [
@@ -754,40 +845,35 @@
         "minQty": 50,
         "maxQty": 249,
         "price": 405,
+        "_id": "6aaa297040db1b1d4528e289",
         "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
         "price": 365,
+        "_id": "6aaa297040db1b1d4528e28a",
         "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
         "price": 344,
+        "_id": "6aaa297040db1b1d4528e28b",
         "label": "500+ Pieces"
       }
     ],
     "samplePrice": 2974,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9ef",
     "id": 14,
     "name": "MACA ROOT CAPSULES",
     "category": "Herbal Products",
@@ -811,6 +897,18 @@
       "Made in India",
       "Non-GMO"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.366Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
@@ -818,40 +916,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 650,
+        "_id": "6aaa297040db1b1d4528e28c",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 585,
+        "_id": "6aaa297040db1b1d4528e28d",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 553,
+        "_id": "6aaa297040db1b1d4528e28e",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 2549,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9f0",
     "id": 15,
     "name": "MACA ROOT + TONGAT ALI CAPSULES",
     "category": "Herbal Products",
@@ -875,6 +968,18 @@
       "Made in India",
       "Lab Tested"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.419Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
     "priceRange": "₹723 - ₹850 / Pieces",
     "priceTiers": [
@@ -882,40 +987,35 @@
         "minQty": 50,
         "maxQty": 249,
         "price": 850,
+        "_id": "6aaa297040db1b1d4528e28f",
         "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
         "price": 765,
+        "_id": "6aaa297040db1b1d4528e290",
         "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
         "price": 723,
+        "_id": "6aaa297040db1b1d4528e291",
         "label": "500+ Pieces"
       }
     ],
     "samplePrice": 3399,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9f1",
     "id": 16,
     "name": "MORINGA POWDER",
     "category": "Herbal Products",
@@ -939,6 +1039,18 @@
       "Made in India",
       "Raw & Sun-Dried"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.465Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹850 - ₹1000 / Kg",
     "priceTiers": [
@@ -946,40 +1058,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 1000,
+        "_id": "6aaa297040db1b1d4528e292",
         "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 900,
+        "_id": "6aaa297040db1b1d4528e293",
         "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 850,
+        "_id": "6aaa297040db1b1d4528e294",
         "label": "1000+ Kg"
       }
     ],
     "samplePrice": 1699,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Kg"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9f2",
     "id": 17,
     "name": "MORINGA CAPSULES",
     "category": "Herbal Products",
@@ -1003,6 +1110,18 @@
       "Made in India",
       "Rich in Iron & Vit C"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.517Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
@@ -1010,40 +1129,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 650,
+        "_id": "6aaa297040db1b1d4528e295",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 585,
+        "_id": "6aaa297040db1b1d4528e296",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 553,
+        "_id": "6aaa297040db1b1d4528e297",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1529,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9f3",
     "id": 18,
     "name": "SEA MOSS POWDER",
     "category": "Herbal Products",
@@ -1069,6 +1183,18 @@
       "Made in India",
       "92 Minerals"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.561Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹1913 - ₹2250 / Kg",
     "priceTiers": [
@@ -1076,40 +1202,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 2250,
+        "_id": "6aaa297040db1b1d4528e298",
         "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 2025,
+        "_id": "6aaa297040db1b1d4528e299",
         "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 1913,
+        "_id": "6aaa297040db1b1d4528e29a",
         "label": "1000+ Kg"
       }
     ],
     "samplePrice": 2124,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Kg"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9f4",
     "id": 19,
     "name": "SEAMOSS (Zero Sugar)",
     "category": "Herbal Products",
@@ -1135,6 +1256,18 @@
       "100% Vegan",
       "Made in India"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.616Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹638 - ₹750 / Pieces",
     "priceTiers": [
@@ -1142,40 +1275,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 750,
+        "_id": "6aaa297040db1b1d4528e29b",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 675,
+        "_id": "6aaa297040db1b1d4528e29c",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 638,
+        "_id": "6aaa297040db1b1d4528e29d",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1614,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9f5",
     "id": 20,
     "name": "SEAMOSS3",
     "category": "Herbal Products",
@@ -1201,6 +1329,18 @@
       "Made in India",
       "Pure Cleanse"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.714Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹850 - ₹1000 / Pieces",
     "priceTiers": [
@@ -1208,40 +1348,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 1000,
+        "_id": "6aaa297040db1b1d4528e29e",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 900,
+        "_id": "6aaa297040db1b1d4528e29f",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 850,
+        "_id": "6aaa297040db1b1d4528e2a0",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 594,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9f6",
     "id": 21,
     "name": "SHILAJIT",
     "category": "Herbal Products",
@@ -1266,6 +1401,18 @@
       "Made in India",
       "Lab Certified"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.769Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹298 - ₹350 / Pieces",
     "priceTiers": [
@@ -1273,40 +1420,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 350,
+        "_id": "6aaa297040db1b1d4528e2a1",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 315,
+        "_id": "6aaa297040db1b1d4528e2a2",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 298,
+        "_id": "6aaa297040db1b1d4528e2a3",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1189,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9f7",
     "id": 22,
     "name": "SHILAJIT2",
     "category": "Herbal Products",
@@ -1330,6 +1472,18 @@
       "Made in India",
       "GMP Facility"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.831Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
@@ -1337,40 +1491,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 650,
+        "_id": "6aaa297040db1b1d4528e2a4",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 585,
+        "_id": "6aaa297040db1b1d4528e2a5",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 553,
+        "_id": "6aaa297040db1b1d4528e2a6",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 2549,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9f8",
     "id": 23,
     "name": "SHILAJIT3",
     "category": "Herbal Products",
@@ -1394,6 +1543,18 @@
       "Made in India",
       "Iso 9001:2015"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.880Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
     "priceRange": "₹850 - ₹1000 / Pieces",
     "priceTiers": [
@@ -1401,40 +1562,35 @@
         "minQty": 50,
         "maxQty": 249,
         "price": 1000,
+        "_id": "6aaa297040db1b1d4528e2a7",
         "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
         "price": 900,
+        "_id": "6aaa297040db1b1d4528e2a8",
         "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
         "price": 850,
+        "_id": "6aaa297040db1b1d4528e2a9",
         "label": "500+ Pieces"
       }
     ],
     "samplePrice": 2974,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9f9",
     "id": 24,
     "name": "SHILAJITCAP",
     "category": "Herbal Products",
@@ -1458,6 +1614,18 @@
       "Made in India",
       "Zero Additives"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.926Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
     "priceRange": "₹468 - ₹550 / Pieces",
     "priceTiers": [
@@ -1465,40 +1633,35 @@
         "minQty": 50,
         "maxQty": 249,
         "price": 550,
+        "_id": "6aaa297040db1b1d4528e2aa",
         "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
         "price": 495,
+        "_id": "6aaa297040db1b1d4528e2ab",
         "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
         "price": 468,
+        "_id": "6aaa297040db1b1d4528e2ac",
         "label": "500+ Pieces"
       }
     ],
     "samplePrice": 3399,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9fa",
     "id": 25,
     "name": "SHILAJITHONEY",
     "category": "Herbal Products",
@@ -1523,6 +1686,18 @@
       "Made in India",
       "No Added Sugar"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:24.989Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
     "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
@@ -1530,40 +1705,35 @@
         "minQty": 50,
         "maxQty": 249,
         "price": 650,
+        "_id": "6aaa297040db1b1d4528e2ad",
         "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
         "price": 585,
+        "_id": "6aaa297040db1b1d4528e2ae",
         "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
         "price": 553,
+        "_id": "6aaa297040db1b1d4528e2af",
         "label": "500+ Pieces"
       }
     ],
     "samplePrice": 3824,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9fb",
     "id": 26,
     "name": "SHILAKIORA PURE",
     "category": "Herbal Products",
@@ -1587,6 +1757,18 @@
       "Made in India",
       "Ayush Approved"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:25.041Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹638 - ₹750 / Pieces",
     "priceTiers": [
@@ -1594,40 +1776,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 750,
+        "_id": "6aaa297140db1b1d4528e2b0",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 675,
+        "_id": "6aaa297140db1b1d4528e2b1",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 638,
+        "_id": "6aaa297140db1b1d4528e2b2",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 2464,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9fc",
     "id": 27,
     "name": "SHILASWA",
     "category": "Herbal Products",
@@ -1652,6 +1829,18 @@
       "Made in India",
       "Dual Power Formula"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:25.086Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
     "priceRange": "₹638 - ₹750 / Pieces",
     "priceTiers": [
@@ -1659,40 +1848,35 @@
         "minQty": 50,
         "maxQty": 249,
         "price": 750,
+        "_id": "6aaa297140db1b1d4528e2b3",
         "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
         "price": 675,
+        "_id": "6aaa297140db1b1d4528e2b4",
         "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
         "price": 638,
+        "_id": "6aaa297140db1b1d4528e2b5",
         "label": "500+ Pieces"
       }
     ],
     "samplePrice": 2804,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9fd",
     "id": 28,
     "name": "SILAJ",
     "category": "Herbal Products",
@@ -1718,6 +1902,18 @@
       "Made in India",
       "100% Organic"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:25.134Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹765 - ₹900 / Pieces",
     "priceTiers": [
@@ -1725,40 +1921,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 900,
+        "_id": "6aaa297140db1b1d4528e2b6",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 810,
+        "_id": "6aaa297140db1b1d4528e2b7",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 765,
+        "_id": "6aaa297140db1b1d4528e2b8",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1274,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9fe",
     "id": 29,
     "name": "TONG",
     "category": "Herbal Products",
@@ -1782,6 +1973,18 @@
       "Made in India",
       "Potent Formula"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:25.195Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹808 - ₹950 / Pieces",
     "priceTiers": [
@@ -1789,40 +1992,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 950,
+        "_id": "6aaa297140db1b1d4528e2b9",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 855,
+        "_id": "6aaa297140db1b1d4528e2ba",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 808,
+        "_id": "6aaa297140db1b1d4528e2bb",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1954,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37b9ff",
     "id": 30,
     "name": "TRIPHALA-CAP",
     "category": "Herbal Products",
@@ -1848,6 +2046,18 @@
       "Made in India",
       "Gentle Detox"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.513Z",
+    "updatedAt": "2026-09-16T05:30:25.245Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
@@ -1855,40 +2065,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 650,
+        "_id": "6aaa297140db1b1d4528e2bc",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 585,
+        "_id": "6aaa297140db1b1d4528e2bd",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 553,
+        "_id": "6aaa297140db1b1d4528e2be",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1104,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37ba00",
     "id": 31,
     "name": "TRIPHLA-POWER",
     "category": "Herbal Products",
@@ -1912,6 +2117,18 @@
       "Made in India",
       "Non-GMO"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.515Z",
+    "updatedAt": "2026-09-16T05:30:25.297Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹680 - ₹800 / Kg",
     "priceTiers": [
@@ -1919,40 +2136,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 800,
+        "_id": "6aaa297140db1b1d4528e2bf",
         "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 720,
+        "_id": "6aaa297140db1b1d4528e2c0",
         "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 680,
+        "_id": "6aaa297140db1b1d4528e2c1",
         "label": "1000+ Kg"
       }
     ],
     "samplePrice": 764,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Kg"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37ba01",
     "id": 32,
     "name": "TURMINGA",
     "category": "Herbal Products",
@@ -1977,6 +2189,18 @@
       "Made in India",
       "Patented Blend"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.515Z",
+    "updatedAt": "2026-09-16T05:30:25.343Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
     "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
@@ -1984,40 +2208,35 @@
         "minQty": 50,
         "maxQty": 249,
         "price": 650,
+        "_id": "6aaa297140db1b1d4528e2c2",
         "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
         "price": 585,
+        "_id": "6aaa297140db1b1d4528e2c3",
         "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
         "price": 553,
+        "_id": "6aaa297140db1b1d4528e2c4",
         "label": "500+ Pieces"
       }
     ],
     "samplePrice": 5099,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37ba02",
     "id": 33,
     "name": "TURM",
     "category": "Herbal Products",
@@ -2042,6 +2261,18 @@
       "Made in India",
       "Non-Greasy"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.515Z",
+    "updatedAt": "2026-09-16T05:30:25.388Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
     "priceRange": "₹468 - ₹550 / Pieces",
     "priceTiers": [
@@ -2049,40 +2280,35 @@
         "minQty": 50,
         "maxQty": 249,
         "price": 550,
+        "_id": "6aaa297140db1b1d4528e2c5",
         "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
         "price": 495,
+        "_id": "6aaa297140db1b1d4528e2c6",
         "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
         "price": 468,
+        "_id": "6aaa297140db1b1d4528e2c7",
         "label": "500+ Pieces"
       }
     ],
     "samplePrice": 3654,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37ba03",
     "id": 34,
     "name": "TURMERIC",
     "category": "Herbal Products",
@@ -2107,6 +2333,18 @@
       "Made in India",
       "Maximum Absorption"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.515Z",
+    "updatedAt": "2026-09-16T05:30:25.444Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
     "priceRange": "₹765 - ₹900 / Pieces",
     "priceTiers": [
@@ -2114,40 +2352,35 @@
         "minQty": 100,
         "maxQty": 499,
         "price": 900,
+        "_id": "6aaa297140db1b1d4528e2c8",
         "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
         "price": 810,
+        "_id": "6aaa297140db1b1d4528e2c9",
         "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
         "price": 765,
+        "_id": "6aaa297140db1b1d4528e2ca",
         "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 2549,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
   },
   {
+    "_id": "6a991eddf69cf2fa4f37ba04",
     "id": 35,
     "name": "VITAMIN",
     "category": "Herbal Products",
@@ -2174,6 +2407,18 @@
       "Made in India",
       "Wholefood Sourced"
     ],
+    "inStock": true,
+    "__v": 0,
+    "createdAt": "2026-09-03T07:16:45.515Z",
+    "updatedAt": "2026-09-16T05:30:25.494Z",
+    "customization": [
+      "Custom Brand Logo & Label Printing",
+      "Custom Bottle / Box Packaging",
+      "Custom Herbal Concentration / OEM Formulation",
+      "COA & Lab Test Certificates Included"
+    ],
+    "factoryDirect": true,
+    "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
     "priceRange": "₹808 - ₹950 / Pieces",
     "priceTiers": [
@@ -2181,37 +2426,65 @@
         "minQty": 50,
         "maxQty": 249,
         "price": 950,
+        "_id": "6aaa297140db1b1d4528e2cb",
         "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
         "price": 855,
+        "_id": "6aaa297140db1b1d4528e2cc",
         "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
         "price": 808,
+        "_id": "6aaa297140db1b1d4528e2cd",
         "label": "500+ Pieces"
       }
     ],
     "samplePrice": 3314,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
     "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
     "verifiedSupplier": true,
-    "factoryDirect": true,
-    "reviewsCount": 28,
-    "tag": "HERBAL CARE",
     "isBestseller": false,
+    "reviewsCount": 28,
     "stockQuantity": 15,
-    "inStock": true,
+    "tag": "HERBAL CARE",
     "unit": "Pieces"
+  },
+  {
+    "_id": "6aa6a274625321bab2400902",
+    "id": 9,
+    "__v": 0,
+    "badge": "Beauty",
+    "category": "Herbal",
+    "createdAt": "2026-09-13T13:17:40.176Z",
+    "description": "Strawberry flavored herbal blend designed for stronger hair, glowing skin and nails.",
+    "image": "Herbal/fado.webp",
+    "inStock": true,
+    "ingredients": [
+      "Fadogia Agrestis Extract",
+      "Biotin",
+      "Natural Strawberry Extract"
+    ],
+    "name": "FADO",
+    "oldPrice": 1800,
+    "price": 1499,
+    "rating": 4.7,
+    "reviews": [],
+    "reviewsCount": 1,
+    "specs": [
+      "60 Capsules",
+      "100% Vegan",
+      "Made in India",
+      "FDA Registered Facility"
+    ],
+    "thumbnails": [
+      "Herbal/fado.webp",
+      "Herbal/fadogiakiyan1.webp",
+      "Herbal/Aswagandha.webp"
+    ],
+    "updatedAt": "2026-09-13T13:17:46.231Z"
   }
 ]

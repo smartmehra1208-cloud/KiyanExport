@@ -2,20 +2,26 @@ const path = require('path');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 
-const RECIPIENT_EMAIL = process.env.RFQ_RECIPIENT_EMAIL || 'kiyanexport54@gmail.com';
+const RECIPIENT_EMAIL = process.env.RFQ_RECIPIENT_EMAIL || 'smart.mehra1208@gmail.com, kiyanexport54@gmail.com';
 
 // Direct Hosted Cloudinary Logo URL (0% Attachment Chip & 100% Reliable Gmail Display)
 const LOGO_SRC = 'https://res.cloudinary.com/arkc76lz/image/upload/KIyan_export.jpg.jpg';
 
-// Configure SMTP Transporter
+// Configure SMTP Transporter (Port 465 SSL is much more reliable in cloud containers than port 587)
+const smtpPort = parseInt(process.env.SMTP_PORT, 10) || 465;
+const isSecure = smtpPort === 465 || process.env.SMTP_SECURE === 'true';
+
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  port: parseInt(process.env.SMTP_PORT, 10) || 587,
-  secure: process.env.SMTP_SECURE === 'true', // false for port 587
+  port: smtpPort,
+  secure: isSecure,
   auth: {
     user: (process.env.SMTP_USER || 'smart.mehra1208@gmail.com').trim(),
     pass: (process.env.SMTP_PASS || 'zqkkdfnyfxusknxg').replace(/\s+/g, '')
   },
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 15000,
   tls: {
     rejectUnauthorized: false
   }
@@ -135,11 +141,14 @@ async function sendRfqEmail(rfqData) {
     html: htmlContent
   };
 
-  if (email && email.includes('@')) {
-    mailOptions.cc = email;
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log(`✉️ SMTP RFQ Notification dispatched to ${RECIPIENT_EMAIL}! MessageId: ${info.messageId}`);
+    return { success: true, messageId: info.messageId };
+  } catch (error) {
+    console.warn(`⚠️ SMTP RFQ Transporter Warning: ${error.message}`);
+    return { success: false, error: error.message };
   }
-
-  return await transporter.sendMail(mailOptions);
 }
 
 /**
@@ -307,9 +316,26 @@ async function sendOrderConfirmationEmail(orderData) {
   }
 }
 
+async function verifySmtp() {
+  try {
+    return await new Promise((resolve) => {
+      transporter.verify((err, success) => {
+        if (err) {
+          resolve({ ok: false, error: err.message, port: smtpPort });
+        } else {
+          resolve({ ok: true, port: smtpPort });
+        }
+      });
+    });
+  } catch (e) {
+    return { ok: false, error: e.message, port: smtpPort };
+  }
+}
+
 module.exports = {
   transporter,
   sendRfqEmail,
   sendOrderConfirmationEmail,
+  verifySmtp,
   RECIPIENT_EMAIL
 };
