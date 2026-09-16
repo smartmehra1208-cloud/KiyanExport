@@ -438,6 +438,8 @@ async function handleLogin(event) {
         const standaloneDash = document.getElementById('adminStandaloneDashboard');
         if (standaloneDash) standaloneDash.style.display = 'block';
         renderAdminStandaloneTable();
+        loadStandaloneAdminOrders();
+        loadStandaloneAdminUsers();
         alert(`Welcome Admin (${currentUser.fullName})! Accessing Kiyan Export Admin Dashboard... 👑`);
       } else {
         document.body.classList.remove('admin-mode-active');
@@ -468,10 +470,9 @@ async function handleRegister(event) {
     return;
   }
 
-  // Enforce Password Security Policy
-  const isStrong = password.length >= 8 && /[0-9]/.test(password) && /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
-  if (!isStrong) {
-    alert('🔒 Password Security Notice:\n\nPassword must satisfy all security rules:\n• At least 8 characters long\n• Contains at least one number (0-9)\n• Contains at least one special character (@, #, $, %, etc.)');
+  // Password Policy: Min 4 characters
+  if (!password || password.length < 4) {
+    alert('Please enter a password with at least 4 characters.');
     return;
   }
 
@@ -3770,12 +3771,14 @@ async function updateAdminOrderStatus(orderId, newStatus) {
   }
 }
 
-async function loadStandaloneAdminUsers() {
+async function loadStandaloneAdminUsers(isSilent = false) {
   const tbody = document.getElementById('dashStandaloneUsersTableBody');
   if (!tbody) return;
 
   try {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 25px;">Loading registered customers...</td></tr>';
+    if (!isSilent && (!tbody.children || tbody.children.length === 0 || tbody.innerText.includes('Loading'))) {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 25px;">Loading registered customers...</td></tr>';
+    }
     const res = await fetch('/api/admin/users');
     const data = await res.json();
 
@@ -3787,7 +3790,7 @@ async function loadStandaloneAdminUsers() {
           <td><strong>${u.fullName}</strong></td>
           <td><a href="mailto:${u.email}" style="color: var(--royal-emerald); font-weight: 600;">${u.email}</a></td>
           <td><a href="tel:${u.phone}" style="color: var(--text-dark);">${u.phone || 'N/A'}</a></td>
-          <td style="font-size: 0.85rem; color: #555;">${u.address ? `${u.address}, ${u.city} ${u.pin}` : 'Not provided'}</td>
+          <td style="font-size: 0.85rem; color: #555;">${u.address ? `${u.address}, ${u.city || ''} ${u.pin || ''}` : 'Not provided'}</td>
           <td><span style="font-size: 0.8rem; font-weight: 700; background: ${u.role === 'admin' ? '#e74c3c' : '#27ae60'}; color: white; padding: 4px 10px; border-radius: 12px;">${(u.role || 'USER').toUpperCase()}</span></td>
         </tr>
       `).join('');
@@ -3796,9 +3799,26 @@ async function loadStandaloneAdminUsers() {
       tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 25px; color: #666;">${errMsg}</td></tr>`;
     }
   } catch (err) {
-    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: red; padding: 25px;">Failed to load users from database: ${err.message}</td></tr>`;
+    if (!isSilent) {
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: red; padding: 25px;">Failed to load users: ${err.message}</td></tr>`;
+    }
   }
 }
+
+// Background auto-refresh for admin dashboard (every 10 seconds)
+setInterval(() => {
+  const dash = document.getElementById('adminStandaloneDashboard');
+  if (dash && dash.style.display !== 'none') {
+    const usersTab = document.getElementById('standaloneTabUsers');
+    if (usersTab && usersTab.style.display !== 'none') {
+      loadStandaloneAdminUsers(true);
+    }
+    const ordersTab = document.getElementById('standaloneTabOrders');
+    if (ordersTab && ordersTab.style.display !== 'none') {
+      loadStandaloneAdminOrders();
+    }
+  }
+}, 10000);
 
 function toggleWebsitePreview() {
   document.body.classList.remove('admin-mode-active');

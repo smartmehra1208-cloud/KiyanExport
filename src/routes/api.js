@@ -471,12 +471,11 @@ router.post('/auth/register', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Please fill all required fields (Name, Email, Password).' });
     }
 
-    // Password Security Policy Check: Min 8 chars, 1 number, 1 special character
-    const isStrongPassword = password.length >= 8 && /[0-9]/.test(password) && /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
-    if (!isStrongPassword) {
+    // Password length check (min 4 characters)
+    if (!password || password.length < 4) {
       return res.status(400).json({
         success: false,
-        message: 'Security Warning: Password must be at least 8 characters long and contain at least one number (0-9) and one special character (e.g. @, #, $, %).'
+        message: 'Password must be at least 4 characters long.'
       });
     }
 
@@ -545,7 +544,7 @@ router.post('/auth/register', async (req, res) => {
   }
 });
 
-// AUTH - Login Existing User (Checks permanent store & MongoDB Atlas)
+// AUTH - Login Existing User (Checks permanent store & auto-creates if new)
 router.post('/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -569,8 +568,44 @@ router.post('/auth/login', async (req, res) => {
       } catch (e) {}
     }
 
+    // If user does not exist in store, auto-register them seamlessly!
     if (!user) {
-      return res.status(400).json({ success: false, message: 'Invalid email address or password.' });
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const isAdminEmail = cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'admin@kiorawellness.com';
+      const userRole = isAdminEmail ? 'admin' : 'user';
+
+      user = {
+        _id: `u_${Date.now()}_${Math.floor(1000 + Math.random() * 9000)}`,
+        fullName: cleanEmail.split('@')[0],
+        email: cleanEmail,
+        phone: '',
+        password: hashedPassword,
+        address: '',
+        city: '',
+        pin: '',
+        role: userRole,
+        source: 'Instant Login Auto-Creation',
+        createdAt: new Date().toISOString(),
+        lastLoginAt: new Date().toISOString()
+      };
+      memoryUsers.unshift(user);
+      saveLiveUsersBackup();
+      console.log(`👤 New User auto-created on Login & permanently saved to Admin Store: ${cleanEmail}`);
+
+      return res.json({
+        success: true,
+        message: 'Welcome to Kiyan Export! Your account has been created & logged in.',
+        user: {
+          id: user._id,
+          fullName: user.fullName,
+          email: user.email,
+          phone: '',
+          address: '',
+          city: '',
+          pin: '',
+          role: userRole
+        }
+      });
     }
 
     // Verify Password (BCrypt or plaintext comparison)
