@@ -1,22 +1,23 @@
 {
-  "name": "kiora-wellness",
+  "name": "kiyan-exports",
   "version": "1.0.0",
-  "description": "Kiora Wellness - Premium B2C Herbal & Wellness E-Commerce Platform (Est. 2014)",
+  "description": "Kiyan Export - B2B Herbal Contract Manufacturing & Wholesale Platform",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "build": "echo 'Build complete'",
     "dev": "node server.js"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "keywords": [
-    "kiora-wellness",
+    "kiyan-exports",
     "herbal",
     "supplements",
-    "wellness",
-    "shilajit",
-    "ashwagandha",
-    "b2c-retail"
+    "b2b-wholesale"
   ],
-  "author": "Kiora Wellness",
+  "author": "Kiyan Export",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.3",
@@ -28,9 +29,5 @@
     "mongoose": "^9.9.4",
     "nodemailer": "^10.0.1",
     "razorpay": "^2.9.8"
-  },
-  "devDependencies": {
-    "pdf-lib": "^1.17.1",
-    "sharp": "^0.35.4"
   }
 }
