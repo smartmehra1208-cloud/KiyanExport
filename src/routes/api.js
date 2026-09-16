@@ -202,8 +202,11 @@ router.get('/products', async (req, res) => {
     const { category, search } = req.query;
     let productsList = [];
     try {
-      productsList = await Product.find({}).lean();
-    } catch (e) {}
+      await ensureDbConnected();
+      productsList = await Product.find({}).sort({ id: 1 }).lean();
+    } catch (e) {
+      console.warn('⚠️ Fetching static products fallback:', e.message);
+    }
 
     if (!productsList || productsList.length === 0) {
       productsList = [...staticProducts];
