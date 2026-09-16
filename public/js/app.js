@@ -3792,10 +3792,11 @@ async function loadStandaloneAdminUsers() {
         </tr>
       `).join('');
     } else {
-      tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 25px;">No registered customers found in database.</td></tr>';
+      const errMsg = data.message || data.error || 'No registered customers found in database.';
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 25px; color: #666;">${errMsg}</td></tr>`;
     }
   } catch (err) {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: red; padding: 25px;">Failed to load users from database.</td></tr>';
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: red; padding: 25px;">Failed to load users from database: ${err.message}</td></tr>`;
   }
 }
 
