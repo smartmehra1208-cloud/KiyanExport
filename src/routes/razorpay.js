@@ -97,8 +97,28 @@ router.post('/verify', async (req, res) => {
     }
 
     if (isValid || process.env.NODE_ENV !== 'production') {
-      // Update Order in MongoDB if dbOrderId provided
+      // Update Order in permanent disk store and MongoDB if dbOrderId provided
       if (dbOrderId) {
+        try {
+          const fs = require('fs');
+          const path = require('path');
+          const ordersFile = path.join(__dirname, '../data/orders_store.json');
+          if (fs.existsSync(ordersFile)) {
+            const orders = JSON.parse(fs.readFileSync(ordersFile, 'utf8'));
+            const target = orders.find(o => o.orderId === dbOrderId);
+            if (target) {
+              target.paymentStatus = 'Paid';
+              target.status = 'Confirmed';
+              target.razorpayOrderId = razorpay_order_id;
+              target.razorpayPaymentId = razorpay_payment_id;
+              fs.writeFileSync(ordersFile, JSON.stringify(orders, null, 2), 'utf8');
+              console.log(`💳 Payment verified and updated in orders_store.json for ${dbOrderId}`);
+            }
+          }
+        } catch (fileErr) {
+          console.warn('Orders file update notice:', fileErr.message);
+        }
+
         try {
           await Order.findOneAndUpdate(
             { orderId: dbOrderId },

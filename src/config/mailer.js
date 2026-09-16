@@ -405,6 +405,7 @@ module.exports = {
   transporter,
   sendRfqEmail,
   sendOrderConfirmationEmail,
+  sendOrderEmail: sendOrderConfirmationEmail,
   verifySmtp,
   RECIPIENT_EMAIL
 };

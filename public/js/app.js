@@ -3775,7 +3775,7 @@ async function loadStandaloneAdminUsers() {
   if (!tbody) return;
 
   try {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 25px;">Connecting to MongoDB Atlas...</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 25px;">Loading registered customers...</td></tr>';
     const res = await fetch('/api/admin/users');
     const data = await res.json();
 

@@ -111,6 +111,78 @@ function saveLiveUsersBackup() {
   }
 }
 
+// Auto-capture customer profile into permanent store & Admin Panel
+function ensureCustomerProfile(customerData) {
+  try {
+    const rawEmail = customerData.email || customerData.customerEmail || '';
+    const cleanEmail = rawEmail.toLowerCase().trim();
+    if (!cleanEmail) return null;
+
+    let user = memoryUsers.find(u => (u.email || '').toLowerCase() === cleanEmail);
+    if (!user) {
+      user = {
+        _id: `cust_${Date.now()}_${Math.floor(1000 + Math.random() * 9000)}`,
+        fullName: customerData.fullName || customerData.customerName || customerData.contactName || cleanEmail.split('@')[0],
+        email: cleanEmail,
+        phone: customerData.phone || customerData.customerPhone || '',
+        address: customerData.address || customerData.customerAddress || '',
+        city: customerData.city || customerData.customerCity || '',
+        pin: customerData.pin || customerData.customerPin || '',
+        companyName: customerData.companyName || '',
+        role: 'user',
+        source: customerData.source || 'Order/Inquiry Auto-Capture',
+        createdAt: new Date().toISOString()
+      };
+      memoryUsers.unshift(user);
+      saveLiveUsersBackup();
+      console.log(`👤 Customer profile automatically created and saved to Admin Store: ${cleanEmail}`);
+    } else {
+      let updated = false;
+      const phone = customerData.phone || customerData.customerPhone;
+      if (!user.phone && phone) {
+        user.phone = phone;
+        updated = true;
+      }
+      const address = customerData.address || customerData.customerAddress;
+      if (!user.address && address) {
+        user.address = address;
+        updated = true;
+      }
+      if (customerData.companyName && !user.companyName) {
+        user.companyName = customerData.companyName;
+        updated = true;
+      }
+      if (updated) {
+        saveLiveUsersBackup();
+      }
+    }
+    return user;
+  } catch (e) {
+    console.error('Error in ensureCustomerProfile:', e);
+    return null;
+  }
+}
+
+// Initialize Contacts Store from disk
+const CONTACTS_FILE = path.join(__dirname, '../data/contacts_store.json');
+let memoryContacts = [];
+try {
+  if (fs.existsSync(CONTACTS_FILE)) {
+    memoryContacts = JSON.parse(fs.readFileSync(CONTACTS_FILE, 'utf8'));
+    console.log(`📬 Loaded ${memoryContacts.length} contacts from disk store.`);
+  }
+} catch (e) {
+  console.warn('Contacts store load warning:', e.message);
+}
+
+function saveContactsStore() {
+  try {
+    fs.writeFileSync(CONTACTS_FILE, JSON.stringify(memoryContacts, null, 2), 'utf8');
+  } catch (e) {
+    console.error('Error saving contacts store:', e);
+  }
+}
+
 const defaultSiteContent = {
   heroTagline: 'VERIFIED GOLD MANUFACTURER & EXPORTER • EST. 2014',
   heroTitle: 'Bulk Ayurvedic & Herbal Extracts Direct From Manufacturer',
@@ -390,10 +462,9 @@ router.post('/products/:id/reviews', async (req, res) => {
   }
 });
 
-// AUTH - Register New User
+// AUTH - Register New User (Permanently saved to disk store & Admin Panel)
 router.post('/auth/register', async (req, res) => {
   try {
-    await ensureDbConnected();
     const { fullName, email, phone, password, address, city, pin } = req.body;
 
     if (!fullName || !email || !password) {
@@ -411,15 +482,9 @@ router.post('/auth/register', async (req, res) => {
 
     const cleanEmail = email.toLowerCase().trim();
 
-    // Check MongoDB
-    let existingUser = null;
-    try {
-      existingUser = await User.findOne({ email: cleanEmail });
-    } catch (e) {
-      existingUser = memoryUsers.find(u => u.email === cleanEmail);
-    }
-
-    if (existingUser) {
+    // Check if user already exists in memoryUsers
+    const existingUser = memoryUsers.find(u => (u.email || '').toLowerCase() === cleanEmail);
+    if (existingUser && existingUser.password) {
       return res.status(400).json({ success: false, message: 'Email address is already registered. Please login.' });
     }
 
@@ -430,49 +495,35 @@ router.post('/auth/register', async (req, res) => {
     // Salt and hash password securely
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    let newUser = null;
-    try {
-      newUser = await User.create({
-        fullName,
-        email: cleanEmail,
-        phone: phone || '',
-        password: hashedPassword,
-        address: address || '',
-        city: city || '',
-        pin: pin || '',
-        role: userRole
-      });
-      console.log(`👤 New User registered in MongoDB Atlas: ${newUser.email}`);
-    } catch (dbErr) {
-      console.error('❌ MongoDB Atlas User.create Error:', dbErr.message);
-      if (dbErr.code === 11000) {
-        return res.status(400).json({ success: false, message: 'This email address is already registered. Please click Login or use a different email.' });
-      }
-      newUser = {
-        _id: `u_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
-        fullName,
-        email: cleanEmail,
-        phone: phone || '',
-        password: hashedPassword,
-        address: address || '',
-        city: city || '',
-        pin: pin || '',
-        role: userRole,
-        createdAt: new Date().toISOString()
-      };
-      memoryUsers.unshift(newUser);
-      saveLiveUsersBackup();
-    }
+    const newUser = {
+      _id: existingUser ? existingUser._id : `u_${Date.now()}_${Math.floor(1000 + Math.random() * 9000)}`,
+      fullName: fullName.trim(),
+      email: cleanEmail,
+      phone: phone ? phone.trim() : (existingUser ? existingUser.phone : '') || '',
+      password: hashedPassword,
+      address: address ? address.trim() : (existingUser ? existingUser.address : '') || '',
+      city: city ? city.trim() : (existingUser ? existingUser.city : '') || '',
+      pin: pin ? pin.trim() : (existingUser ? existingUser.pin : '') || '',
+      role: userRole,
+      createdAt: existingUser ? existingUser.createdAt : new Date().toISOString()
+    };
 
-    if (newUser) {
-      const plainUser = newUser.toObject ? newUser.toObject() : newUser;
-      const existingIdx = memoryUsers.findIndex(u => (u.email || '').toLowerCase() === cleanEmail);
-      if (existingIdx !== -1) {
-        memoryUsers[existingIdx] = plainUser;
-      } else {
-        memoryUsers.unshift(plainUser);
+    if (existingUser) {
+      const idx = memoryUsers.findIndex(u => (u.email || '').toLowerCase() === cleanEmail);
+      if (idx !== -1) {
+        memoryUsers[idx] = { ...memoryUsers[idx], ...newUser };
       }
-      saveLiveUsersBackup();
+    } else {
+      memoryUsers.unshift(newUser);
+    }
+    saveLiveUsersBackup();
+    console.log(`👤 New User permanently registered and saved to Admin Store: ${cleanEmail}`);
+
+    // Persist to MongoDB Atlas if connected
+    if (mongoose.connection.readyState === 1) {
+      User.create(newUser).catch(dbErr => {
+        console.warn('⚠️ Atlas user save notice:', dbErr.message);
+      });
     }
 
     res.json({
@@ -483,9 +534,9 @@ router.post('/auth/register', async (req, res) => {
         fullName: newUser.fullName,
         email: newUser.email,
         phone: newUser.phone || '',
-        address: newUser.address || address || '',
-        city: newUser.city || city || '',
-        pin: newUser.pin || pin || '',
+        address: newUser.address || '',
+        city: newUser.city || '',
+        pin: newUser.pin || '',
         role: newUser.role || userRole
       }
     });
@@ -494,7 +545,7 @@ router.post('/auth/register', async (req, res) => {
   }
 });
 
-// AUTH - Login Existing User
+// AUTH - Login Existing User (Checks permanent store & MongoDB Atlas)
 router.post('/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -505,11 +556,17 @@ router.post('/auth/login', async (req, res) => {
 
     const cleanEmail = email.toLowerCase().trim();
 
-    let user = null;
-    try {
-      user = await User.findOne({ email: cleanEmail });
-    } catch (e) {
-      user = memoryUsers.find(u => u.email === cleanEmail);
+    let user = memoryUsers.find(u => (u.email || '').toLowerCase() === cleanEmail);
+
+    if (!user && mongoose.connection.readyState === 1) {
+      try {
+        const atlasUser = await User.findOne({ email: cleanEmail }).lean();
+        if (atlasUser) {
+          user = atlasUser;
+          memoryUsers.unshift(atlasUser);
+          saveLiveUsersBackup();
+        }
+      } catch (e) {}
     }
 
     if (!user) {
@@ -530,6 +587,10 @@ router.post('/auth/login', async (req, res) => {
     if (!isPasswordValid) {
       return res.status(400).json({ success: false, message: 'Invalid email address or password.' });
     }
+
+    // Record last login
+    user.lastLoginAt = new Date().toISOString();
+    saveLiveUsersBackup();
 
     const userRole = user.role || ((cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'admin@kiorawellness.com') ? 'admin' : 'user');
 
@@ -732,11 +793,35 @@ router.post('/checkout', async (req, res) => {
 
     let savedOrder = null;
     try {
-      savedOrder = await Order.create(orderData);
+      if (mongoose.connection.readyState === 1) {
+        savedOrder = await Order.create(orderData);
+      }
     } catch (dbErr) {
-      savedOrder = orderData;
-      memoryOrders.push(savedOrder);
+      console.warn('⚠️ MongoDB Atlas order fallback:', dbErr.message);
     }
+    if (!savedOrder) {
+      savedOrder = orderData;
+    }
+
+    const plainOrder = savedOrder.toObject ? savedOrder.toObject() : savedOrder;
+    plainOrder.createdAt = plainOrder.createdAt || new Date().toISOString();
+
+    // 1. Permanently persist order to memory and disk store immediately
+    memoryOrders.unshift(plainOrder);
+    saveOrdersStore();
+    console.log(`📦 Order ${orderId} permanently saved to Disk Store & Admin Panel.`);
+
+    // 2. Automatically capture/update customer in Registered Customers Store
+    ensureCustomerProfile({
+      customerName,
+      email: customerEmail,
+      phone: customerPhone,
+      address: customerAddress,
+      city: customerCity,
+      pin: customerPin,
+      companyName,
+      source: 'Checkout Order'
+    });
 
     // Dispatch Rich HTML Order Notification Email to Customer & Admin
     try {
@@ -829,6 +914,17 @@ router.post('/rfq', async (req, res) => {
     // Save to memoryOrders & disk store immediately
     memoryOrders.unshift(orderRecord);
     saveOrdersStore();
+    console.log(`📦 RFQ ${rfqId} permanently saved to Disk Store & Admin Panel.`);
+
+    // Automatically capture/update customer in Registered Customers Store
+    ensureCustomerProfile({
+      contactName,
+      companyName,
+      email,
+      phone,
+      address: shippingCountry,
+      source: 'Wholesale RFQ Inquiry'
+    });
 
     // If MongoDB Atlas is connected, also persist to Atlas
     if (mongoose.connection.readyState === 1) {
@@ -1071,7 +1167,7 @@ router.post('/chatbot', async (req, res) => {
   });
 });
 
-// POST Contact form submission
+// POST Contact form submission (Permanently saved to disk store & Admin Panel)
 router.post('/contact', async (req, res) => {
   try {
     const { name, email, phone, subject, message } = req.body;
@@ -1082,19 +1178,53 @@ router.post('/contact', async (req, res) => {
 
     const ticketId = `TKT-${Math.floor(100000 + Math.random() * 900000)}`;
 
+    const contactRecord = {
+      ticketId,
+      name,
+      email: email.toLowerCase().trim(),
+      phone: phone || '',
+      subject: subject || 'General Wholesale Inquiry',
+      message,
+      createdAt: new Date().toISOString()
+    };
+
+    // 1. Save to contacts store
+    memoryContacts.unshift(contactRecord);
+    saveContactsStore();
+
+    // 2. Auto-capture lead into Registered Customers in Admin Panel
+    ensureCustomerProfile({
+      fullName: name,
+      email,
+      phone,
+      source: 'Contact Form Inquiry'
+    });
+
+    // 3. Persist to MongoDB if connected
     try {
-      await ensureDbConnected();
-      await Contact.create({
-        name,
-        email,
-        phone: phone || '',
-        subject: subject || '',
-        message,
-        ticketId
-      });
-      console.log(`🍃 Saved contact ticket ${ticketId} to MongoDB Atlas Database!`);
+      if (mongoose.connection.readyState === 1) {
+        await Contact.create(contactRecord);
+        console.log(`🍃 Saved contact ticket ${ticketId} to MongoDB Atlas Database!`);
+      }
     } catch (e) {
       console.warn('⚠️ Contact DB insertion notice:', e.message);
+    }
+
+    // 4. Dispatch Email Notification to smart.mehra1208@gmail.com
+    try {
+      await sendRfqEmail({
+        productName: `Contact Message: ${subject || 'General Inquiry'}`,
+        companyName: 'Website Visitor',
+        contactName: name,
+        email,
+        phone: phone || 'N/A',
+        targetQuantity: 'General Inquiry',
+        shippingCountry: 'India / International',
+        customizationDetails: message,
+        createdAt: new Date().toISOString()
+      });
+    } catch (mailErr) {
+      console.warn('⚠️ Contact email dispatch alert:', mailErr.message);
     }
 
     res.json({
@@ -1643,19 +1773,22 @@ router.delete('/admin/products/:id', async (req, res) => {
   }
 });
 
-// GET Admin All Orders
+// GET Admin All Orders (Permanent Disk Store + Atlas Direct Sync)
 router.get('/admin/orders', async (req, res) => {
   try {
-    let allOrders = [];
+    let allOrders = [...memoryOrders];
+
     if (mongoose.connection.readyState === 1) {
       try {
-        allOrders = await Order.find({}).sort({ createdAt: -1 }).maxTimeMS(2500).lean();
-      } catch (e) {
-        allOrders = [...memoryOrders];
-      }
-    } else {
-      ensureDbConnected().catch(() => {});
-      allOrders = [...memoryOrders];
+        const atlasOrders = await Order.find({}).sort({ createdAt: -1 }).maxTimeMS(2000).lean();
+        if (atlasOrders && atlasOrders.length > 0) {
+          for (const ao of atlasOrders) {
+            if (!allOrders.some(o => o.orderId === ao.orderId)) {
+              allOrders.push(ao);
+            }
+          }
+        }
+      } catch (e) {}
     }
 
     const formatted = allOrders.map(order => {
@@ -1711,35 +1844,26 @@ router.get('/admin/rfqs', (req, res) => {
   res.json({ success: true, count: memoryRfqs.length, rfqs: memoryRfqs });
 });
 
-// GET Admin All Registered Users / Customers (High-Speed Direct Sync)
+// GET Admin All Registered Users / Customers (Permanent Disk Store + Atlas Direct Sync)
 router.get('/admin/users', async (req, res) => {
   try {
-    let allUsers = [];
+    let allUsers = memoryUsers.map(u => {
+      const copy = { ...u };
+      delete copy.password;
+      return copy;
+    });
+
     if (mongoose.connection.readyState === 1) {
       try {
-        allUsers = await User.find({}, '-password').maxTimeMS(2500).sort({ createdAt: -1 }).lean();
-      } catch (dbErr) {
-        allUsers = memoryUsers.map(u => {
-          const copy = { ...u };
-          delete copy.password;
-          return copy;
-        });
-      }
-    } else {
-      ensureDbConnected().catch(() => {});
-      allUsers = memoryUsers.map(u => {
-        const copy = { ...u };
-        delete copy.password;
-        return copy;
-      });
-    }
-
-    if (!allUsers || allUsers.length === 0) {
-      allUsers = memoryUsers.map(u => {
-        const copy = { ...u };
-        delete copy.password;
-        return copy;
-      });
+        const atlasUsers = await User.find({}, '-password').maxTimeMS(2000).sort({ createdAt: -1 }).lean();
+        if (atlasUsers && atlasUsers.length > 0) {
+          for (const au of atlasUsers) {
+            if (!allUsers.some(u => (u.email || '').toLowerCase() === (au.email || '').toLowerCase())) {
+              allUsers.push(au);
+            }
+          }
+        }
+      } catch (dbErr) {}
     }
 
     const formatted = allUsers.map(user => {
