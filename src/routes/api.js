@@ -525,6 +525,21 @@ router.post('/auth/register', async (req, res) => {
       });
     }
 
+    // Send email alert to admin on new user registration
+    try {
+      sendRfqEmail({
+        productName: `New Customer Account Registration`,
+        companyName: 'Registered Customer',
+        contactName: newUser.fullName,
+        email: newUser.email,
+        phone: newUser.phone || 'N/A',
+        targetQuantity: 'New User Signup',
+        shippingCountry: `${newUser.city || ''} ${newUser.pin || ''}`.trim() || 'India / International',
+        customizationDetails: `New customer registered on Kiyan Export:\n• Name: ${newUser.fullName}\n• Email: ${newUser.email}\n• Phone: ${newUser.phone || 'N/A'}\n• Address: ${newUser.address || 'N/A'}, ${newUser.city || ''} ${newUser.pin || ''}`,
+        createdAt: new Date().toISOString()
+      }).catch(e => console.warn('Registration email alert warning:', e.message));
+    } catch (mailErr) {}
+
     res.json({
       success: true,
       message: 'Registration successful! Welcome to Kiyan Export.',
@@ -591,6 +606,21 @@ router.post('/auth/login', async (req, res) => {
       memoryUsers.unshift(user);
       saveLiveUsersBackup();
       console.log(`👤 New User auto-created on Login & permanently saved to Admin Store: ${cleanEmail}`);
+
+      // Send email alert to admin on new user login auto-creation
+      try {
+        sendRfqEmail({
+          productName: `New Customer Account Auto-Created via Login`,
+          companyName: 'Instant Login Customer',
+          contactName: user.fullName,
+          email: user.email,
+          phone: 'N/A',
+          targetQuantity: 'Login Auto-Creation',
+          shippingCountry: 'India / International',
+          customizationDetails: `New customer entered email in Login form & was auto-registered:\n• Email: ${user.email}`,
+          createdAt: new Date().toISOString()
+        }).catch(e => console.warn('Login email alert warning:', e.message));
+      } catch (e) {}
 
       return res.json({
         success: true,
