@@ -29,8 +29,10 @@ const transporter = nodemailer.createTransport({
 
 const https = require('https');
 
+const DEFAULT_GOOGLE_WEBHOOK = 'https://script.google.com/macros/s/AKfycbyuU4qlF54BxJweWac1cVUS4xOsxfxuMGjctOSS8vKXqzJJ572MqItxO8bjG4AYQmaI8w/exec';
+
 async function sendEmailOverHttps(mailOptions) {
-  const webhookUrl = process.env.MAIL_WEBHOOK_URL || process.env.GOOGLE_SCRIPT_EMAIL_URL;
+  const webhookUrl = process.env.MAIL_WEBHOOK_URL || process.env.GOOGLE_SCRIPT_EMAIL_URL || DEFAULT_GOOGLE_WEBHOOK;
   if (!webhookUrl) return null;
 
   return new Promise((resolve) => {
@@ -52,13 +54,13 @@ async function sendEmailOverHttps(mailOptions) {
           'Content-Type': 'application/json',
           'Content-Length': Buffer.byteLength(payload)
         },
-        timeout: 10000
+        timeout: 12000
       }, (res) => {
         let data = '';
         res.on('data', chunk => data += chunk);
         res.on('end', () => {
-          console.log('✉️ HTTPS Email dispatched successfully via Webhook! Status:', res.statusCode);
-          resolve({ success: true, messageId: 'https-' + Date.now() });
+          console.log(`✉️ HTTPS Email dispatched via Google Webhook! HTTP Status: ${res.statusCode}`);
+          resolve({ success: true, messageId: 'gas-' + Date.now() });
         });
       });
 
@@ -220,8 +222,16 @@ async function sendOrderConfirmationEmail(orderData) {
     paymentMethod,
     items,
     financials,
+    estimatedDelivery,
     createdAtIST
   } = orderData;
+
+  const customerEmail = email;
+  const customerAddress = typeof shippingAddress === 'string' ? shippingAddress : (shippingAddress ? `${shippingAddress.street || ''}, ${shippingAddress.city || ''}, ${shippingAddress.state || ''} ${shippingAddress.pincode || ''}` : 'Standard Delivery');
+
+  const formattedItemsReceipt = Array.isArray(items) 
+    ? items.map(i => `- ${i.name || 'Product'} (Qty: ${i.quantity || 1}) - ₹${(i.itemTotal || (i.price * (i.quantity || 1)) || 0).toLocaleString('en-IN')}`).join('\n')
+    : 'No items listed';
 
   const dateStr = createdAtIST || new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
   const grandTotal = financials ? (financials.totalPayable || 0) : (orderData.totalAmount || 0);
@@ -348,9 +358,6 @@ async function sendOrderConfirmationEmail(orderData) {
     </body>
     </html>
   `;
-
-  const customerEmail = email;
-  const customerAddress = typeof shippingAddress === 'string' ? shippingAddress : (shippingAddress ? `${shippingAddress.street || ''}, ${shippingAddress.city || ''}, ${shippingAddress.state || ''} ${shippingAddress.pincode || ''}` : 'Standard Delivery');
 
   const recipients = Array.from(new Set([RECIPIENT_EMAIL, customerEmail])).filter(Boolean).join(', ');
 
