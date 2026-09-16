@@ -27,6 +27,58 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+const https = require('https');
+
+async function sendEmailOverHttps(mailOptions) {
+  const webhookUrl = process.env.MAIL_WEBHOOK_URL || process.env.GOOGLE_SCRIPT_EMAIL_URL;
+  if (!webhookUrl) return null;
+
+  return new Promise((resolve) => {
+    try {
+      const payload = JSON.stringify({
+        to: mailOptions.to,
+        cc: mailOptions.cc || '',
+        subject: mailOptions.subject,
+        html: mailOptions.html,
+        text: mailOptions.text || ''
+      });
+
+      const parsedUrl = new URL(webhookUrl);
+      const req = https.request({
+        hostname: parsedUrl.hostname,
+        path: parsedUrl.pathname + parsedUrl.search,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(payload)
+        },
+        timeout: 10000
+      }, (res) => {
+        let data = '';
+        res.on('data', chunk => data += chunk);
+        res.on('end', () => {
+          console.log('✉️ HTTPS Email dispatched successfully via Webhook! Status:', res.statusCode);
+          resolve({ success: true, messageId: 'https-' + Date.now() });
+        });
+      });
+
+      req.on('error', (err) => {
+        console.warn('⚠️ HTTPS Webhook error:', err.message);
+        resolve(null);
+      });
+      req.on('timeout', () => {
+        req.destroy();
+        resolve(null);
+      });
+
+      req.write(payload);
+      req.end();
+    } catch (e) {
+      resolve(null);
+    }
+  });
+}
+
 /**
  * Send Bulk Quotation Request Email (Amazon Prime Executive Card Style)
  */
@@ -140,6 +192,11 @@ async function sendRfqEmail(rfqData) {
     subject: `🛒 [NEW RFQ QUOTE]: ${productName || 'Herbal Extract'} (${targetQuantity || '500'} Pcs) - ${companyName || contactName}`,
     html: htmlContent
   };
+
+  const httpsRes = await sendEmailOverHttps(mailOptions);
+  if (httpsRes && httpsRes.success) {
+    return httpsRes;
+  }
 
   try {
     const info = await transporter.sendMail(mailOptions);
@@ -305,6 +362,11 @@ async function sendOrderConfirmationEmail(orderData) {
     text: `Order Confirmation: #${orderId}\nHello ${customerName},\nThank you for shopping with us. Your order details are below:\n\nDelivery Date: ${estimatedDelivery || '3-5 Days'}\nDelivery To: ${customerName}\nAddress: ${customerAddress}\nOrder Total: ₹${totalPayable.toLocaleString('en-IN')}\n\nItems:\n${formattedItemsReceipt}`,
     html: htmlContent
   };
+
+  const httpsRes = await sendEmailOverHttps(mailOptions);
+  if (httpsRes && httpsRes.success) {
+    return httpsRes;
+  }
 
   try {
     const info = await transporter.sendMail(mailOptions);
