@@ -2,11 +2,11 @@
   {
     "id": 1,
     "name": "ARJUNA CAPSULE",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Best Seller",
     "rating": 5,
     "price": 599,
-    "oldPrice": 1999,
+    "oldPrice": 1299,
     "image": "Herbal/arjuna.webp",
     "thumbnails": [
       "Herbal/arjuna.webp",
@@ -14,7 +14,7 @@
       "Herbal/Aswagandha.webp",
       "Herbal/Aswagandhacapsule.webp"
     ],
-    "description": "100% Pure Arjuna Extract Naturally Rich in Antioxidants for cardiovascular wellness.",
+    "description": "Arjuna capsule is a cardiac-stimulant that helps maintain optimal cardiovascular health. A most effective herb in preventive heart care, it helps lower high cholesterol, high blood pressure, and high blood sugar. It supports the cleansing and efficient functioning of the lymphatic system. It is also known to counter carcinogenic activity. It prevents platelet-accumulation that could otherwise lead to blood clotting and arterial blockage. It is beneficial for bone health as it improves bone mineral density and expedites healing of fractures. It is also used in the management of diabetes. Rich in anti-oxidants, it protects against dna-damage from toxins. It enhances vigor and immunity overall.",
     "ingredients": [
       "Arjuna Extract",
       "No Additives",
@@ -27,25 +27,25 @@
       "GMP Certified"
     ],
     "moq": 100,
-    "priceRange": "₹300 - ₹599 / Piece",
+    "priceRange": "₹509 - ₹599 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 599,
-        "label": "100-499 pcs"
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 431,
-        "label": "500-999 pcs"
+        "price": 539,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 300,
-        "label": "1000+ pcs"
+        "price": 509,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 509,
@@ -67,23 +67,28 @@
         "createdAt": "2026-09-10T12:40:14.936Z"
       }
     ],
-    "reviewsCount": 1
+    "reviewsCount": 20,
+    "tag": "HERBAL CARE",
+    "isBestseller": true,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 2,
-    "name": "ARJUNAPOWDER",
-    "category": "Herbal",
+    "name": "ARJUNA POWDER",
+    "category": "Herbal Products",
     "badge": "New",
     "rating": 5,
-    "price": 1499,
-    "oldPrice": 1800,
+    "price": 600,
+    "oldPrice": 1000,
     "image": "Herbal/arjunapowder.webp",
     "thumbnails": [
       "Herbal/arjunapowder.webp",
       "Herbal/arjuna.webp",
       "Herbal/Aswagandha.webp"
     ],
-    "description": "Pure organic Arjuna bark powder for natural heart health and immunity support.",
+    "description": "High-quality Arjuna Powder made from pure Terminalia arjuna bark, known for supporting heart health, cholesterol balance, and overall cardiovascular wellness. 100% natural & lab-tested.",
     "ingredients": [
       "100% Organic Arjuna Bark Powder"
     ],
@@ -94,25 +99,25 @@
       "Non-GMO"
     ],
     "moq": 100,
-    "priceRange": "₹750 - ₹1499 / Piece",
+    "priceRange": "₹510 - ₹600 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 1499,
-        "label": "100-499 pcs"
+        "price": 600,
+        "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1079,
-        "label": "500-999 pcs"
+        "price": 540,
+        "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 750,
-        "label": "1000+ pcs"
+        "price": 510,
+        "label": "1000+ Kg"
       }
     ],
     "samplePrice": 1274,
@@ -125,15 +130,21 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Kg"
   },
   {
     "id": 3,
-    "name": "ASWAGANDHA",
-    "category": "Herbal",
+    "name": "ASWAGANDHA POWDER",
+    "category": "Herbal Products",
     "badge": "Vegan",
     "rating": 4.7,
-    "price": 2499,
+    "price": 2250,
     "oldPrice": 3000,
     "image": "Herbal/Aswagandha.webp",
     "thumbnails": [
@@ -153,25 +164,25 @@
       "Lab Tested"
     ],
     "moq": 100,
-    "priceRange": "₹1250 - ₹2499 / Piece",
+    "priceRange": "₹1913 - ₹2250 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 2499,
-        "label": "100-499 pcs"
+        "price": 2250,
+        "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1799,
-        "label": "500-999 pcs"
+        "price": 2025,
+        "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1250,
-        "label": "1000+ pcs"
+        "price": 1913,
+        "label": "1000+ Kg"
       }
     ],
     "samplePrice": 2124,
@@ -184,23 +195,29 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Kg"
   },
   {
     "id": 4,
     "name": "ASWAGANDHA CAPSULE",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Luxury",
     "rating": 5,
-    "price": 4999,
-    "oldPrice": 6000,
+    "price": 799,
+    "oldPrice": 1000,
     "image": "Herbal/Aswagandhacapsule.webp",
     "thumbnails": [
       "Herbal/Aswagandhacapsule.webp",
       "Herbal/Aswagandha.webp",
       "Herbal/Aswagandhagummies.webp"
     ],
-    "description": "Premium handcrafted organic wellness capsules for stamina, vitality, and focus.",
+    "description": "Premium Ashwagandha Capsules formulated with high-quality Ashwagandha extract to support stress management, energy, stamina, immunity, and overall wellness. Suitable for daily use.",
     "ingredients": [
       "Pure KSM-66 Ashwagandha Extract"
     ],
@@ -211,25 +228,25 @@
       "ISO Certified"
     ],
     "moq": 50,
-    "priceRange": "₹2500 - ₹4999 / Piece",
+    "priceRange": "₹679 - ₹799 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
-        "price": 4999,
-        "label": "50-249 pcs"
+        "price": 799,
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 3599,
-        "label": "250-499 pcs"
+        "price": 719,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 2500,
-        "label": "500+ pcs"
+        "price": 679,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 4249,
@@ -242,23 +259,29 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 5,
     "name": "ASWAGANDHA GUMMIES",
-    "category": "Herbal",
-    "badge": "Fitness",
+    "category": "Herbal Products",
+    "badge": "Best Seller",
     "rating": 4.6,
-    "price": 2999,
-    "oldPrice": 3500,
+    "price": 550,
+    "oldPrice": 700,
     "image": "Herbal/Aswagandhagummies.webp",
     "thumbnails": [
       "Herbal/Aswagandhagummies.webp",
       "Herbal/Aswagandha.webp",
       "Herbal/Aswagandhacapsule.webp"
     ],
-    "description": "Delicious Sour Watermelon flavored Ashwagandha gummies with 1250mg potency.",
+    "description": "Ashwagandha gummies are dietary supplements that contain ashwagandha extract in a gummy form. Ashwagandha, also known as Withania somnifera, is an adaptogenic herb used in traditional Ayurvedic medicine for its potential health benefits, including stress reduction, improved mood, enhanced cognitive function, and better sleep quality.\n\nPotential Benefits:\nStress Reduction: Ashwagandha may help lower cortisol levels, the hormone associated with stress.\nImproved Mood: It can have a positive effect on mood and may help with symptoms of anxiety and depression.\nEnhanced Cognitive Function: Some studies suggest that ashwagandha can improve memory and cognitive abilities.\nBetter Sleep Quality: Ashwagandha is often used to promote relaxation and better sleep.",
     "ingredients": [
       "Ashwagandha Extract",
       "Pectin",
@@ -271,25 +294,25 @@
       "Made in India"
     ],
     "moq": 100,
-    "priceRange": "₹1500 - ₹2999 / Piece",
+    "priceRange": "₹468 - ₹550 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 2999,
-        "label": "100-499 pcs"
+        "price": 550,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 2159,
-        "label": "500-999 pcs"
+        "price": 495,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1500,
-        "label": "1000+ pcs"
+        "price": 468,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 2549,
@@ -302,23 +325,29 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 6,
-    "name": "BACOPA",
-    "category": "Herbal",
+    "name": "BACOPA CAPSULE",
+    "category": "Herbal Products",
     "badge": "Ayurveda",
     "rating": 5,
-    "price": 1299,
-    "oldPrice": 1600,
+    "price": 850,
+    "oldPrice": 1300,
     "image": "Herbal/bacopa.webp",
     "thumbnails": [
       "Herbal/bacopa.webp",
       "Herbal/arjuna.webp",
       "Herbal/Aswagandha.webp"
     ],
-    "description": "Pure Bacopa Monnieri (Brahmi) extract to support cognitive health, memory and focus.",
+    "description": "Reduces Anxiety and Promotes Relaxation: Bacopa Herb Reduces Anxiety by Improving Cognition. A Component in Bacopa Called Saponins Provide a Relaxing Effect on the Body. This Effect Helps Reduce Anxiety and Promotes Better Sleep, Thereby Alleviating the Symptoms of Depression.\n\nHealth Benefits of Bacopa Capsules:\n Major Benefits of Brahmi Include Improved Cognitive Function, Supports Mental Alertness and Empowers Your Clarity of Thought. For Optimal Results, Take 1 Capsule Daily or as Directed by Your Healthcare Professional.\nThis Product Is Offered in Vegetarian Capsules. Bacosides Are the Main Component of Brahmi / Bacopa Extract, Which Can Improve the Transmission of Impulses That in Turn Improves Attention.\nMemory, Focus and Clarity: These Capsules Help in Better Memory, Focus and Clarity. It Is Especially Helpful for Those People Who Multitask a Lot.\nNatural and Herbal: These Capsules Are All Natural and Herbal and 100% Vegetarian. Moreover, These Capsules Are Cruelty Free, Soy Free and Gluten Free and Are Easily Digested.\nEach Serving Consists of 500mg Brahmi (Bacopa Monnieri). Each Serving Consists of 2 Capsules. This Is Quite Potent and Effective Formula According to Our Experts.",
     "ingredients": [
       "Pure Bacopa Extract",
       "Bacosides 20%"
@@ -330,25 +359,25 @@
       "GMP Facility"
     ],
     "moq": 100,
-    "priceRange": "₹650 - ₹1299 / Piece",
+    "priceRange": "₹723 - ₹850 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 1299,
-        "label": "100-499 pcs"
+        "price": 850,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 935,
-        "label": "500-999 pcs"
+        "price": 765,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 650,
-        "label": "1000+ pcs"
+        "price": 723,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1104,
@@ -361,23 +390,29 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 7,
-    "name": "BAMBOOSALTI",
-    "category": "Herbal",
+    "name": "BAMBOO SALT",
+    "category": "Herbal Products",
     "badge": "Superfood",
     "rating": 4.8,
-    "price": 1799,
-    "oldPrice": 2200,
+    "price": 7500,
+    "oldPrice": 9000,
     "image": "Herbal/bamboosalt1.webp",
     "thumbnails": [
       "Herbal/bamboosalt1.webp",
       "Herbal/arjuna.webp",
       "Herbal/Aswagandha.webp"
     ],
-    "description": "Traditional roasted Bamboo Salt rich in essential minerals, flavonoids and antioxidants.",
+    "description": "Premium Bamboo Salt – 100% Pure & Natural. Carefully processed for superior quality, rich mineral content, and everyday wellness. Ideal for cooking, seasoning, and healthy living.",
     "ingredients": [
       "9-Times Roasted Bamboo Salt"
     ],
@@ -388,25 +423,25 @@
       "Made in India"
     ],
     "moq": 100,
-    "priceRange": "₹900 - ₹1799 / Piece",
+    "priceRange": "₹6375 - ₹7500 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 1799,
-        "label": "100-499 pcs"
+        "price": 7500,
+        "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1295,
-        "label": "500-999 pcs"
+        "price": 6750,
+        "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 900,
-        "label": "1000+ pcs"
+        "price": 6375,
+        "label": "1000+ Kg"
       }
     ],
     "samplePrice": 1529,
@@ -419,15 +454,21 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Kg"
   },
   {
     "id": 8,
-    "name": "BOSWELLIA",
-    "category": "Herbal",
+    "name": "BOSWELLIA CAPSULE",
+    "category": "Herbal Products",
     "badge": "Organic",
     "rating": 4.9,
-    "price": 899,
+    "price": 850,
     "oldPrice": 1100,
     "image": "Herbal/boswellia.webp",
     "thumbnails": [
@@ -435,7 +476,7 @@
       "Herbal/arjuna.webp",
       "Herbal/Aswagandha.webp"
     ],
-    "description": "Boswellia Serrata extract to promote healthy joints, flexibility and anti-inflammatory response.",
+    "description": "Boswellia Capsule contains high-quality Boswellia Serrata extract, a well-known Ayurvedic herb traditionally used for supporting joint health and reducing inflammation. The active compounds known as boswellic acids help promote joint comfort, flexibility, and mobility. It is commonly used as a natural supplement for maintaining healthy bones, muscles, and joints. Boswellia is widely recognized for its anti-inflammatory properties and helps support overall wellness.",
     "ingredients": [
       "Boswellia Serrata Extract (65% Boswellic Acid)"
     ],
@@ -446,25 +487,25 @@
       "Pesticide Free"
     ],
     "moq": 100,
-    "priceRange": "₹450 - ₹899 / Piece",
+    "priceRange": "₹723 - ₹850 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 899,
-        "label": "100-499 pcs"
+        "price": 850,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 647,
-        "label": "500-999 pcs"
+        "price": 765,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 450,
-        "label": "1000+ pcs"
+        "price": 723,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 764,
@@ -477,83 +518,29 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 9,
-    "name": "FADO",
-    "category": "Herbal",
-    "badge": "Beauty",
-    "rating": 4.7,
-    "price": 1499,
-    "oldPrice": 1800,
-    "image": "Herbal/fado.webp",
-    "thumbnails": [
-      "Herbal/fado.webp",
-      "Herbal/fadogiakiyan1.webp",
-      "Herbal/Aswagandha.webp"
-    ],
-    "description": "Strawberry flavored herbal blend designed for stronger hair, glowing skin and nails.",
-    "ingredients": [
-      "Fadogia Agrestis Extract",
-      "Biotin",
-      "Natural Strawberry Extract"
-    ],
-    "specs": [
-      "60 Capsules",
-      "100% Vegan",
-      "Made in India",
-      "FDA Registered Facility"
-    ],
-    "moq": 100,
-    "priceRange": "₹750 - ₹1499 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 100,
-        "maxQty": 499,
-        "price": 1499,
-        "label": "100-499 pcs"
-      },
-      {
-        "minQty": 500,
-        "maxQty": 999,
-        "price": 1079,
-        "label": "500-999 pcs"
-      },
-      {
-        "minQty": 1000,
-        "maxQty": null,
-        "price": 750,
-        "label": "1000+ pcs"
-      }
-    ],
-    "samplePrice": 1274,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 10,
-    "name": "FADOGIA KIORA",
-    "category": "Herbal",
-    "badge": "Health",
+    "name": "Fadogia Agrestis Capsules",
+    "category": "Herbal Products",
+    "badge": "Best Seller",
     "rating": 5,
-    "price": 2199,
-    "oldPrice": 2500,
+    "price": 750,
+    "oldPrice": 1000,
     "image": "Herbal/fadogiakiyan1.webp",
     "thumbnails": [
       "Herbal/fadogiakiyan1.webp",
       "Herbal/fado.webp",
       "Herbal/Aswagandha.webp"
     ],
-    "description": "High potency Vitamin + Mineral + Adaptogen herbal formula for energy and strength.",
+    "description": "Fadogia Agrestis is a lesser-known herbal supplement derived from a shrub native to parts of Africa, particularly found in regions like Nigeria. It has gained popularity in recent years, particularly in the fitness and testosterone-boosting communities, due to claims that it may help increase testosterone levels, improve libido, and enhance athletic performance.\nWhile research on Fadogia Agrestis is still limited, it is often marketed as a natural supplement for improving sexual health, muscle mass, and overall physical vitality. Below is an overview of what is known about Fadogia Agrestis and its potential benefits, risks, and usage.\n\nKey Benefits of Fadogia Agrestis:\nBoosts Testosterone Levels:\nFadogia Agrestis is most commonly used for its potential to boost testosterone levels. Some animal studies have suggested that the plant may increase the production of testosterone in the body, leading to improved energy, libido, and muscle growth.\nWhile there is limited human research, animal studies have shown that Fadogia Agrestis can stimulate the production of luteinizing hormone (LH), which signals the testes to produce more testosterone.\n",
     "ingredients": [
       "Pure Fadogia Agrestis Extract 10:1",
       "Zinc Picolinate"
@@ -562,28 +549,28 @@
       "60 Capsules",
       "100% Vegan",
       "Made in India",
-      "Heavy Metal Tested"
+      "500 mg"
     ],
     "moq": 100,
-    "priceRange": "₹1100 - ₹2199 / Piece",
+    "priceRange": "₹638 - ₹750 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 2199,
-        "label": "100-499 pcs"
+        "price": 750,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1583,
-        "label": "500-999 pcs"
+        "price": 675,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1100,
-        "label": "1000+ pcs"
+        "price": 638,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1869,
@@ -596,16 +583,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "tag": "HERBAL CARE",
+    "stockQuantity": 15,
+    "reviewsCount": 28,
+    "isBestseller": false,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 11,
-    "name": "GINGER",
-    "category": "Herbal",
+    "name": "GINGER TURMERIC CAPSULE",
+    "category": "Herbal Products",
     "badge": "Digestive",
     "rating": 4.8,
-    "price": 1299,
-    "oldPrice": 1600,
+    "price": 900,
+    "oldPrice": 1200,
     "image": "Herbal/ginger1.webp",
     "thumbnails": [
       "Herbal/ginger1.webp",
@@ -625,25 +618,25 @@
       "Gluten Free"
     ],
     "moq": 100,
-    "priceRange": "₹650 - ₹1299 / Piece",
+    "priceRange": "₹765 - ₹900 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 1299,
-        "label": "100-499 pcs"
+        "price": 900,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 935,
-        "label": "500-999 pcs"
+        "price": 810,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 650,
-        "label": "1000+ pcs"
+        "price": 765,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1104,
@@ -656,16 +649,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 12,
-    "name": "GINKGO",
-    "category": "Herbal",
+    "name": "GINKGO BILOBA CAPSULE",
+    "category": "Herbal Products",
     "badge": "Focus",
     "rating": 4.9,
-    "price": 5999,
-    "oldPrice": 7000,
+    "price": 750,
+    "oldPrice": 1000,
     "image": "Herbal/ginkgo.webp",
     "thumbnails": [
       "Herbal/ginkgo.webp",
@@ -683,25 +682,25 @@
       "Ultra Pure"
     ],
     "moq": 50,
-    "priceRange": "₹3000 - ₹5999 / Piece",
+    "priceRange": "₹638 - ₹750 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
-        "price": 5999,
-        "label": "50-249 pcs"
+        "price": 750,
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 4319,
-        "label": "250-499 pcs"
+        "price": 675,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 3000,
-        "label": "500+ pcs"
+        "price": 638,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 5099,
@@ -714,16 +713,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 13,
-    "name": "GUMMIES",
-    "category": "Herbal",
+    "name": "SHILAJIT GUMMIES",
+    "category": "Herbal Products",
     "badge": "Wellness",
     "rating": 4.7,
-    "price": 3499,
-    "oldPrice": 4000,
+    "price": 405,
+    "oldPrice": 500,
     "image": "Herbal/gummies.webp",
     "thumbnails": [
       "Herbal/gummies.webp",
@@ -743,25 +748,25 @@
       "Pectin Based"
     ],
     "moq": 50,
-    "priceRange": "₹1750 - ₹3499 / Piece",
+    "priceRange": "₹344 - ₹405 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
-        "price": 3499,
-        "label": "50-249 pcs"
+        "price": 405,
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 2519,
-        "label": "250-499 pcs"
+        "price": 365,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 1750,
-        "label": "500+ pcs"
+        "price": 344,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 2974,
@@ -774,16 +779,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 14,
-    "name": "MACA-ROOT-ARTWOR",
-    "category": "Herbal",
+    "name": "MACA ROOT CAPSULES",
+    "category": "Herbal Products",
     "badge": "Organic",
     "rating": 5,
-    "price": 2999,
-    "oldPrice": 3500,
+    "price": 650,
+    "oldPrice": 800,
     "image": "Herbal/maca-root-artwor.webp",
     "thumbnails": [
       "Herbal/maca-root-artwor.webp",
@@ -801,25 +812,25 @@
       "Non-GMO"
     ],
     "moq": 100,
-    "priceRange": "₹1500 - ₹2999 / Piece",
+    "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 2999,
-        "label": "100-499 pcs"
+        "price": 650,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 2159,
-        "label": "500-999 pcs"
+        "price": 585,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1500,
-        "label": "1000+ pcs"
+        "price": 553,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 2549,
@@ -832,16 +843,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 15,
-    "name": "MACAROOT",
-    "category": "Herbal",
+    "name": "MACA ROOT + TONGAT ALI CAPSULES",
+    "category": "Herbal Products",
     "badge": "Clinical",
     "rating": 4.8,
-    "price": 3999,
-    "oldPrice": 4800,
+    "price": 850,
+    "oldPrice": 1000,
     "image": "Herbal/macaroot.webp",
     "thumbnails": [
       "Herbal/macaroot.webp",
@@ -859,25 +876,25 @@
       "Lab Tested"
     ],
     "moq": 50,
-    "priceRange": "₹2000 - ₹3999 / Piece",
+    "priceRange": "₹723 - ₹850 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
-        "price": 3999,
-        "label": "50-249 pcs"
+        "price": 850,
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 2879,
-        "label": "250-499 pcs"
+        "price": 765,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 2000,
-        "label": "500+ pcs"
+        "price": 723,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 3399,
@@ -890,16 +907,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 16,
-    "name": "MORINGA",
-    "category": "Herbal",
+    "name": "MORINGA POWDER",
+    "category": "Herbal Products",
     "badge": "Superfood",
     "rating": 5,
-    "price": 1999,
-    "oldPrice": 2500,
+    "price": 1000,
+    "oldPrice": 1200,
     "image": "Herbal/Moringa.webp",
     "thumbnails": [
       "Herbal/Moringa.webp",
@@ -917,25 +940,25 @@
       "Raw & Sun-Dried"
     ],
     "moq": 100,
-    "priceRange": "₹1000 - ₹1999 / Piece",
+    "priceRange": "₹850 - ₹1000 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 1999,
-        "label": "100-499 pcs"
+        "price": 1000,
+        "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1439,
-        "label": "500-999 pcs"
+        "price": 900,
+        "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1000,
-        "label": "1000+ pcs"
+        "price": 850,
+        "label": "1000+ Kg"
       }
     ],
     "samplePrice": 1699,
@@ -948,16 +971,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Kg"
   },
   {
     "id": 17,
-    "name": "MORINGACAP",
-    "category": "Herbal",
+    "name": "MORINGA CAPSULES",
+    "category": "Herbal Products",
     "badge": "Beauty",
     "rating": 4.7,
-    "price": 1799,
-    "oldPrice": 2200,
+    "price": 650,
+    "oldPrice": 800,
     "image": "Herbal/moringacap.webp",
     "thumbnails": [
       "Herbal/moringacap.webp",
@@ -975,25 +1004,25 @@
       "Rich in Iron & Vit C"
     ],
     "moq": 100,
-    "priceRange": "₹900 - ₹1799 / Piece",
+    "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 1799,
-        "label": "100-499 pcs"
+        "price": 650,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1295,
-        "label": "500-999 pcs"
+        "price": 585,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 900,
-        "label": "1000+ pcs"
+        "price": 553,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1529,
@@ -1006,15 +1035,21 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 18,
-    "name": "SEAMOSS",
-    "category": "Herbal",
+    "name": "SEA MOSS POWDER",
+    "category": "Herbal Products",
     "badge": "Wellness",
     "rating": 4.9,
-    "price": 2499,
+    "price": 2250,
     "oldPrice": 3000,
     "image": "Herbal/seamoss.webp",
     "thumbnails": [
@@ -1035,25 +1070,25 @@
       "92 Minerals"
     ],
     "moq": 100,
-    "priceRange": "₹1250 - ₹2499 / Piece",
+    "priceRange": "₹1913 - ₹2250 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 2499,
-        "label": "100-499 pcs"
+        "price": 2250,
+        "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1799,
-        "label": "500-999 pcs"
+        "price": 2025,
+        "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1250,
-        "label": "1000+ pcs"
+        "price": 1913,
+        "label": "1000+ Kg"
       }
     ],
     "samplePrice": 2124,
@@ -1066,16 +1101,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Kg"
   },
   {
     "id": 19,
     "name": "SEAMOSS (Zero Sugar)",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Zero Sugar",
     "rating": 4.8,
-    "price": 1899,
-    "oldPrice": 2300,
+    "price": 750,
+    "oldPrice": 1000,
     "image": "Herbal/seamoss1.webp",
     "thumbnails": [
       "Herbal/seamoss1.webp",
@@ -1095,25 +1136,25 @@
       "Made in India"
     ],
     "moq": 100,
-    "priceRange": "₹950 - ₹1899 / Piece",
+    "priceRange": "₹638 - ₹750 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 1899,
-        "label": "100-499 pcs"
+        "price": 750,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1367,
-        "label": "500-999 pcs"
+        "price": 675,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 950,
-        "label": "1000+ pcs"
+        "price": 638,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1614,
@@ -1126,16 +1167,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 20,
     "name": "SEAMOSS3",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "On-the-Go",
     "rating": 5,
-    "price": 699,
-    "oldPrice": 850,
+    "price": 1000,
+    "oldPrice": 1200,
     "image": "Herbal/seamoss3.webp",
     "thumbnails": [
       "Herbal/seamoss3.webp",
@@ -1155,25 +1202,25 @@
       "Pure Cleanse"
     ],
     "moq": 100,
-    "priceRange": "₹350 - ₹699 / Piece",
+    "priceRange": "₹850 - ₹1000 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 699,
-        "label": "100-499 pcs"
+        "price": 1000,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 503,
-        "label": "500-999 pcs"
+        "price": 900,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 350,
-        "label": "1000+ pcs"
+        "price": 850,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 594,
@@ -1186,16 +1233,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 21,
     "name": "SHILAJIT",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Best Seller",
     "rating": 4.9,
-    "price": 1399,
-    "oldPrice": 1700,
+    "price": 350,
+    "oldPrice": 499,
     "image": "Herbal/shilajit.webp",
     "thumbnails": [
       "Herbal/shilajit.webp",
@@ -1214,25 +1267,25 @@
       "Lab Certified"
     ],
     "moq": 100,
-    "priceRange": "₹700 - ₹1399 / Piece",
+    "priceRange": "₹298 - ₹350 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 1399,
-        "label": "100-499 pcs"
+        "price": 350,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1007,
-        "label": "500-999 pcs"
+        "price": 315,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 700,
-        "label": "1000+ pcs"
+        "price": 298,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1189,
@@ -1245,16 +1298,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 22,
     "name": "SHILAJIT2",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Ayurveda",
     "rating": 5,
-    "price": 2999,
-    "oldPrice": 3800,
+    "price": 650,
+    "oldPrice": 799,
     "image": "Herbal/shilajit2.webp",
     "thumbnails": [
       "Herbal/shilajit2.webp",
@@ -1272,25 +1331,25 @@
       "GMP Facility"
     ],
     "moq": 100,
-    "priceRange": "₹1500 - ₹2999 / Piece",
+    "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 2999,
-        "label": "100-499 pcs"
+        "price": 650,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 2159,
-        "label": "500-999 pcs"
+        "price": 585,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1500,
-        "label": "1000+ pcs"
+        "price": 553,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 2549,
@@ -1303,16 +1362,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 23,
     "name": "SHILAJIT3",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "75% Fulvic",
     "rating": 4.8,
-    "price": 3499,
-    "oldPrice": 4500,
+    "price": 1000,
+    "oldPrice": 1200,
     "image": "Herbal/Shilajit3.webp",
     "thumbnails": [
       "Herbal/Shilajit3.webp",
@@ -1330,25 +1395,25 @@
       "Iso 9001:2015"
     ],
     "moq": 50,
-    "priceRange": "₹1750 - ₹3499 / Piece",
+    "priceRange": "₹850 - ₹1000 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
-        "price": 3499,
-        "label": "50-249 pcs"
+        "price": 1000,
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 2519,
-        "label": "250-499 pcs"
+        "price": 900,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 1750,
-        "label": "500+ pcs"
+        "price": 850,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 2974,
@@ -1361,16 +1426,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 24,
     "name": "SHILAJITCAP",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Premium",
     "rating": 4.9,
-    "price": 3999,
-    "oldPrice": 5000,
+    "price": 550,
+    "oldPrice": 600,
     "image": "Herbal/shilajitcap.webp",
     "thumbnails": [
       "Herbal/shilajitcap.webp",
@@ -1388,25 +1459,25 @@
       "Zero Additives"
     ],
     "moq": 50,
-    "priceRange": "₹2000 - ₹3999 / Piece",
+    "priceRange": "₹468 - ₹550 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
-        "price": 3999,
-        "label": "50-249 pcs"
+        "price": 550,
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 2879,
-        "label": "250-499 pcs"
+        "price": 495,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 2000,
-        "label": "500+ pcs"
+        "price": 468,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 3399,
@@ -1419,16 +1490,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 25,
     "name": "SHILAJITHONEY",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Gold",
     "rating": 4.8,
-    "price": 4499,
-    "oldPrice": 5500,
+    "price": 650,
+    "oldPrice": 800,
     "image": "Herbal/shilajithoney.webp",
     "thumbnails": [
       "Herbal/shilajithoney.webp",
@@ -1447,25 +1524,25 @@
       "No Added Sugar"
     ],
     "moq": 50,
-    "priceRange": "₹2250 - ₹4499 / Piece",
+    "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
-        "price": 4499,
-        "label": "50-249 pcs"
+        "price": 650,
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 3239,
-        "label": "250-499 pcs"
+        "price": 585,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 2250,
-        "label": "500+ pcs"
+        "price": 553,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 3824,
@@ -1478,16 +1555,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 26,
     "name": "SHILAKIORA PURE",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Lab Tested",
     "rating": 5,
-    "price": 2899,
-    "oldPrice": 3600,
+    "price": 750,
+    "oldPrice": 800,
     "image": "Herbal/shilakiyan1.webp",
     "thumbnails": [
       "Herbal/shilakiyan1.webp",
@@ -1505,25 +1588,25 @@
       "Ayush Approved"
     ],
     "moq": 100,
-    "priceRange": "₹1450 - ₹2899 / Piece",
+    "priceRange": "₹638 - ₹750 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 2899,
-        "label": "100-499 pcs"
+        "price": 750,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 2087,
-        "label": "500-999 pcs"
+        "price": 675,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1450,
-        "label": "1000+ pcs"
+        "price": 638,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 2464,
@@ -1536,16 +1619,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 27,
     "name": "SHILASWA",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Organic",
     "rating": 4.9,
-    "price": 3299,
-    "oldPrice": 4200,
+    "price": 750,
+    "oldPrice": 800,
     "image": "Herbal/shilaswa.webp",
     "thumbnails": [
       "Herbal/shilaswa.webp",
@@ -1564,25 +1653,25 @@
       "Dual Power Formula"
     ],
     "moq": 50,
-    "priceRange": "₹1650 - ₹3299 / Piece",
+    "priceRange": "₹638 - ₹750 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
-        "price": 3299,
-        "label": "50-249 pcs"
+        "price": 750,
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 2375,
-        "label": "250-499 pcs"
+        "price": 675,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 1650,
-        "label": "500+ pcs"
+        "price": 638,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 2804,
@@ -1595,16 +1684,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 28,
     "name": "SILAJ",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Skin",
     "rating": 5,
-    "price": 1499,
-    "oldPrice": 1900,
+    "price": 900,
+    "oldPrice": 1000,
     "image": "Herbal/silaj.webp",
     "thumbnails": [
       "Herbal/silaj.webp",
@@ -1624,25 +1719,25 @@
       "100% Organic"
     ],
     "moq": 100,
-    "priceRange": "₹750 - ₹1499 / Piece",
+    "priceRange": "₹765 - ₹900 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 1499,
-        "label": "100-499 pcs"
+        "price": 900,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1079,
-        "label": "500-999 pcs"
+        "price": 810,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 750,
-        "label": "1000+ pcs"
+        "price": 765,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1274,
@@ -1655,16 +1750,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 29,
     "name": "TONG",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Organic",
     "rating": 4.8,
-    "price": 2299,
-    "oldPrice": 2800,
+    "price": 950,
+    "oldPrice": 1000,
     "image": "Herbal/tong.webp",
     "thumbnails": [
       "Herbal/tong.webp",
@@ -1682,25 +1783,25 @@
       "Potent Formula"
     ],
     "moq": 100,
-    "priceRange": "₹1150 - ₹2299 / Piece",
+    "priceRange": "₹808 - ₹950 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 2299,
-        "label": "100-499 pcs"
+        "price": 950,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1655,
-        "label": "500-999 pcs"
+        "price": 855,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1150,
-        "label": "1000+ pcs"
+        "price": 808,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1954,
@@ -1713,16 +1814,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 30,
     "name": "TRIPHALA-CAP",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Handmade",
     "rating": 5,
-    "price": 1299,
-    "oldPrice": 1600,
+    "price": 650,
+    "oldPrice": 800,
     "image": "Herbal/triphala-cap.webp",
     "thumbnails": [
       "Herbal/triphala-cap.webp",
@@ -1742,25 +1849,25 @@
       "Gentle Detox"
     ],
     "moq": 100,
-    "priceRange": "₹650 - ₹1299 / Piece",
+    "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 1299,
-        "label": "100-499 pcs"
+        "price": 650,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 935,
-        "label": "500-999 pcs"
+        "price": 585,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 650,
-        "label": "1000+ pcs"
+        "price": 553,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1104,
@@ -1773,15 +1880,21 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 31,
     "name": "TRIPHLA-POWER",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Baby",
     "rating": 5,
-    "price": 899,
+    "price": 800,
     "oldPrice": 1100,
     "image": "Herbal/triphala-powder1.webp",
     "thumbnails": [
@@ -1800,25 +1913,25 @@
       "Non-GMO"
     ],
     "moq": 100,
-    "priceRange": "₹450 - ₹899 / Piece",
+    "priceRange": "₹680 - ₹800 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 899,
-        "label": "100-499 pcs"
+        "price": 800,
+        "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 647,
-        "label": "500-999 pcs"
+        "price": 720,
+        "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 450,
-        "label": "1000+ pcs"
+        "price": 680,
+        "label": "1000+ Kg"
       }
     ],
     "samplePrice": 764,
@@ -1831,16 +1944,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Kg"
   },
   {
     "id": 32,
     "name": "TURMINGA",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Luxury",
     "rating": 4.9,
-    "price": 5999,
-    "oldPrice": 7500,
+    "price": 650,
+    "oldPrice": 700,
     "image": "Herbal/truminga.webp",
     "thumbnails": [
       "Herbal/truminga.webp",
@@ -1859,25 +1978,25 @@
       "Patented Blend"
     ],
     "moq": 50,
-    "priceRange": "₹3000 - ₹5999 / Piece",
+    "priceRange": "₹553 - ₹650 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
-        "price": 5999,
-        "label": "50-249 pcs"
+        "price": 650,
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 4319,
-        "label": "250-499 pcs"
+        "price": 585,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 3000,
-        "label": "500+ pcs"
+        "price": 553,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 5099,
@@ -1890,16 +2009,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 33,
     "name": "TURM",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "SPF 20",
     "rating": 5,
-    "price": 4299,
-    "oldPrice": 5200,
+    "price": 550,
+    "oldPrice": 600,
     "image": "Herbal/turm.webp",
     "thumbnails": [
       "Herbal/turm.webp",
@@ -1918,25 +2043,25 @@
       "Non-Greasy"
     ],
     "moq": 50,
-    "priceRange": "₹2150 - ₹4299 / Piece",
+    "priceRange": "₹468 - ₹550 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
-        "price": 4299,
-        "label": "50-249 pcs"
+        "price": 550,
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 3095,
-        "label": "250-499 pcs"
+        "price": 495,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 2150,
-        "label": "500+ pcs"
+        "price": 468,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 3654,
@@ -1949,16 +2074,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 34,
     "name": "TURMERIC",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Support",
     "rating": 4.8,
-    "price": 2999,
-    "oldPrice": 3600,
+    "price": 900,
+    "oldPrice": 1000,
     "image": "Herbal/turmeric.webp",
     "thumbnails": [
       "Herbal/turmeric.webp",
@@ -1977,25 +2108,25 @@
       "Maximum Absorption"
     ],
     "moq": 100,
-    "priceRange": "₹1500 - ₹2999 / Piece",
+    "priceRange": "₹765 - ₹900 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
-        "price": 2999,
-        "label": "100-499 pcs"
+        "price": 900,
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 2159,
-        "label": "500-999 pcs"
+        "price": 810,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1500,
-        "label": "1000+ pcs"
+        "price": 765,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 2549,
@@ -2008,16 +2139,22 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   },
   {
     "id": 35,
     "name": "VITAMIN",
-    "category": "Herbal",
+    "category": "Herbal Products",
     "badge": "Superfood",
     "rating": 5,
-    "price": 3899,
-    "oldPrice": 4800,
+    "price": 950,
+    "oldPrice": 1000,
     "image": "Herbal/vitamin.webp",
     "thumbnails": [
       "Herbal/vitamin.webp",
@@ -2038,25 +2175,25 @@
       "Wholefood Sourced"
     ],
     "moq": 50,
-    "priceRange": "₹1950 - ₹3899 / Piece",
+    "priceRange": "₹808 - ₹950 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
-        "price": 3899,
-        "label": "50-249 pcs"
+        "price": 950,
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 2807,
-        "label": "250-499 pcs"
+        "price": 855,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 1950,
-        "label": "500+ pcs"
+        "price": 808,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 3314,
@@ -2069,1093 +2206,12 @@
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 36,
-    "name": "BAY LEAF",
-    "category": "Spices",
-    "badge": "Pure",
-    "rating": 5,
-    "price": 249,
-    "oldPrice": 350,
-    "image": "spices/BAY.jpeg",
-    "thumbnails": [
-      "spices/BAY.jpeg",
-      "spices/BLACK CARDUMUM.jpeg",
-      "spices/BLACK PEPER.jpeg"
-    ],
-    "description": "100% Pure & Organic hand-selected Indian Bay Leaves (Tejpatta) rich in aroma.",
-    "ingredients": [
-      "Pure Indian Bay Leaves"
-    ],
-    "specs": [
-      "50g Pack",
-      "Air Tight Jar",
-      "Premium Quality",
-      "100% Natural"
-    ],
-    "moq": 500,
-    "priceRange": "₹125 - ₹249 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 249,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 179,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 125,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 212,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 37,
-    "name": "BLACK CARDAMUM",
-    "category": "Spices",
-    "badge": "Premium",
-    "rating": 4.9,
-    "price": 499,
-    "oldPrice": 650,
-    "image": "spices/BLACK CARDUMUM.jpeg",
-    "thumbnails": [
-      "spices/BLACK CARDUMUM.jpeg",
-      "spices/BAY.jpeg",
-      "spices/GREEN CARD.jpeg"
-    ],
-    "description": "Whole smoky Black Cardamom pods (Badi Elaichi) from the hills of Sikkim.",
-    "ingredients": [
-      "Whole Black Cardamom Pods"
-    ],
-    "specs": [
-      "100g Pack",
-      "Sun Dried",
-      "Premium Quality",
-      "Rich Aroma"
-    ],
-    "moq": 500,
-    "priceRange": "₹250 - ₹499 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 499,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 359,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 250,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 424,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 38,
-    "name": "BLACK PAPER",
-    "category": "Spices",
-    "badge": "Best Seller",
-    "rating": 5,
-    "price": 349,
-    "oldPrice": 450,
-    "image": "spices/BLACK PEPER.jpeg",
-    "thumbnails": [
-      "spices/BLACK PEPER.jpeg",
-      "spices/BAY.jpeg",
-      "spices/CUMIN_SEED.jpeg"
-    ],
-    "description": "Whole Malabar Black Peppercorns (Kali Mirch), strong, bold and pungent.",
-    "ingredients": [
-      "Grade A Black Peppercorns"
-    ],
-    "specs": [
-      "100g Pack",
-      "Air Tight Glass Jar",
-      "High Essential Oils",
-      "100% Pure"
-    ],
-    "moq": 500,
-    "priceRange": "₹175 - ₹349 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 349,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 251,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 175,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 297,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 39,
-    "name": "CELERY SEEDS",
-    "category": "Spices",
-    "badge": "Fresh",
-    "rating": 4.8,
-    "price": 199,
-    "oldPrice": 280,
-    "image": "spices/CELERY SEEDS.jpeg",
-    "thumbnails": [
-      "spices/CELERY SEEDS.jpeg",
-      "spices/BAY.jpeg",
-      "spices/FENNEL.jpeg"
-    ],
-    "description": "Aromatic Celery Seeds (Ajmod) perfect for seasoning, soups and pickles.",
-    "ingredients": [
-      "Pure Celery Seeds"
-    ],
-    "specs": [
-      "100g Pack",
-      "Air Tight Container",
-      "Raw & Fresh"
-    ],
-    "moq": 500,
-    "priceRange": "₹100 - ₹199 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 199,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 143,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 100,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 169,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 40,
-    "name": "CINNAMON",
-    "category": "Spices",
-    "badge": "Hot",
-    "rating": 4.7,
-    "price": 179,
-    "oldPrice": 250,
-    "image": "spices/CINAMUN.jpeg",
-    "thumbnails": [
-      "spices/CINAMUN.jpeg",
-      "spices/BAY.jpeg",
-      "spices/CLOVE.jpeg"
-    ],
-    "description": "Authentic Ceylon Cinnamon sticks (Dalchini), aromatic, sweet and mild.",
-    "ingredients": [
-      "100% Organic Ceylon Cinnamon Quills"
-    ],
-    "specs": [
-      "100g Pack",
-      "Non-Cassia",
-      "Rich in Antioxidants"
-    ],
-    "moq": 500,
-    "priceRange": "₹90 - ₹179 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 179,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 129,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 90,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 152,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 41,
-    "name": "CLOVE",
-    "category": "Spices",
-    "badge": "Pure",
-    "rating": 5,
-    "price": 299,
-    "oldPrice": 400,
-    "image": "spices/CLOVE.jpeg",
-    "thumbnails": [
-      "spices/CLOVE.jpeg",
-      "spices/BLACK CARDUMUM.jpeg",
-      "spices/BAY.jpeg"
-    ],
-    "description": "Handpicked aromatic Cloves (Laung) with intact crowns, high eugenol oil content.",
-    "ingredients": [
-      "Whole Handpicked Cloves"
-    ],
-    "specs": [
-      "100g Pack",
-      "Air Tight Jar",
-      "High Eugenol Oil"
-    ],
-    "moq": 500,
-    "priceRange": "₹150 - ₹299 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 299,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 215,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 150,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 254,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 42,
-    "name": "CORIANDER SEEDS",
-    "category": "Spices",
-    "badge": "Whole",
-    "rating": 4.8,
-    "price": 399,
-    "oldPrice": 500,
-    "image": "spices/CORIANDER SEED.jpeg",
-    "thumbnails": [
-      "spices/CORIANDER SEED.jpeg",
-      "spices/CUMIN_SEED.jpeg",
-      "spices/BAY.jpeg"
-    ],
-    "description": "Sun-dried whole Coriander Seeds (Dhania) cultivated organically in Rajasthan.",
-    "ingredients": [
-      "Whole Coriander Seeds"
-    ],
-    "specs": [
-      "200g Pack",
-      "100% Organic",
-      "Farm Fresh"
-    ],
-    "moq": 500,
-    "priceRange": "₹200 - ₹399 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 399,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 287,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 200,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 339,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 43,
-    "name": "CUMIN SEEDS",
-    "category": "Spices",
-    "badge": "Special",
-    "rating": 5,
-    "price": 249,
-    "oldPrice": 320,
-    "image": "spices/CUMIN_SEED.jpeg",
-    "thumbnails": [
-      "spices/CUMIN_SEED.jpeg",
-      "spices/CORIANDER SEED.jpeg",
-      "spices/BLACK PEPER.jpeg"
-    ],
-    "description": "Rich and aromatic Cumin Seeds (Jeera), an indispensable staple in Indian cuisine.",
-    "ingredients": [
-      "Pure Cumin Seeds"
-    ],
-    "specs": [
-      "200g Pack",
-      "Machine Cleaned",
-      "Pesticide Free"
-    ],
-    "moq": 500,
-    "priceRange": "₹125 - ₹249 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 249,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 179,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 125,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 212,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 44,
-    "name": "FENNEL SEEDS",
-    "category": "Spices",
-    "badge": "Premium",
-    "rating": 4.9,
-    "price": 599,
-    "oldPrice": 750,
-    "image": "spices/FENNEL.jpeg",
-    "thumbnails": [
-      "spices/FENNEL.jpeg",
-      "spices/GREEN CARD.jpeg",
-      "spices/BAY.jpeg"
-    ],
-    "description": "Sweet Lucknowi Fennel Seeds (Saunf), bright green and fragrant for cooking & mouth freshener.",
-    "ingredients": [
-      "Lucknowi Green Fennel Seeds"
-    ],
-    "specs": [
-      "250g Jar",
-      "Sweet Flavor",
-      "100% Natural"
-    ],
-    "moq": 100,
-    "priceRange": "₹300 - ₹599 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 100,
-        "maxQty": 499,
-        "price": 599,
-        "label": "100-499 pcs"
-      },
-      {
-        "minQty": 500,
-        "maxQty": 999,
-        "price": 431,
-        "label": "500-999 pcs"
-      },
-      {
-        "minQty": 1000,
-        "maxQty": null,
-        "price": 300,
-        "label": "1000+ pcs"
-      }
-    ],
-    "samplePrice": 509,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 45,
-    "name": "GREEN CARDAMUM",
-    "category": "Spices",
-    "badge": "Fresh",
-    "rating": 5,
-    "price": 279,
-    "oldPrice": 360,
-    "image": "spices/GREEN CARD.jpeg",
-    "thumbnails": [
-      "spices/GREEN CARD.jpeg",
-      "spices/BLACK CARDUMUM.jpeg",
-      "spices/kesar.jpeg"
-    ],
-    "description": "Extra large 8mm+ Green Cardamom pods (Choti Elaichi) sourced from Idukki, Kerala.",
-    "ingredients": [
-      "Whole Green Cardamom Pods"
-    ],
-    "specs": [
-      "50g Pack",
-      "8mm Size Pods",
-      "Export Quality"
-    ],
-    "moq": 500,
-    "priceRange": "₹140 - ₹279 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 279,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 201,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 140,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 237,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 46,
-    "name": "INDIAN ASAFOETIDA",
-    "category": "Spices",
-    "badge": "Herbal",
-    "rating": 4.8,
-    "price": 349,
-    "oldPrice": 450,
-    "image": "spices/INDIAN ASO.jpeg",
-    "thumbnails": [
-      "spices/INDIAN ASO.jpeg",
-      "spices/CUMIN_SEED.jpeg",
-      "spices/BAY.jpeg"
-    ],
-    "description": "Strong, authentic compounding Asafoetida powder (Hing) for digestive wellness.",
-    "ingredients": [
-      "Pure Asafoetida Resin",
-      "Edible Gum"
-    ],
-    "specs": [
-      "50g Jar",
-      "Strong Fragrance",
-      "Zero Preservatives"
-    ],
-    "moq": 500,
-    "priceRange": "₹175 - ₹349 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 349,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 251,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 175,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 297,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 47,
-    "name": "INDIAN MACE",
-    "category": "Spices",
-    "badge": "Fresh",
-    "rating": 5,
-    "price": 399,
-    "oldPrice": 520,
-    "image": "spices/INDIAN MASE.jpeg",
-    "thumbnails": [
-      "spices/INDIAN MASE.jpeg",
-      "spices/NUTMEG.jpeg",
-      "spices/CLOVE.jpeg"
-    ],
-    "description": "Golden orange whole Indian Mace blades (Javitri), delicate and warming spice.",
-    "ingredients": [
-      "Whole Mace Blades"
-    ],
-    "specs": [
-      "50g Pack",
-      "Hand Picked",
-      "Pure Aroma"
-    ],
-    "moq": 500,
-    "priceRange": "₹200 - ₹399 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 399,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 287,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 200,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 339,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 48,
-    "name": "INDIAN SAFFRON",
-    "category": "Spices",
-    "badge": "Whole",
-    "rating": 4.7,
-    "price": 229,
-    "oldPrice": 300,
-    "image": "spices/kesar.jpeg",
-    "thumbnails": [
-      "spices/kesar.jpeg",
-      "spices/GREEN CARD.jpeg",
-      "spices/BAY.jpeg"
-    ],
-    "description": "100% Pure Mongra Kashmiri Saffron strands (Kesar) for food, milk & skin care.",
-    "ingredients": [
-      "Pure Kashmiri Mongra Saffron Strands"
-    ],
-    "specs": [
-      "1g Sealed Container",
-      "A++ Grade",
-      "Lab Tested"
-    ],
-    "moq": 500,
-    "priceRange": "₹115 - ₹229 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 229,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 165,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 115,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 195,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 49,
-    "name": "NUTMEG WHOLE",
-    "category": "Spices",
-    "badge": "Premium",
-    "rating": 5,
-    "price": 329,
-    "oldPrice": 420,
-    "image": "spices/NUTMEG.jpeg",
-    "thumbnails": [
-      "spices/NUTMEG.jpeg",
-      "spices/INDIAN MASE.jpeg",
-      "spices/CLOVE.jpeg"
-    ],
-    "description": "Whole shelled Nutmeg nuts (Jaiphal), rich in essential oils and sweet warm fragrance.",
-    "ingredients": [
-      "Whole Nutmeg Nuts"
-    ],
-    "specs": [
-      "100g Pack",
-      "Unpolished",
-      "Natural Oils"
-    ],
-    "moq": 500,
-    "priceRange": "₹165 - ₹329 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 329,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 237,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 165,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 280,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 50,
-    "name": "POPPY SEEDS",
-    "category": "Spices",
-    "badge": "Special",
-    "rating": 4.9,
-    "price": 269,
-    "oldPrice": 350,
-    "image": "spices/PEPPY SEEDS.jpeg",
-    "thumbnails": [
-      "spices/PEPPY SEEDS.jpeg",
-      "spices/BAY.jpeg",
-      "spices/SESAME.jpeg"
-    ],
-    "description": "Clean White Poppy Seeds (Khus Khus) rich in dietary fiber, calcium and healthy fats.",
-    "ingredients": [
-      "100% White Poppy Seeds"
-    ],
-    "specs": [
-      "100g Pack",
-      "Triple Filtered",
-      "Pure Natural"
-    ],
-    "moq": 500,
-    "priceRange": "₹135 - ₹269 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 269,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 194,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 135,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 229,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 51,
-    "name": "RED CHILI",
-    "category": "Spices",
-    "badge": "Spicy",
-    "rating": 4.8,
-    "price": 219,
-    "oldPrice": 290,
-    "image": "spices/RED CHILI.jpeg",
-    "thumbnails": [
-      "spices/RED CHILI.jpeg",
-      "spices/BAY.jpeg",
-      "spices/BLACK PEPER.jpeg"
-    ],
-    "description": "Sun dried stemless Indian Whole Red Chilis (Lal Mirch) for rich red color and heat.",
-    "ingredients": [
-      "100% Whole Red Chilis"
-    ],
-    "specs": [
-      "100g Pack",
-      "Natural Red Color",
-      "Sun Dried"
-    ],
-    "moq": 500,
-    "priceRange": "₹110 - ₹219 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 219,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 158,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 110,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 186,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 52,
-    "name": "SESAME SEEDS",
-    "category": "Spices",
-    "badge": "Healthy",
-    "rating": 4.9,
-    "price": 189,
-    "oldPrice": 250,
-    "image": "spices/SESAME.jpeg",
-    "thumbnails": [
-      "spices/SESAME.jpeg",
-      "spices/PEPPY SEEDS.jpeg",
-      "spices/BAY.jpeg"
-    ],
-    "description": "Hull-less natural white Sesame Seeds (Til) rich in calcium and omega fatty acids.",
-    "ingredients": [
-      "100% White Sesame Seeds"
-    ],
-    "specs": [
-      "150g Pack",
-      "Triple Washed",
-      "Rich Oil Content"
-    ],
-    "moq": 500,
-    "priceRange": "₹95 - ₹189 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 189,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 136,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 95,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 161,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 53,
-    "name": "STAR ANISE",
-    "category": "Spices",
-    "badge": "Aromatic",
-    "rating": 5,
-    "price": 319,
-    "oldPrice": 400,
-    "image": "spices/STAR.jpeg",
-    "thumbnails": [
-      "spices/STAR.jpeg",
-      "spices/CLOVE.jpeg",
-      "spices/CINAMUN.jpeg"
-    ],
-    "description": "Eight-pointed Whole Star Anise pods (Chakra Phool) for biryani and garam masala.",
-    "ingredients": [
-      "Whole Star Anise Pods"
-    ],
-    "specs": [
-      "50g Pack",
-      "Intact Pods",
-      "Export Grade"
-    ],
-    "moq": 500,
-    "priceRange": "₹160 - ₹319 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 319,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 230,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 160,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 271,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
-  },
-  {
-    "id": 54,
-    "name": "TURMERIC POWDER",
-    "category": "Spices",
-    "badge": "Ayurvedic",
-    "rating": 5,
-    "price": 199,
-    "oldPrice": 260,
-    "image": "spices/turmeric.jpeg",
-    "thumbnails": [
-      "spices/turmeric.jpeg",
-      "spices/CUMIN_SEED.jpeg",
-      "spices/CORIANDER SEED.jpeg"
-    ],
-    "description": "Pure High-Curcumin Alleppey Turmeric Powder for vibrant color and immunity.",
-    "ingredients": [
-      "100% Pure Organic Turmeric Powder"
-    ],
-    "specs": [
-      "200g Pack",
-      "5%+ Curcumin",
-      "No Artificial Color"
-    ],
-    "moq": 500,
-    "priceRange": "₹100 - ₹199 / Piece",
-    "priceTiers": [
-      {
-        "minQty": 500,
-        "maxQty": 2499,
-        "price": 199,
-        "label": "500-2499 pcs"
-      },
-      {
-        "minQty": 2500,
-        "maxQty": 4999,
-        "price": 143,
-        "label": "2500-4999 pcs"
-      },
-      {
-        "minQty": 5000,
-        "maxQty": null,
-        "price": 100,
-        "label": "5000+ pcs"
-      }
-    ],
-    "samplePrice": 169,
-    "leadTime": "7 - 12 Days (Port Dispatch)",
-    "supplyCapacity": "100,000 Units / Month",
-    "customization": [
-      "Custom Brand Logo & Label Printing",
-      "Custom Bottle / Box Packaging",
-      "Custom Herbal Concentration / OEM Formulation",
-      "COA & Lab Test Certificates Included"
-    ],
-    "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "reviewsCount": 28,
+    "tag": "HERBAL CARE",
+    "isBestseller": false,
+    "stockQuantity": 15,
+    "inStock": true,
+    "unit": "Pieces"
   }
 ]

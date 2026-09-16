@@ -9,6 +9,108 @@ let activeCategory = 'all';
 let currentSearchQuery = '';
 let appliedPromoCode = null;
 
+let currentCurrency = localStorage.getItem('kiyan_currency') || 'USD';
+const exchangeRates = {
+  USD: { symbol: '$', rate: 1 / 85.5 },
+  INR: { symbol: '₹', rate: 1 },
+  EUR: { symbol: '€', rate: 1 / 92.4 },
+  GBP: { symbol: '£', rate: 1 / 109.1 },
+  AED: { symbol: 'AED ', rate: 1 / 23.28 }
+};
+
+// Fetch Live Real-Time Currency Exchange Rates from Live Financial API
+async function fetchLiveExchangeRates() {
+  try {
+    const response = await fetch('https://open.er-api.com/v6/latest/INR');
+    const data = await response.json();
+    if (data && data.result === 'success' && data.rates) {
+      const rates = data.rates;
+      if (rates.USD) exchangeRates.USD.rate = rates.USD;
+      if (rates.EUR) exchangeRates.EUR.rate = rates.EUR;
+      if (rates.GBP) exchangeRates.GBP.rate = rates.GBP;
+      if (rates.AED) exchangeRates.AED.rate = rates.AED;
+      console.log('⚡ Live Currency Exchange Rates Updated Successfully via API:', exchangeRates);
+      
+      // Update UI with latest live rates
+      if (typeof renderProductGrids === 'function') renderProductGrids();
+      if (typeof renderAdminStandaloneTable === 'function') renderAdminStandaloneTable();
+    }
+  } catch (err) {
+    console.warn('Using default exchange rates fallback:', err.message);
+  }
+}
+
+// Automatically fetch live rates on script load
+fetchLiveExchangeRates();
+
+function formatPrice(amountInINR) {
+  const num = Number(amountInINR) || 0;
+  const curr = exchangeRates[currentCurrency] || exchangeRates.USD;
+  const converted = num * curr.rate;
+
+  if (currentCurrency === 'INR') {
+    return `₹${Math.round(num).toLocaleString('en-IN')}`;
+  } else if (currentCurrency === 'AED') {
+    return `AED ${converted.toFixed(1)}`;
+  } else {
+    return `${curr.symbol}${converted.toFixed(2)}`;
+  }
+}
+
+function changeCurrency(currCode) {
+  if (!exchangeRates[currCode]) return;
+  currentCurrency = currCode;
+  localStorage.setItem('kiyan_currency', currCode);
+  
+  const sel = document.getElementById('currencySelect');
+  if (sel) sel.value = currCode;
+
+  renderProductGrids();
+  if (typeof renderAdminStandaloneTable === 'function') {
+    renderAdminStandaloneTable();
+  }
+  if (typeof currentModalProduct !== 'undefined' && currentModalProduct) {
+    openProductModal(currentModalProduct.id);
+  }
+}
+
+function getFormattedPriceRange(product) {
+  if (!product) return '';
+  const unitStr = getProductUnit(product);
+  const baseP = Number(product.price) || 599;
+  const t1 = baseP;
+  const t3 = Math.round(baseP * 0.85);
+
+  return `${formatPrice(t3)} - ${formatPrice(t1)} / ${unitStr}`;
+}
+
+function orderExpressSampleKit(prodId = null) {
+  const prod = prodId ? productsData.find(p => p.id === prodId) : currentModalProduct;
+  const prodName = prod ? prod.name : 'Bulk Herbal Extract';
+  const sampleFee = formatPrice(3999);
+
+  openRfqModal();
+  setTimeout(() => {
+    const pInput = document.getElementById('rfqProductName');
+    const qInput = document.getElementById('rfqQuantity');
+    const details = document.getElementById('rfqCustomization');
+    if (pInput) pInput.value = `${prodName} (Express DHL Sample Kit)`;
+    if (qInput) qInput.value = '1 Sample Kit (50g-100g Lab Batch)';
+    if (details) details.value = `Express Sample Kit Requested. Target Fee: ${sampleFee} via DHL Express Air Cargo. Please email proforma invoice and HPLC purity report.`;
+  }, 100);
+}
+
+function getProductUnit(p) {
+  if (!p) return 'Pieces';
+  if (p.unit && p.unit !== 'Pieces') return p.unit;
+  const name = (p.name || '').toLowerCase();
+  const desc = (p.description || '').toLowerCase();
+  if (name.includes('powder') || desc.includes('powder') || name.includes('power')) {
+    return 'Kg';
+  }
+  return p.unit || 'Pieces';
+}
+
 // ===== SKELETON (SKULL) IMAGE LOADER MANAGEMENT =====
 function onImageLoad(img) {
   if (!img) return;
@@ -70,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchAndApplySiteContent();
   initScrollReveal();
   updateB2BCalculator();
+  renderRecentlyViewed();
 });
 
 // ===== TOP BAR SCROLL HIDE LISTENER =====
@@ -335,7 +438,7 @@ async function handleLogin(event) {
         const standaloneDash = document.getElementById('adminStandaloneDashboard');
         if (standaloneDash) standaloneDash.style.display = 'block';
         renderAdminStandaloneTable();
-        alert(`Welcome Admin (${currentUser.fullName})! Accessing Kiyan Wellness Admin Dashboard... 👑`);
+        alert(`Welcome Admin (${currentUser.fullName})! Accessing Kiyan Export Admin Dashboard... 👑`);
       } else {
         document.body.classList.remove('admin-mode-active');
         const standaloneDash = document.getElementById('adminStandaloneDashboard');
@@ -388,7 +491,7 @@ async function handleRegister(event) {
       if (standaloneDash) standaloneDash.style.display = 'none';
       updateAuthUI();
       closeAuthModal();
-      alert(`Registration successful! Welcome to Kiyan Wellness, ${currentUser.fullName}! 🌿`);
+      alert(`Registration successful! Welcome to Kiyan Export, ${currentUser.fullName}! 🌿`);
     } else {
       alert(data.message || 'Registration failed. Please check your details.');
     }
@@ -599,8 +702,17 @@ function setupFilterListeners() {
   if (mobileSearchInput) mobileSearchInput.addEventListener('input', handleSearchInput);
 }
 
+function normalizeCategory(catStr) {
+  if (!catStr) return 'herbal';
+  const c = String(catStr).toLowerCase();
+  if (c.includes('spice') || c.includes('powder') || c.includes('tea') || c.includes('bark')) return 'spices';
+  if (c.includes('copper')) return 'copperware';
+  if (c.includes('capsule') || c.includes('gummy') || c.includes('shilajit') || c.includes('wellness') || c.includes('herbal') || c.includes('extract')) return 'herbal';
+  return 'herbal';
+}
+
 function setCategoryFilter(category, element) {
-  activeCategory = category.toLowerCase();
+  activeCategory = (category || 'all').toLowerCase();
   
   // Update Pills UI
   const pills = document.querySelectorAll('.filter-pill');
@@ -615,15 +727,16 @@ function renderFilteredProducts() {
 
   // Category Filter
   if (activeCategory !== 'all') {
-    filtered = filtered.filter(p => p.category.toLowerCase() === activeCategory);
+    const targetNorm = normalizeCategory(activeCategory);
+    filtered = filtered.filter(p => normalizeCategory(p.category) === targetNorm);
   }
 
   // Search Query Filter
   if (currentSearchQuery) {
     filtered = filtered.filter(p =>
-      p.name.toLowerCase().includes(currentSearchQuery) ||
-      p.description.toLowerCase().includes(currentSearchQuery) ||
-      p.category.toLowerCase().includes(currentSearchQuery)
+      (p.name || '').toLowerCase().includes(currentSearchQuery) ||
+      (p.description || '').toLowerCase().includes(currentSearchQuery) ||
+      (p.category || '').toLowerCase().includes(currentSearchQuery)
     );
   }
 
@@ -658,7 +771,7 @@ function renderProductGrids(products) {
     const stock = product.stockQuantity !== undefined ? product.stockQuantity : 15;
     const isSoldOut = stock === 0;
     const moq = product.moq || 100;
-    const priceRange = product.priceRange || `₹${Math.round(product.price * 0.5)} - ₹${product.price} / Piece`;
+    const priceRange = getFormattedPriceRange(product);
     
     const adminEditBtnHTML = isAdmin ? `<button class="admin-quick-edit-card-btn" onclick="event.stopPropagation(); showPage('admin'); switchAdminTab('products'); openAdminProductModal(${product.id});" title="Quick Edit Product"><i class="fas fa-pen"></i> Edit</button>` : '';
 
@@ -673,16 +786,16 @@ function renderProductGrids(products) {
     const cardHTML = `
       <div class="product-card ${isSoldOut ? 'sold-out-card' : ''}" onclick="openProductModal(${product.id})">
         <div class="product-image skeleton-wrapper">
-          <img src="${imgUrl}" alt="${product.name}" loading="lazy" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this, '/Logo-2.webp')">
+          <img src="${imgUrl}" alt="${product.name}" loading="lazy" decoding="async" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this, '/Logo-2.webp')">
           ${badgeHTML}
           ${adminEditBtnHTML}
         </div>
         <div class="product-info">
           <div class="category">${product.category} &bull; OEM/ODM</div>
           <h3 style="font-size: 1.15rem;">${product.name}</h3>
-          <div class="moq-tag-card"><i class="fas fa-cubes" style="color: #1e5967;"></i> Min. Order: <strong>${moq} Pieces</strong></div>
+          <div class="moq-tag-card"><i class="fas fa-cubes" style="color: #1e5967;"></i> Min. Order: <strong>${moq} ${getProductUnit(product)}</strong></div>
           <div class="b2b-price-range" style="margin-top: 8px;">${priceRange}</div>
-          <p class="product-desc" style="margin-top: 6px; font-size: 0.82rem;">${product.description}</p>
+          <p class="product-desc" style="margin-top: 6px; font-size: 0.82rem; color: #555; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; line-height: 1.45; max-height: 2.9em;">${product.description}</p>
           <div style="display: flex; gap: 8px; margin-top: 12px; align-items: center;">
             ${cartBtnHTML}
             <button onclick="event.stopPropagation(); inquireProductOnWhatsApp('${(product.name || '').replace(/'/g, "\\'")}', ${moq}, '${product.category}', '${(priceRange || '').replace(/'/g, "\\'")}')" class="wa-card-inquire-btn" style="flex: 1.1; padding: 10px 8px; background: #25d366; color: white; border: none; border-radius: 25px; font-size: 0.8rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 3px 10px rgba(37,211,102,0.35); transition: transform 0.2s;" title="Inquire about ${product.name} on WhatsApp (+91 9305834431)"><i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> WhatsApp Inquiry</button>
@@ -691,19 +804,12 @@ function renderProductGrids(products) {
       </div>
     `;
 
-    const cat = (product.category || '').toLowerCase();
-
-    if (cat === 'herbal') {
-      if (herbalGrid) herbalGrid.insertAdjacentHTML('beforeend', cardHTML);
-      if (herbalGridFull) herbalGridFull.insertAdjacentHTML('beforeend', cardHTML);
-    } else if (cat === 'spices') {
-      if (spicesGrid) spicesGrid.insertAdjacentHTML('beforeend', cardHTML);
-    } else if (cat === 'copperware') {
-      if (copperGrid) copperGrid.insertAdjacentHTML('beforeend', cardHTML);
-    }
+    if (herbalGrid) herbalGrid.insertAdjacentHTML('beforeend', cardHTML);
+    if (herbalGridFull) herbalGridFull.insertAdjacentHTML('beforeend', cardHTML);
   });
 
   initSkeletonLoaders();
+  renderRecentlyViewed();
 }
 
 // ===== PRODUCT DETAIL MODAL (ALIBABA B2B WHOLESALE) =====
@@ -775,24 +881,36 @@ async function openProductModal(id) {
   const pmTierGrid = document.getElementById('pmTierGrid');
   const pmCustomization = document.getElementById('pmCustomization');
 
-  if (pmMoqBadge) pmMoqBadge.innerHTML = `<i class="fas fa-cubes"></i> Min. Order: ${product.moq || 100} Pcs`;
+  const uUnit = getProductUnit(product);
+  if (pmMoqBadge) pmMoqBadge.innerHTML = `<i class="fas fa-cubes"></i> Min. Order: ${product.moq || 100} ${uUnit}`;
   if (pmTitle) pmTitle.textContent = product.name;
-  if (pmDesc) pmDesc.textContent = product.description;
+  if (pmDesc) {
+    const rawDesc = (product.description || '').trim();
+    if (rawDesc.includes('\n')) {
+      pmDesc.innerHTML = rawDesc
+        .split('\n')
+        .filter(l => l.trim())
+        .map(p => `<p style="margin-bottom: 10px; line-height: 1.6; color: #2c3e50; font-size: 0.95rem; text-align: justify; white-space: pre-wrap;">${p.trim()}</p>`)
+        .join('');
+    } else {
+      pmDesc.innerHTML = `<p style="line-height: 1.6; color: #2c3e50; font-size: 0.95rem; text-align: justify; white-space: pre-wrap;">${rawDesc}</p>`;
+    }
+  }
 
   // Render Volume Price Tiers Grid (Alibaba Style)
   if (pmTierGrid) {
     pmTierGrid.innerHTML = '';
     const tiers = product.priceTiers || [
-      { minQty: product.moq || 100, maxQty: (product.moq || 100)*5 - 1, price: product.price, label: `${product.moq || 100}-${(product.moq || 100)*5 - 1} pcs` },
-      { minQty: (product.moq || 100)*5, maxQty: (product.moq || 100)*10 - 1, price: Math.round(product.price * 0.72), label: `${(product.moq || 100)*5}-${(product.moq || 100)*10 - 1} pcs` },
-      { minQty: (product.moq || 100)*10, maxQty: null, price: Math.round(product.price * 0.50), label: `${(product.moq || 100)*10}+ pcs` }
+      { minQty: product.moq || 100, maxQty: (product.moq || 100)*5 - 1, price: product.price, label: `${product.moq || 100}-${(product.moq || 100)*5 - 1} ${uUnit}` },
+      { minQty: (product.moq || 100)*5, maxQty: (product.moq || 100)*10 - 1, price: Math.round(product.price * 0.90), label: `${(product.moq || 100)*5}-${(product.moq || 100)*10 - 1} ${uUnit}` },
+      { minQty: (product.moq || 100)*10, maxQty: null, price: Math.round(product.price * 0.85), label: `${(product.moq || 100)*10}+ ${uUnit}` }
     ];
 
     tiers.forEach((t, idx) => {
       pmTierGrid.insertAdjacentHTML('beforeend', `
         <div class="tier-box ${idx === 0 ? 'active-tier' : ''}" onclick="selectTierQty(${t.minQty})">
-          <div class="tier-qty">${t.label || (t.minQty + (t.maxQty ? '-' + t.maxQty : '+') + ' pcs')}</div>
-          <div class="tier-price">₹${t.price}</div>
+          <div class="tier-qty">${t.label || (t.minQty + (t.maxQty ? '-' + t.maxQty : '+') + ' ' + uUnit)}</div>
+          <div class="tier-price">${formatPrice(t.price)}</div>
           <div class="tier-label">Factory Direct</div>
         </div>
       `);
@@ -835,7 +953,9 @@ async function openProductModal(id) {
   const delDateEl = document.getElementById('pmDeliveryDate');
   const capEl = document.getElementById('pmSupplyCapacity');
   if (delDateEl) delDateEl.textContent = `Lead Time: ${product.leadTime || '7 - 12 Days (Port Dispatch)'}`;
-  if (capEl) capEl.textContent = `Capacity: ${product.supplyCapacity || '100,000 Pcs / Month'}`;
+  if (capEl) capEl.textContent = `Capacity: ${product.supplyCapacity || ('100,000 ' + uUnit + ' / Month')}`;
+  const calcQtyLabelEl = document.getElementById('pmCalcQtyLabel');
+  if (calcQtyLabelEl) calcQtyLabelEl.textContent = `Order Quantity (${uUnit}):`;
 
   // Set default quantity input to MOQ
   const qtyInput = document.getElementById('pmQtyInput');
@@ -847,12 +967,171 @@ async function openProductModal(id) {
   // Render Customer Ratings & Reviews
   renderProductReviews(product);
 
+  // Track Recently Viewed for Recommendations
+  trackRecentlyViewedProduct(product);
+
   // Show Modal
   const modalOverlay = document.getElementById('productModalOverlay');
   if (modalOverlay) {
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     setupImageHoverZoom();
+  }
+}
+
+// ===== RECENTLY VIEWED & RECOMMENDATIONS TRACKING ENGINE =====
+function trackRecentlyViewedProduct(product) {
+  if (!product || !product.id) return;
+  try {
+    let recent = JSON.parse(localStorage.getItem('kiyan_recently_viewed') || '[]');
+    recent = recent.filter(p => p.id !== product.id);
+    recent.unshift({
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      image: product.image,
+      price: product.price,
+      priceMin: product.priceMin,
+      priceMax: product.priceMax,
+      moq: product.moq,
+      unit: product.unit,
+      viewedAt: Date.now()
+    });
+    if (recent.length > 8) recent = recent.slice(0, 8);
+    localStorage.setItem('kiyan_recently_viewed', JSON.stringify(recent));
+    renderRecentlyViewed();
+  } catch (err) {
+    console.error('Error tracking recently viewed product:', err);
+  }
+}
+
+function renderRecentlyViewed() {
+  const section = document.getElementById('recentlyViewedSection');
+  const grid = document.getElementById('recentlyViewedGrid');
+  if (!section || !grid) return;
+
+  try {
+    const recent = JSON.parse(localStorage.getItem('kiyan_recently_viewed') || '[]');
+    if (!recent || recent.length === 0) {
+      section.style.display = 'none';
+      return;
+    }
+
+    section.style.display = 'block';
+    grid.innerHTML = '';
+
+    recent.forEach(p => {
+      const fullProd = productsData.find(item => item.id === p.id) || p;
+      const isSoldOut = fullProd.stock !== undefined && fullProd.stock <= 0;
+      const imgUrl = fullProd.image.startsWith('/') ? fullProd.image : '/' + fullProd.image;
+      const uUnit = fullProd.unit || 'Pieces';
+
+      grid.insertAdjacentHTML('beforeend', `
+        <div class="product-card ${isSoldOut ? 'sold-out-card' : ''}" onclick="openProductModal(${fullProd.id})" style="border: 1.5px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(212,175,55,0.15); border-radius: 14px; overflow: hidden; background: #fff;">
+          <div class="product-image" style="background: #f8fafc; padding: 8px;">
+            <span class="product-badge" style="background: #1e431c; color: var(--bright-gold); font-size: 0.65rem;"><i class="fas fa-eye"></i> Viewed</span>
+            <img src="${imgUrl}" alt="${fullProd.name}" loading="lazy">
+          </div>
+          <div class="product-info" style="padding: 10px;">
+            <div class="category" style="font-size: 0.65rem;">${fullProd.category || 'HERBAL'}</div>
+            <h3 style="font-size: 0.9rem; line-height: 1.25; margin-bottom: 4px;">${fullProd.name}</h3>
+            <div class="product-price-box" style="font-size: 0.85rem; font-weight: 800; color: var(--deep-green); margin-bottom: 6px;">
+              ${fullProd.priceMin ? formatPrice(fullProd.priceMin) + ' - ' + formatPrice(fullProd.priceMax) : formatPrice(fullProd.price)} / ${uUnit}
+            </div>
+            <button class="add-to-cart-btn" onclick="event.stopPropagation(); inquireProductOnWhatsApp('${(fullProd.name || '').replace(/'/g, "\\'")}', ${fullProd.moq || 100}, '${fullProd.category || 'Herbal'}', '${fullProd.priceRange || ''}')" style="width: 100%; padding: 6px; font-size: 0.75rem; border-radius: 8px; background: #25d366; color: #fff; font-weight: 800; border: none; cursor: pointer;">
+              <i class="fab fa-whatsapp"></i> Inquire Now
+            </button>
+          </div>
+        </div>
+      `);
+    });
+    triggerRecommendationPopup();
+  } catch (err) {
+    console.error('Error rendering recently viewed products:', err);
+  }
+}
+
+function clearRecentlyViewed() {
+  localStorage.removeItem('kiyan_recently_viewed');
+  renderRecentlyViewed();
+  dismissRecommendationPopup();
+}
+
+// ===== POPUP RE-ENGAGEMENT TOAST ENGINE =====
+let recPopupTimeout = null;
+let recPopupRotationInterval = null;
+
+function triggerRecommendationPopup(forceShowImmediate = false) {
+  const card = document.getElementById('recommendationPopupCard');
+  if (!card) return;
+
+  try {
+    const recent = JSON.parse(localStorage.getItem('kiyan_recently_viewed') || '[]');
+    if (!recent || recent.length === 0) return;
+
+    // Pick latest viewed product
+    const topProduct = productsData.find(item => item.id === recent[0].id) || recent[0];
+    if (!topProduct) return;
+
+    const imgEl = document.getElementById('recPopImg');
+    const titleEl = document.getElementById('recPopTitle');
+    const priceEl = document.getElementById('recPopPrice');
+    const btnEl = document.getElementById('recPopActionBtn');
+
+    const imgUrl = topProduct.image.startsWith('/') ? topProduct.image : '/' + topProduct.image;
+    const uUnit = topProduct.unit || 'Pieces';
+    const priceStr = topProduct.priceMin ? `${formatPrice(topProduct.priceMin)} - ${formatPrice(topProduct.priceMax)} / ${uUnit}` : `${formatPrice(topProduct.price)} / ${uUnit}`;
+
+    if (imgEl) imgEl.src = imgUrl;
+    if (titleEl) titleEl.textContent = topProduct.name;
+    if (priceEl) priceEl.textContent = priceStr;
+    if (btnEl) {
+      btnEl.onclick = function() {
+        inquireProductOnWhatsApp(topProduct.name || '', topProduct.moq || 100, topProduct.category || 'Herbal', priceStr);
+        hideRecommendationPopup();
+      };
+    }
+
+    if (recPopupTimeout) clearTimeout(recPopupTimeout);
+    
+    // Always trigger popup repeatedly
+    const delay = forceShowImmediate ? 500 : 1500;
+    recPopupTimeout = setTimeout(() => {
+      card.style.display = 'block';
+      card.style.animation = 'none';
+      void card.offsetHeight; // trigger reflow
+      card.style.animation = 'slideUpToast 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+    }, delay);
+
+    // Setup auto re-trigger loop every 20 seconds if user stays on page
+    if (!recPopupRotationInterval) {
+      recPopupRotationInterval = setInterval(() => {
+        const c = document.getElementById('recommendationPopupCard');
+        if (c && c.style.display === 'none') {
+          triggerRecommendationPopup(true);
+        }
+      }, 20000);
+    }
+  } catch (err) {
+    console.error('Error triggering recommendation popup:', err);
+  }
+}
+
+function hideRecommendationPopup() {
+  const card = document.getElementById('recommendationPopupCard');
+  if (card) card.style.display = 'none';
+}
+
+function dismissRecommendationPopup() {
+  hideRecommendationPopup();
+}
+
+function closeProductModal(event) {
+  if (event && event.target !== event.currentTarget) return;
+  const modalOverlay = document.getElementById('productModalOverlay');
+  if (modalOverlay) {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
   }
 }
 
@@ -1065,8 +1344,9 @@ function updateModalPricingSlab() {
   const totalEl = document.getElementById('pmCalcTotal');
   const moqWarn = document.getElementById('pmMoqWarning');
 
-  if (unitPriceEl) unitPriceEl.textContent = `₹${unitPrice.toLocaleString('en-IN')} / pc`;
-  if (totalEl) totalEl.textContent = `₹${total.toLocaleString('en-IN')}`;
+  const unitName = currentModalProduct ? getProductUnit(currentModalProduct) : 'pc';
+  if (unitPriceEl) unitPriceEl.textContent = `${formatPrice(unitPrice)} / ${unitName}`;
+  if (totalEl) totalEl.textContent = `${formatPrice(total)}`;
 
   const isBelowMoq = qty < moq;
   if (moqWarn) moqWarn.style.display = isBelowMoq ? 'block' : 'none';
@@ -1147,46 +1427,30 @@ async function submitRfq(event) {
   const shippingCountry = document.getElementById('rfqCountry').value || 'International';
   const customizationDetails = document.getElementById('rfqCustomization').value || '';
 
-  // 1. Silent Post to Server Backend Store & SMTP Mailer
+  // 1. Post to Server Backend Store & Professional Mailer
   try {
-    await fetch('/api/rfq', {
+    const res = await fetch('/api/rfq', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         productId, productName, companyName, contactName, email, phone, targetQuantity, shippingCountry, customizationDetails
       })
     });
-  } catch (err) {}
-
-  // 2. Direct Silent Post to smart.mehra1208@gmail.com inbox via FormSubmit API (NO REDIRECTS, NO NEW TABS!)
-  try {
-    await fetch('https://formsubmit.co/ajax/smart.mehra1208@gmail.com', {
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        _subject: `📦 NEW BULK QUOTATION: ${productName} (${targetQuantity} Pcs) - ${companyName || contactName}`,
-        Product_Name: productName,
-        Target_Quantity: targetQuantity + ' Pieces',
-        Buyer_Contact_Name: contactName,
-        Company_Name: companyName,
-        Buyer_Email: email,
-        Buyer_Phone_WhatsApp: phone,
-        Destination_Country: shippingCountry,
-        Customization_Requirements: customizationDetails || 'Standard Wholesale Request'
-      })
-    });
-  } catch (err) {}
+    const data = await res.json();
+    if (!data.success) {
+      console.warn('Backend RFQ dispatch status:', data.message);
+    }
+  } catch (err) {
+    console.error('RFQ dispatch network error:', err);
+  }
 
   if (submitBtn) {
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalBtnHtml;
   }
 
-  // 3. Clean On-Page Checkmark Alert (100% SILENT ON WEBSITE!)
-  alert(`✅ BULK QUOTATION SENT DIRECTLY!\n\nThank you ${contactName}! Your bulk quotation request for "${productName}" (${targetQuantity} Pcs) has been transmitted directly to smart.mehra1208@gmail.com.\n\nOur export sales team will review your inquiry and email you a formal quotation & PDF catalog shortly.`);
+  // 2. Clean On-Page Checkmark Alert
+  alert(`✅ BULK QUOTATION SENT DIRECTLY!\n\nThank you ${contactName}! Your bulk quotation request for "${productName}" (${targetQuantity} Pcs) has been transmitted to our export team.\n\nOur export sales team will review your inquiry and email you a formal quotation & PDF catalog shortly.`);
   closeRfqModal();
 }
 
@@ -1517,7 +1781,7 @@ async function placeOrder(event) {
           key: rzpData.keyId,
           amount: rzpData.amount,
           currency: rzpData.currency || 'INR',
-          name: 'Kiyan Wellness Direct',
+          name: 'Kiyan Export Direct',
           description: `Payment for Order ${createdOrder.orderId}`,
           image: '/images/kiyan-logo.png',
           order_id: rzpData.orderId,
@@ -1639,19 +1903,40 @@ async function sendChatbotMessage(textMessage) {
       let optionsHTML = '';
       if (data.options && data.options.length) {
         optionsHTML = `<div class="chatbot-options">` +
-          data.options.map(opt => `<button class="chatbot-opt-btn" onclick="sendChatbotMessage('${opt}')">${opt}</button>`).join('') +
+          data.options.map(opt => {
+            const isViewOpt = opt.startsWith('View ');
+            const prodNameClean = opt.replace('View ', '').replace(/'/g, "\\'");
+            if (isViewOpt) {
+              return `<button class="chatbot-opt-btn" onclick="handleChatbotProductClick('${prodNameClean}')"><i class="fas fa-eye"></i> ${opt}</button>`;
+            }
+            return `<button class="chatbot-opt-btn" onclick="sendChatbotMessage('${opt.replace(/'/g, "\\'")}')">${opt}</button>`;
+          }).join('') +
           `</div>`;
       }
 
+      let formattedReply = data.reply
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br>');
+
       messagesContainer.insertAdjacentHTML('beforeend', `
         <div class="chatbot-msg bot">
-          <div class="msg-bubble">${data.reply.replace(/\n/g, '<br>')}${optionsHTML}</div>
+          <div class="msg-bubble">${formattedReply}${optionsHTML}</div>
         </div>
       `);
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
   } catch (err) {
     console.error('Chatbot error:', err);
+  }
+}
+
+function handleChatbotProductClick(prodName) {
+  if (!prodName) return;
+  const match = productsData.find(p => p.name.toLowerCase() === prodName.toLowerCase() || p.name.toLowerCase().includes(prodName.toLowerCase()));
+  if (match) {
+    openProductModal(match.id);
+  } else {
+    showPage('products');
   }
 }
 
@@ -1873,6 +2158,11 @@ function openAdminProductModal(prodId = null) {
     if (getEl('adminProdName')) getEl('adminProdName').value = prod ? prod.name : '';
     if (getEl('adminProdCategory')) getEl('adminProdCategory').value = prod ? prod.category : 'Herbal Products';
     if (getEl('adminProdTag')) getEl('adminProdTag').value = prod ? (prod.tag || '') : '';
+    let defaultUnit = prod ? (prod.unit || 'Pieces') : 'Pieces';
+    if (prod && prod.name && prod.name.toLowerCase().includes('powder') && (!prod.unit || prod.unit === 'Pieces')) {
+      defaultUnit = 'Kg';
+    }
+    if (getEl('adminProdUnit')) getEl('adminProdUnit').value = defaultUnit;
     if (getEl('adminProdPrice')) getEl('adminProdPrice').value = prod ? prod.price : '';
     if (getEl('adminProdOldPrice')) getEl('adminProdOldPrice').value = prod ? (prod.oldPrice || '') : '';
     if (getEl('adminProdStock')) getEl('adminProdStock').value = prod ? (prod.stockQuantity !== undefined ? prod.stockQuantity : 15) : 15;
@@ -1888,6 +2178,7 @@ function openAdminProductModal(prodId = null) {
     const getEl = (id) => document.getElementById(id);
     if (getEl('adminProdId')) getEl('adminProdId').value = '';
     if (getEl('adminProductForm')) getEl('adminProductForm').reset();
+    if (getEl('adminProdUnit')) getEl('adminProdUnit').value = 'Pieces';
     if (getEl('adminProdStock')) getEl('adminProdStock').value = '15';
     if (getEl('adminProdRating')) getEl('adminProdRating').value = '4.9';
     if (getEl('adminProdReviews')) getEl('adminProdReviews').value = '25';
@@ -1912,6 +2203,7 @@ async function saveAdminProduct(event) {
   const name = getEl('adminProdName') ? getEl('adminProdName').value : '';
   const category = getEl('adminProdCategory') ? getEl('adminProdCategory').value : 'Herbal Products';
   const tag = getEl('adminProdTag') ? getEl('adminProdTag').value : '';
+  const unit = getEl('adminProdUnit') ? getEl('adminProdUnit').value : 'Pieces';
   const price = Number(getEl('adminProdPrice') ? getEl('adminProdPrice').value : 0);
   const oldPrice = Number(getEl('adminProdOldPrice') ? getEl('adminProdOldPrice').value : 0) || (price + 200);
   const stockQuantity = Number(getEl('adminProdStock') ? getEl('adminProdStock').value : 15);
@@ -1923,7 +2215,7 @@ async function saveAdminProduct(event) {
   const specs = getEl('adminProdSpecs') ? getEl('adminProdSpecs').value : '';
   const isBestseller = getEl('adminProdBestseller') ? getEl('adminProdBestseller').checked : false;
 
-  const payload = { name, category, tag, price, oldPrice, stockQuantity, rating, reviewsCount, image, description, ingredients, specs, isBestseller };
+  const payload = { name, category, tag, unit, price, oldPrice, stockQuantity, stock: stockQuantity, rating, reviewsCount, reviews: reviewsCount, image, description, ingredients, specs, isBestseller, bestseller: isBestseller };
 
   try {
     const url = prodId ? `/api/admin/products/${prodId}` : '/api/admin/products';
@@ -2784,24 +3076,22 @@ async function saveAdminSiteContent() {
 function getPdfThumbnailUrl(pdfUrl) {
   if (!pdfUrl) return '';
   try {
-    let cleanUrl = decodeURIComponent(pdfUrl.replace(/^["']|["']$/g, '').trim());
-    const filename = cleanUrl.split('/').pop() || '';
-    const baseName = filename.replace(/\.pdf$/i, '').replace(/[\s\(\)%]/g, '_');
+    let cleanUrl = decodeURIComponent(pdfUrl.replace(/^["']|["']$/g, '').trim()).toLowerCase();
     
-    if (baseName.includes('Extract_Catalogue') || baseName.includes('Extract')) return '/pdf_thumbnails/Extract_Catalogue_1_watermark_page1.jpg';
-    if (baseName.includes('Gummies_Catalogue') || baseName.includes('Gummies')) return '/pdf_thumbnails/Gummies_Catalogue_watermark_page1.jpg';
-    if (baseName.includes('Herbal_Capsules') || baseName.includes('Capsules')) return '/pdf_thumbnails/Herbal_Capsules_Catalogue_page1.jpg';
-    if (baseName.includes('Honey_Sticks') || baseName.includes('Honey')) return '/pdf_thumbnails/Honey_Sticks_Catalogue_watermark_page1.jpg';
-    if (baseName.includes('gym_supplement') || baseName.includes('gym')) return '/pdf_thumbnails/gym_supplement_catalogue_1_watermark_page1.jpg';
-    if (baseName.includes('nutra_cap') || baseName.includes('nutra')) return '/pdf_thumbnails/nutra_cap_cat_1_page1.jpg';
-    if (baseName.includes('Softgles') || baseName.includes('Softgel')) return '/pdf_thumbnails/Softgles_catalogue_KIYAN_EXPORT_page1.jpg';
-    if (baseName.includes('Copper_bottles') || baseName.includes('Copper')) return '/pdf_thumbnails/Kiyan_Export_Catalogue_of_Copper_bottles_etc._watermark_page1.jpg';
-    if (baseName.includes('ISO_22000') || baseName.includes('ISO')) return '/pdf_thumbnails/KIYAN_EXPORT_ISO_22000_FINAL_1_1_page1.jpg';
-    if (baseName.includes('GMP')) return '/pdf_thumbnails/47214_KIYAN_EXPORT_GMP_PQC_1_1_page1.jpg';
-    if (baseName.includes('US-_FDA') || baseName.includes('US_FDA') || baseName.includes('FDA')) return '/pdf_thumbnails/47214_KIYAN_EXPORT_US-_FDA_PQC_2_1_page1.jpg';
-    if (baseName.includes('Fssai') || baseName.includes('FSSAI')) return '/pdf_thumbnails/Kiyan_Fssai_Renewal_2025_page1.jpg';
-    if (baseName.includes('TrustSeal') || baseName.includes('Trust')) return '/pdf_thumbnails/TrustSeal_certificate_page1.jpg';
-    if (baseName.includes('Udyam') || baseName.includes('MSME')) return '/pdf_thumbnails/Udyam_Registration_Certificate_page1.jpg';
+    if (cleanUrl.includes('extract')) return '/pdf_thumbnails/Extract_Catalogue_1_watermark_page1.jpg';
+    if (cleanUrl.includes('gummies')) return '/pdf_thumbnails/Gummies_Catalogue_watermark_page1.jpg';
+    if (cleanUrl.includes('capsule') || cleanUrl.includes('capsules')) return '/pdf_thumbnails/Herbal_Capsules_Catalogue_page1.jpg';
+    if (cleanUrl.includes('honey')) return '/pdf_thumbnails/Honey_Sticks_Catalogue_watermark_page1.jpg';
+    if (cleanUrl.includes('gym')) return '/pdf_thumbnails/gym_supplement_catalogue_1_watermark_page1.jpg';
+    if (cleanUrl.includes('nutra')) return '/pdf_thumbnails/nutra_cap_cat_1_page1.jpg';
+    if (cleanUrl.includes('softgel') || cleanUrl.includes('softgles')) return '/pdf_thumbnails/Softgles_catalogue_KIYAN_EXPORT_page1.jpg';
+    if (cleanUrl.includes('copper')) return '/pdf_thumbnails/Kiyan_Export_Catalogue_of_Copper_bottles_etc._watermark_page1.jpg';
+    if (cleanUrl.includes('iso')) return '/pdf_thumbnails/KIYAN_EXPORT_ISO_22000_FINAL_1_1_page1.jpg';
+    if (cleanUrl.includes('gmp')) return '/pdf_thumbnails/47214_KIYAN_EXPORT_GMP_PQC_1_1_page1.jpg';
+    if (cleanUrl.includes('fda')) return '/pdf_thumbnails/47214_KIYAN_EXPORT_US-_FDA_PQC_2_1_page1.jpg';
+    if (cleanUrl.includes('fssai')) return '/pdf_thumbnails/Kiyan_Fssai_Renewal_2025_page1.jpg';
+    if (cleanUrl.includes('trust')) return '/pdf_thumbnails/TrustSeal_certificate_page1.jpg';
+    if (cleanUrl.includes('udyam') || cleanUrl.includes('msme')) return '/pdf_thumbnails/Udyam_Registration_Certificate_page1.jpg';
   } catch (e) {}
 
   return '';
@@ -2810,7 +3100,7 @@ function getPdfThumbnailUrl(pdfUrl) {
 async function renderPdfFirstPageCanvas(pdfUrl, canvasId) {
   if (typeof pdfjsLib === 'undefined') return;
   try {
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = '/js/pdf.worker.min.js';
     const cleanUrl = pdfUrl.replace(/^["']|["']$/g, '').trim();
     const loadingTask = pdfjsLib.getDocument(cleanUrl);
     const pdf = await loadingTask.promise;
@@ -2834,10 +3124,7 @@ async function renderPdfFirstPageCanvas(pdfUrl, canvasId) {
 function renderCustomerCatalogues(catalogues) {
   const grid = document.getElementById('customerCataloguesGrid');
   if (!grid) return;
-  if (!catalogues || catalogues.length === 0) {
-    grid.innerHTML = '<p style="text-align: center; color: #888; grid-column: 1 / -1;">No catalogues available currently.</p>';
-    return;
-  }
+  if (!catalogues || catalogues.length === 0) return;
 
   grid.innerHTML = catalogues.map((cat, idx) => {
     const cleanUrl = (cat.pdfUrl || '').replace(/^["']|["']$/g, '').trim();
@@ -2846,7 +3133,7 @@ function renderCustomerCatalogues(catalogues) {
     const canvasId = `pdfThumbCanvas_cat_${cat.id || idx}`;
 
     const previewMediaHTML = thumbUrl 
-      ? `<img src="${thumbUrl}" alt="${cat.title} Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">`
+      ? `<img src="${thumbUrl}" alt="${cat.title} Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">`
       : `<canvas id="${canvasId}" class="pdf-page1-img" style="width: 100%; height: 210px; object-fit: cover; border-radius: 10px; background: #fff;"></canvas>`;
 
     return `
@@ -2884,10 +3171,7 @@ function renderCustomerCatalogues(catalogues) {
 function renderCustomerCertificates(certificates) {
   const grid = document.getElementById('customerCertificatesGrid');
   if (!grid) return;
-  if (!certificates || certificates.length === 0) {
-    grid.innerHTML = '<p style="text-align: center; color: #888; grid-column: 1 / -1;">No certificates available currently.</p>';
-    return;
-  }
+  if (!certificates || certificates.length === 0) return;
 
   grid.innerHTML = certificates.map((cert, idx) => {
     const cleanUrl = (cert.pdfUrl || '').replace(/^["']|["']$/g, '').trim();
@@ -2896,7 +3180,7 @@ function renderCustomerCertificates(certificates) {
     const canvasId = `pdfThumbCanvas_cert_${cert.id || idx}`;
 
     const previewMediaHTML = thumbUrl 
-      ? `<img src="${thumbUrl}" alt="${cert.title} Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">`
+      ? `<img src="${thumbUrl}" alt="${cert.title} Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">`
       : `<canvas id="${canvasId}" class="pdf-page1-img" style="width: 100%; height: 210px; object-fit: cover; border-radius: 10px; background: #fff;"></canvas>`;
 
     return `
@@ -3244,12 +3528,12 @@ function renderAdminStandaloneTable() {
           ${p.tag ? `<span style="font-size: 0.72rem; color: var(--accent-gold); font-weight: 700;">${p.tag}</span>` : ''}
         </td>
         <td><span style="background: #eef7f6; color: var(--deep-green); padding: 3px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 700;">${p.category || 'Herbal'}</span></td>
-        <td><strong>₹${(p.price || 0).toLocaleString('en-IN')}</strong></td>
+        <td><strong>₹${(p.price || 0).toLocaleString('en-IN')} / ${getProductUnit(p)}</strong></td>
         <td style="color: #888; text-decoration: line-through;">${p.oldPrice ? '₹' + p.oldPrice.toLocaleString('en-IN') : '-'}</td>
         <td>
           <div style="display: flex; align-items: center; gap: 6px;">
             <input type="number" min="0" value="${stockQty}" onchange="updateAdminStockQuantity(${p.id}, this.value)" style="width: 65px; padding: 5px; border-radius: 6px; border: 1.5px solid #ccc; font-weight: 700; text-align: center;">
-            <span style="font-size: 0.8rem; color: #666;">Pcs</span>
+            <span style="font-size: 0.8rem; color: #666;">${getProductUnit(p)}</span>
           </div>
         </td>
         <td>
@@ -3355,7 +3639,7 @@ async function saveAdminProduct(event) {
   const specs = specsRaw.split(',').map(s => s.trim()).filter(Boolean);
 
   const payload = {
-    name, category, tag, price, oldPrice, stock, rating, reviews, image, description, ingredients, specs, bestseller
+    name, category, tag, price, oldPrice, stock, stockQuantity: stock, rating, reviews, reviewsCount: reviews, image, description, ingredients, specs, bestseller, isBestseller: bestseller
   };
 
   try {
@@ -3522,6 +3806,129 @@ function toggleWebsitePreview() {
   sessionStorage.setItem('kiyan_admin_preview', 'true');
   showPage('home', null);
 }
+
+// OEM EXPRESS SAMPLE WIDGET HANDLERS
+function updateOemSampleWidgetCalc() {
+  const qtyEl = document.getElementById('oemSampleQtySelect');
+  const priceEl = document.getElementById('oemWidgetDisplayPrice');
+  if (!qtyEl || !priceEl) return;
+  const qty = parseInt(qtyEl.value, 10) || 1;
+  
+  let usdBase = 49;
+  let inrBase = 3999;
+  if (qty === 2) {
+    usdBase = 89;
+    inrBase = 6999;
+  } else if (qty >= 3) {
+    usdBase = 119;
+    inrBase = 9499;
+  }
+
+  const curr = typeof currentCurrency !== 'undefined' ? currentCurrency : 'USD';
+  if (curr === 'INR') {
+    priceEl.textContent = `₹${inrBase.toLocaleString('en-IN')}`;
+  } else if (curr === 'EUR') {
+    priceEl.textContent = `€${Math.round(usdBase * 0.92)} EUR`;
+  } else if (curr === 'GBP') {
+    priceEl.textContent = `£${Math.round(usdBase * 0.79)} GBP`;
+  } else if (curr === 'AED') {
+    priceEl.textContent = `${Math.round(usdBase * 3.67)} AED`;
+  } else {
+    priceEl.textContent = `$${usdBase} USD`;
+  }
+}
+
+function triggerOemExpressSampleOrder() {
+  const prodSelect = document.getElementById('oemSampleProductSelect');
+  const packSelect = document.getElementById('oemSamplePackagingSelect');
+  const qtySelect = document.getElementById('oemSampleQtySelect');
+  
+  const prodName = prodSelect ? prodSelect.value : 'PURE HIMALAYAN SHILAJIT RESIN';
+  const packType = packSelect ? packSelect.value : '50g Sealed Lab Batch Pouch';
+  const qty = qtySelect ? qtySelect.value : '1';
+  const priceText = document.getElementById('oemWidgetDisplayPrice') ? document.getElementById('oemWidgetDisplayPrice').textContent : '$49 USD';
+
+  const note = `[OEM EXPRESS SAMPLE ORDER]: Product: ${prodName} | Packaging: ${packType} | Qty: ${qty} Pack(s) | Total Price: ${priceText} | Shipping: Express DHL Air Cargo`;
+
+  if (typeof openRfqModal === 'function') {
+    openRfqModal(prodName, note);
+  } else if (typeof addToCart === 'function') {
+    const oemSampleItem = {
+      id: 'oem_sample_' + Date.now(),
+      name: `EXPRESS OEM SAMPLE - ${prodName}`,
+      price: priceText.includes('₹') ? 3999 : 49,
+      unit: 'Sample Kit',
+      image: '/images/kiyan-logo.jpg',
+      category: 'OEM Sample',
+      stockQty: 999,
+      isOemSample: true
+    };
+    addToCart(oemSampleItem, parseInt(qty, 10) || 1);
+    if (typeof showCartDrawer === 'function') showCartDrawer();
+  } else {
+    alert(`Express OEM Sample Order Initiated!\n\nProduct: ${prodName}\nPackaging: ${packType}\nQty: ${qty} Pack(s)\nPrice: ${priceText}\n\nOur OEM Export Manager will email your DHL Tracking details shortly.`);
+  }
+}
+
+function updateOemServicesCalc() {
+  const qtyEl = document.getElementById('oemServicesQtySelect');
+  const priceEl = document.getElementById('oemWidgetServicesDisplayPrice');
+  if (!qtyEl || !priceEl) return;
+  const qty = parseInt(qtyEl.value, 10) || 1;
+  
+  let usdBase = 49;
+  let inrBase = 3999;
+  if (qty === 2) {
+    usdBase = 89;
+    inrBase = 6999;
+  } else if (qty >= 3) {
+    usdBase = 119;
+    inrBase = 9499;
+  }
+
+  const curr = typeof currentCurrency !== 'undefined' ? currentCurrency : 'USD';
+  if (curr === 'INR') {
+    priceEl.textContent = `₹${inrBase.toLocaleString('en-IN')}`;
+  } else if (curr === 'EUR') {
+    priceEl.textContent = `€${Math.round(usdBase * 0.92)} EUR`;
+  } else if (curr === 'GBP') {
+    priceEl.textContent = `£${Math.round(usdBase * 0.79)} GBP`;
+  } else if (curr === 'AED') {
+    priceEl.textContent = `${Math.round(usdBase * 3.67)} AED`;
+  } else {
+    priceEl.textContent = `$${usdBase} USD`;
+  }
+}
+
+function triggerOemServicesSampleOrder() {
+  const prodSelect = document.getElementById('oemServicesProductSelect');
+  const packSelect = document.getElementById('oemServicesPackagingSelect');
+  const qtySelect = document.getElementById('oemServicesQtySelect');
+  
+  const prodName = prodSelect ? prodSelect.value : 'PURE HIMALAYAN SHILAJIT RESIN';
+  const packType = packSelect ? packSelect.value : '50g Sealed Lab Batch Pouch';
+  const qty = qtySelect ? qtySelect.value : '1';
+  const priceText = document.getElementById('oemWidgetServicesDisplayPrice') ? document.getElementById('oemWidgetServicesDisplayPrice').textContent : '$49 USD';
+
+  const note = `[OEM EXPRESS SAMPLE ORDER]: Product: ${prodName} | Packaging: ${packType} | Qty: ${qty} Pack(s) | Total Price: ${priceText} | Shipping: Express DHL Air Cargo`;
+
+  if (typeof openRfqModal === 'function') {
+    openRfqModal(prodName, note);
+  } else {
+    alert(`Express OEM Sample Order Initiated!\n\nProduct: ${prodName}\nPackaging: ${packType}\nQty: ${qty} Pack(s)\nPrice: ${priceText}\n\nOur OEM Export Manager will email your DHL Tracking details shortly.`);
+  }
+}
+
+window.addEventListener('currencyChanged', () => {
+  updateOemSampleWidgetCalc();
+  updateOemServicesCalc();
+});
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    updateOemSampleWidgetCalc();
+    updateOemServicesCalc();
+  }, 1000);
+});
 
 
 

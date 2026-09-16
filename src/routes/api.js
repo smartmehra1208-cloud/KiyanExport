@@ -73,12 +73,12 @@ const defaultSiteContent = {
   marqueeText: '🏭 VERIFIED GOLD MANUFACTURER • LOW MOQ 100-500 PCS • TIERED VOLUME DISCOUNTING • OEM & PRIVATE LABELING AVAILABLE • GLOBAL SEA & AIR FREIGHT • COA & ISO/GMP CERTIFIED',
   aboutPill: '🏭 ESTABLISHED 2014 • LUCKNOW, INDIA (EXPORTS WORLDWIDE)',
   aboutTitle: 'Leading Herbal Contract Manufacturer & Bulk Supplier',
-  aboutP1: 'Kiyan Exports & Herbal Manufacturing is a premier B2B contract manufacturer and bulk supplier operating since 2014. We specialize in contract manufacturing, OEM private label formulation, and bulk supply of organic herbal extracts, Shilajit resin, Ashwagandha, and health supplements.',
+  aboutP1: 'Kiyan Export & Herbal Manufacturing is a premier B2B contract manufacturer and bulk supplier operating since 2014. We specialize in contract manufacturing, OEM private label formulation, and bulk supply of organic herbal extracts, Shilajit resin, Ashwagandha, and health supplements.',
   aboutP2: 'Equipped with state-of-the-art GMP certified extraction plants, we serve international buyers, Amazon sellers, wellness brands, and pharmaceutical distributors with custom packaging and factory-direct volume pricing.',
-  contactEmail: 'sales@kiyanexports.com',
+  contactEmail: 'kiyanexport54@gmail.com',
   contactAddress: 'Industrial Export Zone, Lucknow, UP - 226010, India',
   contactPhone: '+91 9876543210 / +91 9123456789',
-  footerDesc: 'Established in 2014, Kiyan Exports is a leading B2B contract manufacturer & wholesale exporter of 100% pure organic herbal extracts and dietary supplements.',
+  footerDesc: 'Established in 2014, Kiyan Export is a leading B2B contract manufacturer & wholesale exporter of 100% pure organic herbal extracts and dietary supplements.',
   catalogues: [
     {
       id: 1,
@@ -411,7 +411,7 @@ router.post('/auth/register', async (req, res) => {
 
     res.json({
       success: true,
-      message: 'Registration successful! Welcome to Kiyan Wellness.',
+      message: 'Registration successful! Welcome to Kiyan Export.',
       user: {
         id: newUser._id,
         fullName: newUser.fullName,
@@ -731,7 +731,7 @@ router.post('/rfq', async (req, res) => {
 
     memoryRfqs.unshift(rfqEntry);
 
-    // Dispatch SMTP Email Notification to smart.mehra1208@gmail.com
+    // Dispatch SMTP Email Notification to kiyanexport54@gmail.com
     const emailResult = await sendRfqEmail(rfqEntry);
 
     res.json({
@@ -802,31 +802,152 @@ router.get('/user/orders', async (req, res) => {
   }
 });
 
-// POST Chatbot AI response
-router.post('/chatbot', (req, res) => {
+// Advanced Levenshtein Distance & Substring Fuzzy Algorithm
+function getLevenshteinDistance(a, b) {
+  if (!a || !b) return 99;
+  a = a.toLowerCase();
+  b = b.toLowerCase();
+  if (a === b) return 0;
+  if (a.includes(b) || b.includes(a)) return 0;
+
+  const matrix = [];
+  for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+  for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
+    }
+  }
+  return matrix[b.length][a.length];
+}
+
+// POST Chatbot AI response with Ultra-Smart Product & Typo Auto-Detection
+router.post('/chatbot', async (req, res) => {
   const { message } = req.body;
-  const msg = (message || '').toLowerCase();
+  const rawMsg = (message || '').trim();
+  const msg = rawMsg.toLowerCase();
   let reply = '';
   let options = [];
 
-  if (msg.includes('product') || msg.includes('item') || msg.includes('buy') || msg.includes('catalogue')) {
-    reply = "Kiyan Wellness offers premium organic herbal products & natural supplements:\n1. 🌿 **Herbal Products** (Ashwagandha, Himalayan Shilajit, Moringa, Bacopa, Sea Moss)\n2. 🍃 **Wellness Supplements** (Gummies, Herbal Capsules, Organic Bark Powders)\n3. 🌶️ **Pure Spices & Teas** (Kashmiri Saffron, Green Cardamom, Digestive Extracts)";
-    options = ['Show Herbal Range', 'Show Wellness Care', 'View Best Sellers'];
-  } else if (msg.includes('shilajit')) {
-    reply = "Our **Kiyan Himalayan Shilajit** is purified gold-grade resin containing 75%+ Fulvic Acid and 80+ essential trace minerals. Lab-certified, 100% organic, and Ayush certified!";
-    options = ['View Shilajit Products', 'Certifications'];
-  } else if (msg.includes('ship') || msg.includes('deliver') || msg.includes('country') || msg.includes('export')) {
-    reply = "Kiyan Wellness ships directly to your doorstep across India with FREE express delivery on orders above ₹999! International shipping is also available.";
-    options = ['Track Order', 'Shipping Info'];
-  } else if (msg.includes('contact') || msg.includes('location') || msg.includes('address') || msg.includes('email')) {
-    reply = "📍 **Head Office:** Gomti Nagar, Lucknow, UP - 226010, India.\n📧 **Email:** info@kiyanwellness.com\n📞 **Customer Support:** Available 24/7";
-    options = ['Send Message', 'Company Info'];
-  } else if (msg.includes('login') || msg.includes('account') || msg.includes('register')) {
-    reply = "You can log in or register your Kiyan Wellness account by clicking the **Login / Register** button in the navigation bar!";
-    options = ['Login / Register', 'Contact Support'];
-  } else {
-    reply = "Namaste! 🙏 Welcome to Kiyan Wellness (Est. 2014). We provide 100% pure organic herbal supplements and wellness products crafted for natural health.";
-    options = ['Browse Herbal Range', 'Shipping & Delivery', 'Contact Support'];
+  if (!msg) {
+    return res.json({
+      success: true,
+      reply: "Namaste! 🙏 How can Kiyan Export assist you today?",
+      options: ['Browse Products', 'Shipping Info', 'Contact Support']
+    });
+  }
+
+  // Fetch products from DB or fallback list
+  let allProducts = [];
+  try {
+    allProducts = await Product.find({}).lean();
+  } catch (err) {
+    allProducts = [];
+  }
+
+  // Robust fallback catalogue list if DB query returns empty
+  if (!allProducts || allProducts.length === 0) {
+    allProducts = [
+      { name: 'PURE HIMALAYAN SHILAJIT RESIN', category: 'Herbal Extracts', price: 5.32, priceRange: '$5.32 - $6.26', moq: 100, unit: 'Pieces' },
+      { name: 'ARJUNA CAPSULE', category: 'Cardiovascular Care', price: 5.32, priceRange: '$5.32 - $6.26', moq: 100, unit: 'Pieces' },
+      { name: 'ARJUNA POWDER', category: 'Herbal Powders', price: 5.33, priceRange: '$5.33 - $6.28', moq: 100, unit: 'Kg' },
+      { name: 'ASWAGANDHA POWDER', category: 'Adaptogen Supplements', price: 20.01, priceRange: '$20.01 - $23.53', moq: 100, unit: 'Kg' },
+      { name: 'ASWAGANDHA CAPSULE', category: 'Herbal Supplements', price: 7.10, priceRange: '$7.10 - $8.36', moq: 50, unit: 'Pieces' },
+      { name: 'MORINGA POWDER', category: 'Superfood Powders', price: 6.50, priceRange: '$6.50 - $12.00', moq: 50, unit: 'Kg' },
+      { name: 'SEA MOSS POWDER', category: 'Mineral Supplements', price: 12.00, priceRange: '$12.00 - $18.00', moq: 50, unit: 'Kg' },
+      { name: 'SHILAJIT GUMMIES', category: 'Wellness Gummies', price: 8.50, priceRange: '$8.50 - $14.00', moq: 100, unit: 'Jars' },
+      { name: 'BAMBOO SALT', category: 'Specialty Minerals', price: 15.00, priceRange: '$15.00 - $25.00', moq: 50, unit: 'Kg' },
+      { name: 'TRIPHLA POWDER', category: 'Digestive Health', price: 4.50, priceRange: '$4.50 - $8.00', moq: 100, unit: 'Kg' },
+      { name: 'KASHMIRI SAFFRON', category: 'Pure Spices', price: 25.00, priceRange: '$25.00 - $45.00', moq: 10, unit: 'Grams' },
+      { name: 'GREEN CARDAMOM', category: 'Whole Spices', price: 10.00, priceRange: '$10.00 - $22.00', moq: 50, unit: 'Kg' }
+    ];
+  }
+
+  // 1. ULTRA-SMART FUZZY SEARCH MATCHING ACROSS ENTIRE CATALOGUE
+  let bestMatchProduct = null;
+  let lowestDistance = 99;
+  const inputWords = msg.split(/[\s,.-]+/);
+
+  for (const prod of allProducts) {
+    const prodName = (prod.name || '').toLowerCase();
+    const category = (prod.category || '').toLowerCase();
+    const prodWords = prodName.split(/[\s,.-]+/);
+
+    for (const w of inputWords) {
+      if (!w || w.length < 2) continue;
+
+      // Substring check
+      if (prodName.includes(w) || category.includes(w)) {
+        bestMatchProduct = prod;
+        lowestDistance = 0;
+        break;
+      }
+
+      // Fuzzy check
+      for (const pw of prodWords) {
+        if (!pw || pw.length < 2) continue;
+        const dist = getLevenshteinDistance(w, pw);
+        const maxAllowedDist = w.length <= 4 ? 2 : (w.length <= 7 ? 3 : 4);
+        if (dist <= maxAllowedDist && dist < lowestDistance) {
+          lowestDistance = dist;
+          bestMatchProduct = prod;
+        }
+      }
+    }
+    if (lowestDistance === 0) break;
+  }
+
+  // 2. IF MATCHED ANY PRODUCT IN CATALOGUE (EVEN WITH HEAVY TYPOS)
+  if (bestMatchProduct) {
+    const priceStr = bestMatchProduct.priceRange || (bestMatchProduct.price ? `$${bestMatchProduct.price} / ${bestMatchProduct.unit || 'Pieces'}` : 'Factory Direct Rate');
+    const moqStr = bestMatchProduct.moq ? `${bestMatchProduct.moq} ${bestMatchProduct.unit || 'Pieces'}` : '100 Units';
+
+    reply = `I identified you are looking for **"${bestMatchProduct.name}"**! 🌿\n\n` +
+            `• **Category:** ${bestMatchProduct.category || 'Herbal Supplement'}\n` +
+            `• **Wholesale Price:** ${priceStr}\n` +
+            `• **Minimum Order (MOQ):** ${moqStr}\n` +
+            `• **Quality:** 100% Organic, Ayush / COA Certified & Factory Direct Export.\n\n` +
+            `Would you like to view product specifications or request an express sample shipment?`;
+    
+    options = [`View ${bestMatchProduct.name}`, 'Request Express Sample', 'WhatsApp Export Desk'];
+  }
+  // 3. Shipping & Delivery Intents
+  else if (msg.includes('ship') || msg.includes('deliver') || msg.includes('country') || msg.includes('export') || msg.includes('dhl') || msg.includes('courier')) {
+    reply = "📦 **Kiyan Export Global Logistics & Shipping:**\n\n" +
+            "• **Domestic (India):** Express doorstep delivery (2-4 Days).\n" +
+            "• **Worldwide Export:** Air-Freight Cargo via DHL/FedEx (US, UK, EU, UAE, Australia & 55+ Countries).\n" +
+            "• **Incoterms:** FOB & CIF Air Express available with full COA & Customs paperwork.";
+    options = ['View Global Network', 'Track Shipment', 'Contact Sales'];
+  }
+  // 4. Contact & Address Intents
+  else if (msg.includes('contact') || msg.includes('location') || msg.includes('address') || msg.includes('email') || msg.includes('phone') || msg.includes('whatsapp')) {
+    reply = "📍 **Kiyan Export Corporate Headquarters:**\n" +
+            "Gomti Nagar, Lucknow, UP - 226010, India.\n\n" +
+            "📧 **Official Email:** kiyanexport54@gmail.com\n" +
+            "💬 **WhatsApp Direct:** +91 93058 34431\n" +
+            "⚡ **24/7 B2B Export Desk Active**";
+    options = ['WhatsApp Chat', 'Submit RFQ Inquiry'];
+  }
+  // 5. Account & Admin Intents
+  else if (msg.includes('login') || msg.includes('account') || msg.includes('register') || msg.includes('admin')) {
+    reply = "You can log in to your **Kiyan Export Account** or access the **Admin Control Panel** using the top navigation bar menu.";
+    options = ['Login / Register', 'Admin Panel'];
+  }
+  // 6. Generic Fallback with Smart Search Guidance
+  else {
+    reply = `I understand you are asking about **"${rawMsg}"**!\n\n` +
+            `At Kiyan Export, we specialize in **Pure Organic Herbal Extracts, Shilajit Processing, & Global Bulk Exports**.\n` +
+            `Would you like to explore our product catalogue or speak directly with our Export Desk?`;
+    options = ['Browse Herbal Range', 'Download Catalogue PDF', 'WhatsApp Export Manager'];
   }
 
   res.json({
@@ -972,6 +1093,7 @@ router.get('/site/content', async (req, res) => {
 // POST Admin Update Site Content
 router.post('/admin/content', async (req, res) => {
   try {
+    await ensureDbConnected();
     const { 
       heroTagline, heroTitle, heroDesc, 
       heroSlide2Title, heroSlide2Desc,
@@ -1008,7 +1130,7 @@ router.post('/admin/content', async (req, res) => {
       await SiteContent.findOneAndUpdate(
         { key: 'main_content' },
         { $set: memorySiteContent },
-        { upsert: true, new: true }
+        { upsert: true, returnDocument: 'after' }
       );
     } catch (e) {}
 
@@ -1040,6 +1162,7 @@ function sanitizePdfUrl(rawUrl, defaultFolder = 'Catelouges') {
 // POST Admin Add/Update PDF Catalogue
 router.post('/admin/catalogues', async (req, res) => {
   try {
+    await ensureDbConnected();
     const { id, title, category, pdfUrl, description } = req.body;
     if (!memorySiteContent.catalogues) memorySiteContent.catalogues = [];
     const cleanPdfUrl = sanitizePdfUrl(pdfUrl, 'Catelouges');
@@ -1075,7 +1198,7 @@ router.post('/admin/catalogues', async (req, res) => {
       await SiteContent.findOneAndUpdate(
         { key: 'main_content' },
         { $set: { catalogues: memorySiteContent.catalogues } },
-        { upsert: true, new: true }
+        { upsert: true, returnDocument: 'after' }
       );
     } catch (e) {}
 
@@ -1088,6 +1211,7 @@ router.post('/admin/catalogues', async (req, res) => {
 // DELETE Admin Delete PDF Catalogue
 router.delete('/admin/catalogues/:id', async (req, res) => {
   try {
+    await ensureDbConnected();
     const id = parseInt(req.params.id, 10);
     if (!memorySiteContent.catalogues) memorySiteContent.catalogues = [];
     memorySiteContent.catalogues = memorySiteContent.catalogues.filter(c => c.id !== id);
@@ -1096,7 +1220,7 @@ router.delete('/admin/catalogues/:id', async (req, res) => {
       await SiteContent.findOneAndUpdate(
         { key: 'main_content' },
         { $set: { catalogues: memorySiteContent.catalogues } },
-        { upsert: true, new: true }
+        { upsert: true, returnDocument: 'after' }
       );
     } catch (e) {}
 
@@ -1109,6 +1233,7 @@ router.delete('/admin/catalogues/:id', async (req, res) => {
 // POST Admin Add/Update Quality Certificate
 router.post('/admin/certificates', async (req, res) => {
   try {
+    await ensureDbConnected();
     const { id, title, authority, pdfUrl, description } = req.body;
     if (!memorySiteContent.certificates) memorySiteContent.certificates = [];
     const cleanPdfUrl = sanitizePdfUrl(pdfUrl, 'Certificates');
@@ -1144,7 +1269,7 @@ router.post('/admin/certificates', async (req, res) => {
       await SiteContent.findOneAndUpdate(
         { key: 'main_content' },
         { $set: { certificates: memorySiteContent.certificates } },
-        { upsert: true, new: true }
+        { upsert: true, returnDocument: 'after' }
       );
     } catch (e) {}
 
@@ -1157,6 +1282,7 @@ router.post('/admin/certificates', async (req, res) => {
 // DELETE Admin Delete Quality Certificate
 router.delete('/admin/certificates/:id', async (req, res) => {
   try {
+    await ensureDbConnected();
     const id = parseInt(req.params.id, 10);
     if (!memorySiteContent.certificates) memorySiteContent.certificates = [];
     memorySiteContent.certificates = memorySiteContent.certificates.filter(c => c.id !== id);
@@ -1165,7 +1291,7 @@ router.delete('/admin/certificates/:id', async (req, res) => {
       await SiteContent.findOneAndUpdate(
         { key: 'main_content' },
         { $set: { certificates: memorySiteContent.certificates } },
-        { upsert: true, new: true }
+        { upsert: true, returnDocument: 'after' }
       );
     } catch (e) {}
 
@@ -1176,10 +1302,37 @@ router.delete('/admin/certificates/:id', async (req, res) => {
 });
 
 
+function generatePriceTiersAndRange(basePrice, moq = 100, customTiers = null, customRange = null, unit = 'Pieces') {
+  const p = Math.max(1, Number(basePrice) || 599);
+  const m = Math.max(1, Number(moq) || 100);
+  const u = unit || 'Pieces';
+
+  // Tier 1 (Base MOQ) = Base Price
+  // Tier 2 (5x MOQ) = 10% Discount
+  // Tier 3 (10x MOQ) = 15% Discount
+  const t1 = p;
+  const t2 = Math.round(p * 0.90);
+  const t3 = Math.round(p * 0.85);
+
+  const priceTiers = [
+    { minQty: m, maxQty: m * 5 - 1, price: t1, label: `${m}-${m * 5 - 1} ${u}` },
+    { minQty: m * 5, maxQty: m * 10 - 1, price: t2, label: `${m * 5}-${m * 10 - 1} ${u}` },
+    { minQty: m * 10, maxQty: null, price: t3, label: `${m * 10}+ ${u}` }
+  ];
+
+  const priceRange = `₹${t3} - ₹${t1} / ${u}`;
+  return { priceTiers, priceRange };
+}
+
 // POST Admin Add New Product
 router.post('/admin/products', async (req, res) => {
   try {
-    const { name, category, price, oldPrice, rating, reviewsCount, tag, isBestseller, description, ingredients, specs, image, stockQuantity } = req.body;
+    await ensureDbConnected();
+    const bodyStock = req.body.stockQuantity !== undefined ? req.body.stockQuantity : req.body.stock;
+    const bodyReviews = req.body.reviewsCount !== undefined ? req.body.reviewsCount : req.body.reviews;
+    const bodyBestseller = req.body.isBestseller !== undefined ? req.body.isBestseller : (req.body.bestseller !== undefined ? req.body.bestseller : req.body.isBestSeller);
+
+    const { name, category, unit, price, oldPrice, rating, tag, description, ingredients, specs, image, moq, samplePrice, priceRange, priceTiers } = req.body;
 
     if (!name || price === undefined || !category) {
       return res.status(400).json({ success: false, message: 'Name, Category, and Price are required.' });
@@ -1188,6 +1341,14 @@ router.post('/admin/products', async (req, res) => {
     const maxId = staticProducts.length > 0 ? Math.max(...staticProducts.map(p => p.id)) : 0;
     const newId = maxId + 1;
 
+    const numPrice = Number(price);
+    const numMoq = moq !== undefined ? Number(moq) : 100;
+    let finalUnit = unit || (name && name.toLowerCase().includes('powder') ? 'Kg' : 'Pieces');
+    if ((!unit || unit === 'Pieces') && name && name.toLowerCase().includes('powder')) {
+      finalUnit = 'Kg';
+    }
+    const { priceTiers: syncedTiers, priceRange: syncedRange } = generatePriceTiersAndRange(numPrice, numMoq, priceTiers, priceRange, finalUnit);
+
     const ingArray = Array.isArray(ingredients) ? ingredients : (typeof ingredients === 'string' ? ingredients.split(',').map(s => s.trim()).filter(Boolean) : ["100% Organic Extract", "Lab Certified"]);
     const specArray = Array.isArray(specs) ? specs : (typeof specs === 'string' ? specs.split(',').map(s => s.trim()).filter(Boolean) : ["Standard Pack", "Made in India"]);
 
@@ -1195,25 +1356,33 @@ router.post('/admin/products', async (req, res) => {
       id: newId,
       name,
       category,
-      price: Number(price),
-      oldPrice: Number(oldPrice) || Number(price) + 200,
+      unit: finalUnit,
+      price: numPrice,
+      oldPrice: Number(oldPrice) || Math.round(numPrice * 1.4),
       rating: Number(rating) || 4.8,
-      reviewsCount: Number(reviewsCount) || 10,
+      reviewsCount: bodyReviews !== undefined ? Number(bodyReviews) : 10,
       tag: tag || 'HERBAL CARE',
-      badge: isBestseller ? 'Best Seller' : 'Premium',
-      isBestseller: !!isBestseller,
-      stockQuantity: stockQuantity !== undefined ? Number(stockQuantity) : 15,
+      badge: bodyBestseller ? 'Best Seller' : 'Premium',
+      isBestseller: !!bodyBestseller,
+      stockQuantity: bodyStock !== undefined ? Number(bodyStock) : 15,
+      inStock: bodyStock !== undefined ? (Number(bodyStock) > 0) : true,
       description: description || '',
       ingredients: ingArray,
       specs: specArray,
-      image: image || 'images/kiyan-logo.png'
+      image: image || 'images/kiyan-logo.png',
+      moq: numMoq,
+      samplePrice: samplePrice !== undefined ? Number(samplePrice) : Math.round(numPrice * 0.85),
+      priceRange: syncedRange,
+      priceTiers: syncedTiers
     };
 
     staticProducts.push(newProd);
     saveProductsStore();
     try {
       await Product.updateOne({ id: newProd.id }, { $set: newProd }, { upsert: true });
-    } catch (e) {}
+    } catch (e) {
+      console.error('Error adding product to MongoDB:', e.message);
+    }
 
     res.json({ success: true, message: 'Product added successfully!', product: newProd });
   } catch (err) {
@@ -1224,46 +1393,78 @@ router.post('/admin/products', async (req, res) => {
 // PUT Admin Edit Product
 router.put('/admin/products/:id', async (req, res) => {
   try {
+    await ensureDbConnected();
     const id = parseInt(req.params.id, 10);
     const index = staticProducts.findIndex(p => p.id === id);
 
-    if (index === -1) {
-      return res.status(404).json({ success: false, message: 'Product not found' });
-    }
+    const bodyStock = req.body.stockQuantity !== undefined ? req.body.stockQuantity : req.body.stock;
+    const bodyReviews = req.body.reviewsCount !== undefined ? req.body.reviewsCount : req.body.reviews;
+    const bodyBestseller = req.body.isBestseller !== undefined ? req.body.isBestseller : (req.body.bestseller !== undefined ? req.body.bestseller : req.body.isBestSeller);
 
-    const { name, category, price, oldPrice, rating, reviewsCount, tag, isBestseller, description, ingredients, specs, image, stockQuantity } = req.body;
+    const { name, category, unit, price, oldPrice, rating, tag, description, ingredients, specs, image, moq, samplePrice, priceRange, priceTiers } = req.body;
 
     const ingArray = ingredients !== undefined ? 
-      (Array.isArray(ingredients) ? ingredients : (typeof ingredients === 'string' ? ingredients.split(',').map(s => s.trim()).filter(Boolean) : staticProducts[index].ingredients)) : 
-      staticProducts[index].ingredients;
+      (Array.isArray(ingredients) ? ingredients : (typeof ingredients === 'string' ? ingredients.split(',').map(s => s.trim()).filter(Boolean) : (index !== -1 ? staticProducts[index].ingredients : []))) : 
+      (index !== -1 ? staticProducts[index].ingredients : []);
 
     const specArray = specs !== undefined ? 
-      (Array.isArray(specs) ? specs : (typeof specs === 'string' ? specs.split(',').map(s => s.trim()).filter(Boolean) : staticProducts[index].specs)) : 
-      staticProducts[index].specs;
+      (Array.isArray(specs) ? specs : (typeof specs === 'string' ? specs.split(',').map(s => s.trim()).filter(Boolean) : (index !== -1 ? staticProducts[index].specs : []))) : 
+      (index !== -1 ? staticProducts[index].specs : []);
+
+    const existingProd = index !== -1 ? staticProducts[index] : {};
+    const finalPrice = price !== undefined ? Number(price) : (existingProd.price || 599);
+    const finalMoq = moq !== undefined ? Number(moq) : (existingProd.moq || 100);
+    const prodName = name !== undefined ? name : (existingProd.name || '');
+    let finalUnit = unit !== undefined ? unit : (existingProd.unit || 'Pieces');
+    if ((!unit || unit === 'Pieces') && prodName.toLowerCase().includes('powder')) {
+      finalUnit = 'Kg';
+    }
+
+    const { priceTiers: syncedTiers, priceRange: syncedRange } = generatePriceTiersAndRange(
+      finalPrice,
+      finalMoq,
+      req.body.priceTiers,
+      req.body.priceRange,
+      finalUnit
+    );
 
     const updated = {
-      ...staticProducts[index],
-      name: name !== undefined ? name : staticProducts[index].name,
-      category: category !== undefined ? category : staticProducts[index].category,
-      price: price !== undefined ? Number(price) : staticProducts[index].price,
-      oldPrice: oldPrice !== undefined ? Number(oldPrice) : staticProducts[index].oldPrice,
-      rating: rating !== undefined ? Number(rating) : staticProducts[index].rating,
-      reviewsCount: reviewsCount !== undefined ? Number(reviewsCount) : staticProducts[index].reviewsCount,
-      tag: tag !== undefined ? tag : staticProducts[index].tag,
-      isBestseller: isBestseller !== undefined ? !!isBestseller : staticProducts[index].isBestseller,
-      badge: isBestseller ? 'Best Seller' : (staticProducts[index].badge || 'Premium'),
-      stockQuantity: stockQuantity !== undefined ? Number(stockQuantity) : (staticProducts[index].stockQuantity !== undefined ? staticProducts[index].stockQuantity : 15),
-      description: description !== undefined ? description : staticProducts[index].description,
+      ...existingProd,
+      id,
+      name: name !== undefined ? name : existingProd.name,
+      category: category !== undefined ? category : existingProd.category,
+      unit: finalUnit,
+      price: finalPrice,
+      oldPrice: oldPrice !== undefined ? Number(oldPrice) : (existingProd.oldPrice || Math.round(finalPrice * 1.4)),
+      rating: rating !== undefined ? Number(rating) : existingProd.rating,
+      reviewsCount: bodyReviews !== undefined ? Number(bodyReviews) : (existingProd.reviewsCount !== undefined ? existingProd.reviewsCount : 1),
+      tag: tag !== undefined ? tag : (existingProd.tag || 'HERBAL CARE'),
+      isBestseller: bodyBestseller !== undefined ? !!bodyBestseller : !!existingProd.isBestseller,
+      badge: (bodyBestseller !== undefined ? bodyBestseller : existingProd.isBestseller) ? 'Best Seller' : (existingProd.badge || 'Premium'),
+      stockQuantity: bodyStock !== undefined ? Number(bodyStock) : (existingProd.stockQuantity !== undefined ? existingProd.stockQuantity : 15),
+      inStock: bodyStock !== undefined ? (Number(bodyStock) > 0) : (existingProd.inStock !== undefined ? existingProd.inStock : true),
+      description: description !== undefined ? description : existingProd.description,
       ingredients: ingArray,
       specs: specArray,
-      image: image !== undefined ? image : staticProducts[index].image
+      image: image !== undefined ? image : existingProd.image,
+      moq: finalMoq,
+      samplePrice: samplePrice !== undefined ? Number(samplePrice) : (existingProd.samplePrice || Math.round(finalPrice * 0.85)),
+      priceRange: syncedRange,
+      priceTiers: syncedTiers
     };
 
-    staticProducts[index] = updated;
+    if (index !== -1) {
+      staticProducts[index] = updated;
+    } else {
+      staticProducts.push(updated);
+    }
     saveProductsStore();
+
     try {
-      await Product.updateOne({ id: updated.id }, { $set: updated }, { upsert: true });
-    } catch (e) {}
+      await Product.updateOne({ id }, { $set: updated }, { upsert: true });
+    } catch (e) {
+      console.error('Error updating DB product:', e.message);
+    }
 
     res.json({ success: true, message: 'Product updated successfully!', product: updated });
   } catch (err) {
@@ -1274,20 +1475,22 @@ router.put('/admin/products/:id', async (req, res) => {
 // PUT Rapid Stock Quantity Update Endpoint
 router.put('/admin/products/:id/stock', async (req, res) => {
   try {
+    await ensureDbConnected();
     const id = parseInt(req.params.id, 10);
     const index = staticProducts.findIndex(p => p.id === id);
 
-    if (index === -1) {
-      return res.status(404).json({ success: false, message: 'Product not found' });
+    const { stockQuantity, stock } = req.body;
+    const rawQty = stockQuantity !== undefined ? stockQuantity : stock;
+    const qty = Math.max(0, parseInt(rawQty, 10) || 0);
+
+    if (index !== -1) {
+      staticProducts[index].stockQuantity = qty;
+      staticProducts[index].inStock = qty > 0;
+      saveProductsStore();
     }
 
-    const { stockQuantity } = req.body;
-    const qty = Math.max(0, parseInt(stockQuantity, 10) || 0);
-
-    staticProducts[index].stockQuantity = qty;
-    saveProductsStore();
     try {
-      await Product.updateOne({ id }, { $set: { stockQuantity: qty } });
+      await Product.updateOne({ id }, { $set: { stockQuantity: qty, inStock: qty > 0 } });
     } catch (e) {}
 
     res.json({
@@ -1304,6 +1507,7 @@ router.put('/admin/products/:id/stock', async (req, res) => {
 // DELETE Admin Delete Product
 router.delete('/admin/products/:id', async (req, res) => {
   try {
+    await ensureDbConnected();
     const id = parseInt(req.params.id, 10);
     const index = staticProducts.findIndex(p => p.id === id);
 

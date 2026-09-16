@@ -61,17 +61,17 @@ app.use(['/certificates', '/Certificates'], express.static(path.join(__dirname, 
 }));
 
 app.use(express.static(path.join(__dirname, 'public'), {
-  maxAge: 0,
+  maxAge: '30d',
   etag: true,
   setHeaders: (res, filePath) => {
-    if (filePath.endsWith('.html') || filePath.endsWith('.css') || filePath.endsWith('.js')) {
-      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
     } else if (filePath.toLowerCase().endsWith('.pdf')) {
       res.setHeader('Content-Disposition', 'inline');
       res.setHeader('X-Content-Type-Options', 'nosniff');
       res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
     } else {
-      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+      res.setHeader('Cache-Control', 'public, max-age=2592000, immutable');
     }
   }
 }));
@@ -104,17 +104,18 @@ app.get('*', (req, res) => {
 // Start Express Server & Connect to Database
 const startServer = async () => {
   const localIP = getLocalIP();
-  await connectDB();
-
+  
   app.listen(PORT, HOST, () => {
     console.log(`====================================================`);
-    console.log(`🌿 Kiyan Exports / Kiyan Wellness Server Active!`);
+    console.log(`🌿 Kiyan Exports Server Active!`);
     console.log(`💻 Local Machine URL    : http://localhost:${PORT}`);
     console.log(`📱 Personal / LAN IP URL: http://${localIP}:${PORT}`);
     console.log(`🌐 Network Accessible  : http://${localIP}:${PORT}`);
     console.log(`⚡ Mode: Full Dual Sync (MongoDB Atlas & Standalone File-Store)`);
     console.log(`====================================================`);
   });
+
+  connectDB().catch(err => console.warn('MongoDB bg connect info:', err.message));
 };
 
 startServer();

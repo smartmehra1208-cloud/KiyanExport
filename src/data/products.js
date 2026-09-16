@@ -27,25 +27,25 @@ const products = [
       "GMP Certified"
     ],
     "moq": 100,
-    "priceRange": "₹300 - ₹599 / Piece",
+    "priceRange": "₹509 - ₹599 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 599,
-        "label": "100-499 pcs"
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 431,
-        "label": "500-999 pcs"
+        "price": 539,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 300,
-        "label": "1000+ pcs"
+        "price": 509,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 509,
@@ -58,11 +58,12 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Pieces"
   },
   {
     "id": 2,
-    "name": "ARJUNAPOWDER",
+    "name": "ARJUNA POWDER",
     "category": "Herbal",
     "badge": "New",
     "rating": 5,
@@ -85,25 +86,25 @@ const products = [
       "Non-GMO"
     ],
     "moq": 100,
-    "priceRange": "₹750 - ₹1499 / Piece",
+    "priceRange": "₹1274 - ₹1499 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 1499,
-        "label": "100-499 pcs"
+        "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1079,
-        "label": "500-999 pcs"
+        "price": 1349,
+        "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 750,
-        "label": "1000+ pcs"
+        "price": 1274,
+        "label": "1000+ Kg"
       }
     ],
     "samplePrice": 1274,
@@ -116,11 +117,12 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Kg"
   },
   {
     "id": 3,
-    "name": "ASWAGANDHA",
+    "name": "ASWAGANDHA POWDER",
     "category": "Herbal",
     "badge": "Vegan",
     "rating": 4.7,
@@ -144,25 +146,25 @@ const products = [
       "Lab Tested"
     ],
     "moq": 100,
-    "priceRange": "₹1250 - ₹2499 / Piece",
+    "priceRange": "₹2124 - ₹2499 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 2499,
-        "label": "100-499 pcs"
+        "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1799,
-        "label": "500-999 pcs"
+        "price": 2249,
+        "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1250,
-        "label": "1000+ pcs"
+        "price": 2124,
+        "label": "1000+ Kg"
       }
     ],
     "samplePrice": 2124,
@@ -175,7 +177,8 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Kg"
   },
   {
     "id": 4,
@@ -297,7 +300,7 @@ const products = [
   },
   {
     "id": 6,
-    "name": "BACOPA",
+    "name": "BACOPA CAPSULE",
     "category": "Herbal",
     "badge": "Ayurveda",
     "rating": 5,
@@ -321,25 +324,25 @@ const products = [
       "GMP Facility"
     ],
     "moq": 100,
-    "priceRange": "₹650 - ₹1299 / Piece",
+    "priceRange": "₹1104 - ₹1299 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 1299,
-        "label": "100-499 pcs"
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 935,
-        "label": "500-999 pcs"
+        "price": 1169,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 650,
-        "label": "1000+ pcs"
+        "price": 1104,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1104,
@@ -352,11 +355,12 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Pieces"
   },
   {
     "id": 7,
-    "name": "BAMBOOSALTI",
+    "name": "BAMBOO SALT",
     "category": "Herbal",
     "badge": "Superfood",
     "rating": 4.8,
@@ -379,25 +383,25 @@ const products = [
       "Made in India"
     ],
     "moq": 100,
-    "priceRange": "₹900 - ₹1799 / Piece",
+    "priceRange": "₹1529 - ₹1799 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 1799,
-        "label": "100-499 pcs"
+        "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1295,
-        "label": "500-999 pcs"
+        "price": 1619,
+        "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 900,
-        "label": "1000+ pcs"
+        "price": 1529,
+        "label": "1000+ Kg"
       }
     ],
     "samplePrice": 1529,
@@ -410,11 +414,12 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Kg"
   },
   {
     "id": 8,
-    "name": "BOSWELLIA",
+    "name": "BOSWELLIA CAPSULE",
     "category": "Herbal",
     "badge": "Organic",
     "rating": 4.9,
@@ -437,25 +442,25 @@ const products = [
       "Pesticide Free"
     ],
     "moq": 100,
-    "priceRange": "₹450 - ₹899 / Piece",
+    "priceRange": "₹764 - ₹899 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 899,
-        "label": "100-499 pcs"
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 647,
-        "label": "500-999 pcs"
+        "price": 809,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 450,
-        "label": "1000+ pcs"
+        "price": 764,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 764,
@@ -468,7 +473,8 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Pieces"
   },
   {
     "id": 9,
@@ -591,7 +597,7 @@ const products = [
   },
   {
     "id": 11,
-    "name": "GINGER",
+    "name": "GINGER TURMERIC CAPSULE",
     "category": "Herbal",
     "badge": "Digestive",
     "rating": 4.8,
@@ -616,25 +622,25 @@ const products = [
       "Gluten Free"
     ],
     "moq": 100,
-    "priceRange": "₹650 - ₹1299 / Piece",
+    "priceRange": "₹1104 - ₹1299 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 1299,
-        "label": "100-499 pcs"
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 935,
-        "label": "500-999 pcs"
+        "price": 1169,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 650,
-        "label": "1000+ pcs"
+        "price": 1104,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1104,
@@ -647,11 +653,12 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Pieces"
   },
   {
     "id": 12,
-    "name": "GINKGO",
+    "name": "GINKGO BILOBA CAPSULE",
     "category": "Herbal",
     "badge": "Focus",
     "rating": 4.9,
@@ -674,25 +681,25 @@ const products = [
       "Ultra Pure"
     ],
     "moq": 50,
-    "priceRange": "₹3000 - ₹5999 / Piece",
+    "priceRange": "₹5099 - ₹5999 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
         "price": 5999,
-        "label": "50-249 pcs"
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 4319,
-        "label": "250-499 pcs"
+        "price": 5399,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 3000,
-        "label": "500+ pcs"
+        "price": 5099,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 5099,
@@ -705,11 +712,12 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Pieces"
   },
   {
     "id": 13,
-    "name": "GUMMIES",
+    "name": "SHILAJIT GUMMIES",
     "category": "Herbal",
     "badge": "Wellness",
     "rating": 4.7,
@@ -734,25 +742,25 @@ const products = [
       "Pectin Based"
     ],
     "moq": 50,
-    "priceRange": "₹1750 - ₹3499 / Piece",
+    "priceRange": "₹2974 - ₹3499 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
         "price": 3499,
-        "label": "50-249 pcs"
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 2519,
-        "label": "250-499 pcs"
+        "price": 3149,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 1750,
-        "label": "500+ pcs"
+        "price": 2974,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 2974,
@@ -765,11 +773,12 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Pieces"
   },
   {
     "id": 14,
-    "name": "MACA-ROOT-ARTWOR",
+    "name": "MACA ROOT CAPSULES",
     "category": "Herbal",
     "badge": "Organic",
     "rating": 5,
@@ -792,25 +801,25 @@ const products = [
       "Non-GMO"
     ],
     "moq": 100,
-    "priceRange": "₹1500 - ₹2999 / Piece",
+    "priceRange": "₹2549 - ₹2999 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 2999,
-        "label": "100-499 pcs"
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 2159,
-        "label": "500-999 pcs"
+        "price": 2699,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1500,
-        "label": "1000+ pcs"
+        "price": 2549,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 2549,
@@ -823,11 +832,12 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Pieces"
   },
   {
     "id": 15,
-    "name": "MACAROOT",
+    "name": "MACA ROOT + TONGAT ALI CAPSULES",
     "category": "Herbal",
     "badge": "Clinical",
     "rating": 4.8,
@@ -850,25 +860,25 @@ const products = [
       "Lab Tested"
     ],
     "moq": 50,
-    "priceRange": "₹2000 - ₹3999 / Piece",
+    "priceRange": "₹3399 - ₹3999 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
         "maxQty": 249,
         "price": 3999,
-        "label": "50-249 pcs"
+        "label": "50-249 Pieces"
       },
       {
         "minQty": 250,
         "maxQty": 499,
-        "price": 2879,
-        "label": "250-499 pcs"
+        "price": 3599,
+        "label": "250-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": null,
-        "price": 2000,
-        "label": "500+ pcs"
+        "price": 3399,
+        "label": "500+ Pieces"
       }
     ],
     "samplePrice": 3399,
@@ -881,11 +891,12 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Pieces"
   },
   {
     "id": 16,
-    "name": "MORINGA",
+    "name": "MORINGA POWDER",
     "category": "Herbal",
     "badge": "Superfood",
     "rating": 5,
@@ -908,25 +919,25 @@ const products = [
       "Raw & Sun-Dried"
     ],
     "moq": 100,
-    "priceRange": "₹1000 - ₹1999 / Piece",
+    "priceRange": "₹1699 - ₹1999 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 1999,
-        "label": "100-499 pcs"
+        "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1439,
-        "label": "500-999 pcs"
+        "price": 1799,
+        "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1000,
-        "label": "1000+ pcs"
+        "price": 1699,
+        "label": "1000+ Kg"
       }
     ],
     "samplePrice": 1699,
@@ -939,11 +950,12 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Kg"
   },
   {
     "id": 17,
-    "name": "MORINGACAP",
+    "name": "MORINGA CAPSULES",
     "category": "Herbal",
     "badge": "Beauty",
     "rating": 4.7,
@@ -966,25 +978,25 @@ const products = [
       "Rich in Iron & Vit C"
     ],
     "moq": 100,
-    "priceRange": "₹900 - ₹1799 / Piece",
+    "priceRange": "₹1529 - ₹1799 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 1799,
-        "label": "100-499 pcs"
+        "label": "100-499 Pieces"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1295,
-        "label": "500-999 pcs"
+        "price": 1619,
+        "label": "500-999 Pieces"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 900,
-        "label": "1000+ pcs"
+        "price": 1529,
+        "label": "1000+ Pieces"
       }
     ],
     "samplePrice": 1529,
@@ -997,11 +1009,12 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Pieces"
   },
   {
     "id": 18,
-    "name": "SEAMOSS",
+    "name": "SEA MOSS POWDER",
     "category": "Herbal",
     "badge": "Wellness",
     "rating": 4.9,
@@ -1026,25 +1039,25 @@ const products = [
       "92 Minerals"
     ],
     "moq": 100,
-    "priceRange": "₹1250 - ₹2499 / Piece",
+    "priceRange": "₹2124 - ₹2499 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
         "maxQty": 499,
         "price": 2499,
-        "label": "100-499 pcs"
+        "label": "100-499 Kg"
       },
       {
         "minQty": 500,
         "maxQty": 999,
-        "price": 1799,
-        "label": "500-999 pcs"
+        "price": 2249,
+        "label": "500-999 Kg"
       },
       {
         "minQty": 1000,
         "maxQty": null,
-        "price": 1250,
-        "label": "1000+ pcs"
+        "price": 2124,
+        "label": "1000+ Kg"
       }
     ],
     "samplePrice": 2124,
@@ -1057,7 +1070,8 @@ const products = [
       "COA & Lab Test Certificates Included"
     ],
     "verifiedSupplier": true,
-    "factoryDirect": true
+    "factoryDirect": true,
+    "unit": "Kg"
   },
   {
     "id": 19,

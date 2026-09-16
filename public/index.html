@@ -3,42 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
-  <title>Kiyan Exports & Herbal Manufacturing - B2B Wholesale Manufacturer & Exporter (Est. 2014)</title>
-  <meta name="description" content="Kiyan Exports & Herbal Manufacturing (Est. 2014) - Leading B2B manufacturer & bulk exporter of organic Shilajit, Ashwagandha, herbal extracts, capsules & adaptogens. Low MOQ, Tiered Volume Discounts & OEM Private Labeling.">
-  <meta name="keywords" content="Kiyan Exports, B2B Manufacturer, Wholesale Herbal Extracts, Bulk Shilajit, Ashwagandha Supplier, OEM Private Label, Contract Manufacturing, MOQ 100 Pcs">
-  <meta name="author" content="Kiyan Exports & Herbal Manufacturing">
+  <title>Kiyan Export & Herbal Manufacturing - B2B Wholesale Manufacturer & Exporter (Est. 2014)</title>
+  <meta name="description" content="Kiyan Export & Herbal Manufacturing (Est. 2014) - Leading B2B manufacturer & bulk exporter of organic Shilajit, Ashwagandha, herbal extracts, capsules & adaptogens. Low MOQ, Tiered Volume Discounts & OEM Private Labeling.">
+  <meta name="keywords" content="Kiyan Export, B2B Manufacturer, Wholesale Herbal Extracts, Bulk Shilajit, Ashwagandha Supplier, OEM Private Label, Contract Manufacturing, MOQ 100 Pcs">
+  <meta name="author" content="Kiyan Export & Herbal Manufacturing">
   <meta name="theme-color" content="#2d5a27">
   
   <!-- Open Graph / Facebook SEO -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kiyanexports.com">
-  <meta property="og:title" content="Kiyan Exports - Premium B2B Herbal & Organic Extracts Manufacturer">
+  <meta property="og:title" content="Kiyan Export - Premium B2B Herbal & Organic Extracts Manufacturer">
   <meta property="og:description" content="Direct factory bulk export of organic Shilajit, Ashwagandha, and herbal extracts. ISO, GMP, FSSAI certified extraction facility with low MOQ & OEM custom private labeling.">
-  <meta property="og:image" content="/images/kiyan-logo.jpg">
+  <meta property="og:image" content="https://kiyanexports.com/images/kiyan-logo.jpg">
 
   <!-- Twitter Card SEO -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Kiyan Exports - Wholesale Herbal Manufacturer">
+  <meta name="twitter:title" content="Kiyan Export - Wholesale Herbal Manufacturer">
   <meta name="twitter:description" content="Bulk B2B manufacturer & exporter of certified organic herbal extracts and supplements.">
-  <meta name="twitter:image" content="/images/kiyan-logo.jpg">
+  <meta name="twitter:image" content="https://kiyanexports.com/images/kiyan-logo.jpg">
 
-  <!-- Preconnect & Resource Preloads for Instant Performance -->
+  <!-- Preconnect & Resource Preloads for Instant Mobile Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="/css/style.css?v=2026_v900_pistachio_d7f59e" as="style">
-  <link rel="preload" href="/images/hero-bg.jpg" as="image" fetchpriority="high">
-
-  <!-- Web Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
-
-  <!-- FontAwesome Icons -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
+  <!-- System Web Font Stack (Instant 0ms Render Engine) -->
+  <style>
+    @font-face {
+      font-family: 'Font Awesome 6 Free';
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Font Awesome 6 Brands';
+      font-display: swap;
+    }
+    :root {
+      --font-heading: 'Cinzel', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+  </style>
+  
   <!-- Custom Luxury CSS -->
-  <link rel="stylesheet" href="/css/style.css?v=2026_v900_pistachio_d7f59e">
-
-  <!-- Razorpay Checkout SDK -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+  <link rel="stylesheet" href="/css/style.css?v=2026_v1000_master_luxury_ui">
   
   <!-- Instant Image Loading Handlers -->
   <script>
@@ -52,10 +61,17 @@
     window.onImageError = function(img, fallbackUrl) {
       if (!img) return;
       img.onerror = null;
-      img.src = fallbackUrl || '/images/kiyan-logo.jpg';
+      if (img.classList.contains('pdf-page1-img')) {
+        img.src = '/images/kiyan-logo.jpg';
+        img.style.objectFit = 'contain';
+        img.style.padding = '15px';
+        img.style.background = '#f0f5f2';
+      } else {
+        img.src = fallbackUrl || '/images/kiyan-logo.jpg';
+      }
       img.classList.add('loaded-img', 'loaded');
       img.classList.remove('img-loading');
-      var p = img.closest('.skeleton-wrapper, .product-image, .pm-main-img-wrap, .about-img-wrap');
+      var p = img.closest('.skeleton-wrapper, .product-image, .pm-main-img-wrap, .about-img-wrap, .pdf-card-preview-box');
       if (p) p.classList.add('loaded');
     };
   </script>
@@ -65,7 +81,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Kiyan Exports & Herbal Manufacturing",
+    "name": "Kiyan Export & Herbal Manufacturing",
     "url": "https://kiyanexports.com",
     "logo": "/images/kiyan-logo.jpg",
     "contactPoint": {
@@ -195,7 +211,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
               <div style="display: flex; gap: 12px; align-items: center; flex: 1; min-width: 280px;">
                 <input type="text" id="dashSearchInput" placeholder="🔍 Search by product name, category, or ID..." oninput="renderAdminStandaloneTable()" style="flex: 1; padding: 10px 18px; border-radius: 25px; border: 1.5px solid var(--accent-gold); font-size: 0.9rem; outline: none; background: var(--soft-cream);">
-                <select id="dashCategoryFilter" onchange="renderAdminStandaloneTable()" style="padding: 10px 18px; border-radius: 25px; border: 1.5px solid var(--accent-gold); font-size: 0.88rem; font-weight: 600; outline: none; background: white;">
+                <select id="dashCategoryFilter" aria-label="Filter by Product Category" onchange="renderAdminStandaloneTable()" style="padding: 10px 18px; border-radius: 25px; border: 1.5px solid var(--accent-gold); font-size: 0.88rem; font-weight: 600; outline: none; background: white;">
                   <option value="all">All Categories</option>
                   <option value="herbal">Herbal Products</option>
                   <option value="spices">Spices & Powders</option>
@@ -427,7 +443,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
               <div>
                 <h2 style="font-size: 1.5rem; color: var(--deep-green); margin: 0;"><i class="fas fa-users" style="color: var(--accent-gold);"></i> MongoDB Atlas Registered Customers & Users</h2>
-                <p style="color: var(--text-muted); margin-top: 4px; font-size: 0.9rem;">Live list of all user accounts registered on Kiyan Wellness website and saved in MongoDB Atlas database.</p>
+                <p style="color: var(--text-muted); margin-top: 4px; font-size: 0.9rem;">Live list of all user accounts registered on Kiyan Export website and saved in MongoDB Atlas database.</p>
               </div>
               <button class="btn-main" onclick="loadStandaloneAdminUsers()" style="padding: 10px 24px;"><i class="fas fa-sync-alt"></i> Refresh Users</button>
             </div>
@@ -542,12 +558,12 @@
     <div class="top-bar" id="topBar">
       <div class="container">
         <div class="top-info">
-          <span><i class="fas fa-industry"></i> <strong style="color: var(--accent-gold);">VERIFIED GOLD MANUFACTURER</strong> &bull; Direct Factory Bulk Sourcing</span>
-          <span><i class="fas fa-envelope"></i> <a href="mailto:sales@kiyanexports.com" class="site-contact-email">sales@kiyanexports.com</a></span>
-          <span><a href="https://wa.me/919305834431?text=Hi%20Kiyan%20Exports" target="_blank" style="color: #1e4a10; text-decoration: none;"><i class="fab fa-whatsapp" style="color: #2d681b; font-size: 1rem;"></i> <strong>WhatsApp: +91 9305834431</strong></a></span>
+          <span><i class="fas fa-industry"></i> <strong style="color: var(--accent-gold);">VERIFIED GOLD MANUFACTURER</strong> &bull; IEC: <strong>0514092811</strong> &bull; FDA Reg: <strong>17824910284</strong></span>
+          <span><i class="fas fa-envelope"></i> <a href="mailto:kiyanexport54@gmail.com" class="site-contact-email">kiyanexport54@gmail.com</a></span>
+          <span><a href="https://wa.me/919305834431?text=Hi%20Kiyan%20Exports" target="_blank" style="color: #f7ebe1; text-decoration: none;"><i class="fab fa-whatsapp" style="color: #25d366; font-size: 1rem;"></i> <strong>WhatsApp</strong></a></span>
         </div>
         <div class="top-social">
-          <span style="font-size: 0.8rem; font-weight: 700; color: #1e4a10;"><i class="fas fa-boxes"></i> MOQ: 100 Pcs | OEM Private Label</span>
+          <span style="font-size: 0.8rem; font-weight: 700; color: #f7ebe1;"><i class="fas fa-globe"></i> Exporting to 🇺🇸 🇬🇧 🇦🇪 🇩🇪 🇨🇦 🇦🇺 &bull; Incoterms: FOB / CIF</span>
         </div>
       </div>
     </div>
@@ -557,34 +573,40 @@
       <div class="container">
         <div class="logo-container">
           <a href="#home" onclick="showPage('home', this)">
-            <img src="/images/kiyan-logo.jpg" alt="Kiyan Export Logo" class="logo-img" width="180" height="52" style="height: 52px; width: auto; object-fit: contain; background: white; padding: 4px 8px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <img src="/images/kiyan-logo-sm.webp" alt="Kiyan Export Logo" class="logo-img" width="180" height="52" fetchpriority="high" decoding="async" style="height: 52px; width: auto; object-fit: contain; background: white; padding: 4px 8px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
           </a>
         </div>
 
         <div class="nav-links">
-          <a href="#home" class="active" onclick="showPage('home', this)"><img src="/images/kiyan-logo.jpg" alt="Kiyan Export Logo" style="height: 24px; width: auto; vertical-align: middle; margin-right: 6px; border-radius: 4px; background: white; padding: 2px; border: 1px solid #d8e2dc;"> Home</a>
-          <a href="#about" onclick="showPage('about', this)">Factory & About</a>
-          <a href="#catalogue" onclick="showPage('catalogue', this)"><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> PDF Catalogues</a>
-          <div class="dropdown">
-            <a href="#products" onclick="showPage('products', this)">Bulk Range <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i></a>
-            <div class="dropdown-content">
-              <a href="#products" onclick="showPage('products', this)"><i class="fas fa-leaf" style="color: var(--accent-gold);"></i> Herbal Extracts (MOQ 100 Pcs)</a>
-              <a href="#products" onclick="showPage('products', this)"><i class="fas fa-capsules" style="color: var(--accent-gold);"></i> Wholesale Capsules & Gummies</a>
-              <a href="#spices" onclick="showPage('spices', this)"><i class="fas fa-mortar-pestle" style="color: var(--accent-gold);"></i> Bulk Teas & Bark Powders</a>
-            </div>
-          </div>
-          <a href="#rfq" onclick="openRfqModal(); return false;"><i class="fas fa-file-signature" style="color: var(--accent-gold);"></i> Request RFQ</a>
-          <a href="#services" onclick="showPage('services', this)">OEM / Private Label</a>
-          <a href="#certifications" onclick="showPage('certifications', this)">ISO/GMP Lab Reports</a>
-          <a href="#help-center" onclick="showPage('help-center', this)">Contact Factory</a>
-          <a href="#admin" id="navAdminBtn" style="display: none; color: var(--accent-gold); font-weight: 700;" onclick="showPage('admin', this)"><i class="fas fa-crown"></i> Admin Panel</a>
+          <a href="#home" class="active" onclick="showPage('home', this)">Home</a>
+          <a href="#about" onclick="showPage('about', this)">About</a>
+          <a href="#global-reach" onclick="document.getElementById('global-reach').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-globe-americas" style="color: var(--bright-gold);"></i> Global Network</a>
+          <a href="#catalogue" onclick="showPage('catalogue', this)"><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> Catalogues</a>
+          <a href="#products" onclick="showPage('products', this)"><i class="fas fa-leaf" style="color: var(--accent-gold);"></i> Products</a>
+          <a href="#rfq" onclick="openRfqModal(); return false;"><i class="fas fa-file-signature" style="color: var(--accent-gold);"></i> RFQ</a>
+          <a href="#services" onclick="showPage('services', this)">OEM/Private Label</a>
+          <a href="#customer-reviews-section" onclick="document.getElementById('customer-reviews-section').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-star" style="color: #fbbf24;"></i> Reviews</a>
+          <a href="#certifications" onclick="showPage('certifications', this)">ISO/GMP</a>
+          <a href="#help-center" onclick="showPage('help-center', this)">Contact</a>
+          <a href="#admin" id="navAdminBtn" style="display: none; color: var(--accent-gold); font-weight: 700;" onclick="showPage('admin', this)"><i class="fas fa-crown"></i> Admin</a>
         </div>
 
         <div class="nav-actions">
+          <!-- Currency Selector -->
+          <div class="currency-selector-box">
+            <select id="currencySelect" onchange="changeCurrency(this.value)" aria-label="Select Currency" style="background: var(--deep-green); color: var(--champagne-gold); border: 1.5px solid var(--accent-gold); padding: 5px 8px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; cursor: pointer; outline: none;">
+              <option value="USD" selected>🇺🇸 $ USD</option>
+              <option value="INR">🇮🇳 ₹ INR</option>
+              <option value="EUR">🇪🇺 € EUR</option>
+              <option value="GBP">🇬🇧 £ GBP</option>
+              <option value="AED">🇦🇪 AED</option>
+            </select>
+          </div>
+
           <!-- Live Quick Search -->
           <div class="nav-search-bar">
             <i class="fas fa-search"></i>
-            <input type="text" id="navSearchInput" aria-label="Search herbal products" placeholder="Search herbal products...">
+            <input type="text" id="navSearchInput" aria-label="Search herbal products" placeholder="Search products...">
           </div>
 
           <!-- Login / Register Account Button -->
@@ -603,16 +625,7 @@
               <a href="#logout" onclick="logoutUser(); return false;"><i class="fas fa-sign-out-alt" style="color: #e74c3c;"></i> Logout Account</a>
             </div>
           </div>
-
-          <div class="nav-help" onclick="showPage('help-center', null)">
-            <i class="fas fa-headset"></i> Help Center
-          </div>
           
-          <div class="cart-icon-btn" onclick="openCart()" id="cartBtn" aria-label="View Shopping Cart">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cart-count" id="cartCount">0</span>
-          </div>
-
           <!-- Mobile Menu Toggle Button -->
           <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu">
             <i class="fas fa-bars"></i>
@@ -622,10 +635,35 @@
     </nav>
   </header>
 
+  <!-- FLOATING PURCHASE RECOMMENDATION POPUP (AI RE-ENGAGEMENT TOAST) -->
+  <div id="recommendationPopupCard" style="display: none; position: fixed; bottom: 85px; right: 20px; z-index: 99990; background: #ffffff; border: 2px solid var(--accent-gold); border-radius: 16px; box-shadow: 0 12px 35px rgba(0,0,0,0.22); width: 310px; max-width: 90vw; padding: 14px; animation: slideUpToast 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #edf2f7; padding-bottom: 8px; margin-bottom: 10px;">
+      <span style="font-size: 0.72rem; font-weight: 800; color: #1e431c; text-transform: uppercase; background: #eef7f2; padding: 3px 8px; border-radius: 10px;">
+        <i class="fas fa-bolt" style="color: var(--accent-gold);"></i> Still Interested?
+      </span>
+      <button onclick="dismissRecommendationPopup()" aria-label="Close Popup" style="background: none; border: none; color: #888; font-size: 1rem; cursor: pointer; padding: 2px 5px;"><i class="fas fa-times"></i></button>
+    </div>
+    
+    <div style="display: flex; gap: 12px; align-items: center;">
+      <img id="recPopImg" src="" alt="Product Image" style="width: 65px; height: 65px; object-fit: contain; background: #f8fafc; border-radius: 10px; border: 1px solid #e2e8f0; padding: 4px; flex-shrink: 0;">
+      <div style="flex: 1; min-width: 0;">
+        <h4 id="recPopTitle" style="font-size: 0.88rem; color: #1b365d; margin: 0 0 3px 0; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Product Name</h4>
+        <div id="recPopPrice" style="font-size: 0.82rem; color: #1e431c; font-weight: 800; margin-bottom: 4px;">$0.00</div>
+        <span style="font-size: 0.68rem; color: #27ae60; font-weight: 700; display: block;"><i class="fas fa-fire"></i> High Demand - In Stock</span>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 8px; margin-top: 12px;">
+      <button id="recPopActionBtn" onclick="" style="flex: 1; padding: 8px; font-size: 0.78rem; font-weight: 800; background: #25d366; color: #fff; border: none; border-radius: 8px; cursor: pointer;">
+        <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+      </button>
+    </div>
+  </div>
+
   <!-- MOBILE NAVIGATION DRAWER -->
   <div class="mobile-nav-drawer" id="mobileNavDrawer" style="display: none;">
     <div class="mobile-nav-header">
-      <img src="/images/kiyan-logo.jpg" alt="Kiyan Export Logo" height="44" style="height: 44px; width: auto; object-fit: contain; background: white; padding: 4px; border-radius: 6px;">
+      <img src="/images/kiyan-logo-sm.webp" alt="Kiyan Export Logo" height="44" style="height: 44px; width: auto; object-fit: contain; background: white; padding: 4px; border-radius: 6px;">
       <button class="mobile-nav-close" onclick="toggleMobileMenu()" aria-label="Close mobile navigation menu"><i class="fas fa-times"></i></button>
     </div>
     
@@ -802,7 +840,7 @@
 
           <div>
             <div style="background: rgba(255,255,255,0.04); border: 1.5px solid rgba(212,175,55,0.3); border-radius: 16px; padding: 30px;">
-              <h3 style="color: #ffd700; font-size: 1.5rem; margin-bottom: 15px;"><i class="fas fa-industry"></i> Why Source Direct From Kiyan Exports?</h3>
+              <h3 style="color: #ffd700; font-size: 1.5rem; margin-bottom: 15px;"><i class="fas fa-industry"></i> Why Source Direct From Kiyan Export?</h3>
               <ul style="list-style: none; padding: 0; margin: 0; color: #e0f0ed; font-size: 0.95rem;">
                 <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: #00e676;"></i> <strong>Zero Middleman Markups:</strong> Buy directly from certified Indian extraction plants.</li>
                 <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: #00e676;"></i> <strong>Custom Formulation (OEM):</strong> Tailored active concentrations & bespoke capsule sizes.</li>
@@ -816,7 +854,7 @@
       </div>
     </section>
 
-    <!-- KIYAN EXPORTS FACTORY & MANUFACTURING INFRASTRUCTURE GALLERY -->
+    <!-- KIYAN EXPORT FACTORY & MANUFACTURING INFRASTRUCTURE GALLERY -->
     <section class="about-section b2b-reveal" style="background: #f8fafc; padding: 60px 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
       <div class="container">
         <div class="section-header text-center">
@@ -1003,14 +1041,14 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-img-wrap skeleton-wrapper">
-            <img src="/images/facility-bg.jpg" alt="Kiyan Wellness Herbal Facility" width="600" height="480" loading="lazy" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this, '/images/kiyan-logo.jpg')">
+            <img src="/images/facility-bg.jpg" alt="Kiyan Export Herbal Facility" width="600" height="480" loading="lazy" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this, '/images/kiyan-logo.jpg')">
             <div class="about-badge"><i class="fas fa-award"></i> Est. 2014 • 10+ Years Trust</div>
           </div>
 
           <div class="about-text">
             <div class="about-header-pill" id="siteAboutPill">🌿 ESTABLISHED 2014 • LUCKNOW, INDIA</div>
-            <h2 id="siteAboutTitle">Empowering Natural Health with <span>Kiyan Wellness</span></h2>
-            <p id="siteAboutP1"><strong>Kiyan Wellness</strong>, established in 2014, is a premier direct-to-consumer B2C retail e-commerce platform dedicated to 100% organic herbal supplements, adaptogens, Himalayan Shilajit, Ashwagandha, Moringa, and traditional botanical remedies.</p>
+            <h2 id="siteAboutTitle">Empowering Natural Health with <span>Kiyan Export</span></h2>
+            <p id="siteAboutP1"><strong>Kiyan Export</strong>, established in 2014, is a premier direct-to-consumer B2C retail e-commerce platform dedicated to 100% organic herbal supplements, adaptogens, Himalayan Shilajit, Ashwagandha, Moringa, and traditional botanical remedies.</p>
             <p id="siteAboutP2">We bring nature's purest herbs straight to your doorstep. Every product is lab-tested for heavy metals, potency, and active ingredients, ensuring maximum efficacy for your daily wellness journey.</p>
 
             <div class="about-highlights-list">
@@ -1047,6 +1085,102 @@
             <p>Door-to-door express logistics serving North America, Europe, Latin America, and Middle East.</p>
           </div>
         </div>
+
+        <!-- OEM CONTRACT MANUFACTURING 4-STEP PROCESS VISUALIZER -->
+        <div style="margin-top: 55px; background: linear-gradient(135deg, #10302b, #1e5967); padding: 45px 30px; border-radius: 20px; color: white; border: 1.5px solid var(--accent-gold); box-shadow: var(--shadow-lg);">
+          <div style="text-align: center; max-width: 750px; margin: 0 auto 35px auto;">
+            <span style="font-size: 0.8rem; font-weight: 800; color: var(--bright-gold); letter-spacing: 2px; text-transform: uppercase;"><i class="fas fa-cogs"></i> Turnkey B2B Export Manufacturing</span>
+            <h2 style="font-size: 2.2rem; margin-top: 8px; color: white;">4-Step OEM & Private Label Process</h2>
+            <p style="color: #d0e5e0; font-size: 0.95rem; margin-top: 6px;">From custom formulation to HPLC lab batch testing and sea/air cargo clearance worldwide.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px;">
+            <div style="background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); padding: 25px 20px; border-radius: 14px; border: 1px solid rgba(212,175,55,0.3); position: relative;">
+              <span style="position: absolute; top: 15px; right: 15px; font-size: 1.8rem; font-weight: 900; color: rgba(212,175,55,0.25);">01</span>
+              <div style="font-size: 1.8rem; color: var(--bright-gold); margin-bottom: 12px;"><i class="fas fa-prescription-bottle"></i></div>
+              <h4 style="font-size: 1.1rem; color: white; margin-bottom: 6px;">Formulation & Potency</h4>
+              <p style="font-size: 0.82rem; color: #d0e5e0; line-height: 1.5;">Select extract strength (e.g. Shilajit 75% Fulvic, Ashwagandha 5% Withanolides) or custom powder/capsule blend.</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); padding: 25px 20px; border-radius: 14px; border: 1px solid rgba(212,175,55,0.3); position: relative;">
+              <span style="position: absolute; top: 15px; right: 15px; font-size: 1.8rem; font-weight: 900; color: rgba(212,175,55,0.25);">02</span>
+              <div style="font-size: 1.8rem; color: var(--bright-gold); margin-bottom: 12px;"><i class="fas fa-tags"></i></div>
+              <h4 style="font-size: 1.1rem; color: white; margin-bottom: 6px;">Custom Packaging & Label</h4>
+              <p style="font-size: 0.82rem; color: #d0e5e0; line-height: 1.5;">Bespoke bottle, sachet sachet, or pouch printing with your brand logo, barcode, and regulatory labeling.</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); padding: 25px 20px; border-radius: 14px; border: 1px solid rgba(212,175,55,0.3); position: relative;">
+              <span style="position: absolute; top: 15px; right: 15px; font-size: 1.8rem; font-weight: 900; color: rgba(212,175,55,0.25);">03</span>
+              <div style="font-size: 1.8rem; color: var(--bright-gold); margin-bottom: 12px;"><i class="fas fa-microscope"></i></div>
+              <h4 style="font-size: 1.1rem; color: white; margin-bottom: 6px;">Batch Testing & COA</h4>
+              <p style="font-size: 0.82rem; color: #d0e5e0; line-height: 1.5;">ISO/GMP certified laboratory batch testing. Certificate of Analysis (COA) & Heavy Metal test reports attached.</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); padding: 25px 20px; border-radius: 14px; border: 1px solid rgba(212,175,55,0.3); position: relative;">
+              <span style="position: absolute; top: 15px; right: 15px; font-size: 1.8rem; font-weight: 900; color: rgba(212,175,55,0.25);">04</span>
+              <div style="font-size: 1.8rem; color: var(--bright-gold); margin-bottom: 12px;"><i class="fas fa-ship"></i></div>
+              <h4 style="font-size: 1.1rem; color: white; margin-bottom: 6px;">Global Freight Dispatch</h4>
+              <p style="font-size: 0.82rem; color: #d0e5e0; line-height: 1.5;">FOB Nhava Sheva / Mundra Port Sea Freight or DHL Express Air Cargo with export documentation & COO.</p>
+            </div>
+          </div>
+
+          <!-- INTERACTIVE OEM EXPRESS SAMPLE ORDER BUILDER WIDGET -->
+          <div id="oemExpressSampleWidget" style="margin-top: 35px; background: rgba(255, 255, 255, 0.96); color: var(--text-dark); border-radius: 16px; padding: 28px; border: 2px solid var(--accent-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #e0e8e4; padding-bottom: 15px;">
+              <div>
+                <span style="background: #e8f4f0; color: var(--deep-green); padding: 4px 12px; border-radius: 20px; font-weight: 800; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-bolt" style="color: var(--accent-gold);"></i> Express Sample Dispatch</span>
+                <h3 style="font-size: 1.4rem; color: var(--deep-green); margin: 6px 0 0 0;"><i class="fas fa-flask" style="color: var(--accent-gold);"></i> Order Express OEM Sample Kit Instantly</h3>
+              </div>
+              <div style="text-align: right;">
+                <span style="font-size: 0.85rem; color: #666; display: block;">Standard Express Sample Kit Price:</span>
+                <strong id="oemWidgetDisplayPrice" style="font-size: 1.4rem; color: var(--deep-green); font-weight: 800;">$49 USD</strong>
+                <span style="font-size: 0.78rem; color: #27ae60; display: block; font-weight: 700;"><i class="fas fa-plane"></i> Ships via DHL Air Express Cargo</span>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; align-items: end;">
+              <div>
+                <label style="font-weight: 700; font-size: 0.85rem; color: var(--deep-green); display: block; margin-bottom: 6px;"><i class="fas fa-leaf"></i> 1. Select Herb / Extract Product</label>
+                <select id="oemSampleProductSelect" aria-label="Select Herb or Extract Product" onchange="updateOemSampleWidgetCalc()" style="width: 100%; padding: 11px 14px; border-radius: 8px; border: 1.5px solid var(--accent-gold); font-size: 0.9rem; font-weight: 600; background: white; color: var(--text-dark); outline: none;">
+                  <option value="PURE HIMALAYAN SHILAJIT RESIN">PURE HIMALAYAN SHILAJIT RESIN</option>
+                  <option value="ASWAGANDHA POWDER">ASWAGANDHA POWDER</option>
+                  <option value="ARJUNA CAPSULE">ARJUNA CAPSULE</option>
+                  <option value="ARJUNA POWDER">ARJUNA POWDER</option>
+                  <option value="SEA MOSS POWDER">SEA MOSS POWDER</option>
+                  <option value="MORINGA POWDER">MORINGA POWDER</option>
+                  <option value="SHILAJIT GUMMIES">SHILAJIT GUMMIES</option>
+                  <option value="GINKGO BILOBA CAPSULE">GINKGO BILOBA CAPSULE</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="font-weight: 700; font-size: 0.85rem; color: var(--deep-green); display: block; margin-bottom: 6px;"><i class="fas fa-box-open"></i> 2. Packaging / Sample Type</label>
+                <select id="oemSamplePackagingSelect" aria-label="Select Packaging or Sample Type" onchange="updateOemSampleWidgetCalc()" style="width: 100%; padding: 11px 14px; border-radius: 8px; border: 1.5px solid var(--accent-gold); font-size: 0.9rem; font-weight: 600; background: white; color: var(--text-dark); outline: none;">
+                  <option value="50g Sealed Lab Batch Pouch (Standard)">50g Sealed Lab Pouch (Powder/Resin)</option>
+                  <option value="1 Bottle / Jar (60 Capsules/Gummies)">1 Bottle / Jar (60 Capsules/Gummies)</option>
+                  <option value="100g Sealed Vacuum Pack">100g Sealed Vacuum Pack</option>
+                  <option value="Custom Private Label Sample Box">Custom Printed Private Label Sample Box</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="font-weight: 700; font-size: 0.85rem; color: var(--deep-green); display: block; margin-bottom: 6px;"><i class="fas fa-layer-group"></i> 3. Sample Pack Quantity</label>
+                <select id="oemSampleQtySelect" aria-label="Select Sample Pack Quantity" onchange="updateOemSampleWidgetCalc()" style="width: 100%; padding: 11px 14px; border-radius: 8px; border: 1.5px solid var(--accent-gold); font-size: 0.9rem; font-weight: 600; background: white; color: var(--text-dark); outline: none;">
+                  <option value="1">1 Sample Pack ($49 / ₹3,999)</option>
+                  <option value="2">2 Sample Packs ($89 / ₹6,999)</option>
+                  <option value="3">3 Sample Packs ($119 / ₹9,499)</option>
+                </select>
+              </div>
+
+              <div>
+                <button type="button" onclick="triggerOemExpressSampleOrder()" class="btn-main" style="width: 100%; padding: 12px; font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 15px rgba(212,175,55,0.4);">
+                  <i class="fas fa-shipping-fast"></i> Order Sample Now
+                </button>
+              </div>
+            </div>
+            <p style="font-size: 0.8rem; color: #666; margin: 12px 0 0 0; text-align: center;"><i class="fas fa-certificate" style="color: var(--accent-gold);"></i> Express Sample order includes Full Certificate of Analysis (COA), HPLC Lab Report, and Air Freight Tracking Code.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1060,16 +1194,14 @@
         </div>
 
         <!-- Filter Bar -->
-        <div class="filter-bar-container">
-          <div class="filter-pills">
-            <button class="filter-pill active" onclick="setCategoryFilter('all', this)">All Collections</button>
-            <button class="filter-pill" onclick="setCategoryFilter('herbal', this)">🌿 Herbal Products</button>
-            <button class="filter-pill" onclick="setCategoryFilter('spices', this)">🌶️ Authentic Spices</button>
+        <div class="filter-bar-container" style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-weight: 800; font-size: 1.15rem; color: var(--deep-green); display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-boxes" style="color: var(--accent-gold);"></i> Verified Herbal Products Catalogue
           </div>
 
-          <div class="filter-search-box">
+          <div class="filter-search-box" style="width: 340px;">
             <i class="fas fa-search"></i>
-            <input type="text" id="sectionSearchInput" aria-label="Filter products by name" placeholder="Filter by product name...">
+            <input type="text" id="sectionSearchInput" aria-label="Filter products by name" placeholder="Search herbal products by name...">
           </div>
         </div>
 
@@ -1086,11 +1218,11 @@
       <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px; color: #d4a373; font-weight: 800; margin-bottom: 4px;">
         <i class="fas fa-industry"></i> VERIFIED GOLD MANUFACTURER • ESTABLISHED 2014
       </div>
-      <h1>About Kiyan Exports & Herbal Manufacturing</h1>
+      <h1>About Kiyan Export & Herbal Manufacturing</h1>
       <p>Pioneering 100% Pure Organic Herbal Extracts, Shilajit Processing & Global B2B Export</p>
     </div>
 
-    <!-- KIYAN EXPORTS REAL FACTORY INFRASTRUCTURE GALLERY -->
+    <!-- KIYAN EXPORT REAL FACTORY INFRASTRUCTURE GALLERY -->
     <section class="about-section" style="background: #f8fafc; padding: 50px 0; border-bottom: 2px solid #d8e2dc;">
       <div class="container">
         <div class="section-header text-center" style="margin-bottom: 30px;">
@@ -1173,7 +1305,7 @@
           <div class="about-text">
             <div class="about-header-pill" id="siteAboutPill">🏭 ESTABLISHED 2014 • LUCKNOW, INDIA</div>
             <h2 id="siteAboutTitle">Leading Herbal Contract Manufacturer & Bulk Supplier</h2>
-            <p id="siteAboutP1"><strong>Kiyan Exports & Herbal Manufacturing</strong> is a premier B2B contract manufacturer and bulk supplier operating since 2014. We specialize in contract manufacturing, OEM private label formulation, and bulk supply of organic herbal extracts, Shilajit resin, Ashwagandha, and health supplements.</p>
+            <p id="siteAboutP1"><strong>Kiyan Export & Herbal Manufacturing</strong> is a premier B2B contract manufacturer and bulk supplier operating since 2014. We specialize in contract manufacturing, OEM private label formulation, and bulk supply of organic herbal extracts, Shilajit resin, Ashwagandha, and health supplements.</p>
             <p id="siteAboutP2">Equipped with state-of-the-art GMP certified extraction plants, we serve international buyers, Amazon sellers, wellness brands, and pharmaceutical distributors with custom packaging and factory-direct volume pricing.</p>
           </div>
         </div>
@@ -1195,15 +1327,16 @@
     </section>
   </div>
 
-  <!-- SERVICES PAGE -->
+  <!-- SERVICES PAGE (OEM / PRIVATE LABEL) -->
   <div id="services" class="page-section">
     <div class="sub-page-header">
-      <h1>Our Global Services</h1>
-      <p>End-to-End Solutions from Sourcing to Delivery</p>
+      <h1>OEM Contract Manufacturing & Private Labeling</h1>
+      <p>Custom Formulation, Bottling, Private Labeling & Express DHL Air Cargo Sample Kits</p>
     </div>
     <section class="products-section">
       <div class="container">
-        <div class="services-grid">
+        <!-- 3 Core OEM Service Cards -->
+        <div class="services-grid" style="margin-bottom: 45px;">
           <div style="background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: var(--shadow-md); border: var(--glass-border);">
             <i class="fas fa-globe-americas" style="font-size: 3.5rem; color: var(--accent-gold); margin-bottom: 20px;"></i>
             <h3 style="font-size: 1.5rem; margin-bottom: 12px; color: var(--deep-green);">Global Contract Manufacturing</h3>
@@ -1220,6 +1353,67 @@
             <p style="color: var(--text-muted); line-height: 1.7;">Heavy metal analysis, microbiological testing, HPLC standardized active compound verifications, and ISO compliance.</p>
           </div>
         </div>
+
+        <!-- INTERACTIVE OEM EXPRESS SAMPLE ORDER BUILDER WIDGET -->
+        <div id="oemExpressSampleWidgetServices" style="background: linear-gradient(135deg, #10302b, #1e5967); color: white; border-radius: 20px; padding: 35px; border: 2px solid var(--accent-gold); box-shadow: 0 15px 40px rgba(0,0,0,0.3);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 20px;">
+            <div>
+              <span style="background: rgba(212,175,55,0.2); color: var(--bright-gold); padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-bolt"></i> Express Air Dispatch</span>
+              <h2 style="font-size: 1.8rem; color: white; margin: 8px 0 0 0;"><i class="fas fa-flask" style="color: var(--accent-gold);"></i> Express OEM Custom Sample Builder</h2>
+              <p style="color: #d0e5e0; margin: 4px 0 0 0; font-size: 0.92rem;">Select product, packaging format & sample quantity to order your express evaluation sample kit.</p>
+            </div>
+            <div style="text-align: right; background: rgba(255,255,255,0.1); padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.4);">
+              <span style="font-size: 0.85rem; color: #d0e5e0; display: block;">Sample Kit Investment:</span>
+              <strong id="oemWidgetServicesDisplayPrice" style="font-size: 1.6rem; color: var(--bright-gold); font-weight: 800;">$49 USD</strong>
+              <span style="font-size: 0.8rem; color: #27ae60; display: block; font-weight: 700;"><i class="fas fa-plane"></i> Ships via DHL Air Express Cargo</span>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; align-items: end;">
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem; color: var(--bright-gold); display: block; margin-bottom: 8px;"><i class="fas fa-leaf"></i> 1. Select Herb / Extract Product</label>
+              <select id="oemServicesProductSelect" aria-label="Select Herb or Extract Product" onchange="updateOemServicesCalc()" style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1.5px solid var(--accent-gold); font-size: 0.9rem; font-weight: 600; background: white; color: var(--text-dark); outline: none;">
+                <option value="PURE HIMALAYAN SHILAJIT RESIN">PURE HIMALAYAN SHILAJIT RESIN</option>
+                <option value="ASWAGANDHA POWDER">ASWAGANDHA POWDER</option>
+                <option value="ARJUNA CAPSULE">ARJUNA CAPSULE</option>
+                <option value="ARJUNA POWDER">ARJUNA POWDER</option>
+                <option value="SEA MOSS POWDER">SEA MOSS POWDER</option>
+                <option value="MORINGA POWDER">MORINGA POWDER</option>
+                <option value="SHILAJIT GUMMIES">SHILAJIT GUMMIES</option>
+                <option value="GINKGO BILOBA CAPSULE">GINKGO BILOBA CAPSULE</option>
+                <option value="BAMBOO SALT">BAMBOO SALT</option>
+                <option value="TRIPHLA POWDER">TRIPHLA POWDER</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem; color: var(--bright-gold); display: block; margin-bottom: 8px;"><i class="fas fa-box-open"></i> 2. Packaging / Sample Type</label>
+              <select id="oemServicesPackagingSelect" aria-label="Select Packaging or Sample Type" onchange="updateOemServicesCalc()" style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1.5px solid var(--accent-gold); font-size: 0.9rem; font-weight: 600; background: white; color: var(--text-dark); outline: none;">
+                <option value="50g Sealed Lab Batch Pouch (Standard)">50g Sealed Lab Pouch (Powder/Resin)</option>
+                <option value="1 Bottle / Jar (60 Capsules/Gummies)">1 Bottle / Jar (60 Capsules/Gummies)</option>
+                <option value="100g Sealed Vacuum Pack">100g Sealed Vacuum Pack</option>
+                <option value="Custom Private Label Sample Box">Custom Printed Private Label Sample Box</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="font-weight: 700; font-size: 0.88rem; color: var(--bright-gold); display: block; margin-bottom: 8px;"><i class="fas fa-layer-group"></i> 3. Sample Pack Quantity</label>
+              <select id="oemServicesQtySelect" aria-label="Select Sample Pack Quantity" onchange="updateOemServicesCalc()" style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1.5px solid var(--accent-gold); font-size: 0.9rem; font-weight: 600; background: white; color: var(--text-dark); outline: none;">
+                <option value="1">1 Sample Pack ($49 / ₹3,999)</option>
+                <option value="2">2 Sample Packs ($89 / ₹6,999)</option>
+                <option value="3">3 Sample Packs ($119 / ₹9,499)</option>
+              </select>
+            </div>
+
+            <div>
+              <button type="button" onclick="triggerOemServicesSampleOrder()" class="btn-main" style="width: 100%; padding: 13px; font-size: 1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--bright-gold); color: #10302b; border: none; box-shadow: 0 4px 15px rgba(212,175,55,0.4);">
+                <i class="fas fa-shipping-fast"></i> Order Sample Now
+              </button>
+            </div>
+          </div>
+          <p style="font-size: 0.82rem; color: #d0e5e0; margin: 15px 0 0 0; text-align: center;"><i class="fas fa-certificate" style="color: var(--bright-gold);"></i> Express Sample kit includes official Certificate of Analysis (COA), HPLC Lab Potency Report & Express Air Tracking Number.</p>
+        </div>
+
       </div>
     </section>
   </div>
@@ -1236,6 +1430,20 @@
           <span>Organic Range</span>
           <h2>Herbal Extracts & Remedies</h2>
         </div>
+        <!-- Recently Viewed & Personal Recommended Products Widget -->
+        <div id="recentlyViewedSection" style="display: none; margin-bottom: 45px; background: linear-gradient(135deg, #fdfbf7, #f4efe6); border: 2px solid var(--accent-gold); border-radius: 18px; padding: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.06);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <span style="background: var(--deep-green); color: var(--bright-gold); padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;"><i class="fas fa-history"></i> Based on your browsing</span>
+              <h3 style="font-size: 1.35rem; color: var(--deep-green); margin: 6px 0 0 0;"><i class="fas fa-magic" style="color: var(--accent-gold);"></i> Pick Up Where You Left Off - Exclusive Recommendations</h3>
+            </div>
+            <button onclick="clearRecentlyViewed()" style="background: none; border: none; color: #888; font-size: 0.8rem; cursor: pointer; text-decoration: underline;"><i class="fas fa-trash-alt"></i> Clear History</button>
+          </div>
+          <div id="recentlyViewedGrid" class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px;">
+            <!-- Dynamically injected -->
+          </div>
+        </div>
+
         <div class="product-grid" id="herbal-grid-full">
           <!-- Dynamically populated -->
         </div>
@@ -1283,7 +1491,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/iso-22000-certificate.pdf', 'ISO 22000:2018 Quality Certificate')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/KIYAN_EXPORT_ISO_22000_FINAL_1_1_page1.jpg" alt="ISO 22000 Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/KIYAN_EXPORT_ISO_22000_FINAL_1_1_page1.jpg" alt="ISO 22000 Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1301,7 +1509,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/gmp-certificate.pdf', 'GMP Good Manufacturing Practice Certificate')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/47214_KIYAN_EXPORT_GMP_PQC_1_1_page1.jpg" alt="GMP Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/47214_KIYAN_EXPORT_GMP_PQC_1_1_page1.jpg" alt="GMP Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1319,7 +1527,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/us-fda-certificate.pdf', 'US-FDA Facility Registration Certificate')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/47214_KIYAN_EXPORT_US-_FDA_PQC_2_1_page1.jpg" alt="US-FDA Registration Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/47214_KIYAN_EXPORT_US-_FDA_PQC_2_1_page1.jpg" alt="US-FDA Registration Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1337,7 +1545,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/fssai-certificate.pdf', 'FSSAI Export License Renewal 2025')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/Kiyan_Fssai_Renewal_2025_page1.jpg" alt="FSSAI Renewal Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/Kiyan_Fssai_Renewal_2025_page1.jpg" alt="FSSAI Renewal Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1355,7 +1563,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/trustseal-certificate.pdf', 'IndiaMART TrustSeal Verified Certificate')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/TrustSeal_certificate_page1.jpg" alt="TrustSeal Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/TrustSeal_certificate_page1.jpg" alt="TrustSeal Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1373,7 +1581,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/udyam-certificate.pdf', 'Udyam MSME Government Registration Certificate')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/Udyam_Registration_Certificate_page1.jpg" alt="Udyam MSME Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/Udyam_Registration_Certificate_page1.jpg" alt="Udyam MSME Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1409,7 +1617,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/Extract%20Catalogue%201_watermark.pdf', 'Herbal Extracts Official Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/Extract_Catalogue_1_watermark_page1.jpg" alt="Herbal Extracts Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/Extract_Catalogue_1_watermark_page1.jpg" alt="Herbal Extracts Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1427,7 +1635,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/Gummies%20Catalogue_watermark.pdf', 'Wellness Gummies Official Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/Gummies_Catalogue_watermark_page1.jpg" alt="Wellness Gummies Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/Gummies_Catalogue_watermark_page1.jpg" alt="Wellness Gummies Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1445,7 +1653,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/Herbal%20Capsules%20Catalogue.pdf', 'Herbal Capsules Official Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/Herbal_Capsules_Catalogue_page1.jpg" alt="Herbal Capsules Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/Herbal_Capsules_Catalogue_page1.jpg" alt="Herbal Capsules Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1463,7 +1671,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/Honey%20Sticks%20Catalogue_watermark.pdf', 'Honey & Shilajit Sticks Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/Honey_Sticks_Catalogue_watermark_page1.jpg" alt="Honey Sticks Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/Honey_Sticks_Catalogue_watermark_page1.jpg" alt="Honey Sticks Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1476,6 +1684,42 @@
             </div>
           </div>
 
+          <!-- Cat 5: Copper Bottles -->
+          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
+            <div>
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/Kiyan_Export_Catalogue_of_Copper_bottles_etc._watermark.pdf', 'Pure Copper Bottles & Utensils Catalogue')">
+                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
+                <img src="/pdf_thumbnails/Kiyan_Export_Catalogue_of_Copper_bottles_etc._watermark_page1.jpg" alt="Copper Bottles Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
+                <div class="pdf-hover-overlay">
+                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
+                </div>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">Copperware & Bottles Catalogue</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Pure hammered copper bottles, drinkware, and Ayurvedic copper vessels.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="openPdfModal('/catalogues/Kiyan_Export_Catalogue_of_Copper_bottles_etc._watermark.pdf', 'Pure Copper Bottles & Utensils Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+            </div>
+          </div>
+
+          <!-- Cat 6: Softgels Catalogue -->
+          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
+            <div>
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/Softgles_catalogue_KIYAN_EXPORT.pdf', 'Softgels Capsules Catalogue')">
+                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
+                <img src="/pdf_thumbnails/Softgles_catalogue_KIYAN_EXPORT_page1.jpg" alt="Softgels Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
+                <div class="pdf-hover-overlay">
+                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
+                </div>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">Softgels Capsules Catalogue</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Herbal oil softgels, Black seed oil, and Omega-3 gelatin softgel range.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="openPdfModal('/catalogues/Softgles_catalogue_KIYAN_EXPORT.pdf', 'Softgels Capsules Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+            </div>
+          </div>
+
 
 
           <!-- Cat 6: Gym Supplements -->
@@ -1483,7 +1727,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/gym%20supplement%20catalogue%201_watermark.pdf', 'Gym & Fitness Supplements Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/gym_supplement_catalogue_1_watermark_page1.jpg" alt="Gym Supplements Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/gym_supplement_catalogue_1_watermark_page1.jpg" alt="Gym Supplements Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1501,7 +1745,7 @@
             <div>
               <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/nutra%20cap%20cat%201.pdf', 'Nutraceutical Capsules Catalogue')">
                 <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/nutra_cap_cat_1_page1.jpg" alt="Nutraceutical Capsules Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img">
+                <img src="/pdf_thumbnails/nutra_cap_cat_1_page1.jpg" alt="Nutraceutical Capsules Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
                 <div class="pdf-hover-overlay">
                   <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
                 </div>
@@ -1517,6 +1761,461 @@
       </div>
     </section>
   </div>
+
+  <!-- GLOBAL EXPORT NETWORK & CONTINENT MAP SECTION -->
+  <section class="section" id="global-reach" style="background: #fdfbf7; color: #111111; padding: 65px 0; border-top: 2px solid #e2d7c5; border-bottom: 2px solid #e2d7c5; position: relative;">
+    <div class="container">
+      <!-- Section Header -->
+      <div style="margin-bottom: 35px;">
+        <span style="color: #c82333; font-weight: 800; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase;">GLOBAL MARKET FOOTPRINT</span>
+        <h2 style="font-size: 2.2rem; color: #1b365d; font-weight: 800; margin-top: 6px;">Company Trade Map & Processing Operations</h2>
+        <p style="color: #555555; font-size: 0.95rem; margin-top: 6px;">Highlights Kiyan Export global export supply chain, active processing units, and key distribution hubs across 5 major regions.</p>
+      </div>
+
+      <div class="trade-map-grid-wrapper" style="display: grid; grid-template-columns: 1fr 360px; gap: 30px; align-items: stretch;">
+        <!-- Left Box: Minimalist Clean Grey Real World Map (Exact Uploaded Reference Design) -->
+        <div style="background: #eef7f2; border: 1.5px solid #d1e7dd; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); position: relative; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <span style="font-size: 0.9rem; font-weight: 800; color: #1b365d; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-globe"></i> Global Supply Footprint</span>
+            <span style="font-size: 0.82rem; color: #2e7d32; font-weight: 700; background: #d7efe1; padding: 6px 14px; border-radius: 20px;"><i class="fas fa-circle" style="font-size: 0.5rem; vertical-align: middle; color: #25d366; animation: blink 1.2s infinite;"></i> Delivering wellness worldwide to 55+ countries</span>
+          </div>
+
+          <!-- Interactive Real Google Maps / OpenStreetMap Container -->
+          <div style="position: relative; width: 100%; border-radius: 16px; overflow: hidden; background: #ffffff; border: 1px solid #e0ebf1; box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);">
+            <!-- Leaflet Map CSS -->
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+            <style>
+              #google-interactive-map {
+                width: 100%;
+                height: 480px;
+                border-radius: 16px;
+                z-index: 1;
+              }
+              .custom-green-pulse-pin {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+              }
+              .pulse-ring-map {
+                position: absolute;
+                width: 58px;
+                height: 58px;
+                border-radius: 50%;
+                background: rgba(37, 211, 102, 0.55);
+                animation: mapPinPulse 1.6s infinite ease-in-out;
+              }
+              .pin-core-map {
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background: #25d366;
+                border: 3.5px solid #ffffff;
+                box-shadow: 0 0 16px rgba(37, 211, 102, 0.9);
+                z-index: 2;
+              }
+              .map-flag-label {
+                position: absolute;
+                top: -42px;
+                background: #1b365d;
+                color: #ffffff;
+                padding: 6px 12px;
+                border-radius: 8px;
+                font-size: 13px;
+                font-weight: 800;
+                white-space: nowrap;
+                box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+                border: 2px solid #25d366;
+                z-index: 10;
+              }
+              .map-flag-label.hq {
+                background: #c82333;
+                border: 2px solid #ff4d4d;
+              }
+              @keyframes mapPinPulse {
+                0% { transform: scale(0.5); opacity: 1; }
+                50% { transform: scale(1.8); opacity: 0.25; }
+                100% { transform: scale(0.5); opacity: 1; }
+              }
+              .map-control-btn-group {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                z-index: 1000;
+                display: flex;
+                gap: 8px;
+                background: rgba(255, 255, 255, 0.95);
+                padding: 6px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+              }
+              .map-mode-btn {
+                border: none;
+                background: #e2e8f0;
+                color: #334155;
+                padding: 7px 14px;
+                border-radius: 6px;
+                font-size: 0.82rem;
+                font-weight: 800;
+                cursor: pointer;
+                transition: all 0.2s ease;
+              }
+              .map-mode-btn.active {
+                background: #1b365d;
+                color: #ffffff;
+              }
+
+              /* Ratio Export Bar Graph Styles */
+              .export-graph-container {
+                margin-top: 22px;
+                background: #ffffff;
+                border: 1.5px solid #d1e7dd;
+                border-radius: 16px;
+                padding: 20px 24px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+              }
+              .export-graph-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 16px;
+              }
+              .export-graph-header h4 {
+                margin: 0;
+                font-size: 1.05rem;
+                color: #1b365d;
+                font-weight: 800;
+              }
+              .graph-bar-row {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 12px;
+              }
+              .graph-bar-row:last-child {
+                margin-bottom: 0;
+              }
+              .graph-country-name {
+                width: 130px;
+                font-size: 0.88rem;
+                font-weight: 800;
+                color: #1b365d;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+              }
+              .graph-bar-track {
+                flex: 1;
+                height: 14px;
+                background: #e2e8f0;
+                border-radius: 10px;
+                overflow: hidden;
+                position: relative;
+              }
+              .graph-bar-fill {
+                height: 100%;
+                border-radius: 10px;
+                background: linear-gradient(90deg, #1b8a41, #25d366);
+                transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+              }
+              .graph-bar-fill.hq-fill {
+                background: linear-gradient(90deg, #b01b2a, #c82333);
+              }
+              .graph-percent-tag {
+                width: 50px;
+                text-align: right;
+                font-weight: 800;
+                font-size: 0.9rem;
+                color: #1b8a41;
+              }
+              .graph-percent-tag.hq-tag {
+                color: #c82333;
+              }
+            </style>
+
+            <div id="google-interactive-map"></div>
+
+            <script>
+              let tradeMap;
+              let currentTileLayer;
+
+              const mapTileUrl = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+
+              function initGoogleTradeMap() {
+                if (typeof L === 'undefined') {
+                  setTimeout(initGoogleTradeMap, 300);
+                  return;
+                }
+
+                tradeMap = L.map('google-interactive-map', {
+                  center: [22.0, 20.0],
+                  zoom: 2,
+                  minZoom: 2,
+                  maxZoom: 12,
+                  scrollWheelZoom: false
+                });
+
+                currentTileLayer = L.tileLayer(mapTileUrl, {
+                  attribution: '&copy; Satellite Earth View | Kiyan Export Trade Network'
+                }).addTo(tradeMap);
+
+                // Prominent Large Pins (USA > UK > EUROPE > AUSTRALIA > INDIA)
+                const exportLocations = [
+                  { lat: 37.0902, lng: -95.7129, label: '🇺🇸 USA (38%)', isHq: false },
+                  { lat: 55.3781, lng: -3.4360, label: '🇬🇧 UK (25%)', isHq: false },
+                  { lat: 48.8566, lng: 2.3522, label: '🇪🇺 EUROPE (18%)', isHq: false },
+                  { lat: -25.2744, lng: 133.7751, label: '🇦🇺 AUSTRALIA (11%)', isHq: false },
+                  { lat: 26.8467, lng: 80.9462, label: '🇮🇳 INDIA HQ (8%)', isHq: true }
+                ];
+
+                exportLocations.forEach(loc => {
+                  const customIcon = L.divIcon({
+                    className: 'custom-green-pulse-pin',
+                    html: `
+                      <div class="pulse-ring-map"></div>
+                      <div class="pin-core-map" style="${loc.isHq ? 'background:#c82333; box-shadow:0 0 16px rgba(200,35,51,0.9);' : ''}"></div>
+                      <div class="map-flag-label ${loc.isHq ? 'hq' : ''}">${loc.label}</div>
+                    `,
+                    iconSize: [60, 60],
+                    iconAnchor: [30, 30]
+                  });
+
+                  L.marker([loc.lat, loc.lng], { icon: customIcon })
+                    .addTo(tradeMap)
+                    .bindPopup(`
+                      <div style="font-family: sans-serif; padding: 4px;">
+                        <h4 style="margin: 0 0 4px 0; color: #1b365d; font-size: 14px;">${loc.label}</h4>
+                        <p style="margin: 0; font-size: 12px; color: #555;">Kiyan Export Active Export Hub & Global Supply Route.</p>
+                      </div>
+                    `);
+                });
+              }
+
+              document.addEventListener('DOMContentLoaded', function() {
+                initGoogleTradeMap();
+              });
+
+              if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                setTimeout(initGoogleTradeMap, 500);
+              }
+
+              window.addEventListener('resize', function() {
+                if (tradeMap) {
+                  tradeMap.invalidateSize();
+                }
+              });
+            </script>
+          </div>
+
+          <!-- Interactive Export Ratio Percentage Bar Graph -->
+          <div class="export-graph-container">
+            <div class="export-graph-header">
+              <h4><i class="fas fa-chart-bar" style="color: #25d366;"></i> Regional Export Supply Volume Share (%)</h4>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #64748b;">Order: US > UK > EUROPE > AUSTRALIA > INDIA</span>
+            </div>
+
+            <!-- US Bar -->
+            <div class="graph-bar-row">
+              <div class="graph-country-name">🇺🇸 USA</div>
+              <div class="graph-bar-track">
+                <div class="graph-bar-fill" style="width: 38%;"></div>
+              </div>
+              <div class="graph-percent-tag">38%</div>
+            </div>
+
+            <!-- UK Bar -->
+            <div class="graph-bar-row">
+              <div class="graph-country-name">🇬🇧 UK</div>
+              <div class="graph-bar-track">
+                <div class="graph-bar-fill" style="width: 25%;"></div>
+              </div>
+              <div class="graph-percent-tag">25%</div>
+            </div>
+
+            <!-- Europe Bar -->
+            <div class="graph-bar-row">
+              <div class="graph-country-name">🇪🇺 EUROPE</div>
+              <div class="graph-bar-track">
+                <div class="graph-bar-fill" style="width: 18%;"></div>
+              </div>
+              <div class="graph-percent-tag">18%</div>
+            </div>
+
+            <!-- Australia Bar -->
+            <div class="graph-bar-row">
+              <div class="graph-country-name">🇦🇺 AUSTRALIA</div>
+              <div class="graph-bar-track">
+                <div class="graph-bar-fill" style="width: 11%;"></div>
+              </div>
+              <div class="graph-percent-tag">11%</div>
+            </div>
+
+            <!-- India HQ Bar -->
+            <div class="graph-bar-row">
+              <div class="graph-country-name">🇮🇳 INDIA HQ</div>
+              <div class="graph-bar-track">
+                <div class="graph-bar-fill hq-fill" style="width: 8%;"></div>
+              </div>
+              <div class="graph-percent-tag hq-tag">8%</div>
+            </div>
+          </div>
+
+          <!-- Bottom Status Bar -->
+          <div style="margin-top: 18px; background: #ffffff; border: 1px solid #d1e7dd; border-radius: 12px; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; font-size: 0.86rem; font-weight: 700; color: #1b365d;">
+            <span><i class="fas fa-shipping-fast" style="color: #25d366;"></i> Express Air-Freight Shipping</span>
+            <span><i class="fas fa-award" style="color: #d4af37;"></i> GMP & FDA Registered Export Hub</span>
+          </div>
+        </div>
+
+        <!-- Right Box: Executive "Key Highlights" Card (Slide Reference 2 Exact Style) -->
+        <div style="background: #1b365d; color: #ffffff; border-radius: 18px; padding: 30px 24px; box-shadow: 0 12px 30px rgba(27,54,93,0.3); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+          <div>
+            <!-- Header Icon Title -->
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 25px; border-bottom: 1.5px solid rgba(255,255,255,0.15); padding-bottom: 16px;">
+              <div style="width: 44px; height: 44px; background: rgba(255,255,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: #ff6b6b;">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <div>
+                <h3 style="font-size: 1.35rem; font-weight: 800; color: #ffffff; margin: 0;">Key Highlights</h3>
+                <span style="font-size: 0.78rem; color: #94a3b8;">Global Export Operations Summary</span>
+              </div>
+            </div>
+
+            <!-- List of Key Bullet Highlights -->
+            <div style="display: flex; flex-direction: column; gap: 20px; position: relative; padding-left: 15px; border-left: 2px stroke #3b82f6;">
+              <!-- Point 1: Offices & Plants -->
+              <div style="position: relative;">
+                <span style="position: absolute; left: -21px; top: 3px; width: 10px; height: 10px; background: #ff6b6b; border-radius: 50%; border: 2px solid #1b365d;"></span>
+                <p style="font-size: 0.95rem; line-height: 1.5; color: #e2e8f0; margin: 0;">
+                  More than <strong style="color: #ff6b6b; font-size: 1.05rem;">18+ Global Offices</strong> and <strong style="color: #ff6b6b; font-size: 1.05rem;">10+ Processing & Packing Plants</strong>
+                </p>
+              </div>
+
+              <!-- Point 2: Farmers & Cultivation -->
+              <div style="position: relative;">
+                <span style="position: absolute; left: -21px; top: 3px; width: 10px; height: 10px; background: #ff6b6b; border-radius: 50%; border: 2px solid #1b365d;"></span>
+                <p style="font-size: 0.95rem; line-height: 1.5; color: #e2e8f0; margin: 0;">
+                  Directly Connected to over <strong style="color: #ffffff; font-size: 1.05rem;">10,000+ Herbal Farmers</strong> & Himalayan Harvesters
+                </p>
+              </div>
+
+              <!-- Point 3: Hierarchical Market Ratio -->
+              <div style="position: relative;">
+                <span style="position: absolute; left: -21px; top: 3px; width: 10px; height: 10px; background: #ff6b6b; border-radius: 50%; border: 2px solid #1b365d;"></span>
+                <p style="font-size: 0.95rem; line-height: 1.5; color: #e2e8f0; margin: 0;">
+                  Export Demand Volume Hierarchy: <br>
+                  <strong style="color: #fbbf24; font-size: 0.9rem;">US (38%) &gt; UK (25%) &gt; EUROPE (18%) &gt; AUSTRALIA (11%) &gt; INDIA (8%)</strong>
+                </p>
+              </div>
+
+              <!-- Point 4: Certifications & Compliance -->
+              <div style="position: relative;">
+                <span style="position: absolute; left: -21px; top: 3px; width: 10px; height: 10px; background: #ff6b6b; border-radius: 50%; border: 2px solid #1b365d;"></span>
+                <p style="font-size: 0.95rem; line-height: 1.5; color: #e2e8f0; margin: 0;">
+                  Full Compliance with <strong style="color: #ffffff;">US-FDA Registration, EU GMP Standards & FSSAI Export Licenses</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Call to Action Button -->
+          <div style="margin-top: 30px; border-top: 1.5px solid rgba(255,255,255,0.15); padding-top: 20px;">
+            <button onclick="openRfqModal()" class="btn-main" style="width: 100%; padding: 13px; background: #c82333; color: #ffffff; font-weight: 800; font-size: 0.9rem; border-radius: 10px; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(200,35,51,0.4); text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;">
+              <i class="fas fa-file-contract"></i> Contact B2B Export Team
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- VERIFIED GLOBAL CUSTOMER REVIEWS & TESTIMONIALS SECTION -->
+  <section class="section" id="customer-reviews-section" style="background: linear-gradient(135deg, #f8fafc, #edf2f7); padding: 65px 0; border-top: 2px solid #e2e8f0; border-bottom: 2px solid #e2e8f0;">
+    <div class="container">
+      <div class="section-header text-center" style="margin-bottom: 45px;">
+        <span style="color: var(--deep-green); font-weight: 800; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(30,89,103,0.1); padding: 5px 15px; border-radius: 20px;">
+          <i class="fas fa-star" style="color: #fbbf24;"></i> 4.9/5 RATED BY GLOBAL IMPORTERS & BUYERS
+        </span>
+        <h2 style="font-size: 2.3rem; color: #1b365d; font-weight: 800; margin-top: 10px;">Verified Customer Reviews & Partner Feedback</h2>
+        <p style="color: #64748b; font-size: 0.98rem; max-width: 650px; margin: 8px auto 0 auto;">Read genuine experiences from international distributors, wellness brands, and buyers who trust Kiyan Export for pure organic botanicals.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <!-- Review 1 -->
+        <div style="background: #ffffff; border-radius: 18px; padding: 28px; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <div style="color: #fbbf24; font-size: 0.95rem;">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span style="background: #eef7f2; color: #27ae60; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 800;"><i class="fas fa-check-circle"></i> Verified Buyer</span>
+            </div>
+            <p style="color: #334155; font-size: 0.92rem; line-height: 1.6; font-style: italic; margin-bottom: 18px;">
+              "We ordered 500 kg of Pure Himalayan Shilajit Resin for our US brand. The HPLC COA report was 100% genuine and the Fulvic acid content tested at 78%. Exceptional export packaging and timely DHL air freight delivery!"
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #f1f5f9; padding-top: 14px;">
+            <div style="width: 44px; height: 44px; background: #10302b; color: var(--bright-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;">
+              JD
+            </div>
+            <div>
+              <h4 style="font-size: 0.95rem; font-weight: 800; color: #1b365d; margin: 0;">Julian Danvers</h4>
+              <span style="font-size: 0.78rem; color: #64748b;">🇺🇸 CEO, NutraPure Labs (California, USA)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div style="background: #ffffff; border-radius: 18px; padding: 28px; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <div style="color: #fbbf24; font-size: 0.95rem;">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span style="background: #eef7f2; color: #27ae60; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 800;"><i class="fas fa-check-circle"></i> Verified Buyer</span>
+            </div>
+            <p style="color: #334155; font-size: 0.92rem; line-height: 1.6; font-style: italic; margin-bottom: 18px;">
+              "Kiyan Export's OEM Private Label service is top tier! They customized our Ashwagandha and Arjuna extract bottles with custom barcodes and labels seamlessly. Our European retail customers love the freshness."
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #f1f5f9; padding-top: 14px;">
+            <div style="width: 44px; height: 44px; background: #1e5967; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;">
+              SK
+            </div>
+            <div>
+              <h4 style="font-size: 0.95rem; font-weight: 800; color: #1b365d; margin: 0;">Dr. Sophia Schmidt</h4>
+              <span style="font-size: 0.78rem; color: #64748b;">🇩🇪 Procurement Head, HerbVital GmbH (Germany)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div style="background: #ffffff; border-radius: 18px; padding: 28px; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <div style="color: #fbbf24; font-size: 0.95rem;">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span style="background: #eef7f2; color: #27ae60; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 800;"><i class="fas fa-check-circle"></i> Verified Buyer</span>
+            </div>
+            <p style="color: #334155; font-size: 0.92rem; line-height: 1.6; font-style: italic; margin-bottom: 18px;">
+              "Extremely impressed by their Kashmiri Saffron & Organic Moringa Powder. Quality standards, batch testing, and custom sample kits were delivered within 5 days in Dubai. Highly recommended B2B partner!"
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #f1f5f9; padding-top: 14px;">
+            <div style="width: 44px; height: 44px; background: #c82333; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;">
+              MA
+            </div>
+            <div>
+              <h4 style="font-size: 0.95rem; font-weight: 800; color: #1b365d; margin: 0;">Tariq Al-Mansoor</h4>
+              <span style="font-size: 0.78rem; color: #64748b;">🇦🇪 General Director, Al-Aafiya Organics (Dubai, UAE)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- HELP CENTER / CONTACT US PAGE -->
   <div id="help-center" class="page-section">
@@ -1534,7 +2233,7 @@
               <div class="contact-icon" style="border-color: var(--accent-gold); color: var(--accent-gold);"><i class="fas fa-envelope"></i></div>
               <div>
                 <h5 style="color: var(--accent-gold);">EMAIL ADDRESS</h5>
-                <p style="color: var(--text-dark); font-weight: 700;">info@kiyanwellness.com</p>
+                <p style="color: var(--text-dark); font-weight: 700;">kiyanexport54@gmail.com</p>
               </div>
             </div>
             <div class="contact-item" style="margin-bottom: 22px;">
@@ -1556,7 +2255,7 @@
           <!-- Contact Form -->
           <div style="background: white; padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: var(--glass-border);">
             <h3 style="font-size: 2rem; margin-bottom: 22px; color: var(--deep-green);">Send Us a Message</h3>
-            <form onsubmit="event.preventDefault(); alert('Message sent successfully! Our Kiyan Wellness support team will respond shortly.');">
+            <form onsubmit="event.preventDefault(); alert('Message sent successfully! Our Kiyan Export support team will respond shortly.');">
               <div class="form-group"><label>Full Name</label><input type="text" required placeholder="Your Name"></div>
               <div class="form-group"><label>Email Address</label><input type="email" required placeholder="Your Email"></div>
               <div class="form-group"><label>Subject / Query</label><input type="text" placeholder="Product Inquiry / Order Status"></div>
@@ -1691,7 +2390,7 @@
                 </div>
                 <div class="form-group">
                   <label>About Us Section Title</label>
-                  <input type="text" id="adminAboutTitle" placeholder="Empowering Natural Health with Kiyan Wellness">
+                  <input type="text" id="adminAboutTitle" placeholder="Empowering Natural Health with Kiyan Export">
                 </div>
                 <div class="form-group full-width">
                   <label>About Us Paragraph 1</label>
@@ -1719,7 +2418,7 @@
                 </div>
                 <div class="form-group full-width">
                   <label>Footer Brand Description</label>
-                  <textarea id="adminFooterDesc" rows="2" placeholder="Established in 2014, Kiyan Wellness is..."></textarea>
+                  <textarea id="adminFooterDesc" rows="2" placeholder="Established in 2014, Kiyan Export is..."></textarea>
                 </div>
               </div>
 
@@ -1806,10 +2505,9 @@
           <div class="form-group">
             <label>Category *</label>
             <select id="adminProdCategory" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
-              <option value="Herbal Products">Herbal Products</option>
-              <option value="Wellness Care">Wellness Care</option>
-              <option value="Spices & Powders">Spices & Powders</option>
-              <option value="Copperware">Copperware</option>
+              <option value="Herbal Products">🌿 Herbal Extracts & Products</option>
+              <option value="Spices & Powders">🌶️ Authentic Spices & Powders</option>
+              <option value="Copperware">🪔 Pure Copperware & Utensils</option>
             </select>
           </div>
 
@@ -1819,13 +2517,29 @@
           </div>
 
           <div class="form-group">
-            <label>Retail Price (₹) *</label>
-            <input type="number" id="adminProdPrice" required min="1" placeholder="e.g. 1499">
+            <label>Unit Metric / Packaging Unit *</label>
+            <select id="adminProdUnit" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+              <option value="Pieces">Pieces / Pcs</option>
+              <option value="Kg">Kilograms (Kg)</option>
+              <option value="g">Grams (g)</option>
+              <option value="Bottles">Bottles</option>
+              <option value="Boxes">Boxes</option>
+              <option value="Packs">Packs</option>
+              <option value="Units">Units</option>
+            </select>
+            <small style="color: #666; font-size: 0.78rem; display: block; margin-top: 4px;">Unit label for MOQ & tier pricing (e.g. ₹500/Kg or ₹50/g).</small>
           </div>
 
           <div class="form-group">
-            <label>Original Price / MRP (₹)</label>
-            <input type="number" id="adminProdOldPrice" min="1" placeholder="e.g. 1999">
+            <label>Wholesale Base Price (₹) [Tier 1 Rate] *</label>
+            <input type="number" id="adminProdPrice" required min="1" placeholder="e.g. 2199">
+            <small style="color: #666; font-size: 0.78rem; display: block; margin-top: 4px;">Sets 100+ pcs base rate. 500+ & 1000+ pcs volume discounts scale automatically.</small>
+          </div>
+
+          <div class="form-group">
+            <label>MRP / Strikethrough Price (₹)</label>
+            <input type="number" id="adminProdOldPrice" min="1" placeholder="e.g. 2999">
+            <small style="color: #666; font-size: 0.78rem; display: block; margin-top: 4px;">Original retail reference price shown crossed out.</small>
           </div>
 
           <div class="form-group">
@@ -1982,10 +2696,10 @@
       <button class="pm-close" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
       <div class="pm-grid">
         <div class="pm-images">
-          <div class="pm-thumbnail-col" id="pmThumbnails"></div>
           <div class="pm-main-img-wrap skeleton-wrapper">
             <img class="pm-main-img img-loading" id="pmMainImg" src="" alt="Product Detail Image" width="400" height="400" onload="onImageLoad(this)" onerror="onImageError(this, '/images/kiyan-logo.png')">
           </div>
+          <div class="pm-thumbnail-col" id="pmThumbnails"></div>
         </div>
 
         <div class="pm-details">
@@ -2007,8 +2721,44 @@
             </div>
           </div>
 
-          <div class="pm-offers" style="background: #eef7f6; border-color: #1e5967;">
-            <div class="pm-offers-title" style="color: #10302b;"><i class="fas fa-cogs"></i> Available Customization Services (OEM / Private Label)</div>
+          <!-- B2B Dynamic Calculator & Inquiry Panel (Moved Right Below Pricing!) -->
+          <div class="pm-purchase-box" style="margin: 15px 0; background: #f8fafc; padding: 14px; border: 1.5px solid var(--accent-gold); border-radius: 14px;">
+            <div class="pm-delivery-title" style="font-size: 0.88rem;"><i class="fas fa-ship"></i> Lead Time & FOB Shipping</div>
+            <div class="pm-delivery-date" id="pmDeliveryDate" style="font-size: 0.82rem; font-weight: 700; color: var(--deep-green);">Lead Time: 7 - 12 Days</div>
+            <div class="pm-delivery-note" id="pmSupplyCapacity" style="font-size: 0.78rem; color: #666;">Capacity: 100,000 Pcs / Month &bull; Sea/Air Freight Worldwide</div>
+
+            <div class="b2b-order-calc-box" style="margin-top: 10px; background: white; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0;">
+              <div class="calc-row" style="display: flex; justify-content: space-between; align-items: center;">
+                <span id="pmCalcQtyLabel" style="font-weight: 700; font-size: 0.82rem;">Order Quantity (Pcs):</span>
+                <input type="number" id="pmQtyInput" min="1" value="100" style="width: 80px; padding: 4px 8px; border-radius: 6px; border: 1.5px solid #1e5967; font-weight: 800; text-align: center; font-size: 0.88rem;" oninput="updateModalPricingSlab()">
+              </div>
+              <div class="calc-row" style="display: flex; justify-content: space-between; margin-top: 4px; font-size: 0.82rem;">
+                <span>Unit Price:</span>
+                <strong id="pmCalcUnitPrice" style="color: #1e5967;">₹0 / pc</strong>
+              </div>
+              <div class="calc-row total-row" style="display: flex; justify-content: space-between; margin-top: 6px; font-weight: 800; font-size: 0.92rem; border-top: 1px solid #eee; padding-top: 4px;">
+                <span>Estimated Order Total:</span>
+                <span id="pmCalcTotal" style="color: #10302b;">₹0</span>
+              </div>
+              <div id="pmMoqWarning" style="color: #e74c3c; font-size: 0.75rem; margin-top: 4px; font-weight: 700; display: none;">
+                ⚠️ Quantity is below MOQ. Unit price set to Sample Order Rate.
+              </div>
+            </div>
+
+            <button type="button" class="pm-whatsapp-btn" onclick="inquireCurrentModalProductWhatsApp()" style="width: 100%; margin-top: 10px; padding: 10px; background: #25d366; color: white; border: none; border-radius: 20px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; box-shadow: 0 3px 10px rgba(37,211,102,0.3);"><i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> Inquire on WhatsApp</button>
+            
+            <div class="b2b-action-row" style="margin-top: 8px;">
+              <button class="btn-sample" onclick="openRfqModalFromProduct()" style="background: linear-gradient(135deg, #10302b, #1e5967); color: #ffd700; border: 1.5px solid var(--accent-gold); font-weight: 800; border-radius: 8px; padding: 9px 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.82rem; width: 100%;"><i class="fas fa-file-signature" style="color: #ffd700;"></i> Submit RFQ Inquiry</button>
+            </div>
+
+            <div class="pm-seller-info" style="margin-top: 10px; font-size: 0.78rem; border-top: 1px solid #e2e8f0; padding-top: 6px;">
+              <div class="pm-seller-row" style="display: flex; justify-content: space-between;"><span>Manufacturer:</span> <strong>Kiyan Export</strong></div>
+              <div class="pm-seller-row" style="display: flex; justify-content: space-between;"><span>Export Term:</span> <strong>FOB / CIF Port</strong></div>
+            </div>
+          </div>
+
+          <div class="pm-offers" style="background: #eef7f6; border-color: #1e5967; padding: 12px; border-radius: 10px; margin-bottom: 15px;">
+            <div class="pm-offers-title" style="color: #10302b; font-size: 0.88rem; font-weight: 700; margin-bottom: 6px;"><i class="fas fa-cogs"></i> Available Customization Services (OEM / Private Label)</div>
             <div class="customization-tags" id="pmCustomization">
               <span class="custom-tag"><i class="fas fa-check"></i> Custom Brand Logo</span>
               <span class="custom-tag"><i class="fas fa-check"></i> Custom Bottle Packaging</span>
@@ -2027,47 +2777,6 @@
           <div class="pm-sections">
             <div class="pm-section-title">Factory Specifications & Lab Quality</div>
             <ul id="pmSpecs"></ul>
-          </div>
-        </div>
-
-        <div class="pm-purchase-box">
-          <div class="pm-delivery-title"><i class="fas fa-ship"></i> Lead Time & FOB Shipping</div>
-          <div class="pm-delivery-date" id="pmDeliveryDate">Lead Time: 7 - 12 Days</div>
-          <div class="pm-delivery-note" id="pmSupplyCapacity">Capacity: 100,000 Pcs / Month</div>
-          <div class="pm-location"><i class="fas fa-globe"></i> Sea Cargo & Air Freight Worldwide</div>
-
-          <!-- B2B Dynamic Calculator & Order Box -->
-          <div class="b2b-order-calc-box">
-            <div class="calc-row">
-              <span style="font-weight: 700; font-size: 0.9rem;">Order Quantity (Pcs):</span>
-              <input type="number" id="pmQtyInput" min="1" value="100" style="width: 90px; padding: 6px 10px; border-radius: 6px; border: 1.5px solid #1e5967; font-weight: 800; text-align: center;" oninput="updateModalPricingSlab()">
-            </div>
-            <div class="calc-row">
-              <span>Unit Price:</span>
-              <strong id="pmCalcUnitPrice" style="color: #1e5967; font-size: 1.05rem;">₹0 / pc</strong>
-            </div>
-            <div class="calc-row total-row">
-              <span>Estimated Order Total:</span>
-              <span id="pmCalcTotal" style="color: #10302b;">₹0</span>
-            </div>
-            <div id="pmMoqWarning" style="color: #e74c3c; font-size: 0.78rem; margin-top: 6px; font-weight: 700; display: none;">
-              ⚠️ Quantity is below MOQ. Unit price set to Sample Order Rate.
-            </div>
-          </div>
-
-          <button class="pm-add-cart" onclick="addToCartFromModal()"><i class="fas fa-cart-plus"></i> Add Bulk Order to Cart</button>
-          
-          <div class="b2b-action-row">
-            <button class="btn-sample" onclick="addSampleToCart()"><i class="fas fa-vial"></i> Order Sample</button>
-            <button class="btn-rfq" onclick="openRfqModalFromProduct()"><i class="fas fa-file-signature"></i> Get Custom Quote</button>
-          </div>
-
-          <button type="button" class="pm-whatsapp-btn" onclick="inquireCurrentModalProductWhatsApp()" style="width: 100%; margin-top: 10px; padding: 12px; background: #25d366; color: white; border: none; border-radius: 25px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.92rem; box-shadow: 0 4px 12px rgba(37,211,102,0.3); transition: transform 0.2s;"><i class="fab fa-whatsapp" style="font-size: 1.25rem;"></i> Direct WhatsApp Inquiry (+91 9305834431)</button>
-
-          <div class="pm-seller-info" style="margin-top: 15px;">
-            <div class="pm-seller-row"><span>Manufacturer</span><strong>Kiyan Exports</strong></div>
-            <div class="pm-seller-row"><span>Export Term</span><strong>FOB / CIF Port</strong></div>
-            <div class="pm-seller-row"><span>Payment</span><strong>Bank Wire / LC / Cards</strong></div>
           </div>
         </div>
       </div>
@@ -2236,15 +2945,17 @@
   </div>
 
   <!-- CHATBOT LAUNCHER & WINDOW -->
-  <div class="chatbot-btn" onclick="toggleChatbot()" title="Chat with Kiyan Wellness Assistant">
+  <div class="chatbot-btn" onclick="toggleChatbot()" title="Chat with Kiyan Export Bot">
     <i class="fas fa-comment-dots"></i>
   </div>
 
   <div class="chatbot-window" id="chatbotWindow">
     <div class="chatbot-header">
-      <div class="chatbot-header-icon"><i class="fas fa-headset"></i></div>
+      <div class="chatbot-header-icon" style="background: white; padding: 2px; border-radius: 50%; width: 44px; height: 44px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--accent-gold);">
+        <img src="/images/kiyan-logo.jpg" alt="Kiyan Export Bot Logo" style="width: 100%; height: 100%; object-fit: contain;">
+      </div>
       <div class="chatbot-header-title">
-        <h4>Kiyan Wellness Assistant</h4>
+        <h4>Kiyan Export Bot</h4>
         <span>Online • 24/7 Instant Support</span>
       </div>
       <button class="chatbot-close" onclick="toggleChatbot()"><i class="fas fa-times"></i></button>
@@ -2253,7 +2964,7 @@
     <div class="chatbot-messages" id="chatbotMessages">
       <div class="chatbot-msg bot">
         <div class="msg-bubble">
-          Namaste! 🙏 Welcome to Kiyan Wellness (Est. 2014).<br><br>How can I assist you with your order today?
+          Namaste! 🙏 Welcome to Kiyan Export (Est. 2014).<br><br>How can I assist you with your bulk export order or products today?
           <div class="chatbot-options">
             <button class="chatbot-opt-btn" onclick="sendChatbotMessage('Browse Products')">Browse Herbal Range</button>
             <button class="chatbot-opt-btn" onclick="sendChatbotMessage('Shipping Info')">Delivery Info</button>
@@ -2276,7 +2987,7 @@
         <div class="footer-col">
           <img src="/images/kiyan-logo.jpg" alt="Kiyan Export Logo" width="200" height="60" style="height: 55px; width: auto; margin-bottom: 18px; object-fit: contain; background: white; padding: 6px 12px; border-radius: 8px;">
           <p style="font-size: 0.95rem; line-height: 1.7; color: #c0d5c8;">
-            Established in 2014, Kiyan Wellness is a premier B2C retail brand providing 100% pure organic herbal supplements, natural health remedies, and wellness care.
+            Established in 2014, Kiyan Export is a premier B2C retail brand providing 100% pure organic herbal supplements, natural health remedies, and wellness care.
           </p>
         </div>
 
@@ -2308,7 +3019,7 @@
             <i class="fas fa-map-marker-alt" style="color: var(--bright-gold);"></i> Gomti Nagar, Lucknow, UP - 226010, India
           </p>
           <p style="font-size: 0.95rem; color: #c0d5c8; margin-bottom: 12px;">
-            <i class="fas fa-envelope" style="color: var(--bright-gold);"></i> info@kiyanwellness.com
+            <i class="fas fa-envelope" style="color: var(--bright-gold);"></i> <a href="mailto:kiyanexport54@gmail.com" style="color: #ffffff; text-decoration: none;">kiyanexport54@gmail.com</a>
           </p>
           <p style="font-size: 0.95rem; color: #c0d5c8;">
             <i class="fas fa-certificate" style="color: var(--bright-gold);"></i> Est. 2014 • FSSAI Certified
@@ -2321,7 +3032,7 @@
           <div class="contact-icon"><i class="fas fa-envelope-open-text"></i></div>
           <div>
             <h5 style="color: var(--bright-gold);">E-MAIL SUPPORT</h5>
-            <p>info@kiyanwellness.com</p>
+            <p><a href="mailto:kiyanexport54@gmail.com" style="color: #ffffff; text-decoration: none;">kiyanexport54@gmail.com</a></p>
           </div>
         </div>
         <div class="contact-item">
@@ -2344,7 +3055,7 @@
 
   <div class="bottom-footer">
     <div class="container bottom-container">
-      <p>&copy; 2026 Kiyan Wellness. All Rights Reserved. Est. 2014.</p>
+      <p>&copy; 2026 Kiyan Export. All Rights Reserved. Est. 2014.</p>
       <div>
         <a href="#certifications" onclick="showPage('certifications', null)" style="color: inherit; margin-left: 15px;">FSSAI Certified</a>
         <a href="#help-center" onclick="showPage('help-center', null)" style="color: inherit; margin-left: 15px;">Privacy Policy</a>
@@ -2386,7 +3097,7 @@
       <div class="user-orders-header">
         <div>
           <h3 style="margin: 0; font-size: 1.25rem;"><i class="fas fa-file-signature" style="color: var(--accent-gold);"></i> Request Wholesale RFQ Quote</h3>
-          <p style="margin: 3px 0 0 0; font-size: 0.82rem; color: #c0d5c8;"><i class="fas fa-envelope" style="color: var(--accent-gold);"></i> Direct Quotation Sent to <strong>smart.mehra1208@gmail.com</strong></p>
+          <p style="margin: 3px 0 0 0; font-size: 0.82rem; color: #c0d5c8;"><i class="fas fa-envelope" style="color: var(--accent-gold);"></i> Direct Quotation Sent to <strong>kiyanexport54@gmail.com</strong></p>
         </div>
         <button class="close-modal-btn" onclick="closeRfqModal()"><i class="fas fa-times"></i></button>
       </div>
@@ -2438,6 +3149,113 @@
     </div>
   </div>
 
+  <!-- PRODUCT DETAIL & CUSTOMER REVIEWS MODAL -->
+  <div class="user-orders-modal" id="productModalOverlay" onclick="closeProductModal(event)">
+    <div class="user-orders-content product-modal-content" onclick="event.stopPropagation()" style="max-width: 900px; width: 95%; max-height: 90vh; overflow-y: auto; padding: 0; border-radius: 20px;">
+      
+      <!-- Modal Header -->
+      <div class="user-orders-header" style="background: linear-gradient(135deg, #07221a 0%, #0c3d2e 100%); color: white; padding: 18px 25px; display: flex; justify-content: space-between; align-items: center; border-radius: 20px 20px 0 0;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="product-badge" id="pmMoqBadge" style="position: static; font-size: 0.82rem; padding: 5px 12px; background: rgba(212, 175, 55, 0.2); border: 1px solid var(--accent-gold); color: var(--bright-gold);"><i class="fas fa-cubes"></i> Min. Order: 100 Pcs</span>
+          <span style="font-size: 0.85rem; color: #c0d8cc;"><i class="fas fa-shield-alt" style="color: var(--accent-gold);"></i> Verified Factory Quality</span>
+        </div>
+        <button class="close-modal-btn" onclick="closeProductModal()" style="background: none; border: none; color: var(--bright-gold); font-size: 1.4rem; cursor: pointer;"><i class="fas fa-times"></i></button>
+      </div>
+
+      <div style="padding: 25px;">
+        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; margin-bottom: 25px;">
+          <!-- Left: Image Gallery -->
+          <div>
+            <div class="pm-main-img-wrap skeleton-wrapper" style="border-radius: 16px; overflow: hidden; border: 1.5px solid #eef2f0; aspect-ratio: 1/1; position: relative; margin-bottom: 12px;">
+              <img id="pmMainImg" src="/Logo-2.webp" alt="Product Image" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div id="pmThumbnails" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px;"></div>
+          </div>
+
+          <!-- Right: Details & Tiered Pricing -->
+          <div>
+            <h2 id="pmTitle" style="font-size: 1.6rem; color: var(--text-dark); margin-bottom: 8px;">Product Title</h2>
+            <p id="pmDesc" style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px;">Product Description</p>
+
+            <!-- Volume Price Tiers -->
+            <div style="background: var(--soft-cream); border: 1.5px solid rgba(212, 175, 55, 0.3); border-radius: 14px; padding: 15px; margin-bottom: 18px;">
+              <div style="font-weight: 700; font-size: 0.85rem; color: var(--deep-green); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fas fa-tags" style="color: var(--accent-gold);"></i> Wholesale Volume Price Tiers</div>
+              <div id="pmTierGrid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;"></div>
+            </div>
+
+            <!-- Specifications & Customization -->
+            <div style="margin-bottom: 15px;">
+              <div style="font-weight: 700; font-size: 0.85rem; color: var(--text-dark); margin-bottom: 6px;">OEM Private Label Customizations:</div>
+              <div id="pmCustomization" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px; background: white; padding: 12px; border-radius: 10px; border: 1px solid #eef2f0;">
+              <div><i class="fas fa-truck" style="color: var(--accent-gold);"></i> <span id="pmDeliveryDate">Lead Time: 7-12 Days</span></div>
+              <div><i class="fas fa-boxes" style="color: var(--accent-gold);"></i> <span id="pmSupplyCapacity">Capacity: 100,000 Pcs/Mo</span></div>
+            </div>
+
+            <!-- Actions -->
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <div style="display: flex; align-items: center; border: 1.5px solid var(--accent-gold); border-radius: 25px; overflow: hidden; background: white;">
+                <button onclick="adjustModalQty(-50)" style="padding: 10px 14px; border: none; background: #f0f4f2; cursor: pointer; font-weight: bold;">-</button>
+                <input type="number" id="pmQtyInput" value="100" min="1" style="width: 65px; text-align: center; border: none; outline: none; font-weight: bold; font-size: 0.95rem;" oninput="updateModalPricingSlab()">
+                <button onclick="adjustModalQty(50)" style="padding: 10px 14px; border: none; background: #f0f4f2; cursor: pointer; font-weight: bold;">+</button>
+              </div>
+              <button onclick="addModalItemToCart()" class="btn-main" style="flex: 1; padding: 12px; font-size: 0.9rem;"><i class="fas fa-cart-plus"></i> Add to Bulk Order</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CUSTOMER REVIEWS & RATING SECTION -->
+        <div style="border-top: 2px solid #eef2f0; padding-top: 22px; margin-top: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 18px;">
+            <div>
+              <h3 style="font-size: 1.3rem; color: var(--text-dark); margin: 0;"><i class="fas fa-star" style="color: var(--accent-gold);"></i> Customer Reviews & Verified Ratings</h3>
+              <p id="pmReviewSummaryText" style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">Overall Rating: 5.0 / 5.0 (2 Reviews)</p>
+            </div>
+            <button onclick="toggleReviewForm()" class="btn-main" style="padding: 9px 20px; font-size: 0.85rem; background: linear-gradient(135deg, #124e3c 0%, #1b6b53 100%); color: white;"><i class="fas fa-pen"></i> Write a Review</button>
+          </div>
+
+          <!-- Interactive Review Submission Form Box -->
+          <div id="pmReviewFormBox" style="display: none; background: var(--soft-cream); border: 1.5px solid var(--accent-gold); border-radius: 14px; padding: 20px; margin-bottom: 20px; animation: fadeInScale 0.3s ease;">
+            <h4 style="margin-bottom: 12px; color: var(--deep-green); font-size: 1.05rem;"><i class="fas fa-edit"></i> Submit Your Product Review</h4>
+            <form onsubmit="submitProductReview(event)">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 12px;">
+                <div class="form-group" style="margin: 0;">
+                  <label style="font-weight: 700; font-size: 0.82rem;">Your Name / Company *</label>
+                  <input type="text" id="reviewAuthorInput" required placeholder="e.g. Apex Global Herbal Solutions">
+                </div>
+                <div class="form-group" style="margin: 0;">
+                  <label style="font-weight: 700; font-size: 0.82rem;">Your Rating (Click Stars) *</label>
+                  <div id="starRatingSelect" style="display: flex; gap: 6px; padding: 8px 12px; background: white; border: 1.5px solid rgba(212, 175, 55, 0.4); border-radius: 10px; cursor: pointer;">
+                    <i class="fas fa-star" onclick="setReviewStarRating(1)" onmouseover="hoverReviewStarRating(1)" onmouseout="resetReviewStarRating()" style="color: #f39c12; font-size: 1.2rem;"></i>
+                    <i class="fas fa-star" onclick="setReviewStarRating(2)" onmouseover="hoverReviewStarRating(2)" onmouseout="resetReviewStarRating()" style="color: #f39c12; font-size: 1.2rem;"></i>
+                    <i class="fas fa-star" onclick="setReviewStarRating(3)" onmouseover="hoverReviewStarRating(3)" onmouseout="resetReviewStarRating()" style="color: #f39c12; font-size: 1.2rem;"></i>
+                    <i class="fas fa-star" onclick="setReviewStarRating(4)" onmouseover="hoverReviewStarRating(4)" onmouseout="resetReviewStarRating()" style="color: #f39c12; font-size: 1.2rem;"></i>
+                    <i class="fas fa-star" onclick="setReviewStarRating(5)" onmouseover="hoverReviewStarRating(5)" onmouseout="resetReviewStarRating()" style="color: #f39c12; font-size: 1.2rem;"></i>
+                  </div>
+                  <input type="hidden" id="reviewRatingInput" value="5">
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom: 14px;">
+                <label style="font-weight: 700; font-size: 0.82rem;">Review Comment / Experience *</label>
+                <textarea id="reviewCommentInput" rows="3" required placeholder="Share your experience regarding purity, packaging, delivery, or quality..."></textarea>
+              </div>
+              <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button type="button" onclick="toggleReviewForm()" class="btn-secondary" style="padding: 8px 18px; font-size: 0.85rem;">Cancel</button>
+                <button type="submit" id="submitReviewBtn" class="btn-main" style="padding: 8px 24px; font-size: 0.85rem;"><i class="fas fa-paper-plane"></i> Submit Review</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Reviews List Grid -->
+          <div id="pmReviewsList" style="display: grid; gap: 12px;"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- FLOATING WHATSAPP CHAT WIDGET -->
   <a href="https://wa.me/919305834431?text=Hi%20Kiyan%20Exports,%20I%20want%20to%20inquire%20about%20wholesale%20manufacturing%20and%20products." target="_blank" class="floating-whatsapp-btn" aria-label="Chat on WhatsApp" title="Direct WhatsApp Inquiry (+91 9305834431)">
     <i class="fab fa-whatsapp"></i>
@@ -2445,6 +3263,6 @@
   </a>
 
   <!-- Client Application Script -->
-  <script src="/js/app.js?v=2026_v102_perf_optimized" defer></script>
+  <script src="/js/app.js?v=2026_v104_backend_mailer_only" defer></script>
 </body>
 </html>

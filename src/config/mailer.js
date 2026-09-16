@@ -1,10 +1,17 @@
+const path = require('path');
+const fs = require('fs');
 const nodemailer = require('nodemailer');
 
-const RECIPIENT_EMAIL = process.env.RFQ_RECIPIENT_EMAIL || 'smart.mehra1208@gmail.com';
+const RECIPIENT_EMAIL = process.env.RFQ_RECIPIENT_EMAIL || 'kiyanexport54@gmail.com';
+
+// Direct Hosted Cloudinary Logo URL (0% Attachment Chip & 100% Reliable Gmail Display)
+const LOGO_SRC = 'https://res.cloudinary.com/arkc76lz/image/upload/KIyan_export.jpg.jpg';
 
 // Configure SMTP Transporter
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: process.env.SMTP_HOST || 'smtp.gmail.com',
+  port: parseInt(process.env.SMTP_PORT, 10) || 587,
+  secure: process.env.SMTP_SECURE === 'true', // false for port 587
   auth: {
     user: (process.env.SMTP_USER || 'smart.mehra1208@gmail.com').trim(),
     pass: (process.env.SMTP_PASS || '').replace(/\s+/g, '')
@@ -15,7 +22,7 @@ const transporter = nodemailer.createTransport({
 });
 
 /**
- * Send Bulk Quotation Request Email via SMTP
+ * Send Bulk Quotation Request Email (Amazon Prime Executive Card Style)
  */
 async function sendRfqEmail(rfqData) {
   const {
@@ -30,80 +37,90 @@ async function sendRfqEmail(rfqData) {
     createdAt
   } = rfqData;
 
-  const dateStr = createdAt || new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+  const dateStr = createdAt || new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
 
   const htmlContent = `
     <!DOCTYPE html>
     <html>
     <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f5; margin: 0; padding: 20px; color: #333; }
-        .container { max-width: 650px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #d8e2dc; }
-        .header { background: #2d5a27; padding: 25px; text-align: center; color: #ffffff; }
-        .header h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
-        .header p { margin: 5px 0 0 0; font-size: 13px; color: #d4a373; text-transform: uppercase; letter-spacing: 1px; }
-        .content { padding: 30px; }
-        .badge { display: inline-block; background: #c68b59; color: white; padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: bold; margin-bottom: 15px; }
-        .info-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        .info-table th, .info-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #edf2f0; }
-        .info-table th { background: #f9f6f0; color: #2d5a27; font-weight: 700; width: 35%; }
-        .info-table td { color: #2c3e50; font-weight: 600; }
-        .notes-box { background: #f9f6f0; border-left: 4px solid #c68b59; padding: 15px; margin-top: 20px; border-radius: 4px; font-size: 14px; color: #444; }
-        .footer { background: #f9f6f0; padding: 18px; text-align: center; font-size: 12px; color: #7f8c8d; border-top: 1px solid #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f2f2f2; margin: 0; padding: 25px 10px; color: #111111; -webkit-font-smoothing: antialiased; }
+        .amazon-container { max-width: 620px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid #e7e7e7; }
+        
+        .header-card { padding: 25px 30px 20px 30px; background: #ffffff; border-bottom: 1px solid #eeeeee; }
+        .brand-logo { max-height: 55px; width: auto; object-fit: contain; margin: 0 auto 18px auto; display: block; border: none; }
+        .greeting-name { font-size: 20px; font-weight: 700; color: #111111; margin-bottom: 8px; }
+        .greeting-msg { font-size: 14px; color: #333333; line-height: 1.6; margin-bottom: 14px; }
+        .order-header-tag { font-size: 16px; font-weight: 800; color: #111111; letter-spacing: 0.5px; margin-top: 10px; }
+        
+        .details-box { background: #ffffff; border: 1px solid #e7e7e7; border-radius: 8px; margin: 20px 25px; padding: 20px 25px; }
+        .details-table { width: 100%; border-collapse: collapse; }
+        .col-left { width: 50%; vertical-align: top; padding-right: 15px; }
+        .col-right { width: 50%; vertical-align: top; text-align: left; }
+        .label-muted { font-size: 12px; color: #666666; margin-bottom: 4px; }
+        .val-bold { font-size: 14px; font-weight: 700; color: #111111; margin-bottom: 14px; }
+        
+        .cta-btn-wrap { text-align: center; margin-top: 20px; }
+        .btn-amazon-amber { display: inline-block; padding: 12px 32px; background: linear-gradient(135deg, #ff9900 0%, #e67e00 100%); color: #ffffff !important; text-decoration: none; font-weight: 700; font-size: 14px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+        
+        .footer-card { padding: 25px 30px; background: #ffffff; text-align: center; font-size: 11px; color: #777777; line-height: 1.7; border-top: 1px solid #eeeeee; }
+        .footer-brand { font-weight: 700; font-size: 13px; color: #111111; margin-top: 12px; }
       </style>
     </head>
     <body>
-      <div class="container">
-        <div class="header">
-          <h1>🌿 KIYAN EXPORTS & HERBAL MANUFACTURING</h1>
-          <p>Official B2B Bulk Quotation Request Dossier</p>
-        </div>
-        <div class="content">
-          <div class="badge">📩 NEW BULK RFQ QUOTATION RECEIVED</div>
-          <p>A buyer has submitted a new bulk quotation inquiry on the website. Details below:</p>
-          
-          <table class="info-table">
-            <tr>
-              <th>Requested Product</th>
-              <td><strong style="color: #2d5a27; font-size: 16px;">${productName || 'Herbal Product'}</strong></td>
-            </tr>
-            <tr>
-              <th>Target Quantity</th>
-              <td><strong style="color: #c68b59; font-size: 15px;">${targetQuantity || '500'} Pieces</strong></td>
-            </tr>
-            <tr>
-              <th>Buyer / Contact Name</th>
-              <td>${contactName || 'N/A'}</td>
-            </tr>
-            <tr>
-              <th>Company / Brand</th>
-              <td>${companyName || 'N/A'}</td>
-            </tr>
-            <tr>
-              <th>Email Address</th>
-              <td><a href="mailto:${email}">${email || 'N/A'}</a></td>
-            </tr>
-            <tr>
-              <th>Phone / WhatsApp</th>
-              <td><a href="https://wa.me/${(phone || '').replace(/[^0-9]/g, '')}">${phone || 'N/A'}</a></td>
-            </tr>
-            <tr>
-              <th>Destination Country</th>
-              <td>${shippingCountry || 'International'}</td>
-            </tr>
-            <tr>
-              <th>Submission IST Time</th>
-              <td>${dateStr}</td>
-            </tr>
-          </table>
-
-          <div class="notes-box">
-            <strong>📝 OEM Customization & Packaging Requirements:</strong><br>
-            ${customizationDetails || 'Standard Wholesale & Manufacturing Quotation Requested.'}
+      <div class="amazon-container">
+        <div class="header-card" style="text-align: center;">
+          <img src="${LOGO_SRC}" alt="Kiyan Export" class="brand-logo" style="margin: 0 auto 16px auto; display: block; max-height: 60px; width: auto; border: none;">
+          <div class="greeting-name">Hello ${contactName || 'Valued Buyer'},</div>
+          <div class="greeting-msg">
+            Thank you for reaching out to <strong>Kiyan Export & Herbal Manufacturing</strong>. We have received your wholesale quotation request. Our export manufacturing team will review your specifications and issue an official Proforma Invoice shortly.
           </div>
+          <div class="order-header-tag">Bulk Quotation Request: ${productName || 'Herbal Extract'}</div>
         </div>
-        <div class="footer">
-          Received via Kiyan Exports B2B Platform • Transmitted to <strong>${RECIPIENT_EMAIL}</strong>
+
+        <div class="details-box">
+          <table class="details-table">
+            <tr>
+              <td class="col-left">
+                <div class="label-muted">Target Order Quantity:</div>
+                <div class="val-bold" style="color: #e67e00; font-size: 16px;">${targetQuantity || '500'} Pieces</div>
+                
+                <div class="label-muted">Destination Country:</div>
+                <div class="val-bold">${shippingCountry || 'International'}</div>
+
+                <div class="label-muted">Submission IST Timestamp:</div>
+                <div style="font-size: 12px; color: #333; font-weight: 600;">${dateStr}</div>
+              </td>
+              <td class="col-right">
+                <div class="label-muted">Buyer Contact Name:</div>
+                <div class="val-bold">${contactName || 'N/A'}</div>
+
+                <div class="label-muted">Company / Brand Name:</div>
+                <div class="val-bold">${companyName || 'N/A'}</div>
+                
+                <div class="label-muted">Email & WhatsApp:</div>
+                <div style="font-size: 12px; color: #0066c0; font-weight: 700;">${email || 'N/A'} • ${phone || 'N/A'}</div>
+              </td>
+            </tr>
+            ${customizationDetails ? `
+            <tr>
+              <td colspan="2" style="padding-top: 15px; border-top: 1px dashed #dddddd;">
+                <div class="label-muted">Custom Packaging / OEM Specifications:</div>
+                <div style="font-size: 13px; color: #222222; background: #f9f9f9; padding: 10px 14px; border-radius: 6px; border-left: 3px solid #ff9900;">
+                  ${customizationDetails}
+                </div>
+              </td>
+            </tr>
+            ` : ''}
+          </table>
+        </div>
+
+        <div class="footer-card">
+          <div>This automated notification was generated by Kiyan Export Wholesale Order System.</div>
+          <div class="footer-brand">Kiyan Export & Herbal Manufacturing Plant</div>
+          <div>IEC: 0514092811 • US-FDA Reg: 17824910284 • FSSAI License: 12721001000452</div>
         </div>
       </div>
     </body>
@@ -111,97 +128,66 @@ async function sendRfqEmail(rfqData) {
   `;
 
   const mailOptions = {
-    from: `"Kiyan Exports B2B Platform" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
+    from: `"Kiyan Export B2B" <${process.env.SMTP_USER || 'smart.mehra1208@gmail.com'}>`,
     to: RECIPIENT_EMAIL,
     replyTo: email || RECIPIENT_EMAIL,
-    subject: `📦 NEW BULK QUOTATION: ${productName || 'Herbal Product'} (${targetQuantity || '500'} Pcs) - ${companyName || contactName || 'Buyer'}`,
-    text: `NEW BULK QUOTATION REQUEST FOR KIYAN EXPORTS\n\nProduct: ${productName}\nQuantity: ${targetQuantity} Pcs\nContact: ${contactName} (${companyName})\nEmail: ${email}\nPhone: ${phone}\nCountry: ${shippingCountry}\nNotes: ${customizationDetails}\nTime: ${dateStr}`,
+    subject: `🛒 [NEW RFQ QUOTE]: ${productName || 'Herbal Extract'} (${targetQuantity || '500'} Pcs) - ${companyName || contactName}`,
     html: htmlContent
   };
 
-  try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log(`✉️ SMTP RFQ Email successfully dispatched to ${RECIPIENT_EMAIL}! MessageId: ${info.messageId}`);
-    return { success: true, messageId: info.messageId };
-  } catch (error) {
-    console.warn(`⚠️ SMTP Transporter Warning: ${error.message}. Triggering silent FormSubmit API fallback to ${RECIPIENT_EMAIL}.`);
-    
-    // Trigger silent API background dispatch fallback
-    try {
-      fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Referer': 'http://localhost:3000'
-        },
-        body: JSON.stringify({
-          _subject: `📦 NEW BULK QUOTATION: ${productName || 'Herbal Product'} (${targetQuantity || '500'} Pcs) - ${companyName || contactName}`,
-          Product_Name: productName || 'Herbal Product',
-          Target_Quantity: (targetQuantity || '500') + ' Pieces',
-          Buyer_Contact_Name: contactName || 'N/A',
-          Company_Name: companyName || 'N/A',
-          Buyer_Email: email || 'N/A',
-          Buyer_Phone_WhatsApp: phone || 'N/A',
-          Destination_Country: shippingCountry || 'International',
-          Customization_Requirements: customizationDetails || 'Standard Wholesale & Manufacturing Request',
-          Submission_Time: dateStr
-        })
-      }).then(r => r.json()).then(res => console.log('✉️ Silent FormSubmit API Email Result:', res)).catch(e => {});
-    } catch (e) {}
-
-    return { success: false, error: error.message };
+  if (email && email.includes('@')) {
+    mailOptions.cc = email;
   }
+
+  return await transporter.sendMail(mailOptions);
 }
 
 /**
- * Send Rich Formatted B2B Order Email via SMTP
+ * Send Amazon Prime Style Order Confirmation Email with Itemized Grid & Totals
  */
-async function sendOrderEmail(orderData) {
+async function sendOrderConfirmationEmail(orderData) {
   const {
     orderId,
     customerName,
-    companyName,
-    gstNo,
-    customerEmail,
-    customerPhone,
-    customerAddress,
+    email,
+    shippingAddress,
     paymentMethod,
-    paymentStatus,
-    financials,
     items,
-    status,
-    estimatedDelivery
+    financials,
+    createdAtIST
   } = orderData;
 
-  const dateStr = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
-  const subtotal = financials ? (financials.subtotal || 0) : 0;
+  const dateStr = createdAtIST || new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
+  const grandTotal = financials ? (financials.totalPayable || 0) : (orderData.totalAmount || 0);
+
+  // Financial Breakdown Values
+  const subtotal = financials ? (financials.itemsSubtotal || grandTotal) : grandTotal;
+  const deliveryCharge = financials ? (financials.shippingFee || 0) : 0;
   const sgst = financials ? (financials.sgst || 0) : 0;
   const igst = financials ? (financials.igst || 0) : 0;
-  const totalPayable = financials ? (financials.totalPayable || 0) : 0;
+  const totalPayable = financials ? (financials.totalPayable || 0) : grandTotal;
 
-  // Build items HTML table rows
+  // Build Amazon Prime style items HTML table rows
   let itemsRowsHtml = '';
   if (Array.isArray(items) && items.length > 0) {
-    itemsRowsHtml = items.map((item, idx) => {
-      const isEven = idx % 2 === 0;
-      const bg = isEven ? '#ffffff' : '#fcfbf8';
-      const itemTotal = (item.totalPrice || (item.quantity * item.price)) || 0;
+    itemsRowsHtml = items.map((item) => {
+      const itemTotal = (item.totalPrice || item.itemTotal || (item.quantity * item.price)) || 0;
+
       return `
-        <tr style="background-color: ${bg}; border-bottom: 1px solid #edf2f0;">
-          <td style="padding: 12px 15px; color: #2c3e50; font-weight: 600;">${item.name || 'Herbal Product'}</td>
-          <td style="padding: 12px 15px; text-align: center; font-weight: bold; color: #c68b59;">${item.quantity || 1} Pcs</td>
-          <td style="padding: 12px 15px; text-align: right; font-weight: 600; color: #555;">₹${item.price || 0}</td>
-          <td style="padding: 12px 15px; text-align: right; font-weight: 700; color: #1e4d2b;">₹${itemTotal.toLocaleString('en-IN')}</td>
+        <tr style="border-bottom: 1px solid #eeeeee;">
+          <td style="padding: 14px 20px; width: 50px; vertical-align: middle;">
+            <div style="width: 42px; height: 42px; background: #e8f5e9; color: #2e7d32; border-radius: 6px; font-size: 20px; display: flex; align-items: center; justify-content: center; font-weight: bold; text-align: center; line-height: 42px;">🌿</div>
+          </td>
+          <td style="padding: 14px 20px; vertical-align: middle; font-size: 13px; color: #111111;">
+            <strong style="font-size: 14px; color: #111111; display: block;">${item.name || 'Herbal Supplement'}</strong>
+            <span style="font-size: 12px; color: #555555;">Quantity: ${item.quantity || 1} Pcs × ₹${(item.price || 0).toLocaleString('en-IN')}</span>
+          </td>
+          <td style="padding: 14px 20px; text-align: right; vertical-align: middle; font-size: 14px; font-weight: 700; color: #111111;">
+            ₹${itemTotal.toLocaleString('en-IN')}
+          </td>
         </tr>
       `;
     }).join('');
-  } else {
-    itemsRowsHtml = `
-      <tr>
-        <td colspan="4" style="padding: 15px; text-align: center; color: #777;">No items listed</td>
-      </tr>
-    `;
   }
 
   const htmlContent = `
@@ -209,178 +195,114 @@ async function sendOrderEmail(orderData) {
     <html>
     <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f5; margin: 0; padding: 20px; color: #333; }
-        .container { max-width: 680px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid #d8e2dc; }
-        .header { background: #1e4d2b; padding: 25px; text-align: center; color: #ffffff; }
-        .header h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
-        .header p { margin: 5px 0 0 0; font-size: 13px; color: #d4a373; text-transform: uppercase; letter-spacing: 1px; }
-        .content { padding: 30px; }
-        .order-badge { display: inline-block; background: #27ae60; color: white; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: bold; margin-bottom: 15px; }
-        .section-title { font-size: 15px; font-weight: 700; color: #1e4d2b; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 20px; margin-bottom: 10px; border-bottom: 2px solid #c68b59; padding-bottom: 5px; }
-        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        .info-table th, .info-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #edf2f0; }
-        .info-table th { background: #f9f6f0; color: #1e4d2b; font-weight: 700; width: 35%; font-size: 13px; }
-        .info-table td { color: #2c3e50; font-weight: 600; font-size: 14px; }
-        .items-table { width: 100%; border-collapse: collapse; margin-top: 10px; margin-bottom: 20px; border: 1px solid #edf2f0; }
-        .items-table th { background: #1e4d2b; color: #ffffff; padding: 12px 15px; text-align: left; font-size: 13px; font-weight: 700; }
-        .summary-box { background: #fcfbf8; border: 1.5px solid #d4a373; padding: 18px; border-radius: 8px; margin-top: 20px; }
-        .summary-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: #555; }
-        .summary-total { display: flex; justify-content: space-between; margin-top: 12px; padding-top: 10px; border-top: 2px dashed #c68b59; font-size: 18px; font-weight: 800; color: #1e4d2b; }
-        .notes-box { background: #eef7f6; border-left: 4px solid #1e4d2b; padding: 15px; margin-top: 20px; border-radius: 4px; font-size: 13px; color: #2c3e50; }
-        .footer { background: #f9f6f0; padding: 18px; text-align: center; font-size: 12px; color: #7f8c8d; border-top: 1px solid #e2e8f0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f2f2f2; margin: 0; padding: 25px 10px; color: #111111; -webkit-font-smoothing: antialiased; }
+        .amazon-container { max-width: 620px; margin: 0 auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid #e7e7e7; }
+        
+        .header-card { padding: 25px 30px 20px 30px; background: #ffffff; border-bottom: 1px solid #eeeeee; }
+        .brand-logo { max-height: 48px; width: auto; object-fit: contain; margin-bottom: 18px; display: block; border: none; }
+        .greeting-name { font-size: 20px; font-weight: 700; color: #111111; margin-bottom: 8px; }
+        .greeting-msg { font-size: 14px; color: #333333; line-height: 1.6; margin-bottom: 14px; }
+        .order-header-tag { font-size: 16px; font-weight: 800; color: #111111; letter-spacing: 0.5px; margin-top: 10px; }
+        
+        .details-box { background: #ffffff; border: 1px solid #e7e7e7; border-radius: 8px; margin: 20px 25px; padding: 20px 25px; }
+        .details-table { width: 100%; border-collapse: collapse; }
+        .col-left { width: 50%; vertical-align: top; padding-right: 15px; }
+        .col-right { width: 50%; vertical-align: top; text-align: left; }
+        .label-muted { font-size: 12px; color: #666666; margin-bottom: 4px; }
+        .val-bold { font-size: 14px; font-weight: 700; color: #111111; margin-bottom: 14px; }
+        
+        .items-box { margin: 20px 25px; border: 1px solid #e7e7e7; border-radius: 8px; overflow: hidden; }
+        .items-header { background: #f7f7f7; padding: 12px 20px; font-size: 13px; font-weight: 700; color: #111111; border-bottom: 1px solid #eeeeee; text-transform: uppercase; letter-spacing: 0.5px; }
+        .items-table { width: 100%; border-collapse: collapse; }
+        
+        .summary-box { margin: 20px 25px 25px 25px; background: #fafafa; border: 1px solid #e7e7e7; border-radius: 8px; padding: 18px 22px; }
+        .summary-row { display: flex; justify-content: space-between; font-size: 13px; color: #444444; margin-bottom: 8px; }
+        .summary-row.total { font-size: 16px; font-weight: 800; color: #b12704; border-top: 1.5px solid #dddddd; padding-top: 10px; margin-top: 10px; margin-bottom: 0; }
+        
+        .footer-card { padding: 25px 30px; background: #ffffff; text-align: center; font-size: 11px; color: #777777; line-height: 1.7; border-top: 1px solid #eeeeee; }
+        .footer-brand { font-weight: 700; font-size: 13px; color: #111111; margin-top: 12px; }
       </style>
     </head>
     <body>
-      <div class="container">
-        <div class="header">
-          <h1>🌿 KIYAN EXPORTS & HERBAL MANUFACTURING</h1>
-          <p>Official B2B Wholesale Order Confirmation Dossier</p>
+      <div class="amazon-container">
+        <!-- Header & Amazon Style Greeting -->
+        <div class="header-card" style="text-align: center;">
+          <img src="${LOGO_SRC}" alt="Kiyan Export" class="brand-logo" style="margin: 0 auto 16px auto; display: block; max-height: 60px; width: auto; border: none;">
+          <div class="greeting-name">Hello ${customerName || 'Valued Customer'},</div>
+          <div class="greeting-msg">
+            Thank you for shopping with us. We'll send a confirmation once your items have shipped. Your order details are indicated below. If you would like to view the status of your order or make any changes to it, please visit <a href="http://localhost:3000" style="color: #0066c0; text-decoration: none;">Your Orders</a> on Kiyan Export.
+          </div>
+          <div class="order-header-tag">Order Confirmation: #${orderId}</div>
         </div>
-        <div class="content">
-          <div class="order-badge">🎉 CONFIRMED B2B ORDER: ${orderId}</div>
-          <p style="font-size: 14px; color: #555; line-height: 1.5;">
-            Thank you for placing your order with <strong>Kiyan Exports</strong>. Our export manufacturing team has received your order and is preparing the proforma invoice & dispatch manifest.
-          </p>
 
-          <div class="section-title">📋 Customer & Buyer Information</div>
-          <table class="info-table">
+        <!-- Amazon Prime Style 2-Column Order Details Card -->
+        <div class="details-box">
+          <table class="details-table">
             <tr>
-              <th>Order ID</th>
-              <td><strong style="color: #1e4d2b;">${orderId}</strong></td>
-            </tr>
-            <tr>
-              <th>Buyer Name</th>
-              <td>${customerName || 'Valued Buyer'}</td>
-            </tr>
-            <tr>
-              <th>Company / Brand</th>
-              <td>${companyName || 'N/A'}</td>
-            </tr>
-            <tr>
-              <th>GST / Tax ID</th>
-              <td>${gstNo || 'N/A'}</td>
-            </tr>
-            <tr>
-              <th>Email Address</th>
-              <td><a href="mailto:${customerEmail}">${customerEmail}</a></td>
-            </tr>
-            <tr>
-              <th>Contact Phone</th>
-              <td><a href="tel:${customerPhone}">${customerPhone || 'N/A'}</a></td>
-            </tr>
-            <tr>
-              <th>Delivery Address</th>
-              <td>${customerAddress || 'Standard Delivery'}</td>
-            </tr>
-            <tr>
-              <th>Payment Method</th>
-              <td>${paymentMethod || 'Bank Wire Transfer / LC'}</td>
-            </tr>
-            <tr>
-              <th>Order Status</th>
-              <td><span style="color: #27ae60; font-weight: bold;">${status || 'Confirmed B2B Order'}</span></td>
-            </tr>
-            <tr>
-              <th>Estimated Dispatch</th>
-              <td>${estimatedDelivery || '7-10 Days (Port Dispatch)'}</td>
-            </tr>
-            <tr>
-              <th>Order Timestamp</th>
-              <td>${dateStr}</td>
+              <td class="col-left">
+                <div class="label-muted">Your order will be sent to:</div>
+                <div class="val-bold" style="margin-bottom: 2px;">${customerName || 'Customer'}</div>
+                <div style="font-size: 12px; color: #555555; margin-bottom: 14px;">${customerAddress || 'Standard Delivery'}</div>
+                
+                <div class="label-muted">Order Total:</div>
+                <div class="val-price">₹${totalPayable.toLocaleString('en-IN')}</div>
+              </td>
             </tr>
           </table>
 
-          <div class="section-title">📦 Ordered Products Breakdown</div>
-          <table class="items-table">
-            <thead>
-              <tr>
-                <th>Product Description</th>
-                <th style="text-align: center;">Quantity</th>
-                <th style="text-align: right;">Unit Price</th>
-                <th style="text-align: right;">Total (INR)</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${itemsRowsHtml}
-            </tbody>
-          </table>
-
-          <div class="summary-box">
-            <div class="summary-row">
-              <span>Subtotal:</span>
-              <strong style="color: #333;">₹${subtotal.toLocaleString('en-IN')}</strong>
-            </div>
-            <div class="summary-row">
-              <span>SGST (9%):</span>
-              <strong style="color: #666;">₹${sgst.toLocaleString('en-IN')}</strong>
-            </div>
-            <div class="summary-row">
-              <span>IGST (9%):</span>
-              <strong style="color: #666;">₹${igst.toLocaleString('en-IN')}</strong>
-            </div>
-            <div class="summary-total">
-              <span>Total Payable Amount:</span>
-              <span>₹${totalPayable.toLocaleString('en-IN')}</span>
-            </div>
-          </div>
-
-          <div class="notes-box">
-            <strong>ℹ️ Next Steps & Proforma Invoice Notice:</strong><br>
-            Our accounts & export logistics department will send you the official Proforma Invoice (PI) along with bank wire details (NEFT/RTGS/Swift). If you need custom packaging, label printing, or COA documents, please reply directly to this email.
+          <div class="cta-btn-wrap">
+            <a href="http://localhost:3000" class="btn-amazon-amber">View Order Details</a>
           </div>
         </div>
 
-        <div class="footer">
-          Kiyan Exports • Herbal Extracts, Private Label & Bulk Manufacturing<br>
-          Sent to <strong>${customerEmail}</strong> & Admin Copy <strong>${RECIPIENT_EMAIL}</strong>
+        <!-- Product Items Summary -->
+        <div class="items-card">
+          <div class="items-head">Order Details Summary</div>
+          <table class="item-table">
+            ${itemsRowsHtml}
+          </table>
+          <div class="summary-card">
+            <div class="summary-row"><span>Items Subtotal:</span><span>₹${subtotal.toLocaleString('en-IN')}</span></div>
+            <div class="summary-row"><span>SGST (9%):</span><span>₹${sgst.toLocaleString('en-IN')}</span></div>
+            <div class="summary-row"><span>IGST (9%):</span><span>₹${igst.toLocaleString('en-IN')}</span></div>
+            <div class="summary-grand"><span>Order Total:</span><span style="color: #b12704;">₹${totalPayable.toLocaleString('en-IN')}</span></div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-card">
+          To learn more about ordering, go to Ordering Help on Kiyan Export.<br>
+          If you want more information or need assistance, contact <a href="mailto:kiyanexport54@gmail.com" style="color: #0066c0; text-decoration: none;">kiyanexport54@gmail.com</a>.<br>
+          We hope to see you again soon!
+          <div class="footer-brand">kiyanexports.com</div>
         </div>
       </div>
     </body>
     </html>
   `;
 
+  const customerEmail = email;
+  const customerAddress = typeof shippingAddress === 'string' ? shippingAddress : (shippingAddress ? `${shippingAddress.street || ''}, ${shippingAddress.city || ''}, ${shippingAddress.state || ''} ${shippingAddress.pincode || ''}` : 'Standard Delivery');
+
   const recipients = Array.from(new Set([RECIPIENT_EMAIL, customerEmail])).filter(Boolean).join(', ');
 
   const mailOptions = {
-    from: `"Kiyan Exports Orders" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
+    from: `"Kiyan Export" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
     to: recipients,
     replyTo: customerEmail || RECIPIENT_EMAIL,
-    subject: `🛒 CONFIRMED B2B ORDER #${orderId} - ₹${totalPayable.toLocaleString('en-IN')} (${companyName || customerName})`,
-    text: `B2B ORDER CONFIRMATION #${orderId}\nBuyer: ${customerName} (${companyName})\nEmail: ${customerEmail}\nTotal Payable: ₹${totalPayable}\nStatus: ${status}`,
+    subject: `Order Confirmation #${orderId}`,
+    text: `Order Confirmation: #${orderId}\nHello ${customerName},\nThank you for shopping with us. Your order details are below:\n\nDelivery Date: ${estimatedDelivery || '3-5 Days'}\nDelivery To: ${customerName}\nAddress: ${customerAddress}\nOrder Total: ₹${totalPayable.toLocaleString('en-IN')}\n\nItems:\n${formattedItemsReceipt}`,
     html: htmlContent
   };
 
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log(`✉️ SMTP Order Confirmation Email dispatched to ${recipients}! MessageId: ${info.messageId}`);
+    console.log(`✉️ SMTP Amazon-Style Order Confirmation Email dispatched to ${recipients}! MessageId: ${info.messageId}`);
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.warn(`⚠️ SMTP Transporter Warning for Order #${orderId}: ${error.message}. Triggering FormSubmit API fallback.`);
-    try {
-      fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Referer': 'http://localhost:3000'
-        },
-        body: JSON.stringify({
-          _subject: `🛒 CONFIRMED B2B ORDER #${orderId} - ₹${totalPayable.toLocaleString('en-IN')} (${companyName || customerName})`,
-          Order_ID: orderId,
-          Buyer_Name: customerName || 'N/A',
-          Company: companyName || 'N/A',
-          GST_ID: gstNo || 'N/A',
-          Email: customerEmail,
-          Phone: customerPhone || 'N/A',
-          Address: customerAddress,
-          Total_Payable: `₹${totalPayable.toLocaleString('en-IN')}`,
-          Order_Items: JSON.stringify(items),
-          Order_Time: dateStr
-        })
-      }).then(r => r.json()).then(res => console.log('✉️ Silent FormSubmit Order Email Result:', res)).catch(e => {});
-    } catch (e) {}
-
+    console.warn(`⚠️ SMTP Transporter Warning for Order #${orderId}: ${error.message}.`);
     return { success: false, error: error.message };
   }
 }
@@ -388,6 +310,6 @@ async function sendOrderEmail(orderData) {
 module.exports = {
   transporter,
   sendRfqEmail,
-  sendOrderEmail,
+  sendOrderConfirmationEmail,
   RECIPIENT_EMAIL
 };
