@@ -52,29 +52,41 @@ const syncAtlasDatabase = async () => {
 const DEFAULT_MONGO_URI = 'mongodb+srv://smartmehra1208_db_user:pAD2x6JIOkfawFDv@sanjeevani-roots.sxts5to.mongodb.net/Sanjeevani-roots?retryWrites=true&w=majority';
 const DIRECT_REPLICA_URI = 'mongodb://smartmehra1208_db_user:pAD2x6JIOkfawFDv@ac-l8lvv7w-shard-00-00.sxts5to.mongodb.net:27017,ac-l8lvv7w-shard-00-01.sxts5to.mongodb.net:27017,ac-l8lvv7w-shard-00-02.sxts5to.mongodb.net:27017/Sanjeevani-roots?ssl=true&replicaSet=atlas-s2lkhx-shard-0&authSource=admin&retryWrites=true&w=majority';
 
+let isConnecting = false;
+
 const connectDB = async () => {
+  if (mongoose.connection.readyState === 1) return true;
+  if (isConnecting) return false;
+  isConnecting = true;
+
   const primaryConn = process.env.MONGO_URI || process.env.MONGODB_URI || DEFAULT_MONGO_URI;
 
   try {
     const conn = await mongoose.connect(primaryConn, {
-      serverSelectionTimeoutMS: 5000,
+      serverSelectionTimeoutMS: 6000,
       family: 4
     });
     console.log(`🍃 MongoDB Atlas Connected Successfully: ${conn.connection.host}/${conn.connection.name}`);
+    isConnecting = false;
     await syncAtlasDatabase();
     return true;
   } catch (err1) {
     console.warn(`⚠️ Primary MongoDB Connection failed (${err1.message}). Trying Direct Multi-Host ReplicaSet...`);
     try {
+      if (mongoose.connection.readyState !== 0) {
+        await mongoose.disconnect().catch(() => {});
+      }
       const conn2 = await mongoose.connect(DIRECT_REPLICA_URI, {
         serverSelectionTimeoutMS: 8000,
         family: 4
       });
       console.log(`🍃 MongoDB Atlas Connected via Direct ReplicaSet: ${conn2.connection.host}/${conn2.connection.name}`);
+      isConnecting = false;
       await syncAtlasDatabase();
       return true;
     } catch (err2) {
       console.error(`❌ Both MongoDB Connection attempts failed: ${err2.message}`);
+      isConnecting = false;
       return false;
     }
   }

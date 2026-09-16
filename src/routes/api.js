@@ -49,8 +49,10 @@ function saveProductsStore() {
   }
 }
 
+const LIVE_USERS_BACKUP = path.join(__dirname, '../data/live_users_backup.json');
+
 // In-Memory & File Fallback Stores if DB is unreachable
-const memoryUsers = [
+let memoryUsers = [
   {
     _id: 1,
     fullName: 'Kiyan Admin',
@@ -60,7 +62,18 @@ const memoryUsers = [
     role: 'admin'
   }
 ];
-const memoryOrders = [];
+
+try {
+  if (fs.existsSync(LIVE_USERS_BACKUP)) {
+    const rawUsers = JSON.parse(fs.readFileSync(LIVE_USERS_BACKUP, 'utf8'));
+    if (Array.isArray(rawUsers) && rawUsers.length > 0) {
+      memoryUsers = rawUsers;
+      console.log(`👥 Loaded ${rawUsers.length} live backup users from disk.`);
+    }
+  }
+} catch (e) {
+  console.warn('Backup users load warning:', e.message);
+}
 
 const defaultSiteContent = {
   heroTagline: 'VERIFIED GOLD MANUFACTURER & EXPORTER • EST. 2014',
@@ -1631,8 +1644,26 @@ router.get('/admin/rfqs', (req, res) => {
 // GET Admin All Registered Users / Customers (MongoDB Atlas Direct Sync)
 router.get('/admin/users', async (req, res) => {
   try {
-    await ensureDbConnected();
-    const allUsers = await User.find({}, '-password').sort({ createdAt: -1 }).lean();
+    let allUsers = [];
+    try {
+      await ensureDbConnected();
+      allUsers = await User.find({}, '-password').maxTimeMS(4000).sort({ createdAt: -1 }).lean();
+    } catch (dbErr) {
+      console.warn('⚠️ User.find DB query warning, using persistent disk backup:', dbErr.message);
+      allUsers = memoryUsers.map(u => {
+        const copy = { ...u };
+        delete copy.password;
+        return copy;
+      });
+    }
+
+    if (!allUsers || allUsers.length === 0) {
+      allUsers = memoryUsers.map(u => {
+        const copy = { ...u };
+        delete copy.password;
+        return copy;
+      });
+    }
 
     const formatted = allUsers.map(user => {
       const createdDate = user.createdAt ? new Date(user.createdAt) : new Date();
