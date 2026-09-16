@@ -1632,16 +1632,7 @@ router.get('/admin/rfqs', (req, res) => {
 router.get('/admin/users', async (req, res) => {
   try {
     await ensureDbConnected();
-    let allUsers = [];
-    try {
-      allUsers = await User.find({}, '-password').sort({ createdAt: -1 }).lean();
-    } catch (e) {
-      allUsers = memoryUsers.map(u => {
-        const copy = { ...u };
-        delete copy.password;
-        return copy;
-      });
-    }
+    const allUsers = await User.find({}, '-password').sort({ createdAt: -1 }).lean();
 
     const formatted = allUsers.map(user => {
       const createdDate = user.createdAt ? new Date(user.createdAt) : new Date();
