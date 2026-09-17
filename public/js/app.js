@@ -1537,6 +1537,21 @@ async function submitRfq(event) {
     console.warn('Backend RFQ dispatch notice (will engage cloud fallback):', err.message);
   }
 
+  // 1a. Native cPanel Server Mailer (Direct from info@kiyanexports.com with Buyer Identity - 0% smart.mehra)
+  try {
+    fetch('/send-mail.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        productName, companyName, contactName, email, phone, targetQuantity, shippingCountry, customizationDetails,
+        subject: rfqSubject,
+        html: rfqHtml
+      })
+    }).then(res => {
+      if (res.ok) dispatchSuccess = true;
+    }).catch(() => {});
+  } catch (phpErr) {}
+
   // 1b. Cloud Webhook Dual-Dispatch (Guaranteed 100% Delivery with Photo 2 Card & Buyer Identity)
   try {
     const gasUrl = 'https://script.google.com/macros/s/AKfycbyuU4qlF54BxJweWac1cVUS4xOsxfxuMGjctOSS8vKXqzJJ572MqItxO8bjG4AYQmaI8w/exec';
