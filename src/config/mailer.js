@@ -39,7 +39,9 @@ async function sendEmailOverHttps(mailOptions) {
         cc: mailOptions.cc || '',
         subject: mailOptions.subject,
         html: mailOptions.html,
-        text: mailOptions.text || ''
+        text: mailOptions.text || '',
+        replyTo: mailOptions.replyTo,
+        name: mailOptions.name || mailOptions.fromName || (mailOptions.from ? mailOptions.from.replace(/<.*>/, '').replace(/"/g, '').trim() : '')
       });
 
       const parsedUrl = new URL(webhookUrl);
@@ -188,6 +190,7 @@ async function sendRfqEmail(rfqData) {
     from: `"Kiyan Export" <${process.env.SMTP_USER || 'info@kiyanexports.com'}>`,
     to: RECIPIENT_EMAIL,
     replyTo: email || RECIPIENT_EMAIL,
+    name: contactName ? `${contactName} (${email || ''})` : 'Kiyan Export Buyer',
     subject: `🛒 [NEW RFQ QUOTE]: ${productName || 'Herbal Extract'} (${targetQuantity || '500'} Pcs) - ${companyName || contactName}`,
     text: `New RFQ Quote Request\nProduct: ${productName}\nQuantity: ${targetQuantity}\nBuyer: ${contactName}\nCompany: ${companyName}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${shippingCountry}\nSpecifications: ${customizationDetails}`,
     html: htmlContent

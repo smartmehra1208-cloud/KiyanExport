@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Fix case-sensitivity for Certificates and catalogues
+  RewriteRule ^certificates/(.*)$ Certificates/$1 [L,NC]
+  RewriteRule ^catelouges/(.*)$ catalogues/$1 [L,NC]
+  RewriteRule ^Catelouges/(.*)$ catalogues/$1 [L,NC]
+</IfModule>
+
+<FilesMatch "\.(pdf)$">
+  Header set Content-Disposition inline
+  Header set X-Content-Type-Options nosniff
+</FilesMatch>
