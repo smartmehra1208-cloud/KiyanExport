@@ -22,9 +22,9 @@ const transporter = nodemailer.createTransport({
     user: (process.env.SMTP_USER || 'info@kiyanexports.com').trim(),
     pass: (process.env.SMTP_PASS || 'Kiyan@2026').replace(/\s+/g, '')
   },
-  connectionTimeout: 30000,
-  greetingTimeout: 30000,
-  socketTimeout: 45000,
+  connectionTimeout: 5000,
+  greetingTimeout: 5000,
+  socketTimeout: 10000,
   tls: {
     rejectUnauthorized: false
   }
@@ -198,13 +198,18 @@ async function sendRfqEmail(rfqData) {
     html: htmlContent
   };
 
-  // Official GoDaddy cPanel SMTP (info@kiyanexports.com on Port 465 SSL)
+  // 1. Try Official GoDaddy cPanel SMTP First (Port 465 SSL)
   try {
     const info = await transporter.sendMail(mailOptions);
     console.log(`✉️ [Official GoDaddy cPanel SMTP] RFQ Notification dispatched to ${RECIPIENT_EMAIL}! MessageId: ${info.messageId}`);
     return { success: true, messageId: info.messageId, provider: 'cpanel-smtp' };
   } catch (smtpErr) {
-    console.error(`❌ cPanel SMTP dispatch error: ${smtpErr.message}`);
+    console.warn(`⚠️ cPanel SMTP blocked/timed out (${smtpErr.message}). Immediately engaging secure HTTPS Webhook fallback...`);
+    const httpsRes = await sendEmailOverHttps(mailOptions);
+    if (httpsRes && httpsRes.success) {
+      console.log(`✅ Guaranteed Email Delivery: Sent over HTTPS to ${RECIPIENT_EMAIL}`);
+      return { ...httpsRes, provider: 'https-webhook' };
+    }
     return { success: false, error: smtpErr.message };
   }
 }
@@ -369,13 +374,18 @@ async function sendOrderConfirmationEmail(orderData) {
     html: htmlContent
   };
 
-  // Official GoDaddy cPanel SMTP (info@kiyanexports.com on Port 465 SSL)
+  // 1. Try Official GoDaddy cPanel SMTP First (Port 465 SSL)
   try {
     const info = await transporter.sendMail(mailOptions);
     console.log(`✉️ [Official GoDaddy cPanel SMTP] Order Confirmation dispatched to ${recipients}! MessageId: ${info.messageId}`);
     return { success: true, messageId: info.messageId, provider: 'cpanel-smtp' };
   } catch (smtpErr) {
-    console.error(`❌ cPanel SMTP dispatch error for Order #${orderId}: ${smtpErr.message}`);
+    console.warn(`⚠️ cPanel SMTP dispatch warning for Order #${orderId} (${smtpErr.message}). Immediately engaging secure HTTPS Webhook fallback...`);
+    const httpsRes = await sendEmailOverHttps(mailOptions);
+    if (httpsRes && httpsRes.success) {
+      console.log(`✅ Guaranteed Email Delivery: Order Confirmation sent over HTTPS to ${recipients}`);
+      return { ...httpsRes, provider: 'https-webhook' };
+    }
     return { success: false, error: smtpErr.message };
   }
 }

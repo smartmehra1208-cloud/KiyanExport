@@ -37,11 +37,11 @@ function doPost(e) {
       htmlBody = data.html || buildOrderEmailHtml(data);
     }
 
-    // Dispatch Email via GmailApp
+    // Dispatch Email via GmailApp with official info@kiyanexports.com identity
     GmailApp.sendEmail(to, subject, textBody, {
       htmlBody: htmlBody,
-      name: "Kiyan Export B2B",
-      replyTo: data.email || data.replyTo || OFFICIAL_ADMIN_EMAIL
+      name: "Kiyan Export <info@kiyanexports.com>",
+      replyTo: "info@kiyanexports.com"
     });
 
     return ContentService.createTextOutput(JSON.stringify({
