@@ -12,12 +12,12 @@ const smtpPort = parseInt(process.env.SMTP_PORT, 10) || 465;
 const isSecure = smtpPort === 465 || process.env.SMTP_SECURE === 'true';
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || 'smtp.gmail.com',
+  host: process.env.SMTP_HOST || 'sg2plzcpnl505501.prod.sin2.secureserver.net',
   port: smtpPort,
   secure: isSecure,
   auth: {
-    user: (process.env.SMTP_USER || 'kiyanexports.express@gmail.com').trim(),
-    pass: (process.env.SMTP_PASS || 'zqkkdfnyfxusknxg').replace(/\s+/g, '')
+    user: (process.env.SMTP_USER || 'info@kiyanexports.com').trim(),
+    pass: (process.env.SMTP_PASS || 'Kiyan@2026').replace(/\s+/g, '')
   },
   connectionTimeout: 10000,
   greetingTimeout: 10000,
@@ -188,7 +188,7 @@ async function sendRfqEmail(rfqData) {
   `;
 
   const mailOptions = {
-    from: `"Kiyan Export B2B" <${process.env.SMTP_USER || 'kiyanexports.express@gmail.com'}>`,
+    from: `"Kiyan Export" <${process.env.SMTP_USER || 'info@kiyanexports.com'}>`,
     to: RECIPIENT_EMAIL,
     replyTo: email || RECIPIENT_EMAIL,
     subject: `🛒 [NEW RFQ QUOTE]: ${productName || 'Herbal Extract'} (${targetQuantity || '500'} Pcs) - ${companyName || contactName}`,
