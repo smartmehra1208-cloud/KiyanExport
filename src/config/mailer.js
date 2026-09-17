@@ -12,19 +12,13 @@ const smtpPort = parseInt(process.env.SMTP_PORT, 10) || 465;
 const isSecure = smtpPort === 465 || process.env.SMTP_SECURE === 'true';
 
 const transporter = nodemailer.createTransport({
-  pool: true,
-  maxConnections: 3,
-  maxMessages: 100,
   host: process.env.SMTP_HOST || 'sg2plzcpnl505501.prod.sin2.secureserver.net',
-  port: smtpPort,
-  secure: isSecure,
+  port: parseInt(process.env.SMTP_PORT, 10) || 465,
+  secure: true,
   auth: {
     user: (process.env.SMTP_USER || 'info@kiyanexports.com').trim(),
     pass: (process.env.SMTP_PASS || 'Kiyan@2026').replace(/\s+/g, '')
   },
-  connectionTimeout: 5000,
-  greetingTimeout: 5000,
-  socketTimeout: 10000,
   tls: {
     rejectUnauthorized: false
   }
@@ -195,6 +189,7 @@ async function sendRfqEmail(rfqData) {
     to: RECIPIENT_EMAIL,
     replyTo: email || RECIPIENT_EMAIL,
     subject: `🛒 [NEW RFQ QUOTE]: ${productName || 'Herbal Extract'} (${targetQuantity || '500'} Pcs) - ${companyName || contactName}`,
+    text: `New RFQ Quote Request\nProduct: ${productName}\nQuantity: ${targetQuantity}\nBuyer: ${contactName}\nCompany: ${companyName}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${shippingCountry}\nSpecifications: ${customizationDetails}`,
     html: htmlContent
   };
 
