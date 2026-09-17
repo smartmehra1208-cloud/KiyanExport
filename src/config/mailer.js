@@ -12,6 +12,9 @@ const smtpPort = parseInt(process.env.SMTP_PORT, 10) || 465;
 const isSecure = smtpPort === 465 || process.env.SMTP_SECURE === 'true';
 
 const transporter = nodemailer.createTransport({
+  pool: true,
+  maxConnections: 3,
+  maxMessages: 100,
   host: process.env.SMTP_HOST || 'sg2plzcpnl505501.prod.sin2.secureserver.net',
   port: smtpPort,
   secure: isSecure,
@@ -19,9 +22,9 @@ const transporter = nodemailer.createTransport({
     user: (process.env.SMTP_USER || 'info@kiyanexports.com').trim(),
     pass: (process.env.SMTP_PASS || 'Kiyan@2026').replace(/\s+/g, '')
   },
-  connectionTimeout: 10000,
-  greetingTimeout: 10000,
-  socketTimeout: 15000,
+  connectionTimeout: 30000,
+  greetingTimeout: 30000,
+  socketTimeout: 45000,
   tls: {
     rejectUnauthorized: false
   }
@@ -195,17 +198,13 @@ async function sendRfqEmail(rfqData) {
     html: htmlContent
   };
 
-  // 1. Try Official cPanel SMTP First (info@kiyanexports.com on Port 465 SSL)
+  // Official GoDaddy cPanel SMTP (info@kiyanexports.com on Port 465 SSL)
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log(`✉️ [Official cPanel SMTP] RFQ Notification dispatched to ${RECIPIENT_EMAIL}! MessageId: ${info.messageId}`);
+    console.log(`✉️ [Official GoDaddy cPanel SMTP] RFQ Notification dispatched to ${RECIPIENT_EMAIL}! MessageId: ${info.messageId}`);
     return { success: true, messageId: info.messageId, provider: 'cpanel-smtp' };
   } catch (smtpErr) {
-    console.warn(`⚠️ cPanel SMTP dispatch warning (${smtpErr.message}). Attempting HTTPS Webhook fallback...`);
-    const httpsRes = await sendEmailOverHttps(mailOptions);
-    if (httpsRes && httpsRes.success) {
-      return { ...httpsRes, provider: 'webhook-fallback' };
-    }
+    console.error(`❌ cPanel SMTP dispatch error: ${smtpErr.message}`);
     return { success: false, error: smtpErr.message };
   }
 }
@@ -370,17 +369,13 @@ async function sendOrderConfirmationEmail(orderData) {
     html: htmlContent
   };
 
-  // 1. Try Official cPanel SMTP First (info@kiyanexports.com on Port 465 SSL)
+  // Official GoDaddy cPanel SMTP (info@kiyanexports.com on Port 465 SSL)
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log(`✉️ [Official cPanel SMTP] Order Confirmation dispatched to ${recipients}! MessageId: ${info.messageId}`);
+    console.log(`✉️ [Official GoDaddy cPanel SMTP] Order Confirmation dispatched to ${recipients}! MessageId: ${info.messageId}`);
     return { success: true, messageId: info.messageId, provider: 'cpanel-smtp' };
   } catch (smtpErr) {
-    console.warn(`⚠️ cPanel SMTP dispatch warning for Order #${orderId} (${smtpErr.message}). Attempting HTTPS Webhook fallback...`);
-    const httpsRes = await sendEmailOverHttps(mailOptions);
-    if (httpsRes && httpsRes.success) {
-      return { ...httpsRes, provider: 'webhook-fallback' };
-    }
+    console.error(`❌ cPanel SMTP dispatch error for Order #${orderId}: ${smtpErr.message}`);
     return { success: false, error: smtpErr.message };
   }
 }

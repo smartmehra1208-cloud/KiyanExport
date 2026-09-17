@@ -1445,27 +1445,6 @@ async function submitRfq(event) {
     console.error('RFQ dispatch network error:', err);
   }
 
-  // 1b. Direct Google Apps Script Webhook Dual-Dispatch (100% Client-Side Guaranteed Delivery)
-  try {
-    const gasUrl = 'https://script.google.com/macros/s/AKfycbyuU4qlF54BxJweWac1cVUS4xOsxfxuMGjctOSS8vKXqzJJ572MqItxO8bjG4AYQmaI8w/exec';
-    fetch(gasUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({
-        type: 'rfq',
-        to: 'info@kiyanexports.com, kiyanexports.express@gmail.com',
-        productName,
-        companyName,
-        contactName,
-        email,
-        phone,
-        targetQuantity,
-        shippingCountry,
-        customizationDetails
-      })
-    }).catch(() => {});
-  } catch (gasErr) {}
 
   if (submitBtn) {
     submitBtn.disabled = false;
@@ -1499,24 +1478,6 @@ async function handleContactFormSubmit(event) {
     });
   } catch (err) {}
 
-  // 2. Client-Side Direct Google Apps Script Webhook Dual-Dispatch
-  try {
-    const gasUrl = 'https://script.google.com/macros/s/AKfycbyuU4qlF54BxJweWac1cVUS4xOsxfxuMGjctOSS8vKXqzJJ572MqItxO8bjG4AYQmaI8w/exec';
-    fetch(gasUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({
-        type: 'contact',
-        to: 'info@kiyanexports.com, kiyanexports.express@gmail.com',
-        productName: `Contact Message: ${subject || 'General Inquiry'}`,
-        contactName: name,
-        companyName: 'Website Contact Form',
-        email: email,
-        customizationDetails: message
-      })
-    }).catch(() => {});
-  } catch (e) {}
 
   if (btn) {
     btn.disabled = false;
@@ -1924,23 +1885,6 @@ function showOrderSuccessScreen(order, paymentId) {
 
   const successEl = document.getElementById('orderSuccess');
   if (successEl) {
-    // Direct Google Apps Script Webhook Dual-Dispatch for Order Notification
-    try {
-      const gasUrl = 'https://script.google.com/macros/s/AKfycbyuU4qlF54BxJweWac1cVUS4xOsxfxuMGjctOSS8vKXqzJJ572MqItxO8bjG4AYQmaI8w/exec';
-      fetch(gasUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify({
-          type: 'order',
-          to: 'info@kiyanexports.com, kiyanexports.express@gmail.com',
-          orderId: order.orderId,
-          customerName: order.customer ? order.customer.name : 'Customer',
-          totalPayable: order.financials ? order.financials.totalPayable : 0,
-          email: order.customer ? order.customer.email : ''
-        })
-      }).catch(() => {});
-    } catch (e) {}
 
     const isPaid = paymentId && paymentId !== 'COD';
     successEl.innerHTML = `
