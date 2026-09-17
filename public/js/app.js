@@ -1550,6 +1550,28 @@ async function submitRfq(event) {
     const localOrders = JSON.parse(localStorage.getItem('kiyan_local_orders') || '[]');
     localOrders.unshift(localRfq);
     localStorage.setItem('kiyan_local_orders', JSON.stringify(localOrders));
+
+    // Also register buyer into local users database
+    let localUsers = JSON.parse(localStorage.getItem('kiyan_local_users') || '[]');
+    if (!localUsers || localUsers.length === 0) {
+      localUsers = Array.isArray(window.DEFAULT_USERS) ? [...window.DEFAULT_USERS] : [];
+    }
+    const userExists = localUsers.some(u => (u.email || '').toLowerCase() === email.toLowerCase());
+    if (!userExists && email) {
+      localUsers.unshift({
+        id: 'cust_' + Date.now(),
+        fullName: contactName,
+        email: email,
+        phone: phone,
+        companyName: companyName,
+        address: shippingCountry,
+        city: '',
+        pin: '',
+        role: 'Wholesale Buyer',
+        createdAt: new Date().toISOString()
+      });
+      localStorage.setItem('kiyan_local_users', JSON.stringify(localUsers));
+    }
   } catch (e) {}
 
   const rfqSubject = `[NEW RFQ QUOTE]: ${productName} (${targetQuantity} Pcs) - ${companyName || contactName}`;
@@ -4053,6 +4075,10 @@ async function loadStandaloneAdminOrders() {
     } catch (e) {}
   }
 
+  if (ordersList.length === 0 && Array.isArray(window.DEFAULT_ORDERS) && window.DEFAULT_ORDERS.length > 0) {
+    ordersList = [...window.DEFAULT_ORDERS];
+  }
+
   if (ordersList.length > 0) {
     tbody.innerHTML = ordersList.map(o => `
       <tr>
@@ -4107,33 +4133,66 @@ async function loadStandaloneAdminUsers(isSilent = false) {
   const tbody = document.getElementById('dashStandaloneUsersTableBody');
   if (!tbody) return;
 
+  // 1. Get initial local users or seed from window.DEFAULT_USERS
+  let users = [];
   try {
-    if (!isSilent && (!tbody.children || tbody.children.length === 0 || tbody.innerText.includes('Loading'))) {
-      tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 25px;">Loading registered customers...</td></tr>';
+    const saved = localStorage.getItem('kiyan_local_users');
+    if (saved) {
+      users = JSON.parse(saved);
     }
-    const res = await fetch('/api/admin/users');
-    const data = await res.json();
+  } catch (e) {}
 
-    if (data.success && data.users && data.users.length > 0) {
-      tbody.innerHTML = data.users.map((u, idx) => `
-        <tr>
-          <td><strong>${idx + 1}</strong></td>
-          <td style="font-size: 0.82rem; color: #555;">${u.createdAtIST || new Date(u.createdAt || Date.now()).toLocaleString()}</td>
-          <td><strong>${u.fullName}</strong></td>
-          <td><a href="mailto:${u.email}" style="color: var(--royal-emerald); font-weight: 600;">${u.email}</a></td>
-          <td><a href="tel:${u.phone}" style="color: var(--text-dark);">${u.phone || 'N/A'}</a></td>
-          <td style="font-size: 0.85rem; color: #555;">${u.address ? `${u.address}, ${u.city || ''} ${u.pin || ''}` : 'Not provided'}</td>
-          <td><span style="font-size: 0.8rem; font-weight: 700; background: ${u.role === 'admin' ? '#e74c3c' : '#27ae60'}; color: white; padding: 4px 10px; border-radius: 12px;">${(u.role || 'USER').toUpperCase()}</span></td>
-        </tr>
-      `).join('');
-    } else {
-      const errMsg = data.message || data.error || 'No registered customers found in database.';
-      tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 25px; color: #666;">${errMsg}</td></tr>`;
+  if (!users || users.length === 0) {
+    users = Array.isArray(window.DEFAULT_USERS) ? [...window.DEFAULT_USERS] : [];
+    if (users.length > 0) {
+      try {
+        localStorage.setItem('kiyan_local_users', JSON.stringify(users));
+      } catch (e) {}
+    }
+  }
+
+  const renderRows = (list) => {
+    if (!list || list.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 25px; color: #666;">No registered customers found in database.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = list.map((u, idx) => `
+      <tr>
+        <td><strong>${idx + 1}</strong></td>
+        <td style="font-size: 0.82rem; color: #555;">${u.createdAtIST || (u.createdAt ? new Date(u.createdAt).toLocaleString() : 'Recent')}</td>
+        <td><strong>${u.fullName || u.contactName || 'Valued Customer'}</strong></td>
+        <td><a href="mailto:${u.email}" style="color: var(--royal-emerald); font-weight: 600;">${u.email || 'N/A'}</a></td>
+        <td><a href="tel:${u.phone}" style="color: var(--text-dark);">${u.phone || 'N/A'}</a></td>
+        <td style="font-size: 0.85rem; color: #555;">${u.companyName ? `<strong>${u.companyName}</strong>, ` : ''}${u.address ? `${u.address}${u.city ? ', ' + u.city : ''}` : (u.shippingCountry || 'Not provided')}</td>
+        <td><span style="font-size: 0.8rem; font-weight: 700; background: ${u.role === 'admin' ? '#e74c3c' : '#27ae60'}; color: white; padding: 4px 10px; border-radius: 12px;">${(u.role || 'USER').toUpperCase()}</span></td>
+      </tr>
+    `).join('');
+  };
+
+  if (users.length > 0) {
+    renderRows(users);
+  } else if (!isSilent) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 25px;">Loading registered customers...</td></tr>';
+  }
+
+  // 2. Safely attempt server fetch in background (Node API or cPanel PHP endpoint)
+  try {
+    const res = await fetch('/api/admin/users');
+    if (res.ok) {
+      const contentType = res.headers.get('content-type') || '';
+      if (contentType.includes('application/json')) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.users) && data.users.length > 0) {
+          users = data.users;
+          try {
+            localStorage.setItem('kiyan_local_users', JSON.stringify(users));
+          } catch (e) {}
+          renderRows(users);
+        }
+      }
     }
   } catch (err) {
-    if (!isSilent) {
-      tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: red; padding: 25px;">Failed to load users: ${err.message}</td></tr>`;
-    }
+    console.log('Admin users fetch notice (running in local mode):', err.message);
   }
 }
 

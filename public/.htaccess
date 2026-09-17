@@ -5,6 +5,10 @@
   RewriteRule ^certificates/(.*)$ Certificates/$1 [L,NC]
   RewriteRule ^catelouges/(.*)$ catalogues/$1 [L,NC]
   RewriteRule ^Catelouges/(.*)$ catalogues/$1 [L,NC]
+
+  # Route Admin API endpoints to PHP handlers on cPanel
+  RewriteRule ^api/admin/users/?$ api-users.php [L,QSA]
+  RewriteRule ^api/admin/orders/?$ api-orders.php [L,QSA]
 </IfModule>
 
 <FilesMatch "\.(pdf)$">

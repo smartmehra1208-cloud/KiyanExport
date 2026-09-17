@@ -32,6 +32,54 @@ $customization = isset($data['customizationDetails']) ? htmlspecialchars($data['
 $to = 'info@kiyanexports.com, kiyanexports.express@gmail.com';
 $subject = isset($data['subject']) && !empty($data['subject']) ? $data['subject'] : ('[NEW RFQ QUOTE]: ' . $productName . ' (' . $targetQuantity . ' Pcs) - ' . ($companyName !== 'N/A' ? $companyName : $contactName));
 
+// Automatically log RFQ and buyer into local server files for Admin Panel
+try {
+    $ordersFile = __DIR__ . '/orders_data.json';
+    $ordersList = file_exists($ordersFile) ? json_decode(file_get_contents($ordersFile), true) : [];
+    if (!is_array($ordersList)) $ordersList = [];
+    $newOrder = [
+        'orderId' => 'RFQ-' . date('ymd') . '-' . substr(strval(time()), -4),
+        'customerName' => $contactName,
+        'customerEmail' => $email,
+        'customerPhone' => $phone,
+        'companyName' => $companyName,
+        'customerAddress' => $shippingCountry,
+        'paymentMethod' => 'B2B Wholesale Inquiry / RFQ Quote',
+        'items' => [['name' => $productName, 'quantity' => $targetQuantity]],
+        'totalAmount' => 0,
+        'status' => 'Pending',
+        'createdAt' => date('c')
+    ];
+    array_unshift($ordersList, $newOrder);
+    @file_put_contents($ordersFile, json_encode($ordersList, JSON_PRETTY_PRINT));
+
+    $usersFile = __DIR__ . '/users_data.json';
+    $usersList = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
+    if (!is_array($usersList)) $usersList = [];
+    $userExists = false;
+    foreach ($usersList as $u) {
+        if (isset($u['email']) && strtolower($u['email']) === strtolower($email)) {
+            $userExists = true;
+            break;
+        }
+    }
+    if (!$userExists && !empty($email)) {
+        array_unshift($usersList, [
+            'id' => 'cust_' . time(),
+            'fullName' => $contactName,
+            'email' => $email,
+            'phone' => $phone,
+            'companyName' => $companyName,
+            'address' => $shippingCountry,
+            'city' => '',
+            'pin' => '',
+            'role' => 'user',
+            'createdAt' => date('c')
+        ]);
+        @file_put_contents($usersFile, json_encode($usersList, JSON_PRETTY_PRINT));
+    }
+} catch (Exception $e) {}
+
 // Use client HTML card if passed, or default Photo 2 card
 $html = isset($data['html']) && !empty($data['html']) ? $data['html'] : '';
 if (empty($html)) {
