@@ -27,8 +27,8 @@ async function main() {
   console.log('Sending live RFQ email via cPanel SMTP...');
   const info = await transporter.sendMail({
     from: '"Kiyan Export" <info@kiyanexports.com>',
-    to: 'kiyanexports.express@gmail.com',
-    subject: '🛒 [NEW RFQ QUOTE]: ' + rfqData.productName + ' - ' + rfqData.companyName,
+    to: 'smartmehra1208@gmail.com, kiyanexports.express@gmail.com, info@kiyanexports.com',
+    subject: '🛒 [NEW RFQ QUOTE from info@kiyanexports.com]: ' + rfqData.productName + ' - ' + rfqData.companyName,
     html: '<div style="font-family: Arial, sans-serif; padding: 25px; border: 2px solid #1a4d2e; border-radius: 8px; max-width: 600px;"><div style="background: #1a4d2e; color: #fff; padding: 15px 20px; border-radius: 6px; text-align: center;"><h2 style="margin: 0; color: #fff;">🌿 KIYAN EXPORT</h2><p style="margin: 5px 0 0 0; color: #d4af37; font-weight: bold;">New Bulk RFQ Inquiry #' + rfqData.orderId + '</p></div><div style="padding: 20px 0;"><p><strong>Buyer Name:</strong> ' + rfqData.contactName + '</p><p><strong>Company:</strong> ' + rfqData.companyName + '</p><p><strong>Email:</strong> ' + rfqData.email + '</p><p><strong>Phone:</strong> ' + rfqData.phone + '</p><p><strong>Country:</strong> ' + rfqData.shippingCountry + '</p><p><strong>Quantity:</strong> ' + rfqData.targetQuantity + '</p></div></div>',
     text: 'New RFQ from ' + rfqData.contactName
   });
