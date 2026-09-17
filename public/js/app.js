@@ -675,15 +675,21 @@ async function loadUserOrders() {
 
 // ===== FETCH PRODUCTS FROM API =====
 async function fetchProducts() {
+  if (window.DEFAULT_PRODUCTS && window.DEFAULT_PRODUCTS.length > 0 && productsData.length === 0) {
+    productsData = [...window.DEFAULT_PRODUCTS];
+    renderFilteredProducts();
+  }
   try {
     const res = await fetch('/api/products');
-    const data = await res.json();
-    if (data.success && data.products) {
-      productsData = data.products;
-      renderFilteredProducts();
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && data.products && data.products.length > 0) {
+        productsData = data.products;
+        renderFilteredProducts();
+      }
     }
   } catch (err) {
-    console.error('Error loading products from server:', err);
+    console.warn('API products notice (using resilient fallback):', err.message);
   }
 }
 
@@ -2053,18 +2059,6 @@ function goToSlide(index) {
 // NO-CODE ADMIN PANEL & CMS LOGIC
 // ==========================================
 
-async function fetchAndApplySiteContent() {
-  try {
-    const res = await fetch('/api/site/content');
-    const data = await res.json();
-    if (data.success && data.content) {
-      applySiteContentToDOM(data.content);
-    }
-  } catch (err) {
-    console.error('Error fetching site content:', err);
-  }
-}
-
 function applySiteContentToDOM(content) {
   if (!content) return;
 
@@ -3007,20 +3001,31 @@ let currentSiteContentData = null;
 
 // ===== DYNAMIC CMS SITE CONTENT & ASSET MANAGEMENT =====
 async function fetchAndApplySiteContent() {
+  if (window.DEFAULT_SITE_CONTENT && !currentSiteContentData) {
+    currentSiteContentData = window.DEFAULT_SITE_CONTENT;
+    applySiteContentToDOM(window.DEFAULT_SITE_CONTENT);
+    if (typeof populateAdminSiteContentForm === 'function') populateAdminSiteContentForm(window.DEFAULT_SITE_CONTENT);
+    renderCustomerCatalogues(window.DEFAULT_SITE_CONTENT.catalogues || []);
+    renderCustomerCertificates(window.DEFAULT_SITE_CONTENT.certificates || []);
+    renderAdminCataloguesTable(window.DEFAULT_SITE_CONTENT.catalogues || []);
+    renderAdminCertificatesTable(window.DEFAULT_SITE_CONTENT.certificates || []);
+  }
   try {
     const res = await fetch('/api/site/content');
-    const data = await res.json();
-    if (data.success && data.content) {
-      currentSiteContentData = data.content;
-      applySiteContentToDOM(data.content);
-      populateAdminSiteContentForm(data.content);
-      renderCustomerCatalogues(data.content.catalogues || []);
-      renderCustomerCertificates(data.content.certificates || []);
-      renderAdminCataloguesTable(data.content.catalogues || []);
-      renderAdminCertificatesTable(data.content.certificates || []);
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && data.content) {
+        currentSiteContentData = data.content;
+        applySiteContentToDOM(data.content);
+        populateAdminSiteContentForm(data.content);
+        renderCustomerCatalogues(data.content.catalogues || []);
+        renderCustomerCertificates(data.content.certificates || []);
+        renderAdminCataloguesTable(data.content.catalogues || []);
+        renderAdminCertificatesTable(data.content.certificates || []);
+      }
     }
   } catch (err) {
-    console.error('Failed to load site content from API:', err);
+    console.warn('API content notice (using resilient fallback):', err.message);
   }
 }
 
