@@ -203,7 +203,7 @@ function toggleMobileMenu() {
 // ===== PAGE NAVIGATION (SPA) =====
 function openAdminDirectly() {
   const cleanEmail = currentUser ? (currentUser.email || '').toLowerCase().trim() : '';
-  const isAdmin = currentUser && (currentUser.role === 'admin' || cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiorawellness.com' || cleanEmail === 'kiyanexports.express@gmail.com');
+  const isAdmin = currentUser && (currentUser.role === 'admin' || cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiorawellness.com' || cleanEmail === 'kiyanexports.express@gmail.com' || cleanEmail === 'info@kiyanexports.com');
 
   if (!isAdmin) {
     alert('🔒 Administrator Access Required:\n\nPlease login with Admin credentials (e.g. admin@kiyanwellness.com) to access the Admin Panel.');
@@ -323,7 +323,7 @@ function updateAuthUI() {
     if (navUserName) navUserName.textContent = currentUser.fullName.split(' ')[0];
 
     const cleanEmail = (currentUser.email || '').toLowerCase().trim();
-    const isAdmin = currentUser.role === 'admin' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'kiyanexports.express@gmail.com';
+    const isAdmin = currentUser.role === 'admin' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'kiyanexports.express@gmail.com' || cleanEmail === 'info@kiyanexports.com';
     
     if (navAdminBtn) navAdminBtn.style.display = isAdmin ? 'inline-block' : 'none';
     if (dropdownAdminBtn) dropdownAdminBtn.style.display = isAdmin ? 'flex' : 'none';
@@ -431,7 +431,7 @@ async function handleLogin(event) {
       closeAuthModal();
 
       const userEmailClean = (currentUser.email || '').toLowerCase().trim();
-      const isAdmin = currentUser.role === 'admin' || userEmailClean === 'admin@kiyanwellness.com' || userEmailClean === 'sales@kiyanexports.com' || userEmailClean === 'kiyanexports.express@gmail.com';
+      const isAdmin = currentUser.role === 'admin' || userEmailClean === 'admin@kiyanwellness.com' || userEmailClean === 'sales@kiyanexports.com' || userEmailClean === 'kiyanexports.express@gmail.com' || userEmailClean === 'info@kiyanexports.com';
 
       if (isAdmin) {
         document.body.classList.add('admin-mode-active');
@@ -765,7 +765,7 @@ function renderProductGrids(products) {
     return;
   }
 
-  const isAdmin = currentUser && (currentUser.role === 'admin' || currentUser.email === 'admin@kiyanwellness.com' || currentUser.email === 'kiyanexports.express@gmail.com');
+  const isAdmin = currentUser && (currentUser.role === 'admin' || currentUser.email === 'admin@kiyanwellness.com' || currentUser.email === 'kiyanexports.express@gmail.com' || currentUser.email === 'info@kiyanexports.com');
 
   products.forEach(product => {
     const imgUrl = product.image.startsWith('/') ? product.image : '/' + product.image;
@@ -1454,7 +1454,7 @@ async function submitRfq(event) {
       headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({
         type: 'rfq',
-        to: 'kiyanexports.express@gmail.com',
+        to: 'info@kiyanexports.com, kiyanexports.express@gmail.com',
         productName,
         companyName,
         contactName,
@@ -1508,7 +1508,7 @@ async function handleContactFormSubmit(event) {
       headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({
         type: 'contact',
-        to: 'kiyanexports.express@gmail.com',
+        to: 'info@kiyanexports.com, kiyanexports.express@gmail.com',
         productName: `Contact Message: ${subject || 'General Inquiry'}`,
         contactName: name,
         companyName: 'Website Contact Form',
@@ -1933,7 +1933,7 @@ function showOrderSuccessScreen(order, paymentId) {
         headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({
           type: 'order',
-          to: 'kiyanexports.express@gmail.com',
+          to: 'info@kiyanexports.com, kiyanexports.express@gmail.com',
           orderId: order.orderId,
           customerName: order.customer ? order.customer.name : 'Customer',
           totalPayable: order.financials ? order.financials.totalPayable : 0,

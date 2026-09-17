@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 
-const RECIPIENT_EMAIL = process.env.RFQ_RECIPIENT_EMAIL || 'kiyanexports.express@gmail.com';
+const RECIPIENT_EMAIL = process.env.RFQ_RECIPIENT_EMAIL || 'info@kiyanexports.com, kiyanexports.express@gmail.com';
 
 // Direct Hosted Cloudinary Logo URL (0% Attachment Chip & 100% Reliable Gmail Display)
 const LOGO_SRC = 'https://res.cloudinary.com/arkc76lz/image/upload/KIyan_export.jpg.jpg';
@@ -350,7 +350,7 @@ async function sendOrderConfirmationEmail(orderData) {
         <!-- Footer -->
         <div class="footer-card">
           To learn more about ordering, go to Ordering Help on Kiyan Export.<br>
-          If you want more information or need assistance, contact <a href="mailto:kiyanexport54@gmail.com" style="color: #0066c0; text-decoration: none;">kiyanexport54@gmail.com</a>.<br>
+          If you want more information or need assistance, contact <a href="mailto:info@kiyanexports.com" style="color: #0066c0; text-decoration: none;">info@kiyanexports.com</a>.<br>
           We hope to see you again soon!
           <div class="footer-brand">kiyanexports.com</div>
         </div>

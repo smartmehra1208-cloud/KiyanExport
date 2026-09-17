@@ -8,7 +8,7 @@
  * =========================================================================
  */
 
-var OFFICIAL_ADMIN_EMAIL = "kiyanexports.express@gmail.com";
+var OFFICIAL_ADMIN_EMAIL = "info@kiyanexports.com, kiyanexports.express@gmail.com";
 
 function doPost(e) {
   try {

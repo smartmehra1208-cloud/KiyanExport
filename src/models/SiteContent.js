@@ -14,7 +14,7 @@ const siteContentSchema = new mongoose.Schema({
   aboutTitle: { type: String, default: 'Empowering Natural Health with Kiyan Exports' },
   aboutP1: { type: String, default: 'Kiyan Exports, established in 2014, is a premier direct-to-consumer B2C retail e-commerce platform dedicated to 100% organic herbal supplements, adaptogens, Himalayan Shilajit, Ashwagandha, Moringa, and traditional botanical remedies.' },
   aboutP2: { type: String, default: 'We bring nature\'s purest herbs straight to your doorstep. Every product is lab-tested for heavy metals, potency, and active ingredients, ensuring maximum efficacy for your daily wellness journey.' },
-  contactEmail: { type: String, default: 'kiyanexport54@gmail.com' },
+  contactEmail: { type: String, default: 'info@kiyanexports.com' },
   contactAddress: { type: String, default: 'Gomti Nagar, Lucknow, UP - 226010, India' },
   contactPhone: { type: String, default: '+91 9876543210' },
   footerDesc: { type: String },
