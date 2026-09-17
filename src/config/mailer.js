@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 
-const RECIPIENT_EMAIL = process.env.RFQ_RECIPIENT_EMAIL || 'info@kiyanexports.com, kiyanexports.express@gmail.com, smartmehra1208@gmail.com';
+const RECIPIENT_EMAIL = process.env.RFQ_RECIPIENT_EMAIL || 'info@kiyanexports.com, kiyanexports.express@gmail.com';
 
 // Direct Hosted Cloudinary Logo URL (0% Attachment Chip & 100% Reliable Gmail Display)
 const LOGO_SRC = 'https://res.cloudinary.com/arkc76lz/image/upload/KIyan_export.jpg.jpg';
