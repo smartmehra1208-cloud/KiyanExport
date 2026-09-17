@@ -195,18 +195,18 @@ async function sendRfqEmail(rfqData) {
     html: htmlContent
   };
 
-  const httpsRes = await sendEmailOverHttps(mailOptions);
-  if (httpsRes && httpsRes.success) {
-    return httpsRes;
-  }
-
+  // 1. Try Official cPanel SMTP First (info@kiyanexports.com on Port 465 SSL)
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log(`✉️ SMTP RFQ Notification dispatched to ${RECIPIENT_EMAIL}! MessageId: ${info.messageId}`);
-    return { success: true, messageId: info.messageId };
-  } catch (error) {
-    console.warn(`⚠️ SMTP RFQ Transporter Warning: ${error.message}`);
-    return { success: false, error: error.message };
+    console.log(`✉️ [Official cPanel SMTP] RFQ Notification dispatched to ${RECIPIENT_EMAIL}! MessageId: ${info.messageId}`);
+    return { success: true, messageId: info.messageId, provider: 'cpanel-smtp' };
+  } catch (smtpErr) {
+    console.warn(`⚠️ cPanel SMTP dispatch warning (${smtpErr.message}). Attempting HTTPS Webhook fallback...`);
+    const httpsRes = await sendEmailOverHttps(mailOptions);
+    if (httpsRes && httpsRes.success) {
+      return { ...httpsRes, provider: 'webhook-fallback' };
+    }
+    return { success: false, error: smtpErr.message };
   }
 }
 
@@ -362,7 +362,7 @@ async function sendOrderConfirmationEmail(orderData) {
   const recipients = Array.from(new Set([RECIPIENT_EMAIL, customerEmail])).filter(Boolean).join(', ');
 
   const mailOptions = {
-    from: `"Kiyan Export" <${process.env.SMTP_USER || RECIPIENT_EMAIL}>`,
+    from: `"Kiyan Export" <${process.env.SMTP_USER || 'info@kiyanexports.com'}>`,
     to: recipients,
     replyTo: customerEmail || RECIPIENT_EMAIL,
     subject: `Order Confirmation #${orderId}`,
@@ -370,18 +370,18 @@ async function sendOrderConfirmationEmail(orderData) {
     html: htmlContent
   };
 
-  const httpsRes = await sendEmailOverHttps(mailOptions);
-  if (httpsRes && httpsRes.success) {
-    return httpsRes;
-  }
-
+  // 1. Try Official cPanel SMTP First (info@kiyanexports.com on Port 465 SSL)
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log(`✉️ SMTP Amazon-Style Order Confirmation Email dispatched to ${recipients}! MessageId: ${info.messageId}`);
-    return { success: true, messageId: info.messageId };
-  } catch (error) {
-    console.warn(`⚠️ SMTP Transporter Warning for Order #${orderId}: ${error.message}.`);
-    return { success: false, error: error.message };
+    console.log(`✉️ [Official cPanel SMTP] Order Confirmation dispatched to ${recipients}! MessageId: ${info.messageId}`);
+    return { success: true, messageId: info.messageId, provider: 'cpanel-smtp' };
+  } catch (smtpErr) {
+    console.warn(`⚠️ cPanel SMTP dispatch warning for Order #${orderId} (${smtpErr.message}). Attempting HTTPS Webhook fallback...`);
+    const httpsRes = await sendEmailOverHttps(mailOptions);
+    if (httpsRes && httpsRes.success) {
+      return { ...httpsRes, provider: 'webhook-fallback' };
+    }
+    return { success: false, error: smtpErr.message };
   }
 }
 
