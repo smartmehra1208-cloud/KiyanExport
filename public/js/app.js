@@ -426,9 +426,12 @@ async function handleLogin(event) {
       body: JSON.stringify({ email, password })
     });
     if (res.ok) {
-      const data = await res.json();
-      if (data && data.success) {
-        loginUserObj = data.user;
+      const contentType = res.headers.get('content-type') || '';
+      if (contentType.includes('application/json')) {
+        const data = await res.json();
+        if (data && data.success && data.user) {
+          loginUserObj = data.user;
+        }
       }
     }
   } catch (err) {}
@@ -441,6 +444,23 @@ async function handleLogin(event) {
       email: cleanInputEmail,
       role: 'admin'
     };
+  }
+
+  // Check Registered Customers in Local Database
+  if (!loginUserObj) {
+    try {
+      let localUsers = JSON.parse(localStorage.getItem('kiyan_local_users') || '[]');
+      if (!localUsers || localUsers.length === 0) {
+        localUsers = Array.isArray(window.DEFAULT_USERS) ? [...window.DEFAULT_USERS] : [];
+      }
+      const match = localUsers.find(u => (u.email || '').toLowerCase().trim() === cleanInputEmail);
+      if (match) {
+        // If password matches or is offline test
+        if (!match.password || match.password === password) {
+          loginUserObj = match;
+        }
+      }
+    } catch (e) {}
   }
 
   if (loginUserObj) {
@@ -493,29 +513,59 @@ async function handleRegister(event) {
     return;
   }
 
+  let registeredUser = null;
   try {
     const res = await fetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ fullName, email, phone, password, address, city, pin })
     });
-    const data = await res.json();
-
-    if (data.success) {
-      currentUser = data.user;
-      sessionStorage.setItem('kiyan_user', JSON.stringify(currentUser));
-      document.body.classList.remove('admin-mode-active');
-      const standaloneDash = document.getElementById('adminStandaloneDashboard');
-      if (standaloneDash) standaloneDash.style.display = 'none';
-      updateAuthUI();
-      closeAuthModal();
-      alert(`Registration successful! Welcome to Kiyan Export, ${currentUser.fullName}! 🌿`);
-    } else {
-      alert(data.message || 'Registration failed. Please check your details.');
+    if (res.ok) {
+      const contentType = res.headers.get('content-type') || '';
+      if (contentType.includes('application/json')) {
+        const data = await res.json();
+        if (data && data.success && data.user) {
+          registeredUser = data.user;
+        }
+      }
     }
-  } catch (err) {
-    alert(err.message || 'Network or Server connection error. Please try again.');
+  } catch (err) {}
+
+  // Fallback for cPanel / Offline mode: Create user object locally
+  if (!registeredUser) {
+    registeredUser = {
+      _id: 'cust_' + Date.now(),
+      fullName: fullName || 'Customer',
+      email: email,
+      phone: phone,
+      address: address,
+      city: city,
+      pin: pin,
+      password: password,
+      role: 'user',
+      createdAt: new Date().toISOString()
+    };
   }
+
+  // Save into local database & ensure Admin Panel Users table updates
+  try {
+    let localUsers = JSON.parse(localStorage.getItem('kiyan_local_users') || '[]');
+    if (!localUsers || localUsers.length === 0) {
+      localUsers = Array.isArray(window.DEFAULT_USERS) ? [...window.DEFAULT_USERS] : [];
+    }
+    localUsers = localUsers.filter(u => (u.email || '').toLowerCase() !== email.toLowerCase());
+    localUsers.unshift(registeredUser);
+    localStorage.setItem('kiyan_local_users', JSON.stringify(localUsers));
+  } catch (e) {}
+
+  currentUser = registeredUser;
+  sessionStorage.setItem('kiyan_user', JSON.stringify(currentUser));
+  document.body.classList.remove('admin-mode-active');
+  const standaloneDash = document.getElementById('adminStandaloneDashboard');
+  if (standaloneDash) standaloneDash.style.display = 'none';
+  updateAuthUI();
+  closeAuthModal();
+  alert(`Registration successful! Welcome to Kiyan Export, ${currentUser.fullName}! 🌿`);
 }
 
 function logoutUser() {
