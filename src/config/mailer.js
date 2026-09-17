@@ -191,7 +191,7 @@ async function sendRfqEmail(rfqData) {
     to: RECIPIENT_EMAIL,
     replyTo: email || RECIPIENT_EMAIL,
     name: contactName ? `${contactName} (${email || ''})` : 'Kiyan Export Buyer',
-    subject: `🛒 [NEW RFQ QUOTE]: ${productName || 'Herbal Extract'} (${targetQuantity || '500'} Pcs) - ${companyName || contactName}`,
+    subject: `[NEW RFQ QUOTE]: ${productName || 'Herbal Extract'} (${targetQuantity || '500'} Pcs) - ${companyName || contactName}`,
     text: `New RFQ Quote Request\nProduct: ${productName}\nQuantity: ${targetQuantity}\nBuyer: ${contactName}\nCompany: ${companyName}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${shippingCountry}\nSpecifications: ${customizationDetails}`,
     html: htmlContent
   };

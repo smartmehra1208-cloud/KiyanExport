@@ -1505,7 +1505,7 @@ async function submitRfq(event) {
   const shippingCountry = document.getElementById('rfqCountry').value || 'International';
   const customizationDetails = document.getElementById('rfqCustomization').value || '';
 
-  const rfqSubject = `🛒 [NEW RFQ QUOTE]: ${productName} (${targetQuantity} Pcs) - ${companyName || contactName}`;
+  const rfqSubject = `[NEW RFQ QUOTE]: ${productName} (${targetQuantity} Pcs) - ${companyName || contactName}`;
   const rfqHtml = buildRfqEmailHtml({
     productName,
     companyName,
@@ -1539,7 +1539,7 @@ async function submitRfq(event) {
 
   // 1a. Native cPanel Server Mailer (Direct from info@kiyanexports.com with Buyer Identity - 0% smart.mehra)
   try {
-    fetch('/send-mail.php', {
+    const phpRes = await fetch('/send-mail.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -1547,41 +1547,47 @@ async function submitRfq(event) {
         subject: rfqSubject,
         html: rfqHtml
       })
-    }).then(res => {
-      if (res.ok) dispatchSuccess = true;
-    }).catch(() => {});
+    });
+    if (phpRes.ok) {
+      const phpData = await phpRes.json();
+      if (phpData && phpData.success) {
+        dispatchSuccess = true;
+      }
+    }
   } catch (phpErr) {}
 
-  // 1b. Cloud Webhook Dual-Dispatch (Guaranteed 100% Delivery with Photo 2 Card & Buyer Identity)
-  try {
-    const gasUrl = 'https://script.google.com/macros/s/AKfycbyuU4qlF54BxJweWac1cVUS4xOsxfxuMGjctOSS8vKXqzJJ572MqItxO8bjG4AYQmaI8w/exec';
-    fetch(gasUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({
-        type: 'rfq',
-        to: 'info@kiyanexports.com, kiyanexports.express@gmail.com',
-        subject: rfqSubject,
-        html: rfqHtml,
-        text: `New RFQ Quote Request\nProduct: ${productName}\nQuantity: ${targetQuantity}\nBuyer: ${contactName}\nCompany: ${companyName}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${shippingCountry}\nSpecifications: ${customizationDetails}`,
-        replyTo: email,
-        name: `${contactName} (${email})`,
-        fromName: `${contactName} (${email})`,
-        productName,
-        companyName,
-        contactName,
-        email,
-        phone,
-        targetQuantity,
-        shippingCountry,
-        customizationDetails
-      })
-    }).then(() => {
+  // 1b. Cloud Webhook Fallback (Only engages if server mailer is unavailable)
+  if (!dispatchSuccess) {
+    try {
+      const gasUrl = 'https://script.google.com/macros/s/AKfycbyuU4qlF54BxJweWac1cVUS4xOsxfxuMGjctOSS8vKXqzJJ572MqItxO8bjG4AYQmaI8w/exec';
+      fetch(gasUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({
+          type: 'rfq',
+          to: 'info@kiyanexports.com, kiyanexports.express@gmail.com',
+          subject: rfqSubject,
+          html: rfqHtml,
+          text: `New RFQ Quote Request\nProduct: ${productName}\nQuantity: ${targetQuantity}\nBuyer: ${contactName}\nCompany: ${companyName}\nEmail: ${email}\nPhone: ${phone}\nCountry: ${shippingCountry}\nSpecifications: ${customizationDetails}`,
+          replyTo: email,
+          name: `${contactName} (${email})`,
+          fromName: `${contactName} (${email})`,
+          productName,
+          companyName,
+          contactName,
+          email,
+          phone,
+          targetQuantity,
+          shippingCountry,
+          customizationDetails
+        })
+      }).then(() => {
+        dispatchSuccess = true;
+      }).catch(() => {});
       dispatchSuccess = true;
-    }).catch(() => {});
-    dispatchSuccess = true; // Non-blocking browser fetch dispatched
-  } catch (gasErr) {}
+    } catch (gasErr) {}
+  }
 
   if (submitBtn) {
     submitBtn.disabled = false;

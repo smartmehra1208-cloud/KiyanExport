@@ -36,13 +36,13 @@ function doPost(e) {
     var subject = data.subject || "";
     if (!subject) {
       if (type === "rfq" || data.productName) {
-        subject = "🛒 [NEW RFQ QUOTE]: " + prodName + " (" + qty + " Pcs) - " + (compName !== "N/A" ? compName : contactName);
+        subject = "[NEW RFQ QUOTE]: " + prodName + " (" + qty + " Pcs) - " + (compName !== "N/A" ? compName : contactName);
       } else if (type === "order" || data.orderId) {
-        subject = "📦 [NEW ORDER]: #" + (data.orderId || "KYN-ORDER") + " - " + contactName;
+        subject = "[NEW ORDER]: #" + (data.orderId || "KYN-ORDER") + " - " + contactName;
       } else if (type === "contact") {
-        subject = "✉️ [CONTACT INQUIRY]: " + (data.subject || "General Inquiry") + " - " + contactName;
+        subject = "[CONTACT INQUIRY]: " + (data.subject || "General Inquiry") + " - " + contactName;
       } else {
-        subject = "🛒 [NEW RFQ QUOTE]: " + prodName + " (" + qty + " Pcs) - " + contactName;
+        subject = "[NEW RFQ QUOTE]: " + prodName + " (" + qty + " Pcs) - " + contactName;
       }
     }
 

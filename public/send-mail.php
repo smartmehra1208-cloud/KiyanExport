@@ -30,7 +30,7 @@ $shippingCountry = isset($data['shippingCountry']) ? htmlspecialchars($data['shi
 $customization = isset($data['customizationDetails']) ? htmlspecialchars($data['customizationDetails']) : (isset($data['message']) ? htmlspecialchars($data['message']) : '');
 
 $to = 'info@kiyanexports.com, kiyanexports.express@gmail.com';
-$subject = isset($data['subject']) && !empty($data['subject']) ? $data['subject'] : ('🛒 [NEW RFQ QUOTE]: ' . $productName . ' (' . $targetQuantity . ' Pcs) - ' . ($companyName !== 'N/A' ? $companyName : $contactName));
+$subject = isset($data['subject']) && !empty($data['subject']) ? $data['subject'] : ('[NEW RFQ QUOTE]: ' . $productName . ' (' . $targetQuantity . ' Pcs) - ' . ($companyName !== 'N/A' ? $companyName : $contactName));
 
 // Use client HTML card if passed, or default Photo 2 card
 $html = isset($data['html']) && !empty($data['html']) ? $data['html'] : '';
