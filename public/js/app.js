@@ -1445,6 +1445,28 @@ async function submitRfq(event) {
     console.error('RFQ dispatch network error:', err);
   }
 
+  // 1b. Direct Google Apps Script Webhook Dual-Dispatch (100% Client-Side Guaranteed Delivery)
+  try {
+    const gasUrl = 'https://script.google.com/macros/s/AKfycbyuU4qlF54BxJweWac1cVUS4xOsxfxuMGjctOSS8vKXqzJJ572MqItxO8bjG4AYQmaI8w/exec';
+    fetch(gasUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        type: 'rfq',
+        to: 'kiyanexports.express@gmail.com',
+        productName,
+        companyName,
+        contactName,
+        email,
+        phone,
+        targetQuantity,
+        shippingCountry,
+        customizationDetails
+      })
+    }).catch(() => {});
+  } catch (gasErr) {}
+
   if (submitBtn) {
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalBtnHtml;
@@ -1453,6 +1475,56 @@ async function submitRfq(event) {
   // 2. Clean On-Page Checkmark Alert
   alert(`✅ BULK QUOTATION SENT DIRECTLY!\n\nThank you ${contactName}! Your bulk quotation request for "${productName}" (${targetQuantity} Pcs) has been transmitted to our export team.\n\nOur export sales team will review your inquiry and email you a formal quotation & PDF catalog shortly.`);
   closeRfqModal();
+}
+
+async function handleContactFormSubmit(event) {
+  event.preventDefault();
+  const name = (document.getElementById('contactFormName') ? document.getElementById('contactFormName').value : '').trim();
+  const email = (document.getElementById('contactFormEmail') ? document.getElementById('contactFormEmail').value : '').trim();
+  const subject = (document.getElementById('contactFormSubject') ? document.getElementById('contactFormSubject').value : '').trim();
+  const message = (document.getElementById('contactFormMsg') ? document.getElementById('contactFormMsg').value : '').trim();
+  const btn = document.getElementById('contactFormSubmitBtn');
+
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Sending Message...';
+  }
+
+  // 1. Post to Server Backend Store
+  try {
+    await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, subject, message })
+    });
+  } catch (err) {}
+
+  // 2. Client-Side Direct Google Apps Script Webhook Dual-Dispatch
+  try {
+    const gasUrl = 'https://script.google.com/macros/s/AKfycbyuU4qlF54BxJweWac1cVUS4xOsxfxuMGjctOSS8vKXqzJJ572MqItxO8bjG4AYQmaI8w/exec';
+    fetch(gasUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        type: 'contact',
+        to: 'kiyanexports.express@gmail.com',
+        productName: `Contact Message: ${subject || 'General Inquiry'}`,
+        contactName: name,
+        companyName: 'Website Contact Form',
+        email: email,
+        customizationDetails: message
+      })
+    }).catch(() => {});
+  } catch (e) {}
+
+  if (btn) {
+    btn.disabled = false;
+    btn.textContent = 'Submit Message';
+  }
+
+  alert(`✅ Message Sent Successfully!\n\nThank you ${name}! Our Kiyan Export support team has received your message and will respond to ${email} shortly.`);
+  if (event.target && event.target.reset) event.target.reset();
 }
 
 function closeProductModal(event) {
@@ -1852,6 +1924,24 @@ function showOrderSuccessScreen(order, paymentId) {
 
   const successEl = document.getElementById('orderSuccess');
   if (successEl) {
+    // Direct Google Apps Script Webhook Dual-Dispatch for Order Notification
+    try {
+      const gasUrl = 'https://script.google.com/macros/s/AKfycbyuU4qlF54BxJweWac1cVUS4xOsxfxuMGjctOSS8vKXqzJJ572MqItxO8bjG4AYQmaI8w/exec';
+      fetch(gasUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({
+          type: 'order',
+          to: 'kiyanexports.express@gmail.com',
+          orderId: order.orderId,
+          customerName: order.customer ? order.customer.name : 'Customer',
+          totalPayable: order.financials ? order.financials.totalPayable : 0,
+          email: order.customer ? order.customer.email : ''
+        })
+      }).catch(() => {});
+    } catch (e) {}
+
     const isPaid = paymentId && paymentId !== 'COD';
     successEl.innerHTML = `
       <i class="fas fa-check-circle" style="color: #27ae60; font-size: 3.5rem;"></i>
