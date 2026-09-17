@@ -1429,6 +1429,7 @@ async function submitRfq(event) {
   const customizationDetails = document.getElementById('rfqCustomization').value || '';
 
   // 1. Post to Server Backend Store & Professional Mailer
+  let dispatchSuccess = false;
   try {
     const res = await fetch('/api/rfq', {
       method: 'POST',
@@ -1438,22 +1439,27 @@ async function submitRfq(event) {
       })
     });
     const data = await res.json();
-    if (!data.success) {
-      console.warn('Backend RFQ dispatch status:', data.message);
+    if (data && data.success) {
+      dispatchSuccess = true;
+    } else {
+      console.warn('Backend RFQ dispatch status:', data);
+      alert('⚠️ Submission notice: ' + (data && data.message ? data.message : 'Please check your inputs and try again.'));
     }
   } catch (err) {
     console.error('RFQ dispatch network error:', err);
+    alert('⚠️ Network connection error. Please make sure the server is reachable and try again.');
   }
-
 
   if (submitBtn) {
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalBtnHtml;
   }
 
-  // 2. Clean On-Page Checkmark Alert
-  alert(`✅ BULK QUOTATION SENT DIRECTLY!\n\nThank you ${contactName}! Your bulk quotation request for "${productName}" (${targetQuantity} Pcs) has been transmitted to our export team.\n\nOur export sales team will review your inquiry and email you a formal quotation & PDF catalog shortly.`);
-  closeRfqModal();
+  if (dispatchSuccess) {
+    // 2. Clean On-Page Checkmark Alert
+    alert(`✅ BULK QUOTATION SENT DIRECTLY!\n\nThank you ${contactName}! Your bulk quotation request for "${productName}" (${targetQuantity} Pcs) has been transmitted to our export team.\n\nOur export sales team will review your inquiry and email you a formal quotation & PDF catalog shortly.`);
+    closeRfqModal();
+  }
 }
 
 async function handleContactFormSubmit(event) {
