@@ -488,7 +488,7 @@ router.post('/auth/register', async (req, res) => {
     }
 
     // Determine role (only explicit admin emails get admin role)
-    const isAdminEmail = cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'admin@kiorawellness.com';
+    const isAdminEmail = cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'admin@kiorawellness.com' || cleanEmail === 'kiyanexports.express@gmail.com';
     const userRole = isAdminEmail ? 'admin' : 'user';
 
     // Salt and hash password securely
@@ -586,7 +586,7 @@ router.post('/auth/login', async (req, res) => {
     // If user does not exist in store, auto-register them seamlessly!
     if (!user) {
       const hashedPassword = await bcrypt.hash(password, 10);
-      const isAdminEmail = cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'admin@kiorawellness.com';
+      const isAdminEmail = cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'admin@kiorawellness.com' || cleanEmail === 'kiyanexports.express@gmail.com';
       const userRole = isAdminEmail ? 'admin' : 'user';
 
       user = {
@@ -657,7 +657,7 @@ router.post('/auth/login', async (req, res) => {
     user.lastLoginAt = new Date().toISOString();
     saveLiveUsersBackup();
 
-    const userRole = user.role || ((cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'admin@kiorawellness.com') ? 'admin' : 'user');
+    const userRole = user.role || ((cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'admin@kiorawellness.com' || cleanEmail === 'kiyanexports.express@gmail.com') ? 'admin' : 'user');
 
     res.json({
       success: true,
@@ -1000,7 +1000,7 @@ router.post('/rfq', async (req, res) => {
       });
     }
 
-    // Dispatch SMTP Email Notification to smart.mehra1208@gmail.com & kiyanexport54@gmail.com
+    // Dispatch SMTP Email Notification to kiyanexports.express@gmail.com
     let emailResult = { success: false };
     try {
       emailResult = await sendRfqEmail(rfqEntry);
@@ -1275,7 +1275,7 @@ router.post('/contact', async (req, res) => {
       console.warn('⚠️ Contact DB insertion notice:', e.message);
     }
 
-    // 4. Dispatch Email Notification to smart.mehra1208@gmail.com
+    // 4. Dispatch Email Notification to kiyanexports.express@gmail.com
     try {
       await sendRfqEmail({
         productName: `Contact Message: ${subject || 'General Inquiry'}`,

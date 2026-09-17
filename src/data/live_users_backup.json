@@ -107,7 +107,7 @@
   {
     "_id": "6aa1080313f43f12fd4c0906",
     "fullName": "Shaurya",
-    "email": "smart.mehra@gmail.com",
+    "email": "admin@kiyanexports.com",
     "phone": "6394377302",
     "password": "$2b$10$WbSevj7YeuxZzBtINXj.h.5hNhlXp7xxD3xrWaXVgjhX//6P/gDQ2",
     "address": "3/215 Vastu Khand, Gomti Nagar, Lucknow",
@@ -205,13 +205,13 @@
   {
     "_id": "6aaa51c040db1b1d4528e2ce",
     "fullName": "Shaurya Mehra mehra",
-    "email": "smart.mehra1208@gmail.com",
+    "email": "kiyanexports.express@gmail.com",
     "phone": "09559687769",
     "password": "$2b$10$zbCyvb7VwYLLZsp.6vuglecdk.jd/Y80VA/Tke7sHsxzOC2tOkx9.",
     "address": "3/215, Vastu Khand, Gomti Nagar, Lucknow",
     "city": "lucknow",
     "pin": "226010",
-    "role": "user",
+    "role": "admin",
     "createdAt": "2026-09-16T08:22:24.032Z",
     "updatedAt": "2026-09-16T08:22:24.032Z",
     "__v": 0

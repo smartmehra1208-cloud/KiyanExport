@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 
-const RECIPIENT_EMAIL = process.env.RFQ_RECIPIENT_EMAIL || 'kiyanexports.express@gmail.com, smart.mehra1208@gmail.com, kiyanexport54@gmail.com';
+const RECIPIENT_EMAIL = process.env.RFQ_RECIPIENT_EMAIL || 'kiyanexports.express@gmail.com';
 
 // Direct Hosted Cloudinary Logo URL (0% Attachment Chip & 100% Reliable Gmail Display)
 const LOGO_SRC = 'https://res.cloudinary.com/arkc76lz/image/upload/KIyan_export.jpg.jpg';
@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
   port: smtpPort,
   secure: isSecure,
   auth: {
-    user: (process.env.SMTP_USER || 'smart.mehra1208@gmail.com').trim(),
+    user: (process.env.SMTP_USER || 'kiyanexports.express@gmail.com').trim(),
     pass: (process.env.SMTP_PASS || 'zqkkdfnyfxusknxg').replace(/\s+/g, '')
   },
   connectionTimeout: 10000,
@@ -188,7 +188,7 @@ async function sendRfqEmail(rfqData) {
   `;
 
   const mailOptions = {
-    from: `"Kiyan Export B2B" <${process.env.SMTP_USER || 'smart.mehra1208@gmail.com'}>`,
+    from: `"Kiyan Export B2B" <${process.env.SMTP_USER || 'kiyanexports.express@gmail.com'}>`,
     to: RECIPIENT_EMAIL,
     replyTo: email || RECIPIENT_EMAIL,
     subject: `🛒 [NEW RFQ QUOTE]: ${productName || 'Herbal Extract'} (${targetQuantity || '500'} Pcs) - ${companyName || contactName}`,
