@@ -1,6 +1,10 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # Force HTTPS Redirection for SSL Security
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
   # Fix case-sensitivity for Certificates and catalogues
   RewriteRule ^certificates/(.*)$ Certificates/$1 [L,NC]
   RewriteRule ^catelouges/(.*)$ catalogues/$1 [L,NC]
