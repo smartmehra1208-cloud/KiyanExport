@@ -1,9 +1,9 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Force HTTPS Redirection & Canonical Domain (SSL active on kiyanexports.com)
+  # Force HTTPS Redirection & Non-WWW Canonical URL
   RewriteCond %{HTTPS} off [OR]
-  RewriteCond %{HTTP_HOST} ^www\.kiyanexports\.com$ [NC]
+  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
   RewriteRule ^(.*)$ https://kiyanexports.com/$1 [L,R=301]
 
   # Fix case-sensitivity for Certificates and catalogues
