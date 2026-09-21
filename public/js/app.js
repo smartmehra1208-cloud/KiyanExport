@@ -3045,80 +3045,26 @@ async function openPdfModal(rawPdfUrl, title = 'PDF Document Viewer') {
       if (counterEl) counterEl.textContent = `${pdf.numPages} Page${pdf.numPages > 1 ? 's' : ''}`;
       if (bodyEl) bodyEl.innerHTML = '';
 
-      const scale = window.innerWidth < 768 ? 1.0 : 1.25;
-      const renderedPages = new Set();
-
-      async function renderPageSingle(pageNum, wrapper) {
-        if (renderedPages.has(pageNum)) return;
-        renderedPages.add(pageNum);
-        try {
-          const page = await pdf.getPage(pageNum);
-          const viewport = page.getViewport({ scale: scale });
-          const canvas = document.createElement('canvas');
-          const context = canvas.getContext('2d');
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-          canvas.style.maxWidth = '100%';
-          canvas.style.height = 'auto';
-          canvas.style.boxShadow = '0 6px 20px rgba(0,0,0,0.35)';
-          canvas.style.borderRadius = '4px';
-          canvas.style.background = 'white';
-          canvas.style.display = 'block';
-          canvas.oncontextmenu = () => false;
-
-          const renderContext = {
-            canvasContext: context,
-            viewport: viewport
-          };
-          await page.render(renderContext).promise;
-          wrapper.innerHTML = '';
-          wrapper.appendChild(canvas);
-
-          const pageBadge = document.createElement('div');
-          pageBadge.style.cssText = 'position: absolute; bottom: 8px; right: 12px; background: rgba(0,0,0,0.65); color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; pointer-events: none; font-weight: 600; font-family: sans-serif;';
-          pageBadge.textContent = `Page ${pageNum} of ${pdf.numPages}`;
-          wrapper.appendChild(pageBadge);
-        } catch (err) {
-          console.error(`Error rendering page ${pageNum}:`, err);
-          wrapper.innerHTML = `<div style="color: #ff6b6b; padding: 20px; text-align: center;"><i class="fas fa-exclamation-circle"></i> Page ${pageNum} failed to render. <a href="${encodedUrl}" target="_blank" style="color: #ffd700; text-decoration: underline;">Open PDF directly</a></div>`;
-        }
-      }
-
-      const wrappers = [];
       for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'pdf-page-wrapper';
-        wrapper.dataset.page = pageNum;
-        wrapper.style.cssText = 'position: relative; width: 100%; max-width: 850px; min-height: 450px; display: flex; align-items: center; justify-content: center; background: #3a3d40; border-radius: 8px; color: #ccc; margin-bottom: 20px;';
-        wrapper.innerHTML = `<div style="text-align: center; padding: 30px;"><i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 12px; color: #ffd700;"></i><br><span style="font-size: 0.9rem; font-family: sans-serif;">Loading Page ${pageNum} of ${pdf.numPages}...</span></div>`;
-        bodyEl.appendChild(wrapper);
-        wrappers.push(wrapper);
-      }
+        const page = await pdf.getPage(pageNum);
+        const viewport = page.getViewport({ scale: 1.35 });
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        canvas.style.maxWidth = '100%';
+        canvas.style.height = 'auto';
+        canvas.style.boxShadow = '0 6px 20px rgba(0,0,0,0.35)';
+        canvas.style.borderRadius = '4px';
+        canvas.style.background = 'white';
+        canvas.oncontextmenu = () => false;
 
-      // Render Page 1 immediately
-      if (wrappers[0]) await renderPageSingle(1, wrappers[0]);
-      if (wrappers[1]) renderPageSingle(2, wrappers[1]);
-
-      // Lazy load subsequent pages on scroll
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const pageNum = parseInt(entry.target.dataset.page, 10);
-              renderPageSingle(pageNum, entry.target);
-            }
-          });
-        }, {
-          root: bodyEl,
-          rootMargin: '300px 0px 300px 0px'
-        });
-
-        wrappers.forEach(w => observer.observe(w));
-      } else {
-        for (let pageNum = 3; pageNum <= pdf.numPages; pageNum++) {
-          await new Promise(r => setTimeout(r, 120));
-          await renderPageSingle(pageNum, wrappers[pageNum - 1]);
-        }
+        const renderContext = {
+          canvasContext: context,
+          viewport: viewport
+        };
+        await page.render(renderContext).promise;
+        if (bodyEl) bodyEl.appendChild(canvas);
       }
     } else {
       renderIframeFallback();

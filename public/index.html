@@ -9,29 +9,6 @@
   <meta name="author" content="Kiyan Export & Herbal Manufacturing">
   <meta name="theme-color" content="#2d5a27">
   
-  <!-- Anti-Stale Cache Control Meta Tags -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
-  <!-- Purge Legacy Service Worker & Browser Cache Storage -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function(registrations) {
-        for (var i = 0; i < registrations.length; i++) {
-          registrations[i].unregister();
-        }
-      });
-    }
-    if ('caches' in window) {
-      caches.keys().then(function(names) {
-        for (var i = 0; i < names.length; i++) {
-          caches.delete(names[i]);
-        }
-      });
-    }
-  </script>
-  
   <!-- Open Graph / Facebook SEO -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kiyanexports.com">
@@ -70,7 +47,7 @@
   </style>
   
   <!-- Custom Luxury CSS -->
-  <link rel="stylesheet" href="/css/style.css?v=2026_v2001_cache_purge">
+  <link rel="stylesheet" href="/css/style.css?v=2026_v1005_b2b_inquiry_master">
   
   <!-- Instant Image Loading Handlers -->
   <script>
@@ -3286,8 +3263,8 @@
   </a>
 
   <!-- Default Static Catalog & Site Content Fallback Data -->
-  <script src="/js/default-data.js?v=2026_v2001_cache_purge"></script>
+  <script src="/js/default-data.js?v=2026_v1"></script>
   <!-- Client Application Script -->
-  <script src="/js/app.js?v=2026_v3001_lazy_pdf" defer></script>
+  <script src="/js/app.js?v=2026_v1006_b2b_inquiry_master" defer></script>
 </body>
 </html>

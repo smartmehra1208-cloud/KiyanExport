@@ -19,33 +19,7 @@
   RewriteRule ^api/user/orders/?$ api-orders.php [L,QSA]
 </IfModule>
 
-# Force Revalidation for HTML & Dynamic Data (Prevents Old Cached Pages)
-<IfModule mod_headers.c>
-  # 1. Never cache HTML files, JSON databases, or manifests so browsers always pull fresh site content
-  <FilesMatch "\.(html|htm|json|xml)$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0, s-maxage=0"
-    Header set Pragma "no-cache"
-    Header set Expires "0"
-  </FilesMatch>
-
-  # 2. Prevent PDF forced download & set inline preview
-  <FilesMatch "\.(pdf)$">
-    Header set Content-Disposition inline
-    Header set X-Content-Type-Options nosniff
-  </FilesMatch>
-
-  # 3. Static Media Assets caching (1 month with revalidation)
-  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
-    Header set Cache-Control "public, max-age=2592000, must-revalidate"
-  </FilesMatch>
-
-  # 4. CSS and JavaScript files caching (7 days with revalidation)
-  <FilesMatch "\.(css|js)$">
-    Header set Cache-Control "public, max-age=604800, must-revalidate"
-  </FilesMatch>
-</IfModule>
-
-# Enable Gzip Compression for Instant Speed Optimization
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json
-</IfModule>
+<FilesMatch "\.(pdf)$">
+  Header set Content-Disposition inline
+  Header set X-Content-Type-Options nosniff
+</FilesMatch>
