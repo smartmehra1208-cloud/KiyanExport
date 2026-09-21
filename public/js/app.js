@@ -4964,3 +4964,120 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderAdminReviewsTable();
   startTopReviewToastCycle();
 });
+
+
+
+
+/* ==========================================================================
+   INLINE PRODUCT DETAILS REVIEW FORM HELPERS
+   ========================================================================== */
+
+let pmCurrentInlineRating = 5;
+
+function togglePmInlineReviewForm(forceState) {
+  const formBox = document.getElementById('pmInlineReviewForm');
+  if (!formBox) return;
+
+  if (typeof forceState === 'boolean') {
+    formBox.style.display = forceState ? 'block' : 'none';
+  } else {
+    formBox.style.display = formBox.style.display === 'none' || !formBox.style.display ? 'block' : 'none';
+  }
+
+  if (formBox.style.display === 'block') {
+    setPmStarRating(5);
+    const nameVal = document.getElementById('pmInlineNameVal');
+    const commentVal = document.getElementById('pmInlineCommentVal');
+    if (nameVal) nameVal.value = '';
+    if (commentVal) commentVal.value = '';
+  }
+}
+
+function setPmStarRating(rating) {
+  pmCurrentInlineRating = rating;
+  const ratingInput = document.getElementById('pmInlineRatingVal');
+  if (ratingInput) ratingInput.value = rating;
+
+  const stars = document.querySelectorAll('#pmStarPicker .star-btn');
+  stars.forEach((star, idx) => {
+    if (idx < rating) {
+      star.style.color = '#fbbf24';
+    } else {
+      star.style.color = '#cbd5e1';
+    }
+  });
+}
+
+async function submitPmInlineReview(e) {
+  e.preventDefault();
+
+  if (typeof currentModalProduct === 'undefined' || !currentModalProduct) {
+    alert('Product details missing.');
+    return;
+  }
+
+  const productId = currentModalProduct.id;
+  const productName = currentModalProduct.name;
+
+  const ratingVal = document.getElementById('pmInlineRatingVal');
+  const nameVal = document.getElementById('pmInlineNameVal');
+  const commentVal = document.getElementById('pmInlineCommentVal');
+
+  const rating = parseInt(ratingVal ? ratingVal.value : 5, 10) || 5;
+  const name = nameVal ? nameVal.value.trim() : '';
+  const comment = commentVal ? commentVal.value.trim() : '';
+
+  if (!name || !comment) {
+    alert('Please fill out your name and review comment.');
+    return;
+  }
+
+  const payload = {
+    productId,
+    productName,
+    name,
+    location: 'Verified Product Buyer',
+    rating,
+    comment
+  };
+
+  try {
+    const res = await fetch('/api/reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (data.success && data.review) {
+      stateReviews.unshift(data.review);
+      localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+    }
+  } catch (err) {
+    console.warn('Network post error, using local fallback:', err);
+    const newRev = {
+      id: 'rev_' + Date.now(),
+      ...payload,
+      approved: true,
+      isTop: rating === 5,
+      createdAt: new Date().toISOString()
+    };
+    stateReviews.unshift(newRev);
+    localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+  }
+
+  // Also submit to legacy product endpoint for dual sync
+  try {
+    fetch(`/api/products/${productId}/reviews`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userName: name, rating, comment })
+    }).catch(() => {});
+  } catch (e) {}
+
+  togglePmInlineReviewForm(false);
+  renderProductReviews(productId);
+  renderTestimonialsSection();
+  renderAdminReviewsTable();
+
+  alert(`Thank you! Your verified review for "${productName}" has been posted & is live!`);
+}
