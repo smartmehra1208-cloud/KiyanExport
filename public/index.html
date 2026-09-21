@@ -161,6 +161,12 @@
           <button class="admin-tab-btn" id="tabBtnUsers" onclick="switchStandaloneAdminTab('users')" style="padding: 10px 20px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: #f0f4f2; color: var(--deep-green); transition: all 0.2s;">
             <i class="fas fa-users"></i> 👥 Registered Customers & Database Users
           </button>
+          <button class="admin-tab-btn" id="tabBtnReviews" onclick="switchStandaloneAdminTab('reviews')" style="padding: 10px 20px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: #f0f4f2; color: var(--deep-green); transition: all 0.2s;">
+            <i class="fas fa-star" style="color: var(--bright-gold);"></i> ⭐ Customer Reviews Manager <span class="badge-count" id="adminReviewBadge" style="background: #e74c3c; color: white; padding: 2px 7px; border-radius: 10px; font-size: 0.75rem; font-weight: 800; margin-left: 4px;">0</span>
+          </button>
+          <button class="admin-tab-btn" id="tabBtnReviews" onclick="switchStandaloneAdminTab('reviews')" style="padding: 10px 20px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: #f0f4f2; color: var(--deep-green); transition: all 0.2s;">
+            <i class="fas fa-star" style="color: var(--bright-gold);"></i> ⭐ Customer Reviews Manager <span class="badge-count" id="adminReviewBadge" style="background: #e74c3c; color: white; padding: 2px 7px; border-radius: 10px; font-size: 0.75rem; font-weight: 800; margin-left: 4px;">0</span>
+          </button>
         </div>
 
         <!-- TAB 1: PRODUCTS & INVENTORY -->
@@ -467,6 +473,70 @@
               </table>
             </div>
           </div>
+
+        <!-- TAB 7: CUSTOMER REVIEWS MANAGER -->
+        <div id="standaloneTabReviews" class="standalone-admin-tab-panel" style="display: none;">
+          <div style="margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+            <div>
+              <h1 style="font-size: 1.8rem; color: var(--deep-green); margin: 0;"><i class="fas fa-star" style="color: var(--bright-gold);"></i> Verified Customer Reviews Manager</h1>
+              <p style="color: #666; margin: 5px 0 0 0; font-size: 0.9rem;">Approve, hide, pin top 5-star popups, or delete customer reviews submitted on products and website.</p>
+            </div>
+            <button class="btn-main" onclick="openAllReviewsModal()"><i class="fas fa-plus-circle"></i> Add Verified Review</button>
+          </div>
+
+          <div class="admin-card" style="background: white; border-radius: 16px; padding: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
+            <div class="admin-table-responsive">
+              <table class="admin-table" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                  <tr style="background: #f8fafc; border-bottom: 2px solid #cbd5e1; text-align: left;">
+                    <th style="padding: 12px;">Target / Product</th>
+                    <th style="padding: 12px;">Reviewer & Location</th>
+                    <th style="padding: 12px;">Rating</th>
+                    <th style="padding: 12px;">Comment</th>
+                    <th style="padding: 12px;">Status</th>
+                    <th style="padding: 12px;">Top Popup Toast</th>
+                    <th style="padding: 12px;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminReviewsTableBody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 7: CUSTOMER REVIEWS MANAGER -->
+        <div id="standaloneTabReviews" class="standalone-admin-tab-panel" style="display: none;">
+          <div style="margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+            <div>
+              <h1 style="font-size: 1.8rem; color: var(--deep-green); margin: 0;"><i class="fas fa-star" style="color: var(--bright-gold);"></i> Verified Customer Reviews Manager</h1>
+              <p style="color: #666; margin: 5px 0 0 0; font-size: 0.9rem;">Approve, hide, pin top 5-star popups, or delete customer reviews submitted on products and website.</p>
+            </div>
+            <button class="btn-main" onclick="openAllReviewsModal()"><i class="fas fa-plus-circle"></i> Add Verified Review</button>
+          </div>
+
+          <div class="admin-card" style="background: white; border-radius: 16px; padding: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
+            <div class="admin-table-responsive">
+              <table class="admin-table" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                  <tr style="background: #f8fafc; border-bottom: 2px solid #cbd5e1; text-align: left;">
+                    <th style="padding: 12px;">Target / Product</th>
+                    <th style="padding: 12px;">Reviewer & Location</th>
+                    <th style="padding: 12px;">Rating</th>
+                    <th style="padding: 12px;">Comment</th>
+                    <th style="padding: 12px;">Status</th>
+                    <th style="padding: 12px;">Top Popup Toast</th>
+                    <th style="padding: 12px;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminReviewsTableBody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
         </div>
 
       </div>
@@ -3305,9 +3375,9 @@
   </a>
 
   <!-- Default Static Catalog & Site Content Fallback Data -->
-  <script src="/js/default-data.js?v=2026_v15001_unified_product_reviews_sync"></script>
+  <script src="/js/default-data.js?v=2026_v16001_admin_reviews_tab_added"></script>
   <!-- Client Application Script -->
-  <script src="/js/app.js?v=2026_v15001_unified_product_reviews_sync" defer></script>
+  <script src="/js/app.js?v=2026_v16001_admin_reviews_tab_added" defer></script>
 
   <!-- WRITE A REVIEW MODAL -->
     <!-- DEDICATED CUSTOMER REVIEWS & FEEDBACK CENTER MODAL -->

@@ -3258,7 +3258,7 @@ Please send me a detailed quotation.`;
 
 // ===== STANDALONE ADMIN DASHBOARD TAB SWITCHING =====
 function switchStandaloneAdminTab(tabName) {
-  const tabs = ['products', 'content', 'catalogues', 'certificates', 'orders', 'users'];
+  const tabs = ['products', 'content', 'catalogues', 'certificates', 'orders', 'users', 'reviews'];
   tabs.forEach(t => {
     const btn = document.getElementById('tabBtn' + t.charAt(0).toUpperCase() + t.slice(1));
     const panel = document.getElementById('standaloneTab' + t.charAt(0).toUpperCase() + t.slice(1));
@@ -3282,6 +3282,7 @@ function switchStandaloneAdminTab(tabName) {
   if (tabName === 'certificates') renderAdminCertificatesTable();
   if (tabName === 'orders') loadStandaloneAdminOrders();
   if (tabName === 'users') loadStandaloneAdminUsers();
+  if (tabName === 'reviews') renderAdminReviewsTable();
 }
 
 let currentSiteContentData = null;
