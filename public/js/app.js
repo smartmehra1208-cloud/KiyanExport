@@ -4440,27 +4440,60 @@ function escapeHtml(str) {
 let stateReviews = [];
 
 async function fetchServerReviews() {
+  let list = [];
+
+  // Source 1: API Endpoint (/api/reviews)
   try {
     const res = await fetch('/api/reviews');
-    const data = await res.json();
-    if (data && data.success && Array.isArray(data.reviews)) {
-      stateReviews = data.reviews;
-      localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
-      return stateReviews;
-    }
-  } catch (e) {
-    console.warn('API review fetch fallback to localStorage:', e.message);
-  }
-
-  try {
-    const raw = localStorage.getItem('kiyan_custom_reviews');
-    if (raw) {
-      stateReviews = JSON.parse(raw);
-      return stateReviews;
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && Array.isArray(data.reviews)) {
+        list = data.reviews;
+      }
     }
   } catch (e) {}
 
-  stateReviews = [];
+  // Source 2: Static JSON Endpoint (/reviews_data.json)
+  if (list.length === 0) {
+    try {
+      const res = await fetch('/reviews_data.json');
+      if (res.ok) {
+        const jsonList = await res.json();
+        if (Array.isArray(jsonList)) {
+          list = jsonList;
+        }
+      }
+    } catch (e) {}
+  }
+
+  // Source 3: window.DEFAULT_REVIEWS from default-data.js
+  if (window.DEFAULT_REVIEWS && Array.isArray(window.DEFAULT_REVIEWS)) {
+    window.DEFAULT_REVIEWS.forEach(r => {
+      const exists = list.some(item => item.id === r.id || (item.comment === r.comment && item.name === r.name));
+      if (!exists) list.push(r);
+    });
+  }
+
+  // Source 4: LocalStorage items
+  try {
+    const raw = localStorage.getItem('kiyan_custom_reviews');
+    if (raw) {
+      const localList = JSON.parse(raw);
+      if (Array.isArray(localList)) {
+        localList.forEach(r => {
+          const exists = list.some(item => item.id === r.id || (item.comment === r.comment && item.name === r.name));
+          if (!exists) list.unshift(r);
+        });
+      }
+    }
+  } catch (e) {}
+
+  stateReviews = list;
+  try {
+    localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+    if (window.DEFAULT_REVIEWS) window.DEFAULT_REVIEWS.unshift(data.review || newRev);
+  } catch (e) {}
+
   return stateReviews;
 }
 
@@ -4843,6 +4876,7 @@ async function handleReviewSubmit(e) {
     if (data.success && data.review) {
       stateReviews.unshift(data.review);
       localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+    if (window.DEFAULT_REVIEWS) window.DEFAULT_REVIEWS.unshift(data.review || newRev);
     }
   } catch (err) {
     console.warn('Network post error, using local fallback:', err);
@@ -4855,6 +4889,7 @@ async function handleReviewSubmit(e) {
     };
     stateReviews.unshift(newRev);
     localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+    if (window.DEFAULT_REVIEWS) window.DEFAULT_REVIEWS.unshift(data.review || newRev);
   }
 
   renderTestimonialsSection();
@@ -4934,6 +4969,7 @@ async function toggleApproveReview(id) {
       });
     } catch (e) {}
     localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+    if (window.DEFAULT_REVIEWS) window.DEFAULT_REVIEWS.unshift(data.review || newRev);
     renderAdminReviewsTable();
     renderTestimonialsSection();
   }
@@ -4952,6 +4988,7 @@ async function toggleTopReview(id) {
       });
     } catch (e) {}
     localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+    if (window.DEFAULT_REVIEWS) window.DEFAULT_REVIEWS.unshift(data.review || newRev);
     renderAdminReviewsTable();
   }
 }
@@ -4963,6 +5000,7 @@ async function deleteReview(id) {
     await fetch(`/api/reviews/${id}`, { method: 'DELETE' });
   } catch (e) {}
   localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+    if (window.DEFAULT_REVIEWS) window.DEFAULT_REVIEWS.unshift(data.review || newRev);
   renderAdminReviewsTable();
   renderTestimonialsSection();
 }
@@ -5101,6 +5139,7 @@ async function submitPmInlineReview(e) {
     if (data.success && data.review) {
       stateReviews.unshift(data.review);
       localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+    if (window.DEFAULT_REVIEWS) window.DEFAULT_REVIEWS.unshift(data.review || newRev);
     }
   } catch (err) {
     console.warn('Network post error, using local fallback:', err);
@@ -5113,6 +5152,7 @@ async function submitPmInlineReview(e) {
     };
     stateReviews.unshift(newRev);
     localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+    if (window.DEFAULT_REVIEWS) window.DEFAULT_REVIEWS.unshift(data.review || newRev);
   }
 
   // Also submit to legacy product endpoint for dual sync
