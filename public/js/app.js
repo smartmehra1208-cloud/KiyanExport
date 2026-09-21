@@ -4515,45 +4515,106 @@ async function renderTestimonialsSection() {
   }).join('');
 }
 
-async function renderProductReviews(productId) {
+async function renderProductReviews(target) {
+  let productId = 0;
+  let productObj = null;
+
+  if (typeof target === 'object' && target !== null) {
+    productObj = target;
+    productId = parseInt(target.id, 10) || 0;
+  } else {
+    productId = parseInt(target, 10) || 0;
+    if (window.productsData && Array.isArray(window.productsData)) {
+      productObj = window.productsData.find(p => p.id === productId);
+    }
+  }
+
   const container = document.getElementById('pmReviewsList');
   const summary = document.getElementById('pmReviewSummary');
+  const summaryText = document.getElementById('pmReviewSummaryText');
+  const reviewFormBox = document.getElementById('pmReviewFormBox');
+  if (reviewFormBox) reviewFormBox.style.display = 'none';
+
   if (!container) return;
 
   if (stateReviews.length === 0) {
     await fetchServerReviews();
   }
 
-  const allReviews = stateReviews.filter(r => r.approved !== false);
-  const pReviews = allReviews.filter(r => r.productId === productId);
+  let pReviews = stateReviews.filter(r => r.approved !== false && parseInt(r.productId, 10) === productId);
+
+  if (productObj && Array.isArray(productObj.reviews) && productObj.reviews.length > 0) {
+    productObj.reviews.forEach(pr => {
+      const prComment = pr.comment || '';
+      const prUser = pr.user || pr.userName || 'Verified Buyer';
+      const exists = pReviews.some(r => r.comment === prComment && r.name === prUser);
+      if (!exists && prComment) {
+        pReviews.push({
+          id: 'prod_rev_' + Math.random(),
+          productId: productId,
+          productName: productObj.name,
+          name: prUser,
+          location: 'Verified Buyer',
+          rating: pr.rating || 5,
+          comment: prComment,
+          approved: true,
+          createdAt: pr.createdAt || new Date().toISOString()
+        });
+      }
+    });
+  }
+
+  const count = pReviews.length;
+  let avgRating = 5.0;
+
+  if (count > 0) {
+    const total = pReviews.reduce((sum, r) => sum + (parseInt(r.rating, 10) || 5), 0);
+    avgRating = parseFloat((total / count).toFixed(1));
+  } else if (productObj && productObj.rating) {
+    avgRating = parseFloat(productObj.rating) || 5.0;
+  }
 
   if (summary) {
-    if (pReviews.length > 0) {
-      const avg = (pReviews.reduce((sum, r) => sum + r.rating, 0) / pReviews.length).toFixed(1);
-      summary.innerHTML = `<b style="color:#27ae60;">★ ${avg} / 5.0</b> (${pReviews.length} Verified Customer ${pReviews.length === 1 ? 'Review' : 'Reviews'})`;
-    } else {
-      summary.innerText = 'No reviews yet for this product. Be the first to review!';
-    }
+    summary.innerHTML = count > 0 
+      ? `<b style="color:#27ae60;">★ ${avgRating.toFixed(1)} / 5.0</b> (${count} Verified Customer Review${count > 1 ? 's' : ''})`
+      : `No reviews yet for this product. Be the first to review!`;
+  }
+
+  if (summaryText) {
+    summaryText.innerHTML = `Overall Rating: <strong style="color: #1e4d2b;">${avgRating.toFixed(1)} / 5.0</strong> (${count} Verified Review${count > 1 ? 's' : ''})`;
   }
 
   if (pReviews.length === 0) {
     container.innerHTML = `
-      <div style="text-align: center; color: #94a3b8; padding: 15px; font-size: 0.82rem; background: #f8fafc; border-radius: 10px;">
-        No reviews for this product yet. Click <b>Review Product</b> above to submit your rating!
+      <div style="text-align: center; color: #94a3b8; padding: 18px; font-size: 0.85rem; background: #f8fafc; border-radius: 12px; border: 1px dashed #cbd5e1;">
+        No customer reviews for this product yet. Click <b>✍️ Review Product</b> above to share your rating & feedback!
       </div>
     `;
     return;
   }
 
   container.innerHTML = pReviews.map(r => {
-    const stars = Array(r.rating || 5).fill('<i class="fas fa-star" style="color:#fbbf24;"></i>').join('');
+    const starBtns = Array.from({ length: 5 }, (_, i) => 
+      `<i class="fas fa-star" style="color: ${i < (r.rating || 5) ? '#fbbf24' : '#cbd5e1'}; font-size: 0.8rem;"></i>`
+    ).join('');
+
+    const initials = r.name ? r.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase() : 'CU';
+
     return `
-      <div style="background: #f8fafc; border-radius: 12px; padding: 12px 14px; border: 1px solid #e2e8f0;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-          <span style="font-weight: 800; font-size: 0.85rem; color: #1b365d;">${escapeHtml(r.name)} <span style="font-weight: 500; font-size: 0.75rem; color: #64748b;">(${escapeHtml(r.location || 'Verified')})</span></span>
-          <div style="font-size: 0.75rem;">${stars}</div>
+      <div style="background: #ffffff; border-radius: 12px; padding: 14px 16px; border: 1.5px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 28px; height: 28px; background: #10302b; color: var(--bright-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.75rem;">
+              ${initials}
+            </div>
+            <div>
+              <span style="font-weight: 800; font-size: 0.88rem; color: #1b365d;">${escapeHtml(r.name)}</span>
+              <span style="font-size: 0.72rem; color: #64748b; margin-left: 6px;">(${escapeHtml(r.location || 'Verified Buyer')})</span>
+            </div>
+          </div>
+          <div style="font-size: 0.8rem;">${starBtns}</div>
         </div>
-        <p style="font-size: 0.82rem; color: #334155; margin: 0; line-height: 1.4; font-style: italic;">
+        <p style="font-size: 0.85rem; color: #334155; margin: 0; line-height: 1.5; font-style: italic;">
           "${escapeHtml(r.comment)}"
         </p>
       </div>
@@ -4584,7 +4645,6 @@ async function openAllReviewsModal(productId = null) {
 
   await fetchServerReviews();
 
-  // Populate Product Selector in Tab 2
   const select = document.getElementById('reviewProductSelectCenter');
   if (select) {
     select.innerHTML = '<option value="0">🌐 Overall Website & Export Service</option>';
@@ -4600,7 +4660,6 @@ async function openAllReviewsModal(productId = null) {
     if (productId) select.value = productId;
   }
 
-  // Populate Filter Selector in Tab 1
   const filterSelect = document.getElementById('modalFilterProduct');
   if (filterSelect) {
     filterSelect.innerHTML = '<option value="all">🔍 All Products & Services</option>';
@@ -4690,7 +4749,7 @@ function renderModalFullReviews() {
   if (countBadge) countBadge.innerText = reviews.length;
 
   if (reviews.length > 0) {
-    const avg = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+    const avg = (reviews.reduce((sum, r) => sum + (parseInt(r.rating, 10) || 5), 0) / reviews.length).toFixed(1);
     if (scoreEl) scoreEl.innerText = avg;
   } else {
     if (scoreEl) scoreEl.innerText = '5.0';
@@ -4798,8 +4857,8 @@ async function handleReviewSubmit(e) {
   }
 
   renderTestimonialsSection();
-  if (typeof currentModalProduct !== 'undefined' && currentModalProduct && currentModalProduct.id === productId) {
-    renderProductReviews(productId);
+  if (typeof currentModalProduct !== 'undefined' && currentModalProduct && (currentModalProduct.id === productId || productId === 0)) {
+    renderProductReviews(currentModalProduct);
   }
   renderAdminReviewsTable();
 
@@ -4958,16 +5017,6 @@ function dismissTopReviewToast() {
   if (toastCard) toastCard.style.display = 'none';
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  await fetchServerReviews();
-  renderTestimonialsSection();
-  renderAdminReviewsTable();
-  startTopReviewToastCycle();
-});
-
-
-
-
 /* ==========================================================================
    INLINE PRODUCT DETAILS REVIEW FORM HELPERS
    ========================================================================== */
@@ -5075,9 +5124,16 @@ async function submitPmInlineReview(e) {
   } catch (e) {}
 
   togglePmInlineReviewForm(false);
-  renderProductReviews(productId);
+  renderProductReviews(currentModalProduct);
   renderTestimonialsSection();
   renderAdminReviewsTable();
 
   alert(`Thank you! Your verified review for "${productName}" has been posted & is live!`);
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await fetchServerReviews();
+  renderTestimonialsSection();
+  renderAdminReviewsTable();
+  startTopReviewToastCycle();
+});
