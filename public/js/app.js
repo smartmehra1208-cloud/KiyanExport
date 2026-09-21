@@ -820,6 +820,11 @@ function setCategoryFilter(category, element) {
 }
 
 function renderFilteredProducts() {
+  if (!productsData || !Array.isArray(productsData) || productsData.length === 0) {
+    if (window.DEFAULT_PRODUCTS && Array.isArray(window.DEFAULT_PRODUCTS) && window.DEFAULT_PRODUCTS.length > 0) {
+      productsData = [...window.DEFAULT_PRODUCTS];
+    }
+  }
   let filtered = [...productsData];
 
   // Category Filter
@@ -842,6 +847,11 @@ function renderFilteredProducts() {
 
 // ===== RENDER PRODUCT CARDS (ALIBABA STYLE B2B WHOLESALE) =====
 function renderProductGrids(products) {
+  if (!products || !Array.isArray(products) || products.length === 0) {
+    if (window.DEFAULT_PRODUCTS && Array.isArray(window.DEFAULT_PRODUCTS) && window.DEFAULT_PRODUCTS.length > 0) {
+      products = [...window.DEFAULT_PRODUCTS];
+    }
+  }
   const herbalGrid = document.getElementById('herbal-grid');
   const herbalGridFull = document.getElementById('herbal-grid-full');
   const spicesGrid = document.getElementById('spices-grid');
