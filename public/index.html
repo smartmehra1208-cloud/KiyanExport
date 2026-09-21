@@ -1757,6 +1757,60 @@
               <button onclick="openPdfModal('/catalogues/nutra%20cap%20cat%201.pdf', 'Nutraceutical Capsules Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
             </div>
           </div>
+
+          <!-- Cat 8: Effervescent Tablets -->
+          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
+            <div>
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/effervescent-tablets-catalogue.pdf', 'Effervescent Tablets Official Catalogue')">
+                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
+                <img src="/images/kiyan-logo.jpg" alt="Effervescent Tablets Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
+                <div class="pdf-hover-overlay">
+                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
+                </div>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">Effervescent Tablets Catalogue</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Fast-absorbing vitamin C, electrolyte, and herbal effervescent tablet range.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="openPdfModal('/catalogues/effervescent-tablets-catalogue.pdf', 'Effervescent Tablets Official Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+            </div>
+          </div>
+
+          <!-- Cat 9: Pure Organic Honey -->
+          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
+            <div>
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/honey-catalogue.pdf', 'Pure Organic Honey Official Catalogue')">
+                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
+                <img src="/images/kiyan-logo.jpg" alt="Pure Organic Honey Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
+                <div class="pdf-hover-overlay">
+                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
+                </div>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">Pure Organic Honey Catalogue</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Unprocessed wild forest raw honey, Acacia honey, and infused herbal honey.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="openPdfModal('/catalogues/honey-catalogue.pdf', 'Pure Organic Honey Official Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+            </div>
+          </div>
+
+          <!-- Cat 10: Ayurvedic & Herbal Juices -->
+          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
+            <div>
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/catalogues/juice-catalogue.pdf', 'Ayurvedic & Herbal Juices Catalogue')">
+                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
+                <img src="/images/kiyan-logo.jpg" alt="Herbal Juices Catalogue Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
+                <div class="pdf-hover-overlay">
+                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
+                </div>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">Herbal Juices & Tonics Catalogue</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Cold-pressed Aloe Vera, Amla, Giloy, and herbal juice wellness formulations.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="openPdfModal('/catalogues/juice-catalogue.pdf', 'Ayurvedic & Herbal Juices Catalogue')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -3263,8 +3317,8 @@
   </a>
 
   <!-- Default Static Catalog & Site Content Fallback Data -->
-  <script src="/js/default-data.js?v=2026_v1"></script>
+  <script src="/js/default-data.js?v=2026_v4001_catalogues_all"></script>
   <!-- Client Application Script -->
-  <script src="/js/app.js?v=2026_v1006_b2b_inquiry_master" defer></script>
+  <script src="/js/app.js?v=2026_v4001_catalogues_all" defer></script>
 </body>
 </html>
