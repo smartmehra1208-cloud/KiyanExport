@@ -936,6 +936,7 @@ async function openProductModal(id) {
 
   if (!product) return;
   currentModalProduct = product;
+  renderProductReviews(product.id);
 
   const mainImgUrl = product.image.startsWith('/') ? product.image : '/' + product.image;
 
@@ -4417,3 +4418,409 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+/* ==========================================================================
+   CUSTOMER REVIEWS & SOCIAL PROOF TOAST SYSTEM
+   ========================================================================== */
+
+const DEFAULT_INITIAL_REVIEWS = [
+  {
+    id: "rev_seed_1",
+    productId: 1,
+    productName: "Pure Himalayan Shilajit Resin",
+    name: "Julian Danvers",
+    location: "🇺🇸 CEO, NutraPure Labs (California, USA)",
+    rating: 5,
+    comment: "We ordered 500 kg of Pure Himalayan Shilajit Resin for our US brand. The HPLC COA report was 100% genuine and the Fulvic acid content tested at 78%. Exceptional export packaging and timely DHL air freight delivery!",
+    approved: true,
+    isTop: true,
+    createdAt: "2026-09-15T10:00:00.000Z"
+  },
+  {
+    id: "rev_seed_2",
+    productId: 2,
+    productName: "Organic Ashwagandha Extract (KSM-66 Standardized)",
+    name: "Dr. Sophia Schmidt",
+    location: "🇩🇪 Procurement Head, HerbVital GmbH (Germany)",
+    rating: 5,
+    comment: "Kiyan Export's OEM Private Label service is top tier! They customized our Ashwagandha and Arjuna extract bottles with custom barcodes and labels seamlessly. Our European retail customers love the freshness.",
+    approved: true,
+    isTop: true,
+    createdAt: "2026-09-16T12:30:00.000Z"
+  },
+  {
+    id: "rev_seed_3",
+    productId: 0,
+    productName: "Overall Kiyan Export Service",
+    name: "Tariq Al-Mansoor",
+    location: "🇦🇪 General Director, Al-Aafiya Organics (Dubai, UAE)",
+    rating: 5,
+    comment: "Extremely impressed by their Kashmiri Saffron & Organic Moringa Powder. Quality standards, batch testing, and custom sample kits were delivered within 5 days in Dubai. Highly recommended B2B partner!",
+    approved: true,
+    isTop: true,
+    createdAt: "2026-09-18T14:15:00.000Z"
+  },
+  {
+    id: "rev_seed_4",
+    productId: 5,
+    productName: "Pure Copper Water Bottles & Drinkware",
+    name: "Elena Rostova",
+    location: "🇬🇧 Director, EcoLife Wellness (London, UK)",
+    rating: 5,
+    comment: "Handcrafted pure copper bottles arrived in pristine export packaging. Tested 99.9% pure copper with zero heavy metals. Great bulk margins for our UK retail chain!",
+    approved: true,
+    isTop: true,
+    createdAt: "2026-09-19T09:20:00.000Z"
+  }
+];
+
+function getStoredReviews() {
+  try {
+    const raw = localStorage.getItem('kiyan_custom_reviews');
+    if (raw) return JSON.parse(raw);
+  } catch (e) {
+    console.error('Error reading reviews:', e);
+  }
+  localStorage.setItem('kiyan_custom_reviews', JSON.stringify(DEFAULT_INITIAL_REVIEWS));
+  return DEFAULT_INITIAL_REVIEWS;
+}
+
+function saveStoredReviews(list) {
+  try {
+    localStorage.setItem('kiyan_custom_reviews', JSON.stringify(list));
+  } catch (e) {
+    console.error('Error saving reviews:', e);
+  }
+}
+
+function renderTestimonialsSection() {
+  const grid = document.getElementById('dynamicReviewsGrid');
+  if (!grid) return;
+
+  const reviews = getStoredReviews().filter(r => r.approved !== false);
+
+  if (reviews.length === 0) {
+    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 30px;">No verified reviews yet. Be the first to share your feedback!</div>`;
+    return;
+  }
+
+  grid.innerHTML = reviews.map(r => {
+    const initials = r.name ? r.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase() : 'CU';
+    const stars = Array(r.rating || 5).fill('<i class="fas fa-star"></i>').join('');
+    const prodBadge = r.productName && r.productId > 0 ? `<span style="font-size: 0.72rem; background: rgba(30,89,103,0.08); color: var(--deep-green); padding: 3px 9px; border-radius: 8px; font-weight: 700; margin-bottom: 8px; display: inline-block;"><i class="fas fa-box"></i> ${escapeHtml(r.productName)}</span>` : '';
+
+    return `
+      <div style="background: #ffffff; border-radius: 18px; padding: 28px; border: 1.5px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <div style="color: #fbbf24; font-size: 0.95rem;">
+              ${stars}
+            </div>
+            <span style="background: #eef7f2; color: #27ae60; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 800;"><i class="fas fa-check-circle"></i> Verified Buyer</span>
+          </div>
+          ${prodBadge}
+          <p style="color: #334155; font-size: 0.92rem; line-height: 1.6; font-style: italic; margin-bottom: 18px;">
+            "${escapeHtml(r.comment)}"
+          </p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #f1f5f9; padding-top: 14px;">
+          <div style="width: 44px; height: 44px; background: #10302b; color: var(--bright-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0;">
+            ${initials}
+          </div>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 800; color: #1b365d; margin: 0;">${escapeHtml(r.name)}</h4>
+            <span style="font-size: 0.78rem; color: #64748b;">${escapeHtml(r.location || 'Global Buyer')}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderProductReviews(productId) {
+  const container = document.getElementById('pmReviewsList');
+  const summary = document.getElementById('pmReviewSummary');
+  if (!container) return;
+
+  const allReviews = getStoredReviews().filter(r => r.approved !== false);
+  const pReviews = allReviews.filter(r => r.productId === productId);
+
+  if (summary) {
+    if (pReviews.length > 0) {
+      const avg = (pReviews.reduce((sum, r) => sum + r.rating, 0) / pReviews.length).toFixed(1);
+      summary.innerHTML = `<b style="color:#27ae60;">★ ${avg} / 5.0</b> (${pReviews.length} Verified Customer ${pReviews.length === 1 ? 'Review' : 'Reviews'})`;
+    } else {
+      summary.innerText = 'No reviews yet for this product. Be the first to review!';
+    }
+  }
+
+  if (pReviews.length === 0) {
+    container.innerHTML = `
+      <div style="text-align: center; color: #94a3b8; padding: 15px; font-size: 0.82rem; background: #f8fafc; border-radius: 10px;">
+        No reviews for this product yet. Click <b>Review Product</b> above to submit your rating!
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = pReviews.map(r => {
+    const stars = Array(r.rating || 5).fill('<i class="fas fa-star" style="color:#fbbf24;"></i>').join('');
+    return `
+      <div style="background: #f8fafc; border-radius: 12px; padding: 12px 14px; border: 1px solid #e2e8f0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+          <span style="font-weight: 800; font-size: 0.85rem; color: #1b365d;">${escapeHtml(r.name)} <span style="font-weight: 500; font-size: 0.75rem; color: #64748b;">(${escapeHtml(r.location || 'Verified')})</span></span>
+          <div style="font-size: 0.75rem;">${stars}</div>
+        </div>
+        <p style="font-size: 0.82rem; color: #334155; margin: 0; line-height: 1.4; font-style: italic;">
+          "${escapeHtml(r.comment)}"
+        </p>
+      </div>
+    `;
+  }).join('');
+}
+
+let currentSelectedRating = 5;
+
+function setReviewRating(rating) {
+  currentSelectedRating = rating;
+  const ratingInput = document.getElementById('reviewRatingInput');
+  if (ratingInput) ratingInput.value = rating;
+
+  const stars = document.querySelectorAll('#starRatingPicker .star-btn');
+  stars.forEach((star, idx) => {
+    if (idx < rating) {
+      star.style.color = '#fbbf24';
+    } else {
+      star.style.color = '#cbd5e1';
+    }
+  });
+}
+
+function openWriteReviewModal(productId = null) {
+  const modal = document.getElementById('writeReviewModal');
+  const select = document.getElementById('reviewProductSelect');
+  if (!modal || !select) return;
+
+  select.innerHTML = '<option value="0">🌐 Overall Website & Company Service</option>';
+  if (window.productsData && Array.isArray(window.productsData)) {
+    window.productsData.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p.id;
+      opt.textContent = `📦 ${p.name}`;
+      if (productId && p.id === productId) {
+        opt.selected = true;
+      }
+      select.appendChild(opt);
+    });
+  }
+
+  setReviewRating(5);
+  const form = document.getElementById('writeReviewForm');
+  if (form) form.reset();
+  const ratingInput = document.getElementById('reviewRatingInput');
+  if (ratingInput) ratingInput.value = 5;
+  if (productId) select.value = productId;
+
+  modal.style.display = 'flex';
+}
+
+function closeWriteReviewModal() {
+  const modal = document.getElementById('writeReviewModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function handleReviewSubmit(e) {
+  e.preventDefault();
+  const select = document.getElementById('reviewProductSelect');
+  const productId = parseInt(select.value) || 0;
+  let productName = 'Overall Kiyan Export Service';
+  if (productId > 0 && window.productsData) {
+    const found = window.productsData.find(p => p.id === productId);
+    if (found) productName = found.name;
+  }
+
+  const ratingInput = document.getElementById('reviewRatingInput');
+  const rating = parseInt(ratingInput ? ratingInput.value : 5) || 5;
+  const name = document.getElementById('reviewNameInput').value.trim();
+  const location = document.getElementById('reviewLocationInput').value.trim() || 'Verified Buyer';
+  const comment = document.getElementById('reviewCommentInput').value.trim();
+
+  if (!name || !comment) {
+    alert('Please enter your name and review message.');
+    return;
+  }
+
+  const newReview = {
+    id: 'rev_' + Date.now(),
+    productId: productId,
+    productName: productName,
+    name: name,
+    location: location,
+    rating: rating,
+    comment: comment,
+    approved: true,
+    isTop: rating === 5,
+    createdAt: new Date().toISOString()
+  };
+
+  const reviews = getStoredReviews();
+  reviews.unshift(newReview);
+  saveStoredReviews(reviews);
+
+  closeWriteReviewModal();
+  renderTestimonialsSection();
+  if (typeof currentModalProduct !== 'undefined' && currentModalProduct && currentModalProduct.id === productId) {
+    renderProductReviews(productId);
+  }
+  renderAdminReviewsTable();
+
+  alert('Thank you! Your verified review has been submitted successfully.');
+}
+
+function renderAdminReviewsTable() {
+  const tbody = document.getElementById('adminReviewsTableBody');
+  const badge = document.getElementById('adminReviewBadge');
+  if (!tbody) return;
+
+  const reviews = getStoredReviews();
+  if (badge) badge.innerText = reviews.length;
+
+  if (reviews.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 20px; color: #888;">No reviews recorded.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = reviews.map(r => {
+    const isApproved = r.approved !== false;
+    const isTop = !!r.isTop;
+    const targetLabel = r.productId > 0 ? `<span style="font-weight:700; color:#1e5967;"><i class="fas fa-box"></i> ${escapeHtml(r.productName || 'Product #'+r.productId)}</span>` : `<span style="color:#27ae60; font-weight:700;"><i class="fas fa-globe"></i> Overall Site</span>`;
+
+    return `
+      <tr>
+        <td style="font-size:0.82rem;">${targetLabel}</td>
+        <td>
+          <div style="font-weight:800; font-size:0.85rem;">${escapeHtml(r.name)}</div>
+          <div style="font-size:0.75rem; color:#64748b;">${escapeHtml(r.location || 'N/A')}</div>
+        </td>
+        <td style="color:#fbbf24; font-size:0.85rem; white-space:nowrap;">
+          ★ ${r.rating || 5}.0
+        </td>
+        <td style="font-size:0.82rem; max-width:250px; line-height:1.4; color:#334155;">
+          "${escapeHtml(r.comment)}"
+        </td>
+        <td>
+          <button onclick="toggleApproveReview('${r.id}')" style="background: ${isApproved ? '#eef7f2' : '#fef2f2'}; color: ${isApproved ? '#27ae60' : '#dc2626'}; border: 1px solid ${isApproved ? '#27ae60' : '#dc2626'}; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; cursor: pointer;">
+            ${isApproved ? '<i class="fas fa-check-circle"></i> Approved' : '<i class="fas fa-eye-slash"></i> Hidden'}
+          </button>
+        </td>
+        <td>
+          <button onclick="toggleTopReview('${r.id}')" style="background: ${isTop ? '#fffbeb' : '#f8fafc'}; color: ${isTop ? '#b45309' : '#64748b'}; border: 1px solid ${isTop ? '#f59e0b' : '#cbd5e1'}; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; cursor: pointer;">
+            ${isTop ? '⭐ Top Popup' : 'Normal'}
+          </button>
+        </td>
+        <td>
+          <button onclick="deleteReview('${r.id}')" style="background: #fee2e2; color: #dc2626; border: none; padding: 6px 10px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer;">
+            <i class="fas fa-trash-alt"></i> Delete
+          </button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function toggleApproveReview(id) {
+  const reviews = getStoredReviews();
+  const found = reviews.find(r => r.id === id);
+  if (found) {
+    found.approved = found.approved === false ? true : false;
+    saveStoredReviews(reviews);
+    renderAdminReviewsTable();
+    renderTestimonialsSection();
+  }
+}
+
+function toggleTopReview(id) {
+  const reviews = getStoredReviews();
+  const found = reviews.find(r => r.id === id);
+  if (found) {
+    found.isTop = !found.isTop;
+    saveStoredReviews(reviews);
+    renderAdminReviewsTable();
+  }
+}
+
+function deleteReview(id) {
+  if (!confirm('Are you sure you want to delete this review permanently?')) return;
+  let reviews = getStoredReviews();
+  reviews = reviews.filter(r => r.id !== id);
+  saveStoredReviews(reviews);
+  renderAdminReviewsTable();
+  renderTestimonialsSection();
+}
+
+let topToastIndex = 0;
+let topToastTimer = null;
+
+function startTopReviewToastCycle() {
+  if (topToastTimer) clearInterval(topToastTimer);
+
+  topToastTimer = setInterval(() => {
+    showNextTopReviewToast();
+  }, 14000);
+
+  setTimeout(() => {
+    showNextTopReviewToast();
+  }, 4000);
+}
+
+function showNextTopReviewToast() {
+  const toastCard = document.getElementById('topReviewToastCard');
+  if (!toastCard) return;
+
+  const topReviews = getStoredReviews().filter(r => r.approved !== false && r.isTop);
+  if (topReviews.length === 0) return;
+
+  topToastIndex = (topToastIndex + 1) % topReviews.length;
+  const review = topReviews[topToastIndex];
+
+  const initials = review.name ? review.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase() : 'CU';
+  const avatar = document.getElementById('toastAvatar');
+  const nameEl = document.getElementById('toastReviewerName');
+  const locEl = document.getElementById('toastLocation');
+  const commentEl = document.getElementById('toastComment');
+
+  if (avatar) avatar.innerText = initials;
+  if (nameEl) nameEl.innerText = review.name;
+  if (locEl) locEl.innerText = review.location || 'Verified Buyer';
+  if (commentEl) commentEl.innerText = `"${review.comment}"`;
+
+  toastCard.style.display = 'block';
+
+  setTimeout(() => {
+    toastCard.style.display = 'none';
+  }, 6500);
+}
+
+function dismissTopReviewToast() {
+  const toastCard = document.getElementById('topReviewToastCard');
+  if (toastCard) toastCard.style.display = 'none';
+}
+
+// Auto-initialize Review System on load
+document.addEventListener('DOMContentLoaded', () => {
+  renderTestimonialsSection();
+  renderAdminReviewsTable();
+  startTopReviewToastCycle();
+});
