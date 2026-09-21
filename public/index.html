@@ -799,7 +799,186 @@
     </section>
 
     <!-- INTERACTIVE B2B BULK SAVINGS & PROFIT MARGIN CALCULATOR SECTION -->
-    <section class="b2b-calculator-section b2b-reveal">
+    <div id="products" class="page-section">
+    <div class="sub-page-header">
+      <h1>Herbal Supplements</h1>
+      <p>Pure, Standardized & Organically Grown Botanicals</p>
+    </div>
+    <section class="products-section">
+      <div class="container">
+        <div class="section-header">
+          <span>Organic Range</span>
+          <h2>Herbal Extracts & Remedies</h2>
+        </div>
+        <!-- Recently Viewed & Personal Recommended Products Widget -->
+        <div id="recentlyViewedSection" style="display: none; margin-bottom: 45px; background: linear-gradient(135deg, #fdfbf7, #f4efe6); border: 2px solid var(--accent-gold); border-radius: 18px; padding: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.06);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <span style="background: var(--deep-green); color: var(--bright-gold); padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;"><i class="fas fa-history"></i> Based on your browsing</span>
+              <h3 style="font-size: 1.35rem; color: var(--deep-green); margin: 6px 0 0 0;"><i class="fas fa-magic" style="color: var(--accent-gold);"></i> Pick Up Where You Left Off - Exclusive Recommendations</h3>
+            </div>
+            <button onclick="clearRecentlyViewed()" style="background: none; border: none; color: #888; font-size: 0.8rem; cursor: pointer; text-decoration: underline;"><i class="fas fa-trash-alt"></i> Clear History</button>
+          </div>
+          <div id="recentlyViewedGrid" class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px;">
+            <!-- Dynamically injected -->
+          </div>
+        </div>
+
+        <div class="product-grid" id="herbal-grid-full">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SPICES PAGE -->
+  <div id="spices" class="page-section">
+    <div class="sub-page-header">
+      <h1>Authentic Indian Spices</h1>
+      <p>Aromatic, Whole & Pure Spices Sourced Directly from Farms</p>
+    </div>
+    <section class="products-section">
+      <div class="container">
+        <div class="section-header">
+          <span>Farm Fresh</span>
+          <h2>Premium Whole & Ground Spices</h2>
+        </div>
+        <div class="product-grid" id="spices-grid">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+
+  <!-- CERTIFICATIONS PAGE -->
+  <div id="certifications" class="page-section">
+    <div class="sub-page-header">
+      <h1 style="color: white; margin-bottom: 4px;">Quality Audit & Compliance Certificates</h1>
+      <p>ISO 22000, GMP Certified, US-FDA Registered, FSSAI License & Govt. MSME Registrations</p>
+    </div>
+    <section class="products-section">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 35px;">
+          <h2 style="font-size: 2.2rem; color: var(--royal-emerald);">Official Quality & Audit Certificates</h2>
+          <p style="color: var(--text-muted); font-size: 1.05rem;">Click on any certificate's <strong>First Page Preview</strong> to open the full interactive PDF document online in protected view.</p>
+        </div>
+
+        <div id="customerCertificatesGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px;">
+          <!-- Card 1: ISO 22000 -->
+          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
+            <div>
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/iso-22000-certificate.pdf', 'ISO 22000:2018 Quality Certificate')">
+                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
+                <img src="/pdf_thumbnails/KIYAN_EXPORT_ISO_22000_FINAL_1_1_page1.jpg" alt="ISO 22000 Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
+                <div class="pdf-hover-overlay">
+                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
+                </div>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">ISO 22000:2018 Certificate</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Food Safety Management System Quality Audit Final Certificate for Kiyan Export.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="openPdfModal('/certificates/iso-22000-certificate.pdf', 'ISO 22000:2018 Quality Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+            </div>
+          </div>
+
+          <!-- Card 2: GMP Certificate -->
+          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
+            <div>
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/gmp-certificate.pdf', 'GMP Good Manufacturing Practice Certificate')">
+                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
+                <img src="/pdf_thumbnails/47214_KIYAN_EXPORT_GMP_PQC_1_1_page1.jpg" alt="GMP Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
+                <div class="pdf-hover-overlay">
+                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
+                </div>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">GMP Quality Certificate</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Good Manufacturing Practice Compliance Certification for Herbal Extraction & Encapsulation.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="openPdfModal('/certificates/gmp-certificate.pdf', 'GMP Good Manufacturing Practice Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+            </div>
+          </div>
+
+          <!-- Card 3: US-FDA Registration -->
+          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
+            <div>
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/us-fda-certificate.pdf', 'US-FDA Facility Registration Certificate')">
+                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
+                <img src="/pdf_thumbnails/47214_KIYAN_EXPORT_US-_FDA_PQC_2_1_page1.jpg" alt="US-FDA Registration Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
+                <div class="pdf-hover-overlay">
+                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
+                </div>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">US-FDA Facility Registration</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">United States Food and Drug Administration Registration Dossier for Global Export Compliance.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="openPdfModal('/certificates/us-fda-certificate.pdf', 'US-FDA Facility Registration Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+            </div>
+          </div>
+
+          <!-- Card 4: FSSAI License -->
+          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
+            <div>
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/fssai-certificate.pdf', 'FSSAI Export License Renewal 2025')">
+                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
+                <img src="/pdf_thumbnails/Kiyan_Fssai_Renewal_2025_page1.jpg" alt="FSSAI Renewal Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
+                <div class="pdf-hover-overlay">
+                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
+                </div>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">FSSAI License Renewal 2025</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Food Safety and Standards Authority of India (FSSAI) Central Export License Renewal.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="openPdfModal('/certificates/fssai-certificate.pdf', 'FSSAI Export License Renewal 2025')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+            </div>
+          </div>
+
+          <!-- Card 5: TrustSeal Certificate -->
+          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
+            <div>
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/trustseal-certificate.pdf', 'IndiaMART TrustSeal Verified Certificate')">
+                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
+                <img src="/pdf_thumbnails/TrustSeal_certificate_page1.jpg" alt="TrustSeal Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
+                <div class="pdf-hover-overlay">
+                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
+                </div>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">IndiaMART TrustSeal Verified</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">TrustSeal Verification Certificate for B2B Wholesale Exporter Credibility.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="openPdfModal('/certificates/trustseal-certificate.pdf', 'IndiaMART TrustSeal Verified Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+            </div>
+          </div>
+
+          <!-- Card 6: Udyam Registration -->
+          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
+            <div>
+              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/udyam-certificate.pdf', 'Udyam MSME Government Registration Certificate')">
+                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
+                <img src="/pdf_thumbnails/Udyam_Registration_Certificate_page1.jpg" alt="Udyam MSME Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
+                <div class="pdf-hover-overlay">
+                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
+                </div>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">Udyam MSME Registration</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Government of India Ministry of MSME Udyam Registration Certificate.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="openPdfModal('/certificates/udyam-certificate.pdf', 'Udyam MSME Government Registration Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+<section class="b2b-calculator-section b2b-reveal">
       <div class="container">
         <div class="b2b-calculator-grid">
           <div>
@@ -1419,185 +1598,6 @@
   </div>
 
   <!-- PRODUCTS - HERBAL PAGE -->
-  <div id="products" class="page-section">
-    <div class="sub-page-header">
-      <h1>Herbal Supplements</h1>
-      <p>Pure, Standardized & Organically Grown Botanicals</p>
-    </div>
-    <section class="products-section">
-      <div class="container">
-        <div class="section-header">
-          <span>Organic Range</span>
-          <h2>Herbal Extracts & Remedies</h2>
-        </div>
-        <!-- Recently Viewed & Personal Recommended Products Widget -->
-        <div id="recentlyViewedSection" style="display: none; margin-bottom: 45px; background: linear-gradient(135deg, #fdfbf7, #f4efe6); border: 2px solid var(--accent-gold); border-radius: 18px; padding: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.06);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 12px; flex-wrap: wrap; gap: 10px;">
-            <div>
-              <span style="background: var(--deep-green); color: var(--bright-gold); padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;"><i class="fas fa-history"></i> Based on your browsing</span>
-              <h3 style="font-size: 1.35rem; color: var(--deep-green); margin: 6px 0 0 0;"><i class="fas fa-magic" style="color: var(--accent-gold);"></i> Pick Up Where You Left Off - Exclusive Recommendations</h3>
-            </div>
-            <button onclick="clearRecentlyViewed()" style="background: none; border: none; color: #888; font-size: 0.8rem; cursor: pointer; text-decoration: underline;"><i class="fas fa-trash-alt"></i> Clear History</button>
-          </div>
-          <div id="recentlyViewedGrid" class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px;">
-            <!-- Dynamically injected -->
-          </div>
-        </div>
-
-        <div class="product-grid" id="herbal-grid-full">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- SPICES PAGE -->
-  <div id="spices" class="page-section">
-    <div class="sub-page-header">
-      <h1>Authentic Indian Spices</h1>
-      <p>Aromatic, Whole & Pure Spices Sourced Directly from Farms</p>
-    </div>
-    <section class="products-section">
-      <div class="container">
-        <div class="section-header">
-          <span>Farm Fresh</span>
-          <h2>Premium Whole & Ground Spices</h2>
-        </div>
-        <div class="product-grid" id="spices-grid">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
-    </section>
-  </div>
-
-
-
-  <!-- CERTIFICATIONS PAGE -->
-  <div id="certifications" class="page-section">
-    <div class="sub-page-header">
-      <h1 style="color: white; margin-bottom: 4px;">Quality Audit & Compliance Certificates</h1>
-      <p>ISO 22000, GMP Certified, US-FDA Registered, FSSAI License & Govt. MSME Registrations</p>
-    </div>
-    <section class="products-section">
-      <div class="container">
-        <div style="text-align: center; margin-bottom: 35px;">
-          <h2 style="font-size: 2.2rem; color: var(--royal-emerald);">Official Quality & Audit Certificates</h2>
-          <p style="color: var(--text-muted); font-size: 1.05rem;">Click on any certificate's <strong>First Page Preview</strong> to open the full interactive PDF document online in protected view.</p>
-        </div>
-
-        <div id="customerCertificatesGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px;">
-          <!-- Card 1: ISO 22000 -->
-          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
-            <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/iso-22000-certificate.pdf', 'ISO 22000:2018 Quality Certificate')">
-                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/KIYAN_EXPORT_ISO_22000_FINAL_1_1_page1.jpg" alt="ISO 22000 Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
-                <div class="pdf-hover-overlay">
-                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
-                </div>
-              </div>
-              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">ISO 22000:2018 Certificate</h3>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Food Safety Management System Quality Audit Final Certificate for Kiyan Export.</p>
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/certificates/iso-22000-certificate.pdf', 'ISO 22000:2018 Quality Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
-            </div>
-          </div>
-
-          <!-- Card 2: GMP Certificate -->
-          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
-            <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/gmp-certificate.pdf', 'GMP Good Manufacturing Practice Certificate')">
-                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/47214_KIYAN_EXPORT_GMP_PQC_1_1_page1.jpg" alt="GMP Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
-                <div class="pdf-hover-overlay">
-                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
-                </div>
-              </div>
-              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">GMP Quality Certificate</h3>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Good Manufacturing Practice Compliance Certification for Herbal Extraction & Encapsulation.</p>
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/certificates/gmp-certificate.pdf', 'GMP Good Manufacturing Practice Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
-            </div>
-          </div>
-
-          <!-- Card 3: US-FDA Registration -->
-          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
-            <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/us-fda-certificate.pdf', 'US-FDA Facility Registration Certificate')">
-                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/47214_KIYAN_EXPORT_US-_FDA_PQC_2_1_page1.jpg" alt="US-FDA Registration Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
-                <div class="pdf-hover-overlay">
-                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
-                </div>
-              </div>
-              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">US-FDA Facility Registration</h3>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">United States Food and Drug Administration Registration Dossier for Global Export Compliance.</p>
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/certificates/us-fda-certificate.pdf', 'US-FDA Facility Registration Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
-            </div>
-          </div>
-
-          <!-- Card 4: FSSAI License -->
-          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
-            <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/fssai-certificate.pdf', 'FSSAI Export License Renewal 2025')">
-                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/Kiyan_Fssai_Renewal_2025_page1.jpg" alt="FSSAI Renewal Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
-                <div class="pdf-hover-overlay">
-                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
-                </div>
-              </div>
-              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">FSSAI License Renewal 2025</h3>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Food Safety and Standards Authority of India (FSSAI) Central Export License Renewal.</p>
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/certificates/fssai-certificate.pdf', 'FSSAI Export License Renewal 2025')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
-            </div>
-          </div>
-
-          <!-- Card 5: TrustSeal Certificate -->
-          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
-            <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/trustseal-certificate.pdf', 'IndiaMART TrustSeal Verified Certificate')">
-                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/TrustSeal_certificate_page1.jpg" alt="TrustSeal Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
-                <div class="pdf-hover-overlay">
-                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
-                </div>
-              </div>
-              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">IndiaMART TrustSeal Verified</h3>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">TrustSeal Verification Certificate for B2B Wholesale Exporter Credibility.</p>
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/certificates/trustseal-certificate.pdf', 'IndiaMART TrustSeal Verified Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
-            </div>
-          </div>
-
-          <!-- Card 6: Udyam Registration -->
-          <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
-            <div>
-              <div class="pdf-card-preview-box" onclick="openPdfModal('/certificates/udyam-certificate.pdf', 'Udyam MSME Government Registration Certificate')">
-                <span class="pdf-badge"><i class="fas fa-file-pdf"></i> Page 1 Preview</span>
-                <img src="/pdf_thumbnails/Udyam_Registration_Certificate_page1.jpg" alt="Udyam MSME Certificate Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">
-                <div class="pdf-hover-overlay">
-                  <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Complete PDF</div>
-                </div>
-              </div>
-              <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin-bottom: 6px;">Udyam MSME Registration</h3>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Government of India Ministry of MSME Udyam Registration Certificate.</p>
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button onclick="openPdfModal('/certificates/udyam-certificate.pdf', 'Udyam MSME Government Registration Certificate')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
   <!-- CATALOGUE PAGE -->
   <div id="catalogue" class="page-section">
     <div class="sub-page-header">
@@ -2679,12 +2679,6 @@
           </div>
         </div>
         <button type="submit" class="auth-submit-btn"><i class="fas fa-lock"></i> Login to Account</button>
-        <div style="margin-top: 15px; text-align: center;">
-          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">— QUICK ADMIN ACCESS —</div>
-          <button type="button" onclick="openAdminDirectly(); closeAuthModal();" style="width: 100%; padding: 11px; border-radius: 25px; border: 2px solid var(--accent-gold); background: #fffcf5; color: var(--deep-green); font-weight: 800; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease;">
-            <i class="fas fa-crown" style="color: var(--accent-gold);"></i> 👑 1-Click Admin Dashboard Access
-          </button>
-        </div>
         <div class="auth-switch-note">
           Don't have an account? <span onclick="switchAuthTab('register')">Register Now</span>
         </div>
@@ -3317,8 +3311,8 @@
   </a>
 
   <!-- Default Static Catalog & Site Content Fallback Data -->
-  <script src="/js/default-data.js?v=2026_v5001_11_catalogues"></script>
+  <script src="/js/default-data.js?v=2026_v6001_home_products_first"></script>
   <!-- Client Application Script -->
-  <script src="/js/app.js?v=2026_v5001_11_catalogues" defer></script>
+  <script src="/js/app.js?v=2026_v6001_home_products_first" defer></script>
 </body>
 </html>
