@@ -222,6 +222,18 @@ function openAdminDirectly() {
 }
 
 function showPage(pageId, element) {
+  if (pageId === 'products') {
+    const homePage = document.getElementById('home');
+    if (homePage) homePage.classList.add('active-page');
+    const prodTarget = document.getElementById('products');
+    if (prodTarget) {
+      prodTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => link.classList.remove('active'));
+    if (element) element.classList.add('active');
+    return;
+  }
   if (pageId === 'admin') {
     openAdminDirectly();
     return;
