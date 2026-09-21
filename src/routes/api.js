@@ -183,6 +183,26 @@ function saveContactsStore() {
   }
 }
 
+// Initialize Reviews Store from disk
+const REVIEWS_FILE = path.join(__dirname, '../data/reviews_store.json');
+let memoryReviews = [];
+try {
+  if (fs.existsSync(REVIEWS_FILE)) {
+    memoryReviews = JSON.parse(fs.readFileSync(REVIEWS_FILE, 'utf8'));
+    console.log(`⭐ Loaded ${memoryReviews.length} customer reviews from disk store.`);
+  }
+} catch (e) {
+  console.warn('Reviews store load warning:', e.message);
+}
+
+function saveReviewsStore() {
+  try {
+    fs.writeFileSync(REVIEWS_FILE, JSON.stringify(memoryReviews, null, 2), 'utf8');
+  } catch (e) {
+    console.error('Error saving reviews store:', e);
+  }
+}
+
 const defaultSiteContent = {
   heroTagline: 'VERIFIED GOLD MANUFACTURER & EXPORTER • EST. 2014',
   heroTitle: 'Bulk Ayurvedic & Herbal Extracts Direct From Manufacturer',
@@ -389,6 +409,104 @@ router.get('/products/:id', async (req, res) => {
 });
 
 // POST Submit a New Review for a Product
+// GET all customer reviews
+router.get('/reviews', (req, res) => {
+  res.json({ success: true, reviews: memoryReviews });
+});
+
+// POST submit a new review (general or product-specific)
+router.post('/reviews', (req, res) => {
+  try {
+    const { productId, productName, name, location, rating, comment } = req.body;
+    if (!name || !comment || !comment.trim()) {
+      return res.status(400).json({ success: false, message: 'Name and comment are required.' });
+    }
+
+    const numProductId = parseInt(productId, 10) || 0;
+    const numRating = Math.min(5, Math.max(1, parseInt(rating, 10) || 5));
+
+    let finalProdName = productName || 'Overall Kiyan Export Service';
+    if (numProductId > 0) {
+      const prod = staticProducts.find(p => p.id === numProductId);
+      if (prod) finalProdName = prod.name;
+    }
+
+    const newReview = {
+      id: 'rev_' + Date.now() + '_' + Math.floor(1000 + Math.random() * 9000),
+      productId: numProductId,
+      productName: finalProdName,
+      name: name.trim(),
+      location: location ? location.trim() : 'Verified Buyer',
+      rating: numRating,
+      comment: comment.trim(),
+      approved: true,
+      isTop: numRating === 5,
+      createdAt: new Date().toISOString()
+    };
+
+    memoryReviews.unshift(newReview);
+    saveReviewsStore();
+
+    if (numProductId > 0) {
+      const staticIndex = staticProducts.findIndex(p => p.id === numProductId);
+      if (staticIndex !== -1) {
+        if (!staticProducts[staticIndex].reviews) staticProducts[staticIndex].reviews = [];
+        staticProducts[staticIndex].reviews.unshift({
+          user: newReview.name,
+          rating: newReview.rating,
+          comment: newReview.comment,
+          createdAt: new Date()
+        });
+        const totalSum = staticProducts[staticIndex].reviews.reduce((sum, r) => sum + r.rating, 0);
+        staticProducts[staticIndex].rating = parseFloat((totalSum / staticProducts[staticIndex].reviews.length).toFixed(1));
+        staticProducts[staticIndex].reviewsCount = staticProducts[staticIndex].reviews.length;
+        saveProductsStore();
+      }
+    }
+
+    res.json({
+      success: true,
+      message: 'Review saved permanently on server!',
+      review: newReview
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to save review', error: err.message });
+  }
+});
+
+// PUT update review status
+router.put('/reviews/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const { approved, isTop } = req.body;
+    const review = memoryReviews.find(r => r.id === id);
+
+    if (!review) {
+      return res.status(404).json({ success: false, message: 'Review not found' });
+    }
+
+    if (typeof approved === 'boolean') review.approved = approved;
+    if (typeof isTop === 'boolean') review.isTop = isTop;
+
+    saveReviewsStore();
+    res.json({ success: true, message: 'Review updated', review });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Update failed', error: err.message });
+  }
+});
+
+// DELETE review
+router.delete('/reviews/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    memoryReviews = memoryReviews.filter(r => r.id !== id);
+    saveReviewsStore();
+    res.json({ success: true, message: 'Review deleted' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Delete failed', error: err.message });
+  }
+});
+
 router.post('/products/:id/reviews', async (req, res) => {
   try {
     await ensureDbConnected();

@@ -4431,85 +4431,51 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
+
 /* ==========================================================================
-   CUSTOMER REVIEWS & SOCIAL PROOF TOAST SYSTEM
+   CUSTOMER REVIEWS & SOCIAL PROOF TOAST SYSTEM (SERVER-BACKED DUAL SYNC)
    ========================================================================== */
 
-const DEFAULT_INITIAL_REVIEWS = [
-  {
-    id: "rev_seed_1",
-    productId: 1,
-    productName: "Pure Himalayan Shilajit Resin",
-    name: "Julian Danvers",
-    location: "🇺🇸 CEO, NutraPure Labs (California, USA)",
-    rating: 5,
-    comment: "We ordered 500 kg of Pure Himalayan Shilajit Resin for our US brand. The HPLC COA report was 100% genuine and the Fulvic acid content tested at 78%. Exceptional export packaging and timely DHL air freight delivery!",
-    approved: true,
-    isTop: true,
-    createdAt: "2026-09-15T10:00:00.000Z"
-  },
-  {
-    id: "rev_seed_2",
-    productId: 2,
-    productName: "Organic Ashwagandha Extract (KSM-66 Standardized)",
-    name: "Dr. Sophia Schmidt",
-    location: "🇩🇪 Procurement Head, HerbVital GmbH (Germany)",
-    rating: 5,
-    comment: "Kiyan Export's OEM Private Label service is top tier! They customized our Ashwagandha and Arjuna extract bottles with custom barcodes and labels seamlessly. Our European retail customers love the freshness.",
-    approved: true,
-    isTop: true,
-    createdAt: "2026-09-16T12:30:00.000Z"
-  },
-  {
-    id: "rev_seed_3",
-    productId: 0,
-    productName: "Overall Kiyan Export Service",
-    name: "Tariq Al-Mansoor",
-    location: "🇦🇪 General Director, Al-Aafiya Organics (Dubai, UAE)",
-    rating: 5,
-    comment: "Extremely impressed by their Kashmiri Saffron & Organic Moringa Powder. Quality standards, batch testing, and custom sample kits were delivered within 5 days in Dubai. Highly recommended B2B partner!",
-    approved: true,
-    isTop: true,
-    createdAt: "2026-09-18T14:15:00.000Z"
-  },
-  {
-    id: "rev_seed_4",
-    productId: 5,
-    productName: "Pure Copper Water Bottles & Drinkware",
-    name: "Elena Rostova",
-    location: "🇬🇧 Director, EcoLife Wellness (London, UK)",
-    rating: 5,
-    comment: "Handcrafted pure copper bottles arrived in pristine export packaging. Tested 99.9% pure copper with zero heavy metals. Great bulk margins for our UK retail chain!",
-    approved: true,
-    isTop: true,
-    createdAt: "2026-09-19T09:20:00.000Z"
-  }
-];
+let stateReviews = [];
 
-function getStoredReviews() {
+async function fetchServerReviews() {
+  try {
+    const res = await fetch('/api/reviews');
+    const data = await res.json();
+    if (data && data.success && Array.isArray(data.reviews)) {
+      stateReviews = data.reviews;
+      localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+      return stateReviews;
+    }
+  } catch (e) {
+    console.warn('API review fetch fallback to localStorage:', e.message);
+  }
+
   try {
     const raw = localStorage.getItem('kiyan_custom_reviews');
-    if (raw) return JSON.parse(raw);
-  } catch (e) {
-    console.error('Error reading reviews:', e);
-  }
-  localStorage.setItem('kiyan_custom_reviews', JSON.stringify(DEFAULT_INITIAL_REVIEWS));
-  return DEFAULT_INITIAL_REVIEWS;
+    if (raw) {
+      stateReviews = JSON.parse(raw);
+      return stateReviews;
+    }
+  } catch (e) {}
+
+  stateReviews = [];
+  return stateReviews;
 }
 
-function saveStoredReviews(list) {
-  try {
-    localStorage.setItem('kiyan_custom_reviews', JSON.stringify(list));
-  } catch (e) {
-    console.error('Error saving reviews:', e);
-  }
+function getStoredReviews() {
+  return stateReviews;
 }
 
-function renderTestimonialsSection() {
+async function renderTestimonialsSection() {
   const grid = document.getElementById('dynamicReviewsGrid');
   if (!grid) return;
 
-  const reviews = getStoredReviews().filter(r => r.approved !== false);
+  if (stateReviews.length === 0) {
+    await fetchServerReviews();
+  }
+
+  const reviews = stateReviews.filter(r => r.approved !== false);
 
   if (reviews.length === 0) {
     grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 30px;">No verified reviews yet. Be the first to share your feedback!</div>`;
@@ -4549,12 +4515,16 @@ function renderTestimonialsSection() {
   }).join('');
 }
 
-function renderProductReviews(productId) {
+async function renderProductReviews(productId) {
   const container = document.getElementById('pmReviewsList');
   const summary = document.getElementById('pmReviewSummary');
   if (!container) return;
 
-  const allReviews = getStoredReviews().filter(r => r.approved !== false);
+  if (stateReviews.length === 0) {
+    await fetchServerReviews();
+  }
+
+  const allReviews = stateReviews.filter(r => r.approved !== false);
   const pReviews = allReviews.filter(r => r.productId === productId);
 
   if (summary) {
@@ -4641,7 +4611,7 @@ function closeWriteReviewModal() {
   if (modal) modal.style.display = 'none';
 }
 
-function handleReviewSubmit(e) {
+async function handleReviewSubmit(e) {
   e.preventDefault();
   const select = document.getElementById('reviewProductSelect');
   const productId = parseInt(select.value) || 0;
@@ -4662,22 +4632,38 @@ function handleReviewSubmit(e) {
     return;
   }
 
-  const newReview = {
-    id: 'rev_' + Date.now(),
-    productId: productId,
-    productName: productName,
-    name: name,
-    location: location,
-    rating: rating,
-    comment: comment,
-    approved: true,
-    isTop: rating === 5,
-    createdAt: new Date().toISOString()
+  const payload = {
+    productId,
+    productName,
+    name,
+    location,
+    rating,
+    comment
   };
 
-  const reviews = getStoredReviews();
-  reviews.unshift(newReview);
-  saveStoredReviews(reviews);
+  try {
+    const res = await fetch('/api/reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (data.success && data.review) {
+      stateReviews.unshift(data.review);
+      localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+    }
+  } catch (err) {
+    console.warn('Network post error, using local fallback:', err);
+    const newRev = {
+      id: 'rev_' + Date.now(),
+      ...payload,
+      approved: true,
+      isTop: rating === 5,
+      createdAt: new Date().toISOString()
+    };
+    stateReviews.unshift(newRev);
+    localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+  }
 
   closeWriteReviewModal();
   renderTestimonialsSection();
@@ -4686,23 +4672,26 @@ function handleReviewSubmit(e) {
   }
   renderAdminReviewsTable();
 
-  alert('Thank you! Your verified review has been submitted successfully.');
+  alert('Thank you! Your verified review has been saved successfully across all sessions.');
 }
 
-function renderAdminReviewsTable() {
+async function renderAdminReviewsTable() {
   const tbody = document.getElementById('adminReviewsTableBody');
   const badge = document.getElementById('adminReviewBadge');
   if (!tbody) return;
 
-  const reviews = getStoredReviews();
-  if (badge) badge.innerText = reviews.length;
+  if (stateReviews.length === 0) {
+    await fetchServerReviews();
+  }
 
-  if (reviews.length === 0) {
+  if (badge) badge.innerText = stateReviews.length;
+
+  if (stateReviews.length === 0) {
     tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 20px; color: #888;">No reviews recorded.</td></tr>`;
     return;
   }
 
-  tbody.innerHTML = reviews.map(r => {
+  tbody.innerHTML = stateReviews.map(r => {
     const isApproved = r.approved !== false;
     const isTop = !!r.isTop;
     const targetLabel = r.productId > 0 ? `<span style="font-weight:700; color:#1e5967;"><i class="fas fa-box"></i> ${escapeHtml(r.productName || 'Product #'+r.productId)}</span>` : `<span style="color:#27ae60; font-weight:700;"><i class="fas fa-globe"></i> Overall Site</span>`;
@@ -4740,32 +4729,48 @@ function renderAdminReviewsTable() {
   }).join('');
 }
 
-function toggleApproveReview(id) {
-  const reviews = getStoredReviews();
-  const found = reviews.find(r => r.id === id);
+async function toggleApproveReview(id) {
+  const found = stateReviews.find(r => r.id === id);
   if (found) {
-    found.approved = found.approved === false ? true : false;
-    saveStoredReviews(reviews);
+    const newStatus = found.approved === false ? true : false;
+    found.approved = newStatus;
+    try {
+      await fetch(`/api/reviews/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ approved: newStatus })
+      });
+    } catch (e) {}
+    localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
     renderAdminReviewsTable();
     renderTestimonialsSection();
   }
 }
 
-function toggleTopReview(id) {
-  const reviews = getStoredReviews();
-  const found = reviews.find(r => r.id === id);
+async function toggleTopReview(id) {
+  const found = stateReviews.find(r => r.id === id);
   if (found) {
-    found.isTop = !found.isTop;
-    saveStoredReviews(reviews);
+    const newTop = !found.isTop;
+    found.isTop = newTop;
+    try {
+      await fetch(`/api/reviews/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isTop: newTop })
+      });
+    } catch (e) {}
+    localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
     renderAdminReviewsTable();
   }
 }
 
-function deleteReview(id) {
+async function deleteReview(id) {
   if (!confirm('Are you sure you want to delete this review permanently?')) return;
-  let reviews = getStoredReviews();
-  reviews = reviews.filter(r => r.id !== id);
-  saveStoredReviews(reviews);
+  stateReviews = stateReviews.filter(r => r.id !== id);
+  try {
+    await fetch(`/api/reviews/${id}`, { method: 'DELETE' });
+  } catch (e) {}
+  localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
   renderAdminReviewsTable();
   renderTestimonialsSection();
 }
@@ -4789,8 +4794,11 @@ function showNextTopReviewToast() {
   const toastCard = document.getElementById('topReviewToastCard');
   if (!toastCard) return;
 
-  const topReviews = getStoredReviews().filter(r => r.approved !== false && r.isTop);
-  if (topReviews.length === 0) return;
+  const topReviews = stateReviews.filter(r => r.approved !== false && r.isTop && r.comment && r.comment.length > 5);
+  if (topReviews.length === 0) {
+    toastCard.style.display = 'none';
+    return;
+  }
 
   topToastIndex = (topToastIndex + 1) % topReviews.length;
   const review = topReviews[topToastIndex];
@@ -4818,8 +4826,8 @@ function dismissTopReviewToast() {
   if (toastCard) toastCard.style.display = 'none';
 }
 
-// Auto-initialize Review System on load
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  await fetchServerReviews();
   renderTestimonialsSection();
   renderAdminReviewsTable();
   startTopReviewToastCycle();

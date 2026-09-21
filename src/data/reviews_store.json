@@ -1,0 +1,38 @@
+[
+  {
+    "id": "rev_seed_1",
+    "productId": 1,
+    "productName": "Pure Himalayan Shilajit Resin",
+    "name": "Julian Danvers",
+    "location": "🇺🇸 CEO, NutraPure Labs (California, USA)",
+    "rating": 5,
+    "comment": "We ordered 500 kg of Pure Himalayan Shilajit Resin for our US brand. The HPLC COA report was 100% genuine and the Fulvic acid content tested at 78%. Exceptional export packaging and timely DHL air freight delivery!",
+    "approved": true,
+    "isTop": true,
+    "createdAt": "2026-09-15T10:00:00.000Z"
+  },
+  {
+    "id": "rev_seed_2",
+    "productId": 2,
+    "productName": "Organic Ashwagandha Extract (KSM-66 Standardized)",
+    "name": "Dr. Sophia Schmidt",
+    "location": "🇩🇪 Procurement Head, HerbVital GmbH (Germany)",
+    "rating": 5,
+    "comment": "Kiyan Export's OEM Private Label service is top tier! They customized our Ashwagandha and Arjuna extract bottles with custom barcodes and labels seamlessly. Our European retail customers love the freshness.",
+    "approved": true,
+    "isTop": true,
+    "createdAt": "2026-09-16T12:30:00.000Z"
+  },
+  {
+    "id": "rev_seed_3",
+    "productId": 0,
+    "productName": "Overall Kiyan Export Service",
+    "name": "Tariq Al-Mansoor",
+    "location": "🇦🇪 General Director, Al-Aafiya Organics (Dubai, UAE)",
+    "rating": 5,
+    "comment": "Extremely impressed by their Kashmiri Saffron & Organic Moringa Powder. Quality standards, batch testing, and custom sample kits were delivered within 5 days in Dubai. Highly recommended B2B partner!",
+    "approved": true,
+    "isTop": true,
+    "createdAt": "2026-09-18T14:15:00.000Z"
+  }
+]
