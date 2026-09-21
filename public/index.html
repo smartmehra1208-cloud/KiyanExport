@@ -676,12 +676,16 @@
     <div class="mobile-nav-links">
       <a href="#home" onclick="showPage('home', this); toggleMobileMenu();"><i class="fas fa-home"></i> Home</a>
       <a href="#about" onclick="showPage('about', this); toggleMobileMenu();"><i class="fas fa-building"></i> About Us</a>
-      <a href="#services" onclick="showPage('services', this); toggleMobileMenu();"><i class="fas fa-concierge-bell"></i> Services</a>
-      <a href="#products" onclick="showPage('products', this); toggleMobileMenu();"><i class="fas fa-leaf"></i> Herbal Range</a>
-      <a href="#spices" onclick="showPage('spices', this); toggleMobileMenu();"><i class="fas fa-pepper-hot"></i> Authentic Spices</a>
-      <a href="#catalogue" onclick="showPage('catalogue', this); toggleMobileMenu();"><i class="fas fa-book-open"></i> Catalogue</a>
+      <a href="#services" onclick="showPage('services', this); toggleMobileMenu();"><i class="fas fa-concierge-bell"></i> Services & OEM</a>
+      <a href="#products" onclick="showPage('products', this); toggleMobileMenu();"><i class="fas fa-leaf" style="color: var(--accent-gold);"></i> Herbal Products</a>
+      <a href="#rfq" onclick="openRfqModal(); toggleMobileMenu();"><i class="fas fa-file-signature" style="color: var(--accent-gold);"></i> Request Quote (RFQ)</a>
+      <a href="#catalogue" onclick="showPage('catalogue', this); toggleMobileMenu();"><i class="fas fa-book-open" style="color: #e74c3c;"></i> Catalogue</a>
       <a href="#certifications" onclick="showPage('certifications', this); toggleMobileMenu();"><i class="fas fa-award"></i> Certifications</a>
       <a href="#help-center" onclick="showPage('help-center', this); toggleMobileMenu();"><i class="fas fa-envelope"></i> Contact Us</a>
+      
+      <a href="#rfq" onclick="openRfqModal(); toggleMobileMenu();" class="mobile-drawer-rfq-cta" style="margin-top: 15px; background: linear-gradient(135deg, #10302b, #1e5967); color: white; padding: 12px 18px; border-radius: 25px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; border: 1.5px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <i class="fas fa-file-signature" style="color: var(--bright-gold);"></i> Instant B2B Quote (RFQ)
+      </a>
     </div>
   </div>
   <div class="mobile-nav-overlay" id="mobileNavOverlay" style="display: none;" onclick="toggleMobileMenu()"></div>
@@ -3286,8 +3290,8 @@
   </a>
 
   <!-- Default Static Catalog & Site Content Fallback Data -->
-  <script src="/js/default-data.js?v=2026_v9001_single_products_section"></script>
+  <script src="/js/default-data.js?v=2026_v10001_mobile_rfq_fix"></script>
   <!-- Client Application Script -->
-  <script src="/js/app.js?v=2026_v9001_single_products_section" defer></script>
+  <script src="/js/app.js?v=2026_v10001_mobile_rfq_fix" defer></script>
 </body>
 </html>
