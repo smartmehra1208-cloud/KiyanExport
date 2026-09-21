@@ -4433,7 +4433,7 @@ function escapeHtml(str) {
 
 
 /* ==========================================================================
-   CUSTOMER REVIEWS & SOCIAL PROOF TOAST SYSTEM (SERVER-BACKED DUAL SYNC)
+   DEDICATED CUSTOMER REVIEWS & FEEDBACK CENTER (SERVER-BACKED DUAL SYNC)
    ========================================================================== */
 
 let stateReviews = [];
@@ -4565,10 +4565,10 @@ let currentSelectedRating = 5;
 
 function setReviewRating(rating) {
   currentSelectedRating = rating;
-  const ratingInput = document.getElementById('reviewRatingInput');
+  const ratingInput = document.getElementById('reviewRatingInputCenter');
   if (ratingInput) ratingInput.value = rating;
 
-  const stars = document.querySelectorAll('#starRatingPicker .star-btn');
+  const stars = document.querySelectorAll('#starRatingPickerCenter .star-btn');
   stars.forEach((star, idx) => {
     if (idx < rating) {
       star.style.color = '#fbbf24';
@@ -4578,54 +4578,186 @@ function setReviewRating(rating) {
   });
 }
 
-function openWriteReviewModal(productId = null) {
-  const modal = document.getElementById('writeReviewModal');
-  const select = document.getElementById('reviewProductSelect');
-  if (!modal || !select) return;
+async function openAllReviewsModal(productId = null) {
+  const modal = document.getElementById('allReviewsModal');
+  if (!modal) return;
 
-  select.innerHTML = '<option value="0">🌐 Overall Website & Company Service</option>';
-  if (window.productsData && Array.isArray(window.productsData)) {
-    window.productsData.forEach(p => {
-      const opt = document.createElement('option');
-      opt.value = p.id;
-      opt.textContent = `📦 ${p.name}`;
-      if (productId && p.id === productId) {
-        opt.selected = true;
-      }
-      select.appendChild(opt);
-    });
+  await fetchServerReviews();
+
+  // Populate Product Selector in Tab 2
+  const select = document.getElementById('reviewProductSelectCenter');
+  if (select) {
+    select.innerHTML = '<option value="0">🌐 Overall Website & Export Service</option>';
+    if (window.productsData && Array.isArray(window.productsData)) {
+      window.productsData.forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p.id;
+        opt.textContent = `📦 ${p.name}`;
+        if (productId && p.id === productId) opt.selected = true;
+        select.appendChild(opt);
+      });
+    }
+    if (productId) select.value = productId;
+  }
+
+  // Populate Filter Selector in Tab 1
+  const filterSelect = document.getElementById('modalFilterProduct');
+  if (filterSelect) {
+    filterSelect.innerHTML = '<option value="all">🔍 All Products & Services</option>';
+    if (window.productsData && Array.isArray(window.productsData)) {
+      window.productsData.forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p.id;
+        opt.textContent = `📦 ${p.name}`;
+        filterSelect.appendChild(opt);
+      });
+    }
   }
 
   setReviewRating(5);
-  const form = document.getElementById('writeReviewForm');
-  if (form) form.reset();
-  const ratingInput = document.getElementById('reviewRatingInput');
-  if (ratingInput) ratingInput.value = 5;
-  if (productId) select.value = productId;
+  renderModalFullReviews();
+
+  if (productId) {
+    switchReviewsCenterTab('write');
+  } else {
+    switchReviewsCenterTab('list');
+  }
 
   modal.style.display = 'flex';
 }
 
-function closeWriteReviewModal() {
-  const modal = document.getElementById('writeReviewModal');
+function openWriteReviewModal(productId = null) {
+  openAllReviewsModal(productId);
+  switchReviewsCenterTab('write');
+}
+
+function closeAllReviewsModal() {
+  const modal = document.getElementById('allReviewsModal');
   if (modal) modal.style.display = 'none';
+}
+
+function closeWriteReviewModal() {
+  closeAllReviewsModal();
+}
+
+function switchReviewsCenterTab(tabName) {
+  const tabList = document.getElementById('reviewsCenterTabList');
+  const tabWrite = document.getElementById('reviewsCenterTabWrite');
+  const btnList = document.getElementById('reviewsTabBtnList');
+  const btnWrite = document.getElementById('reviewsTabBtnWrite');
+
+  if (tabName === 'list') {
+    if (tabList) tabList.style.display = 'block';
+    if (tabWrite) tabWrite.style.display = 'none';
+    if (btnList) {
+      btnList.style.color = 'var(--deep-green)';
+      btnList.style.borderBottom = '3px solid var(--accent-gold)';
+    }
+    if (btnWrite) {
+      btnWrite.style.color = '#64748b';
+      btnWrite.style.borderBottom = '3px solid transparent';
+    }
+    renderModalFullReviews();
+  } else {
+    if (tabList) tabList.style.display = 'none';
+    if (tabWrite) tabWrite.style.display = 'block';
+    if (btnWrite) {
+      btnWrite.style.color = 'var(--deep-green)';
+      btnWrite.style.borderBottom = '3px solid var(--accent-gold)';
+    }
+    if (btnList) {
+      btnList.style.color = '#64748b';
+      btnList.style.borderBottom = '3px solid transparent';
+    }
+  }
+}
+
+function renderModalFullReviews() {
+  const grid = document.getElementById('modalFullReviewsGrid');
+  const countBadge = document.getElementById('modalReviewsCountBadge');
+  const scoreEl = document.getElementById('modalAvgScore');
+  const filterSelect = document.getElementById('modalFilterProduct');
+  if (!grid) return;
+
+  const filterVal = filterSelect ? filterSelect.value : 'all';
+  let reviews = stateReviews.filter(r => r.approved !== false);
+
+  if (filterVal !== 'all') {
+    const pId = parseInt(filterVal, 10);
+    reviews = reviews.filter(r => r.productId === pId);
+  }
+
+  if (countBadge) countBadge.innerText = reviews.length;
+
+  if (reviews.length > 0) {
+    const avg = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+    if (scoreEl) scoreEl.innerText = avg;
+  } else {
+    if (scoreEl) scoreEl.innerText = '5.0';
+  }
+
+  if (reviews.length === 0) {
+    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 40px; background: #f8fafc; border-radius: 16px;">No reviews found for this selection. Be the first to share your experience!</div>`;
+    return;
+  }
+
+  grid.innerHTML = reviews.map(r => {
+    const initials = r.name ? r.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase() : 'CU';
+    const stars = Array(r.rating || 5).fill('<i class="fas fa-star"></i>').join('');
+    const prodBadge = r.productName && r.productId > 0 ? `<span style="font-size: 0.72rem; background: rgba(30,89,103,0.08); color: var(--deep-green); padding: 3px 9px; border-radius: 8px; font-weight: 700; margin-bottom: 8px; display: inline-block;"><i class="fas fa-box"></i> ${escapeHtml(r.productName)}</span>` : '<span style="font-size: 0.72rem; background: #eef7f2; color: #27ae60; padding: 3px 9px; border-radius: 8px; font-weight: 700; margin-bottom: 8px; display: inline-block;"><i class="fas fa-globe"></i> Overall Service</span>';
+
+    return `
+      <div style="background: #ffffff; border-radius: 16px; padding: 22px; border: 1.5px solid #e2e8f0; box-shadow: 0 8px 24px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <div style="color: #fbbf24; font-size: 0.9rem;">
+              ${stars}
+            </div>
+            <span style="background: #eef7f2; color: #27ae60; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 800;"><i class="fas fa-check-circle"></i> Verified</span>
+          </div>
+          ${prodBadge}
+          <p style="color: #334155; font-size: 0.88rem; line-height: 1.5; font-style: italic; margin-bottom: 16px;">
+            "${escapeHtml(r.comment)}"
+          </p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; border-top: 1px solid #f1f5f9; padding-top: 12px;">
+          <div style="width: 38px; height: 38px; background: #10302b; color: var(--bright-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem; flex-shrink: 0;">
+            ${initials}
+          </div>
+          <div style="min-width:0;">
+            <h4 style="font-size: 0.88rem; font-weight: 800; color: #1b365d; margin: 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(r.name)}</h4>
+            <span style="font-size: 0.72rem; color: #64748b;">${escapeHtml(r.location || 'Global Buyer')}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function filterModalReviews() {
+  renderModalFullReviews();
 }
 
 async function handleReviewSubmit(e) {
   e.preventDefault();
-  const select = document.getElementById('reviewProductSelect');
-  const productId = parseInt(select.value) || 0;
+  const select = document.getElementById('reviewProductSelectCenter') || document.getElementById('reviewProductSelect');
+  const productId = parseInt(select ? select.value : 0) || 0;
   let productName = 'Overall Kiyan Export Service';
   if (productId > 0 && window.productsData) {
     const found = window.productsData.find(p => p.id === productId);
     if (found) productName = found.name;
   }
 
-  const ratingInput = document.getElementById('reviewRatingInput');
+  const ratingInput = document.getElementById('reviewRatingInputCenter') || document.getElementById('reviewRatingInput');
   const rating = parseInt(ratingInput ? ratingInput.value : 5) || 5;
-  const name = document.getElementById('reviewNameInput').value.trim();
-  const location = document.getElementById('reviewLocationInput').value.trim() || 'Verified Buyer';
-  const comment = document.getElementById('reviewCommentInput').value.trim();
+
+  const nameInput = document.getElementById('reviewNameInputCenter') || document.getElementById('reviewNameInput');
+  const locationInput = document.getElementById('reviewLocationInputCenter') || document.getElementById('reviewLocationInput');
+  const commentInput = document.getElementById('reviewCommentInputCenter') || document.getElementById('reviewCommentInput');
+
+  const name = nameInput ? nameInput.value.trim() : '';
+  const location = locationInput ? (locationInput.value.trim() || 'Verified Buyer') : 'Verified Buyer';
+  const comment = commentInput ? commentInput.value.trim() : '';
 
   if (!name || !comment) {
     alert('Please enter your name and review message.');
@@ -4665,14 +4797,14 @@ async function handleReviewSubmit(e) {
     localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
   }
 
-  closeWriteReviewModal();
   renderTestimonialsSection();
   if (typeof currentModalProduct !== 'undefined' && currentModalProduct && currentModalProduct.id === productId) {
     renderProductReviews(productId);
   }
   renderAdminReviewsTable();
 
-  alert('Thank you! Your verified review has been saved successfully across all sessions.');
+  switchReviewsCenterTab('list');
+  alert('Thank you! Your verified review has been saved permanently & is now live!');
 }
 
 async function renderAdminReviewsTable() {

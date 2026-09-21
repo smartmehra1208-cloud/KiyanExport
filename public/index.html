@@ -2173,7 +2173,7 @@
         <h2 style="font-size: 2.3rem; color: #1b365d; font-weight: 800; margin-top: 10px;">Verified Customer Reviews & Partner Feedback</h2>
         <p style="color: #64748b; font-size: 0.98rem; max-width: 650px; margin: 8px auto 0 auto;">Read genuine experiences from international distributors, wellness brands, and buyers who trust Kiyan Export for pure organic botanicals.</p>
         <div style="text-align: center; margin-top: 15px;">
-          <button onclick="openWriteReviewModal()" style="padding: 10px 24px; font-size: 0.88rem; font-weight: 800; background: linear-gradient(135deg, #10302b, #1e5967); color: white; border-radius: 25px; cursor: pointer; border: 1.5px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(0,0,0,0.15);"><i class="fas fa-edit" style="color: var(--bright-gold);"></i> Write a Review / Share Feedback</button>
+          <button onclick="openAllReviewsModal()" style="padding: 10px 24px; font-size: 0.88rem; font-weight: 800; background: linear-gradient(135deg, #10302b, #1e5967); color: white; border-radius: 25px; cursor: pointer; border: 1.5px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(0,0,0,0.15);"><i class="fas fa-edit" style="color: var(--bright-gold);"></i> Write a Review / Share Feedback</button>
         </div>
       </div>
 
@@ -2457,7 +2457,7 @@
                 <h3><i class="fas fa-star" style="color: var(--bright-gold);"></i> Customer Reviews & Testimonials Manager</h3>
                 <p>Approve/Hide customer feedback, pin top 5-star reviews to float as social proof popups, or delete reviews.</p>
               </div>
-              <button class="btn-main" onclick="openWriteReviewModal()"><i class="fas fa-plus-circle"></i> Add Verified Review</button>
+              <button class="btn-main" onclick="openAllReviewsModal()"><i class="fas fa-plus-circle"></i> Add Verified Review</button>
             </div>
 
             <div class="admin-table-responsive" style="margin-top: 20px;">
@@ -2727,7 +2727,7 @@
                 <h3 style="font-size: 1.05rem; color: #1b365d; font-weight: 800; margin: 0;"><i class="fas fa-star" style="color: #fbbf24;"></i> Verified Customer Reviews</h3>
                 <span id="pmReviewSummary" style="font-size: 0.78rem; color: #64748b; font-weight: 600;">Based on verified B2B orders</span>
               </div>
-              <button onclick="openWriteReviewModal(currentModalProduct ? currentModalProduct.id : null)" style="background: var(--deep-green); color: white; border: 1px solid var(--accent-gold); padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+              <button onclick="openAllReviewsModal(currentModalProduct ? currentModalProduct.id : null)" style="background: var(--deep-green); color: white; border: 1px solid var(--accent-gold); padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 5px;">
                 <i class="fas fa-edit" style="color: var(--bright-gold);"></i> Review Product
               </button>
             </div>
@@ -3274,67 +3274,119 @@
   </a>
 
   <!-- Default Static Catalog & Site Content Fallback Data -->
-  <script src="/js/default-data.js?v=2026_v12001_real_server_reviews"></script>
+  <script src="/js/default-data.js?v=2026_v13001_reviews_center_modal"></script>
   <!-- Client Application Script -->
-  <script src="/js/app.js?v=2026_v12001_real_server_reviews" defer></script>
+  <script src="/js/app.js?v=2026_v13001_reviews_center_modal" defer></script>
 
   <!-- WRITE A REVIEW MODAL -->
-  <div class="modal-overlay" id="writeReviewModal" style="display: none; z-index: 99999;">
-    <div class="modal-card" style="max-width: 520px; padding: 30px; border-radius: 20px; border: 2px solid var(--accent-gold);">
-      <button class="modal-close" onclick="closeWriteReviewModal()"><i class="fas fa-times"></i></button>
-      <div style="text-align: center; margin-bottom: 20px;">
-        <span style="background: rgba(30,89,103,0.1); color: var(--deep-green); padding: 5px 14px; border-radius: 15px; font-size: 0.78rem; font-weight: 800; text-transform: uppercase;">
-          <i class="fas fa-star" style="color: #fbbf24;"></i> Share Your Feedback
+    <!-- DEDICATED CUSTOMER REVIEWS & FEEDBACK CENTER MODAL -->
+  <div class="modal-overlay" id="allReviewsModal" style="display: none; z-index: 99995; background: rgba(0,0,0,0.75); backdrop-filter: blur(5px);">
+    <div class="modal-card" style="max-width: 860px; width: 92%; max-height: 88vh; overflow-y: auto; padding: 30px; border-radius: 24px; border: 2px solid var(--accent-gold); background: #ffffff; box-shadow: 0 20px 50px rgba(0,0,0,0.3); position: relative;">
+      
+      <!-- Close Button -->
+      <button onclick="closeAllReviewsModal()" style="position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border-radius: 50%; background: #f1f5f9; border: 1px solid #cbd5e1; color: #334155; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div style="text-align: center; margin-bottom: 25px;">
+        <span style="background: rgba(30,89,103,0.1); color: var(--deep-green); padding: 5px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+          <i class="fas fa-certificate" style="color: var(--accent-gold);"></i> Official Verified Reviews Hub
         </span>
-        <h2 style="font-size: 1.6rem; color: #1b365d; font-weight: 800; margin-top: 8px;">Write a Customer Review</h2>
-        <p style="font-size: 0.85rem; color: #64748b; margin-top: 4px;">Help global buyers by sharing your experience with Kiyan Export products & services.</p>
+        <h2 style="font-size: 2rem; color: #1b365d; font-weight: 800; margin-top: 8px;">Kiyan Export Customer Reviews & Partner Feedback</h2>
+        <p style="font-size: 0.9rem; color: #64748b; max-width: 600px; margin: 4px auto 0 auto;">Read real experiences from global buyers & submit your verified feedback.</p>
       </div>
 
-      <form id="writeReviewForm" onsubmit="handleReviewSubmit(event)">
-        <!-- Product Selector -->
-        <div style="margin-bottom: 16px;">
-          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #334155; margin-bottom: 5px;">Review Target:</label>
-          <select id="reviewProductSelect" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.88rem; outline: none; background: #f8fafc;">
-            <option value="0">🌐 Overall Website & Company Service</option>
-            <!-- Product options populated dynamically -->
+      <!-- Navigation Tabs Bar -->
+      <div style="display: flex; gap: 10px; border-bottom: 2px solid #e2e8f0; margin-bottom: 25px; justify-content: center;">
+        <button id="reviewsTabBtnList" onclick="switchReviewsCenterTab('list')" style="padding: 10px 20px; font-size: 0.9rem; font-weight: 800; color: var(--deep-green); border: none; border-bottom: 3px solid var(--accent-gold); background: none; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+          <i class="fas fa-list-ul" style="color: var(--accent-gold);"></i> All Reviews (<span id="modalReviewsCountBadge">0</span>)
+        </button>
+        <button id="reviewsTabBtnWrite" onclick="switchReviewsCenterTab('write')" style="padding: 10px 20px; font-size: 0.9rem; font-weight: 800; color: #64748b; border: none; border-bottom: 3px solid transparent; background: none; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+          <i class="fas fa-edit" style="color: #64748b;"></i> Write a Review
+        </button>
+      </div>
+
+      <!-- TAB 1: REVIEWS LIST & OVERVIEW -->
+      <div id="reviewsCenterTabList">
+        <!-- Overview Banner -->
+        <div style="background: linear-gradient(135deg, #10302b, #1e5967); color: white; padding: 20px 25px; border-radius: 16px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border: 1.5px solid var(--accent-gold);">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 2.5rem; font-weight: 900; color: var(--bright-gold);" id="modalAvgScore">4.9</span>
+              <div>
+                <div style="color: #fbbf24; font-size: 1.1rem;" id="modalAvgStars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div style="font-size: 0.8rem; color: #e2e8f0; font-weight: 700;">Overall Satisfaction Rating</div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <button onclick="switchReviewsCenterTab('write')" style="background: var(--bright-gold); color: #10302b; padding: 10px 20px; border-radius: 25px; font-weight: 800; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+              <i class="fas fa-pen"></i> Submit Your Review
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Dropdown -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+          <h4 style="font-size: 1rem; color: #1b365d; font-weight: 800; margin: 0;">Verified Buyers Feedback</h4>
+          <select id="modalFilterProduct" onchange="filterModalReviews()" style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.85rem; outline: none; background: #f8fafc; font-weight: 700;">
+            <option value="all">🔍 All Products & Services</option>
           </select>
         </div>
 
-        <!-- Rating Stars Picker -->
-        <div style="margin-bottom: 18px; text-align: center;">
-          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #334155; margin-bottom: 8px;">Your Rating:</label>
-          <div id="starRatingPicker" style="display: flex; justify-content: center; gap: 8px; font-size: 1.8rem; color: #fbbf24; cursor: pointer;">
-            <i class="fas fa-star star-btn" data-star="1" onclick="setReviewRating(1)"></i>
-            <i class="fas fa-star star-btn" data-star="2" onclick="setReviewRating(2)"></i>
-            <i class="fas fa-star star-btn" data-star="3" onclick="setReviewRating(3)"></i>
-            <i class="fas fa-star star-btn" data-star="4" onclick="setReviewRating(4)"></i>
-            <i class="fas fa-star star-btn" data-star="5" onclick="setReviewRating(5)"></i>
+        <!-- Reviews Grid Container -->
+        <div id="modalFullReviewsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- TAB 2: WRITE A REVIEW FORM -->
+      <div id="reviewsCenterTabWrite" style="display: none;">
+        <form id="writeReviewFormCenter" onsubmit="handleReviewSubmit(event)" style="max-width: 580px; margin: 0 auto; background: #f8fafc; padding: 25px; border-radius: 18px; border: 1.5px solid #e2e8f0;">
+          
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 800; color: #1b365d; margin-bottom: 6px;">Select Product / Service <span style="color:#e74c3c;">*</span>:</label>
+            <select id="reviewProductSelectCenter" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.88rem; outline: none; background: #ffffff;">
+              <option value="0">🌐 Overall Website & Export Service</option>
+            </select>
           </div>
-          <input type="hidden" id="reviewRatingInput" value="5" required>
-        </div>
 
-        <!-- Reviewer Name -->
-        <div style="margin-bottom: 14px;">
-          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #334155; margin-bottom: 5px;">Your Name / Company Name <span style="color:#e74c3c;">*</span>:</label>
-          <input type="text" id="reviewNameInput" required placeholder="e.g. Julian Danvers or NutraPure Labs" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.88rem; outline: none;">
-        </div>
+          <div style="margin-bottom: 20px; text-align: center; background: #ffffff; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 800; color: #1b365d; margin-bottom: 8px;">Your Rating (1 to 5 Stars):</label>
+            <div id="starRatingPickerCenter" style="display: flex; justify-content: center; gap: 10px; font-size: 2.2rem; color: #fbbf24; cursor: pointer;">
+              <i class="fas fa-star star-btn" data-star="1" onclick="setReviewRating(1)"></i>
+              <i class="fas fa-star star-btn" data-star="2" onclick="setReviewRating(2)"></i>
+              <i class="fas fa-star star-btn" data-star="3" onclick="setReviewRating(3)"></i>
+              <i class="fas fa-star star-btn" data-star="4" onclick="setReviewRating(4)"></i>
+              <i class="fas fa-star star-btn" data-star="5" onclick="setReviewRating(5)"></i>
+            </div>
+            <input type="hidden" id="reviewRatingInputCenter" value="5" required>
+          </div>
 
-        <!-- Country / Location -->
-        <div style="margin-bottom: 14px;">
-          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #334155; margin-bottom: 5px;">Country / Location (Optional):</label>
-          <input type="text" id="reviewLocationInput" placeholder="e.g. 🇺🇸 USA, 🇩🇪 Germany, 🇦🇪 Dubai" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.88rem; outline: none;">
-        </div>
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 800; color: #1b365d; margin-bottom: 6px;">Your Full Name / Company Name <span style="color:#e74c3c;">*</span>:</label>
+            <input type="text" id="reviewNameInputCenter" required placeholder="e.g. Julian Danvers or NutraPure Labs" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.88rem; outline: none; background: #ffffff;">
+          </div>
 
-        <!-- Review Message -->
-        <div style="margin-bottom: 20px;">
-          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #334155; margin-bottom: 5px;">Review Message <span style="color:#e74c3c;">*</span>:</label>
-          <textarea id="reviewCommentInput" required rows="4" placeholder="Write your detailed feedback about purity, packaging, shipping, or overall service..." style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.88rem; outline: none; font-family: inherit; resize: vertical;"></textarea>
-        </div>
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 800; color: #1b365d; margin-bottom: 6px;">Country / Location (Optional):</label>
+            <input type="text" id="reviewLocationInputCenter" placeholder="e.g. 🇺🇸 USA, 🇩🇪 Germany, 🇦🇪 UAE, 🇮🇳 India" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.88rem; outline: none; background: #ffffff;">
+          </div>
 
-        <button type="submit" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #10302b, #1e5967); color: white; border: 1.5px solid var(--accent-gold); border-radius: 25px; font-weight: 800; font-size: 0.95rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
-          <i class="fas fa-paper-plane" style="color: var(--bright-gold);"></i> Submit Verified Review
-        </button>
-      </form>
+          <div style="margin-bottom: 22px;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 800; color: #1b365d; margin-bottom: 6px;">Detailed Feedback / Review Message <span style="color:#e74c3c;">*</span>:</label>
+            <textarea id="reviewCommentInputCenter" required rows="4" placeholder="Share your experience with product purity, COA reports, packaging, DHL/sea shipping, or customer support..." style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.88rem; outline: none; font-family: inherit; resize: vertical; background: #ffffff;"></textarea>
+          </div>
+
+          <button type="submit" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #10302b, #1e5967); color: white; border: 1.5px solid var(--accent-gold); border-radius: 25px; font-weight: 800; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <i class="fas fa-paper-plane" style="color: var(--bright-gold);"></i> Post Verified Review
+          </button>
+        </form>
+      </div>
+
     </div>
   </div>
 
