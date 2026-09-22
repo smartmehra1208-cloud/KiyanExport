@@ -33,6 +33,17 @@ function getLocalIP() {
 // Enable Gzip / Brotli Compression for fast page load
 app.use(compression());
 
+// Disable caching for API & Reviews Data
+app.use((req, res, next) => {
+  if (req.url.startsWith('/api') || req.url.includes('reviews') || req.url.includes('default-data')) {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, private');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+  }
+  next();
+});
+
+
 // Enable CORS
 app.use(cors());
 

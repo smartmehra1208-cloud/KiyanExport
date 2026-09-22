@@ -201,6 +201,14 @@ function saveReviewsStore() {
     fs.writeFileSync(REVIEWS_FILE, JSON.stringify(memoryReviews, null, 2), 'utf8');
     const pubPath = path.join(__dirname, '../../public/reviews_data.json');
     fs.writeFileSync(pubPath, JSON.stringify(memoryReviews, null, 2), 'utf8');
+
+    // Also update public/js/default-data.js code file permanently
+    const defaultDataPath = path.join(__dirname, '../../public/js/default-data.js');
+    if (fs.existsSync(defaultDataPath)) {
+      let content = fs.readFileSync(defaultDataPath, 'utf8');
+      content = content.replace(/window\.DEFAULT_REVIEWS\s*=\s*\[[\s\S]*?\];/, `window.DEFAULT_REVIEWS = ${JSON.stringify(memoryReviews, null, 2)};`);
+      fs.writeFileSync(defaultDataPath, content, 'utf8');
+    }
   } catch (e) {
     console.error('Error saving reviews store:', e);
   }
