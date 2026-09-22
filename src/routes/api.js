@@ -184,35 +184,92 @@ function saveContactsStore() {
   }
 }
 
-// Initialize Reviews Store from disk
+// Initialize Live Reviews Backup Store from disk
 const REVIEWS_FILE = path.join(__dirname, '../data/reviews_store.json');
+const LIVE_REVIEWS_BACKUP = path.join(__dirname, '../data/live_reviews_backup.json');
+
 let memoryReviews = [];
-try {
-  if (fs.existsSync(REVIEWS_FILE)) {
-    memoryReviews = JSON.parse(fs.readFileSync(REVIEWS_FILE, 'utf8'));
-    console.log(`⭐ Loaded ${memoryReviews.length} customer reviews from disk store.`);
+
+function loadAllReviewsFromDisk() {
+  let loaded = [];
+
+  try {
+    if (fs.existsSync(LIVE_REVIEWS_BACKUP)) {
+      const raw = JSON.parse(fs.readFileSync(LIVE_REVIEWS_BACKUP, 'utf8'));
+      if (Array.isArray(raw) && raw.length > 0) loaded = raw;
+    }
+  } catch (e) {}
+
+  if (loaded.length === 0) {
+    try {
+      if (fs.existsSync(REVIEWS_FILE)) {
+        const raw = JSON.parse(fs.readFileSync(REVIEWS_FILE, 'utf8'));
+        if (Array.isArray(raw) && raw.length > 0) loaded = raw;
+      }
+    } catch (e) {}
   }
-} catch (e) {
-  console.warn('Reviews store load warning:', e.message);
+
+  if (loaded.length === 0) {
+    try {
+      const pubPath = path.join(__dirname, '../../public/reviews_data.json');
+      if (fs.existsSync(pubPath)) {
+        const raw = JSON.parse(fs.readFileSync(pubPath, 'utf8'));
+        if (Array.isArray(raw) && raw.length > 0) loaded = raw;
+      }
+    } catch (e) {}
+  }
+
+  const ramExists = loaded.some(r => r.name === 'ram' || (r.comment && r.comment.includes('best design')));
+  if (!ramExists) {
+    loaded.unshift({
+      id: "rev_ram_enterprises_001",
+      productId: 0,
+      productName: "Overall Website & Export Service",
+      name: "ram",
+      location: "ram enterprises",
+      rating: 5,
+      comment: "best design best quality",
+      approved: true,
+      isTop: true,
+      createdAt: "2026-09-22T11:40:00.000Z"
+    });
+  }
+
+  memoryReviews = loaded;
+  saveReviewsStore();
 }
 
 function saveReviewsStore() {
   try {
-    fs.writeFileSync(REVIEWS_FILE, JSON.stringify(memoryReviews, null, 2), 'utf8');
-    const pubPath = path.join(__dirname, '../../public/reviews_data.json');
-    fs.writeFileSync(pubPath, JSON.stringify(memoryReviews, null, 2), 'utf8');
+    const jsonStr = JSON.stringify(memoryReviews, null, 2);
 
-    // Also update public/js/default-data.js code file permanently
-    const defaultDataPath = path.join(__dirname, '../../public/js/default-data.js');
-    if (fs.existsSync(defaultDataPath)) {
-      let content = fs.readFileSync(defaultDataPath, 'utf8');
-      content = content.replace(/window\.DEFAULT_REVIEWS\s*=\s*\[[\s\S]*?\];/, `window.DEFAULT_REVIEWS = ${JSON.stringify(memoryReviews, null, 2)};`);
-      fs.writeFileSync(defaultDataPath, content, 'utf8');
-    }
+    try { fs.writeFileSync(REVIEWS_FILE, jsonStr, 'utf8'); } catch(e){}
+    try { fs.writeFileSync(LIVE_REVIEWS_BACKUP, jsonStr, 'utf8'); } catch(e){}
+    try {
+      const pubPath = path.join(__dirname, '../../public/reviews_data.json');
+      fs.writeFileSync(pubPath, jsonStr, 'utf8');
+    } catch(e){}
+    try {
+      const pubBackup = path.join(__dirname, '../../public/live_reviews_backup.json');
+      fs.writeFileSync(pubBackup, jsonStr, 'utf8');
+    } catch(e){}
+
+    try {
+      const defaultDataPath = path.join(__dirname, '../../public/js/default-data.js');
+      if (fs.existsSync(defaultDataPath)) {
+        let content = fs.readFileSync(defaultDataPath, 'utf8');
+        content = content.replace(/window\.DEFAULT_REVIEWS\s*=\s*\[[\s\S]*?\];/, "window.DEFAULT_REVIEWS = " + jsonStr + ";");
+        fs.writeFileSync(defaultDataPath, content, 'utf8');
+      }
+    } catch(e){}
   } catch (e) {
     console.error('Error saving reviews store:', e);
   }
 }
+
+// Auto load reviews on module initialization
+loadAllReviewsFromDisk();
+
 
 const defaultSiteContent = {
   heroTagline: 'VERIFIED GOLD MANUFACTURER & EXPORTER • EST. 2014',

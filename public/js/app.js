@@ -4499,29 +4499,44 @@ async function fetchServerReviews() {
 
   // Source 1: API Endpoint (/api/reviews)
   try {
-    const res = await fetch('/api/reviews?t=' + Date.now());
+    const res = await fetch('/api/reviews?t=' + Date.now(), {
+      headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+    });
     if (res.ok) {
       const data = await res.json();
-      if (data && data.success && Array.isArray(data.reviews)) {
+      if (data && data.success && Array.isArray(data.reviews) && data.reviews.length > 0) {
         list = data.reviews;
       }
     }
   } catch (e) {}
 
-  // Source 2: Static JSON Endpoint (/reviews_data.json)
+  // Source 2: Static JSON Endpoint (/live_reviews_backup.json)
   if (list.length === 0) {
     try {
-      const res = await fetch('/reviews_data.json?t=' + Date.now());
+      const res = await fetch('/live_reviews_backup.json?t=' + Date.now());
       if (res.ok) {
         const jsonList = await res.json();
-        if (Array.isArray(jsonList)) {
+        if (Array.isArray(jsonList) && jsonList.length > 0) {
           list = jsonList;
         }
       }
     } catch (e) {}
   }
 
-  // Source 3: window.DEFAULT_REVIEWS from default-data.js
+  // Source 3: Static JSON Endpoint (/reviews_data.json)
+  if (list.length === 0) {
+    try {
+      const res = await fetch('/reviews_data.json?t=' + Date.now());
+      if (res.ok) {
+        const jsonList = await res.json();
+        if (Array.isArray(jsonList) && jsonList.length > 0) {
+          list = jsonList;
+        }
+      }
+    } catch (e) {}
+  }
+
+  // Source 4: window.DEFAULT_REVIEWS from default-data.js
   if (window.DEFAULT_REVIEWS && Array.isArray(window.DEFAULT_REVIEWS)) {
     window.DEFAULT_REVIEWS.forEach(r => {
       const exists = list.some(item => item.id === r.id || (item.comment === r.comment && item.name === r.name));
@@ -4529,7 +4544,7 @@ async function fetchServerReviews() {
     });
   }
 
-  // Source 4: LocalStorage items
+  // Source 5: LocalStorage items
   try {
     const raw = localStorage.getItem('kiyan_custom_reviews');
     if (raw) {
@@ -4546,7 +4561,6 @@ async function fetchServerReviews() {
   stateReviews = list;
   try {
     localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
-    
   } catch (e) {}
 
   return stateReviews;
