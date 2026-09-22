@@ -575,7 +575,6 @@ router.delete('/reviews/:id', async (req, res) => {
 
 router.post('/products/:id/reviews', async (req, res) => {
   try {
-    await ensureDbConnected();
     const id = parseInt(req.params.id, 10);
     const { userName, rating, comment } = req.body;
 
@@ -586,60 +585,36 @@ router.post('/products/:id/reviews', async (req, res) => {
     const numRating = Math.min(5, Math.max(1, parseInt(rating, 10) || 5));
     const reviewerName = (userName && userName.trim()) ? userName.trim() : 'Verified Customer';
 
-    const newReview = {
-      user: reviewerName,
+    let productName = 'Herbal Product #' + id;
+    const foundProd = staticProducts.find(p => p.id === id);
+    if (foundProd) productName = foundProd.name;
+
+    const globalReview = {
+      id: 'rev_' + Date.now() + '_' + Math.floor(1000 + Math.random() * 9000),
+      productId: id,
+      productName: productName,
+      name: reviewerName,
+      location: 'Verified Product Buyer',
       rating: numRating,
       comment: comment.trim(),
-      createdAt: new Date()
+      approved: true,
+      isTop: numRating === 5,
+      createdAt: new Date().toISOString()
     };
 
-    let updatedProduct = null;
-
-    // 1. Try updating in MongoDB Atlas
-    try {
-      const dbProd = await Product.findOne({ id });
-      if (dbProd) {
-        if (!dbProd.reviews) dbProd.reviews = [];
-        dbProd.reviews.unshift(newReview);
-        
-        // Recalculate average rating
-        const totalRatingSum = dbProd.reviews.reduce((sum, r) => sum + r.rating, 0);
-        dbProd.rating = parseFloat((totalRatingSum / dbProd.reviews.length).toFixed(1));
-        dbProd.reviewsCount = dbProd.reviews.length;
-        
-        await dbProd.save();
-        updatedProduct = dbProd.toObject();
-      }
-    } catch (e) {
-      console.warn('MongoDB review update fallback:', e.message);
+    if (mongoose.connection.readyState === 1) {
+      try {
+        await Review.create(globalReview);
+      } catch (e) {}
     }
 
-    // 2. Also update in-memory / JSON store
-    const staticIndex = staticProducts.findIndex(p => p.id === id);
-    if (staticIndex !== -1) {
-      if (!staticProducts[staticIndex].reviews) {
-        staticProducts[staticIndex].reviews = [];
-      }
-      staticProducts[staticIndex].reviews.unshift(newReview);
-      const totalSum = staticProducts[staticIndex].reviews.reduce((sum, r) => sum + r.rating, 0);
-      staticProducts[staticIndex].rating = parseFloat((totalSum / staticProducts[staticIndex].reviews.length).toFixed(1));
-      staticProducts[staticIndex].reviewsCount = staticProducts[staticIndex].reviews.length;
-      saveProductsStore();
-
-      if (!updatedProduct) {
-        updatedProduct = staticProducts[staticIndex];
-      }
-    }
-
-    if (!updatedProduct) {
-      return res.status(404).json({ success: false, message: 'Product not found' });
-    }
+    memoryReviews.unshift(globalReview);
+    saveReviewsStore();
 
     res.json({
       success: true,
-      message: 'Thank you! Your product review has been submitted & saved successfully.',
-      product: updatedProduct,
-      review: newReview
+      message: 'Thank you! Your product review has been submitted & saved permanently.',
+      review: globalReview
     });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to submit product review', error: err.message });

@@ -1245,23 +1245,46 @@ function closeProductModal(event) {
 
 // PRODUCT REVIEWS LOGIC & HANDLERS
 function getProductSampleReviews(product) {
-  if (product.reviews && Array.isArray(product.reviews) && product.reviews.length > 0) {
-    return product.reviews;
+  if (!product) return [];
+  const pId = parseInt(product.id, 10) || 0;
+  const pName = (product.name || '').toLowerCase();
+
+  let matched = [];
+
+  if (Array.isArray(stateReviews)) {
+    stateReviews.forEach(r => {
+      if (r.approved !== false) {
+        const revPId = parseInt(r.productId, 10) || 0;
+        const revPName = (r.productName || '').toLowerCase();
+        if (revPId === pId || (pId === 0 && revPId === 0) || (revPName && revPName === pName)) {
+          matched.push(r);
+        }
+      }
+    });
   }
-  return [
-    {
-      user: "Apex Herbal Global Solutions (USA)",
-      rating: 5,
-      comment: "Exceptional extract purity and CoA documentation! We ordered 1,000 pcs for private label packaging and shipping reached New York within 9 days.",
-      createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString()
-    },
-    {
-      user: "Dr. Vikramaditya Vaidya",
-      rating: 5,
-      comment: "Standardized active concentration is top-notch. High consistency across batch orders with full lab testing certificate.",
-      createdAt: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString()
-    }
-  ];
+
+  if (product.reviews && Array.isArray(product.reviews)) {
+    product.reviews.forEach(pr => {
+      const prUser = pr.user || pr.userName || 'Verified Buyer';
+      const prComment = pr.comment || '';
+      const exists = matched.some(m => m.comment === prComment && (m.name === prUser || m.user === prUser));
+      if (!exists && prComment) {
+        matched.push({
+          id: 'prod_' + Math.random(),
+          productId: pId,
+          productName: product.name,
+          name: prUser,
+          user: prUser,
+          location: 'Verified Buyer',
+          rating: pr.rating || 5,
+          comment: prComment,
+          createdAt: pr.createdAt || new Date().toISOString()
+        });
+      }
+    });
+  }
+
+  return matched;
 }
 
 function renderProductReviews(product) {
@@ -1270,46 +1293,63 @@ function renderProductReviews(product) {
   const reviewFormBox = document.getElementById('pmReviewFormBox');
   if (reviewFormBox) reviewFormBox.style.display = 'none';
 
+  if (!product) return;
+
   const reviews = getProductSampleReviews(product);
   const totalReviews = reviews.length;
-  const avgRating = product.rating || 5.0;
+  let avgRating = product.rating || 5.0;
+
+  if (totalReviews > 0) {
+    const sum = reviews.reduce((acc, r) => acc + (parseInt(r.rating, 10) || 5), 0);
+    avgRating = parseFloat((sum / totalReviews).toFixed(1));
+  }
 
   if (reviewSummaryText) {
-    reviewSummaryText.innerHTML = `Overall Rating: <strong style="color: #1e4d2b;">${avgRating.toFixed(1)} / 5.0</strong> (${totalReviews} Verified Review${totalReviews > 1 ? 's' : ''})`;
+    reviewSummaryText.innerHTML = totalReviews > 0 
+      ? `Overall Rating: <strong style="color: #1e4d2b;">${avgRating.toFixed(1)} / 5.0</strong> (${totalReviews} Verified Review${totalReviews > 1 ? 's' : ''})`
+      : `Overall Rating: <strong style="color: #1e4d2b;">5.0 / 5.0</strong> (No reviews yet. Be the first!)`;
   }
 
   if (reviewsListEl) {
     if (reviews.length === 0) {
-      reviewsListEl.innerHTML = `<p style="color: #777; font-size: 0.9rem; font-style: italic; text-align: center; padding: 15px;">No customer reviews yet. Be the first to write a review!</p>`;
+      reviewsListEl.innerHTML = `
+        <div style="background: #f8fafc; border: 1.5px dashed #cbd5e1; border-radius: 12px; padding: 20px; text-align: center;">
+          <p style="color: #64748b; font-size: 0.88rem; font-weight: 600; margin: 0 0 10px 0;">No customer reviews for "${escapeHtml(product.name)}" yet.</p>
+          <button type="button" onclick="toggleReviewForm()" style="background: var(--deep-green); color: white; border: 1px solid var(--accent-gold); padding: 7px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 800; cursor: pointer;">
+            <i class="fas fa-pen"></i> Be the First to Review This Product
+          </button>
+        </div>
+      `;
       return;
     }
 
     reviewsListEl.innerHTML = reviews.map(r => {
+      const rName = r.name || r.user || 'Verified Buyer';
+      const rLoc = r.location ? ` (${r.location})` : '';
       const ratingStars = Array.from({ length: 5 }, (_, i) => 
-        `<i class="fas fa-star" style="color: ${i < (r.rating || 5) ? '#f39c12' : '#e0e0e0'}; font-size: 0.85rem;"></i>`
+        `<i class="fas fa-star" style="color: ${i < (r.rating || 5) ? '#fbbf24' : '#cbd5e1'}; font-size: 0.85rem;"></i>`
       ).join('');
 
-      const dateStr = r.createdAt ? new Date(r.createdAt).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Verified Purchase';
+      const initials = rName.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase() || 'CU';
 
       return `
-        <div style="background: #ffffff; border: 1px solid #eef2f0; border-radius: 10px; padding: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
             <div style="display: flex; align-items: center; gap: 8px;">
-              <div style="width: 32px; height: 32px; border-radius: 50%; background: #1e4d2b; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem;">
-                ${(r.user || 'V').charAt(0).toUpperCase()}
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: #10302b; color: var(--bright-gold); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem;">
+                ${initials}
               </div>
               <div>
-                <strong style="font-size: 0.92rem; color: #2c3e50;">${r.user || 'Verified Buyer'}</strong>
-                <span style="font-size: 0.75rem; color: #27ae60; background: #eef7f2; padding: 2px 8px; border-radius: 10px; margin-left: 6px; font-weight: 600;"><i class="fas fa-check-circle"></i> Verified B2B Customer</span>
+                <strong style="font-size: 0.9rem; color: #1b365d;">${escapeHtml(rName)}</strong>
+                <span style="font-size: 0.72rem; color: #64748b;">${escapeHtml(rLoc)}</span>
+                <span style="font-size: 0.72rem; color: #27ae60; background: #eef7f2; padding: 2px 8px; border-radius: 10px; margin-left: 6px; font-weight: 800;"><i class="fas fa-check-circle"></i> Verified Buyer</span>
               </div>
             </div>
-            <span style="font-size: 0.78rem; color: #999;">${dateStr}</span>
+            <div style="display: flex; align-items: center; gap: 2px;">
+              ${ratingStars}
+            </div>
           </div>
-          <div style="margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
-            ${ratingStars}
-            <span style="font-size: 0.8rem; font-weight: bold; color: #555; margin-left: 4px;">${r.rating || 5}.0/5</span>
-          </div>
-          <p style="font-size: 0.88rem; color: #444; margin: 0; line-height: 1.45;">"${r.comment}"</p>
+          <p style="font-size: 0.88rem; color: #334155; margin: 0; line-height: 1.5; font-style: italic;">"${escapeHtml(r.comment)}"</p>
         </div>
       `;
     }).join('');
@@ -1373,8 +1413,8 @@ async function submitProductReview(event) {
   const rating = ratingInput ? parseInt(ratingInput.value, 10) : 5;
   const comment = commentInput ? commentInput.value.trim() : '';
 
-  if (!comment) {
-    showToast('Please enter your review comment.', 'error');
+  if (!userName || !comment) {
+    alert('Please enter your name and review comment.');
     return;
   }
 
@@ -1383,28 +1423,53 @@ async function submitProductReview(event) {
     submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Submitting...`;
   }
 
+  const reviewPayload = {
+    productId: currentModalProduct.id,
+    productName: currentModalProduct.name,
+    name: userName,
+    location: 'Verified Product Buyer',
+    rating: rating,
+    comment: comment
+  };
+
   try {
-    const res = await fetch(`/api/products/${currentModalProduct.id}/reviews`, {
+    const res = await fetch('/api/reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userName, rating, comment })
+      body: JSON.stringify(reviewPayload)
     });
 
     const data = await res.json();
-    if (data.success) {
-      showToast(data.message || 'Review submitted successfully!', 'success');
-      currentModalProduct = data.product;
-      renderProductReviews(data.product);
+    if (data && data.success && data.review) {
+      alert(`Thank you! Your verified review for "${currentModalProduct.name}" has been submitted & saved permanently across all users!`);
+      
+      const newRev = data.review;
+      const exists = stateReviews.some(r => r.id === newRev.id || (r.comment === newRev.comment && r.name === newRev.name));
+      if (!exists) stateReviews.unshift(newRev);
+
+      if (window.DEFAULT_REVIEWS) {
+        const defExists = window.DEFAULT_REVIEWS.some(r => r.id === newRev.id || (r.comment === newRev.comment && r.name === newRev.name));
+        if (!defExists) window.DEFAULT_REVIEWS.unshift(newRev);
+      }
+
+      try {
+        localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+      } catch (e) {}
+
+      renderProductReviews(currentModalProduct);
+      renderTestimonialsSection();
+      renderAdminReviewsTable();
+      renderModalFullReviews();
 
       if (commentInput) commentInput.value = '';
       const box = document.getElementById('pmReviewFormBox');
       if (box) box.style.display = 'none';
     } else {
-      showToast(data.message || 'Failed to submit review', 'error');
+      alert(data.message || 'Failed to submit review');
     }
   } catch (err) {
     console.error('Submit review error:', err);
-    showToast('Network error while submitting review', 'error');
+    alert('Network error while submitting review');
   } finally {
     if (submitBtn) {
       submitBtn.disabled = false;
