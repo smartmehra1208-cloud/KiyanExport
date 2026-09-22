@@ -936,7 +936,7 @@ async function openProductModal(id) {
 
   if (!product) return;
   currentModalProduct = product;
-  renderProductReviews(product.id);
+  renderProductReviews(product);
 
   const mainImgUrl = product.image.startsWith('/') ? product.image : '/' + product.image;
 
@@ -1247,7 +1247,7 @@ function closeProductModal(event) {
 function getProductSampleReviews(product) {
   if (!product) return [];
   const pId = parseInt(product.id, 10) || 0;
-  const pName = (product.name || '').toLowerCase();
+  const pName = (product.name || '').toLowerCase().trim();
 
   let matched = [];
 
@@ -1255,31 +1255,11 @@ function getProductSampleReviews(product) {
     stateReviews.forEach(r => {
       if (r.approved !== false) {
         const revPId = parseInt(r.productId, 10) || 0;
-        const revPName = (r.productName || '').toLowerCase();
-        if (revPId === pId || (pId === 0 && revPId === 0) || (revPName && revPName === pName)) {
-          matched.push(r);
+        const revPName = (r.productName || '').toLowerCase().trim();
+        if (revPId === pId || (pId !== 0 && revPName && revPName === pName)) {
+          const exists = matched.some(m => m.id === r.id || (m.comment === r.comment && m.name === r.name));
+          if (!exists) matched.push(r);
         }
-      }
-    });
-  }
-
-  if (product.reviews && Array.isArray(product.reviews)) {
-    product.reviews.forEach(pr => {
-      const prUser = pr.user || pr.userName || 'Verified Buyer';
-      const prComment = pr.comment || '';
-      const exists = matched.some(m => m.comment === prComment && (m.name === prUser || m.user === prUser));
-      if (!exists && prComment) {
-        matched.push({
-          id: 'prod_' + Math.random(),
-          productId: pId,
-          productName: product.name,
-          name: prUser,
-          user: prUser,
-          location: 'Verified Buyer',
-          rating: pr.rating || 5,
-          comment: prComment,
-          createdAt: pr.createdAt || new Date().toISOString()
-        });
       }
     });
   }
@@ -1287,11 +1267,21 @@ function getProductSampleReviews(product) {
   return matched;
 }
 
-function renderProductReviews(product) {
+function renderProductReviews(productTarget) {
   const reviewsListEl = document.getElementById('pmReviewsList');
   const reviewSummaryText = document.getElementById('pmReviewSummaryText');
   const reviewFormBox = document.getElementById('pmReviewFormBox');
   if (reviewFormBox) reviewFormBox.style.display = 'none';
+
+  let product = productTarget;
+  if (typeof productTarget === 'number' || typeof productTarget === 'string') {
+    const pId = parseInt(productTarget, 10);
+    if (typeof productsData !== 'undefined' && Array.isArray(productsData)) {
+      product = productsData.find(p => p.id === pId) || { id: pId, name: 'Herbal Product' };
+    } else {
+      product = { id: pId, name: 'Herbal Product' };
+    }
+  }
 
   if (!product) return;
 
@@ -1307,15 +1297,15 @@ function renderProductReviews(product) {
   if (reviewSummaryText) {
     reviewSummaryText.innerHTML = totalReviews > 0 
       ? `Overall Rating: <strong style="color: #1e4d2b;">${avgRating.toFixed(1)} / 5.0</strong> (${totalReviews} Verified Review${totalReviews > 1 ? 's' : ''})`
-      : `Overall Rating: <strong style="color: #1e4d2b;">5.0 / 5.0</strong> (No reviews yet. Be the first!)`;
+      : `Overall Rating: <strong style="color: #1e4d2b;">5.0 / 5.0</strong> (No reviews for this product yet. Be the first!)`;
   }
 
   if (reviewsListEl) {
     if (reviews.length === 0) {
       reviewsListEl.innerHTML = `
         <div style="background: #f8fafc; border: 1.5px dashed #cbd5e1; border-radius: 12px; padding: 20px; text-align: center;">
-          <p style="color: #64748b; font-size: 0.88rem; font-weight: 600; margin: 0 0 10px 0;">No customer reviews for "${escapeHtml(product.name)}" yet.</p>
-          <button type="button" onclick="toggleReviewForm()" style="background: var(--deep-green); color: white; border: 1px solid var(--accent-gold); padding: 7px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 800; cursor: pointer;">
+          <p style="color: #64748b; font-size: 0.88rem; font-weight: 600; margin: 0 0 10px 0;">No verified customer reviews for "${escapeHtml(product.name || 'this product')}" yet.</p>
+          <button type="button" onclick="togglePmInlineReviewForm()" style="background: var(--deep-green); color: white; border: 1px solid var(--accent-gold); padding: 7px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 800; cursor: pointer;">
             <i class="fas fa-pen"></i> Be the First to Review This Product
           </button>
         </div>
