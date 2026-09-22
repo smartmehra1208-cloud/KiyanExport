@@ -14,6 +14,7 @@ const User = require('../models/User');
 const Order = require('../models/Order');
 const Contact = require('../models/Contact');
 const SiteContent = require('../models/SiteContent');
+const Review = require('../models/Review');
 
 let lastDbAttempt = 0;
 const DB_RETRY_INTERVAL = 120000; // 2 minutes cooldown between connection attempts
@@ -411,13 +412,36 @@ router.get('/products/:id', async (req, res) => {
 });
 
 // POST Submit a New Review for a Product
-// GET all customer reviews
-router.get('/reviews', (req, res) => {
-  res.json({ success: true, reviews: memoryReviews });
+// GET all customer reviews (MongoDB Atlas Cloud + Local Disk Sync)
+router.get('/reviews', async (req, res) => {
+  try {
+    let reviewsList = [];
+    if (mongoose.connection.readyState === 1) {
+      try {
+        reviewsList = await Review.find({}).sort({ createdAt: -1 }).maxTimeMS(2500).lean();
+      } catch (e) {
+        reviewsList = [...memoryReviews];
+      }
+    } else {
+      ensureDbConnected().catch(() => {});
+      reviewsList = [...memoryReviews];
+    }
+
+    if (!reviewsList || reviewsList.length === 0) {
+      reviewsList = [...memoryReviews];
+    } else {
+      memoryReviews = reviewsList;
+      saveReviewsStore();
+    }
+
+    res.json({ success: true, reviews: reviewsList });
+  } catch (err) {
+    res.json({ success: true, reviews: memoryReviews });
+  }
 });
 
-// POST submit a new review (general or product-specific)
-router.post('/reviews', (req, res) => {
+// POST submit a new review (general or product-specific) - MongoDB Atlas + Dual Store
+router.post('/reviews', async (req, res) => {
   try {
     const { productId, productName, name, location, rating, comment } = req.body;
     if (!name || !comment || !comment.trim()) {
@@ -434,7 +458,7 @@ router.post('/reviews', (req, res) => {
     }
 
     const newReview = {
-      id: 'rev_' + Date.now() + '_' + Math.floor(1000 + Math.random() * 9000),
+      id: req.body.id || ('rev_' + Date.now() + '_' + Math.floor(1000 + Math.random() * 9000)),
       productId: numProductId,
       productName: finalProdName,
       name: name.trim(),
@@ -446,8 +470,24 @@ router.post('/reviews', (req, res) => {
       createdAt: new Date().toISOString()
     };
 
-    memoryReviews.unshift(newReview);
-    saveReviewsStore();
+    // 1. Save to MongoDB Atlas Cloud DB if connected
+    if (mongoose.connection.readyState === 1) {
+      try {
+        await Review.create(newReview);
+        console.log(`⭐ Saved review to MongoDB Atlas Cloud: ${newReview.name}`);
+      } catch (dbErr) {
+        console.warn('⚠️ Atlas review save notice:', dbErr.message);
+      }
+    } else {
+      ensureDbConnected().catch(() => {});
+    }
+
+    // 2. Save to local memory & JSON stores
+    const exists = memoryReviews.some(r => r.id === newReview.id || (r.comment === newReview.comment && r.name === newReview.name));
+    if (!exists) {
+      memoryReviews.unshift(newReview);
+      saveReviewsStore();
+    }
 
     if (numProductId > 0) {
       const staticIndex = staticProducts.findIndex(p => p.id === numProductId);
@@ -477,31 +517,47 @@ router.post('/reviews', (req, res) => {
 });
 
 // PUT update review status
-router.put('/reviews/:id', (req, res) => {
+router.put('/reviews/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { approved, isTop } = req.body;
     const review = memoryReviews.find(r => r.id === id);
 
-    if (!review) {
-      return res.status(404).json({ success: false, message: 'Review not found' });
+    if (typeof approved === 'boolean') {
+      if (review) review.approved = approved;
+    }
+    if (typeof isTop === 'boolean') {
+      if (review) review.isTop = isTop;
     }
 
-    if (typeof approved === 'boolean') review.approved = approved;
-    if (typeof isTop === 'boolean') review.isTop = isTop;
+    if (mongoose.connection.readyState === 1) {
+      try {
+        const updateDoc = {};
+        if (typeof approved === 'boolean') updateDoc.approved = approved;
+        if (typeof isTop === 'boolean') updateDoc.isTop = isTop;
+        await Review.findOneAndUpdate({ id }, updateDoc);
+      } catch (e) {}
+    }
 
     saveReviewsStore();
-    res.json({ success: true, message: 'Review updated', review });
+    res.json({ success: true, message: 'Review updated', review: review || { id, approved, isTop } });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Update failed', error: err.message });
   }
 });
 
 // DELETE review
-router.delete('/reviews/:id', (req, res) => {
+router.delete('/reviews/:id', async (req, res) => {
   try {
     const { id } = req.params;
     memoryReviews = memoryReviews.filter(r => r.id !== id);
+
+    if (mongoose.connection.readyState === 1) {
+      try {
+        await Review.deleteOne({ id });
+      } catch (e) {}
+    }
+
     saveReviewsStore();
     res.json({ success: true, message: 'Review deleted' });
   } catch (err) {
