@@ -5,7 +5,7 @@
     "name": "ARJUNA CAPSULE",
     "category": "Herbal Products",
     "badge": "Best Seller",
-    "rating": 5,
+    "rating": 5.0,
     "price": 599,
     "oldPrice": 1299,
     "image": "Herbal/arjuna.webp",
@@ -31,16 +31,8 @@
     "__v": 1,
     "createdAt": "2026-09-03T07:16:45.510Z",
     "updatedAt": "2026-09-16T05:30:23.448Z",
-    "reviews": [
-      {
-        "user": "Global BioPharm LLC",
-        "rating": 5,
-        "comment": "Exceptional extract purity and fast delivery!",
-        "createdAt": "2026-09-10T12:40:14.936Z",
-        "_id": "6aaa296f40db1b1d4528e267"
-      }
-    ],
-    "reviewsCount": 20,
+    "reviews": [],
+    "reviewsCount": 0,
     "customization": [
       "Custom Brand Logo & Label Printing",
       "Custom Bottle / Box Packaging",
@@ -50,7 +42,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹509 - ₹599 / Pieces",
+    "priceRange": "\u20b9509 - \u20b9599 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -88,7 +80,7 @@
     "name": "ARJUNA POWDER",
     "category": "Herbal Products",
     "badge": "New",
-    "rating": 5,
+    "rating": 5.0,
     "price": 600,
     "oldPrice": 1000,
     "image": "Herbal/arjunapowder.webp",
@@ -120,7 +112,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹510 - ₹600 / Kg",
+    "priceRange": "\u20b9510 - \u20b9600 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
@@ -148,10 +140,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Kg"
+    "unit": "Kg",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9e4",
@@ -159,7 +152,7 @@
     "name": "ASWAGANDHA POWDER",
     "category": "Herbal Products",
     "badge": "Vegan",
-    "rating": 4.7,
+    "rating": 5.0,
     "price": 2250,
     "oldPrice": 3000,
     "image": "Herbal/Aswagandha.webp",
@@ -192,7 +185,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹1913 - ₹2250 / Kg",
+    "priceRange": "\u20b91913 - \u20b92250 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
@@ -220,10 +213,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Kg"
+    "unit": "Kg",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9e5",
@@ -231,7 +225,7 @@
     "name": "ASWAGANDHA CAPSULE",
     "category": "Herbal Products",
     "badge": "Luxury",
-    "rating": 5,
+    "rating": 5.0,
     "price": 799,
     "oldPrice": 1000,
     "image": "Herbal/Aswagandhacapsule.webp",
@@ -263,7 +257,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
-    "priceRange": "₹679 - ₹799 / Pieces",
+    "priceRange": "\u20b9679 - \u20b9799 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
@@ -291,10 +285,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9e6",
@@ -302,7 +297,7 @@
     "name": "ASWAGANDHA GUMMIES",
     "category": "Herbal Products",
     "badge": "Best Seller",
-    "rating": 4.6,
+    "rating": 5.0,
     "price": 550,
     "oldPrice": 700,
     "image": "Herbal/Aswagandhagummies.webp",
@@ -336,7 +331,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹468 - ₹550 / Pieces",
+    "priceRange": "\u20b9468 - \u20b9550 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -364,10 +359,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9e7",
@@ -375,7 +371,7 @@
     "name": "BACOPA CAPSULE",
     "category": "Herbal Products",
     "badge": "Ayurveda",
-    "rating": 5,
+    "rating": 5.0,
     "price": 850,
     "oldPrice": 1300,
     "image": "Herbal/bacopa.webp",
@@ -408,7 +404,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹723 - ₹850 / Pieces",
+    "priceRange": "\u20b9723 - \u20b9850 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -436,10 +432,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9e8",
@@ -447,7 +444,7 @@
     "name": "BAMBOO SALT",
     "category": "Herbal Products",
     "badge": "Superfood",
-    "rating": 4.8,
+    "rating": 5.0,
     "price": 7500,
     "oldPrice": 9000,
     "image": "Herbal/bamboosalt1.webp",
@@ -456,7 +453,7 @@
       "Herbal/arjuna.webp",
       "Herbal/Aswagandha.webp"
     ],
-    "description": "Premium Bamboo Salt – 100% Pure & Natural. Carefully processed for superior quality, rich mineral content, and everyday wellness. Ideal for cooking, seasoning, and healthy living.",
+    "description": "Premium Bamboo Salt \u2013 100% Pure & Natural. Carefully processed for superior quality, rich mineral content, and everyday wellness. Ideal for cooking, seasoning, and healthy living.",
     "ingredients": [
       "9-Times Roasted Bamboo Salt"
     ],
@@ -479,7 +476,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹6375 - ₹7500 / Kg",
+    "priceRange": "\u20b96375 - \u20b97500 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
@@ -507,10 +504,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Kg"
+    "unit": "Kg",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9e9",
@@ -518,7 +516,7 @@
     "name": "BOSWELLIA CAPSULE",
     "category": "Herbal Products",
     "badge": "Organic",
-    "rating": 4.9,
+    "rating": 5.0,
     "price": 850,
     "oldPrice": 1100,
     "image": "Herbal/boswellia.webp",
@@ -550,7 +548,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹723 - ₹850 / Pieces",
+    "priceRange": "\u20b9723 - \u20b9850 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -578,10 +576,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9eb",
@@ -589,7 +588,7 @@
     "name": "Fadogia Agrestis Capsules",
     "category": "Herbal Products",
     "badge": "Best Seller",
-    "rating": 5,
+    "rating": 5.0,
     "price": 750,
     "oldPrice": 1000,
     "image": "Herbal/fadogiakiyan1.webp",
@@ -622,7 +621,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹638 - ₹750 / Pieces",
+    "priceRange": "\u20b9638 - \u20b9750 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -652,8 +651,9 @@
     "tag": "HERBAL CARE",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
-    "unit": "Pieces"
+    "reviewsCount": 0,
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9ec",
@@ -661,7 +661,7 @@
     "name": "GINGER TURMERIC CAPSULE",
     "category": "Herbal Products",
     "badge": "Digestive",
-    "rating": 4.8,
+    "rating": 5.0,
     "price": 900,
     "oldPrice": 1200,
     "image": "Herbal/ginger1.webp",
@@ -695,7 +695,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹765 - ₹900 / Pieces",
+    "priceRange": "\u20b9765 - \u20b9900 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -723,10 +723,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9ed",
@@ -734,7 +735,7 @@
     "name": "GINKGO BILOBA CAPSULE",
     "category": "Herbal Products",
     "badge": "Focus",
-    "rating": 4.9,
+    "rating": 5.0,
     "price": 750,
     "oldPrice": 1000,
     "image": "Herbal/ginkgo.webp",
@@ -766,7 +767,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
-    "priceRange": "₹638 - ₹750 / Pieces",
+    "priceRange": "\u20b9638 - \u20b9750 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
@@ -794,10 +795,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9ee",
@@ -805,7 +807,7 @@
     "name": "SHILAJIT GUMMIES",
     "category": "Herbal Products",
     "badge": "Wellness",
-    "rating": 4.7,
+    "rating": 5.0,
     "price": 405,
     "oldPrice": 500,
     "image": "Herbal/gummies.webp",
@@ -839,7 +841,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
-    "priceRange": "₹344 - ₹405 / Pieces",
+    "priceRange": "\u20b9344 - \u20b9405 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
@@ -867,10 +869,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9ef",
@@ -878,7 +881,7 @@
     "name": "MACA ROOT CAPSULES",
     "category": "Herbal Products",
     "badge": "Organic",
-    "rating": 5,
+    "rating": 5.0,
     "price": 650,
     "oldPrice": 800,
     "image": "Herbal/maca-root-artwor.webp",
@@ -910,7 +913,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹553 - ₹650 / Pieces",
+    "priceRange": "\u20b9553 - \u20b9650 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -938,10 +941,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9f0",
@@ -949,7 +953,7 @@
     "name": "MACA ROOT + TONGAT ALI CAPSULES",
     "category": "Herbal Products",
     "badge": "Clinical",
-    "rating": 4.8,
+    "rating": 5.0,
     "price": 850,
     "oldPrice": 1000,
     "image": "Herbal/macaroot.webp",
@@ -981,7 +985,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
-    "priceRange": "₹723 - ₹850 / Pieces",
+    "priceRange": "\u20b9723 - \u20b9850 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
@@ -1009,10 +1013,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9f1",
@@ -1020,7 +1025,7 @@
     "name": "MORINGA POWDER",
     "category": "Herbal Products",
     "badge": "Superfood",
-    "rating": 5,
+    "rating": 5.0,
     "price": 1000,
     "oldPrice": 1200,
     "image": "Herbal/Moringa.webp",
@@ -1052,7 +1057,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹850 - ₹1000 / Kg",
+    "priceRange": "\u20b9850 - \u20b91000 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
@@ -1080,10 +1085,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Kg"
+    "unit": "Kg",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9f2",
@@ -1091,7 +1097,7 @@
     "name": "MORINGA CAPSULES",
     "category": "Herbal Products",
     "badge": "Beauty",
-    "rating": 4.7,
+    "rating": 5.0,
     "price": 650,
     "oldPrice": 800,
     "image": "Herbal/moringacap.webp",
@@ -1123,7 +1129,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹553 - ₹650 / Pieces",
+    "priceRange": "\u20b9553 - \u20b9650 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -1151,10 +1157,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9f3",
@@ -1162,7 +1169,7 @@
     "name": "SEA MOSS POWDER",
     "category": "Herbal Products",
     "badge": "Wellness",
-    "rating": 4.9,
+    "rating": 5.0,
     "price": 2250,
     "oldPrice": 3000,
     "image": "Herbal/seamoss.webp",
@@ -1196,7 +1203,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹1913 - ₹2250 / Kg",
+    "priceRange": "\u20b91913 - \u20b92250 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
@@ -1224,10 +1231,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Kg"
+    "unit": "Kg",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9f4",
@@ -1235,7 +1243,7 @@
     "name": "SEAMOSS (Zero Sugar)",
     "category": "Herbal Products",
     "badge": "Zero Sugar",
-    "rating": 4.8,
+    "rating": 5.0,
     "price": 750,
     "oldPrice": 1000,
     "image": "Herbal/seamoss1.webp",
@@ -1269,7 +1277,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹638 - ₹750 / Pieces",
+    "priceRange": "\u20b9638 - \u20b9750 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -1297,10 +1305,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9f5",
@@ -1308,7 +1317,7 @@
     "name": "SEAMOSS3",
     "category": "Herbal Products",
     "badge": "On-the-Go",
-    "rating": 5,
+    "rating": 5.0,
     "price": 1000,
     "oldPrice": 1200,
     "image": "Herbal/seamoss3.webp",
@@ -1342,7 +1351,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹850 - ₹1000 / Pieces",
+    "priceRange": "\u20b9850 - \u20b91000 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -1370,10 +1379,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9f6",
@@ -1381,7 +1391,7 @@
     "name": "SHILAJIT",
     "category": "Herbal Products",
     "badge": "Best Seller",
-    "rating": 4.9,
+    "rating": 5.0,
     "price": 350,
     "oldPrice": 499,
     "image": "Herbal/shilajit.webp",
@@ -1414,7 +1424,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹298 - ₹350 / Pieces",
+    "priceRange": "\u20b9298 - \u20b9350 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -1442,10 +1452,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9f7",
@@ -1453,7 +1464,7 @@
     "name": "SHILAJIT2",
     "category": "Herbal Products",
     "badge": "Ayurveda",
-    "rating": 5,
+    "rating": 5.0,
     "price": 650,
     "oldPrice": 799,
     "image": "Herbal/shilajit2.webp",
@@ -1485,7 +1496,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹553 - ₹650 / Pieces",
+    "priceRange": "\u20b9553 - \u20b9650 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -1513,10 +1524,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9f8",
@@ -1524,7 +1536,7 @@
     "name": "SHILAJIT3",
     "category": "Herbal Products",
     "badge": "75% Fulvic",
-    "rating": 4.8,
+    "rating": 5.0,
     "price": 1000,
     "oldPrice": 1200,
     "image": "Herbal/Shilajit3.webp",
@@ -1556,7 +1568,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
-    "priceRange": "₹850 - ₹1000 / Pieces",
+    "priceRange": "\u20b9850 - \u20b91000 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
@@ -1584,10 +1596,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9f9",
@@ -1595,7 +1608,7 @@
     "name": "SHILAJITCAP",
     "category": "Herbal Products",
     "badge": "Premium",
-    "rating": 4.9,
+    "rating": 5.0,
     "price": 550,
     "oldPrice": 600,
     "image": "Herbal/shilajitcap.webp",
@@ -1627,7 +1640,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
-    "priceRange": "₹468 - ₹550 / Pieces",
+    "priceRange": "\u20b9468 - \u20b9550 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
@@ -1655,10 +1668,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9fa",
@@ -1666,7 +1680,7 @@
     "name": "SHILAJITHONEY",
     "category": "Herbal Products",
     "badge": "Gold",
-    "rating": 4.8,
+    "rating": 5.0,
     "price": 650,
     "oldPrice": 800,
     "image": "Herbal/shilajithoney.webp",
@@ -1699,7 +1713,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
-    "priceRange": "₹553 - ₹650 / Pieces",
+    "priceRange": "\u20b9553 - \u20b9650 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
@@ -1727,10 +1741,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9fb",
@@ -1738,7 +1753,7 @@
     "name": "SHILAKIORA PURE",
     "category": "Herbal Products",
     "badge": "Lab Tested",
-    "rating": 5,
+    "rating": 5.0,
     "price": 750,
     "oldPrice": 800,
     "image": "Herbal/shilakiyan1.webp",
@@ -1770,7 +1785,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹638 - ₹750 / Pieces",
+    "priceRange": "\u20b9638 - \u20b9750 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -1798,10 +1813,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9fc",
@@ -1809,7 +1825,7 @@
     "name": "SHILASWA",
     "category": "Herbal Products",
     "badge": "Organic",
-    "rating": 4.9,
+    "rating": 5.0,
     "price": 750,
     "oldPrice": 800,
     "image": "Herbal/shilaswa.webp",
@@ -1842,7 +1858,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
-    "priceRange": "₹638 - ₹750 / Pieces",
+    "priceRange": "\u20b9638 - \u20b9750 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
@@ -1870,10 +1886,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9fd",
@@ -1881,7 +1898,7 @@
     "name": "SILAJ",
     "category": "Herbal Products",
     "badge": "Skin",
-    "rating": 5,
+    "rating": 5.0,
     "price": 900,
     "oldPrice": 1000,
     "image": "Herbal/silaj.webp",
@@ -1915,7 +1932,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹765 - ₹900 / Pieces",
+    "priceRange": "\u20b9765 - \u20b9900 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -1943,10 +1960,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9fe",
@@ -1954,7 +1972,7 @@
     "name": "TONG",
     "category": "Herbal Products",
     "badge": "Organic",
-    "rating": 4.8,
+    "rating": 5.0,
     "price": 950,
     "oldPrice": 1000,
     "image": "Herbal/tong.webp",
@@ -1986,7 +2004,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹808 - ₹950 / Pieces",
+    "priceRange": "\u20b9808 - \u20b9950 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -2014,10 +2032,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37b9ff",
@@ -2025,7 +2044,7 @@
     "name": "TRIPHALA-CAP",
     "category": "Herbal Products",
     "badge": "Handmade",
-    "rating": 5,
+    "rating": 5.0,
     "price": 650,
     "oldPrice": 800,
     "image": "Herbal/triphala-cap.webp",
@@ -2059,7 +2078,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹553 - ₹650 / Pieces",
+    "priceRange": "\u20b9553 - \u20b9650 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -2087,10 +2106,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37ba00",
@@ -2098,7 +2118,7 @@
     "name": "TRIPHLA-POWER",
     "category": "Herbal Products",
     "badge": "Baby",
-    "rating": 5,
+    "rating": 5.0,
     "price": 800,
     "oldPrice": 1100,
     "image": "Herbal/triphala-powder1.webp",
@@ -2130,7 +2150,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹680 - ₹800 / Kg",
+    "priceRange": "\u20b9680 - \u20b9800 / Kg",
     "priceTiers": [
       {
         "minQty": 100,
@@ -2158,10 +2178,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Kg"
+    "unit": "Kg",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37ba01",
@@ -2169,7 +2190,7 @@
     "name": "TURMINGA",
     "category": "Herbal Products",
     "badge": "Luxury",
-    "rating": 4.9,
+    "rating": 5.0,
     "price": 650,
     "oldPrice": 700,
     "image": "Herbal/truminga.webp",
@@ -2202,7 +2223,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
-    "priceRange": "₹553 - ₹650 / Pieces",
+    "priceRange": "\u20b9553 - \u20b9650 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
@@ -2230,10 +2251,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37ba02",
@@ -2241,7 +2263,7 @@
     "name": "TURM",
     "category": "Herbal Products",
     "badge": "SPF 20",
-    "rating": 5,
+    "rating": 5.0,
     "price": 550,
     "oldPrice": 600,
     "image": "Herbal/turm.webp",
@@ -2274,7 +2296,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
-    "priceRange": "₹468 - ₹550 / Pieces",
+    "priceRange": "\u20b9468 - \u20b9550 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
@@ -2302,10 +2324,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37ba03",
@@ -2313,7 +2336,7 @@
     "name": "TURMERIC",
     "category": "Herbal Products",
     "badge": "Support",
-    "rating": 4.8,
+    "rating": 5.0,
     "price": 900,
     "oldPrice": 1000,
     "image": "Herbal/turmeric.webp",
@@ -2346,7 +2369,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 100,
-    "priceRange": "₹765 - ₹900 / Pieces",
+    "priceRange": "\u20b9765 - \u20b9900 / Pieces",
     "priceTiers": [
       {
         "minQty": 100,
@@ -2374,10 +2397,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6a991eddf69cf2fa4f37ba04",
@@ -2385,7 +2409,7 @@
     "name": "VITAMIN",
     "category": "Herbal Products",
     "badge": "Superfood",
-    "rating": 5,
+    "rating": 5.0,
     "price": 950,
     "oldPrice": 1000,
     "image": "Herbal/vitamin.webp",
@@ -2420,7 +2444,7 @@
     "factoryDirect": true,
     "leadTime": "7 - 12 Days (Port Dispatch)",
     "moq": 50,
-    "priceRange": "₹808 - ₹950 / Pieces",
+    "priceRange": "\u20b9808 - \u20b9950 / Pieces",
     "priceTiers": [
       {
         "minQty": 50,
@@ -2448,10 +2472,11 @@
     "supplyCapacity": "100,000 Units / Month",
     "verifiedSupplier": true,
     "isBestseller": false,
-    "reviewsCount": 28,
+    "reviewsCount": 0,
     "stockQuantity": 15,
     "tag": "HERBAL CARE",
-    "unit": "Pieces"
+    "unit": "Pieces",
+    "reviews": []
   },
   {
     "_id": "6aa6a274625321bab2400902",
@@ -2471,9 +2496,9 @@
     "name": "FADO",
     "oldPrice": 1800,
     "price": 1499,
-    "rating": 4.7,
+    "rating": 5.0,
     "reviews": [],
-    "reviewsCount": 1,
+    "reviewsCount": 0,
     "specs": [
       "60 Capsules",
       "100% Vegan",
