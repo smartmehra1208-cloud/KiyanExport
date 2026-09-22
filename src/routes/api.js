@@ -198,6 +198,8 @@ try {
 function saveReviewsStore() {
   try {
     fs.writeFileSync(REVIEWS_FILE, JSON.stringify(memoryReviews, null, 2), 'utf8');
+    const pubPath = path.join(__dirname, '../../public/reviews_data.json');
+    fs.writeFileSync(pubPath, JSON.stringify(memoryReviews, null, 2), 'utf8');
   } catch (e) {
     console.error('Error saving reviews store:', e);
   }

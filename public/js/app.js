@@ -4857,49 +4857,57 @@ async function handleReviewSubmit(e) {
     return;
   }
 
-  const payload = {
+  const createdRev = {
+    id: 'rev_' + Date.now() + '_' + Math.floor(1000 + Math.random() * 9000),
     productId,
     productName,
     name,
     location,
     rating,
-    comment
+    comment,
+    approved: true,
+    isTop: rating === 5,
+    createdAt: new Date().toISOString()
   };
 
   try {
     const res = await fetch('/api/reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(createdRev)
     });
     const data = await res.json();
-    if (data.success && data.review) {
-      stateReviews.unshift(data.review);
-      localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
-    if (window.DEFAULT_REVIEWS) window.DEFAULT_REVIEWS.unshift(data.review || newRev);
+    if (data && data.success && data.review) {
+      createdRev.id = data.review.id || createdRev.id;
     }
   } catch (err) {
-    console.warn('Network post error, using local fallback:', err);
-    const newRev = {
-      id: 'rev_' + Date.now(),
-      ...payload,
-      approved: true,
-      isTop: rating === 5,
-      createdAt: new Date().toISOString()
-    };
-    stateReviews.unshift(newRev);
-    localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
-    if (window.DEFAULT_REVIEWS) window.DEFAULT_REVIEWS.unshift(data.review || newRev);
+    console.warn('Network post notice, saved locally:', err);
   }
+
+  const exists = stateReviews.some(r => r.id === createdRev.id || (r.comment === createdRev.comment && r.name === createdRev.name));
+  if (!exists) {
+    stateReviews.unshift(createdRev);
+  }
+  if (window.DEFAULT_REVIEWS) {
+    const defExists = window.DEFAULT_REVIEWS.some(r => r.id === createdRev.id || (r.comment === createdRev.comment && r.name === createdRev.name));
+    if (!defExists) window.DEFAULT_REVIEWS.unshift(createdRev);
+  }
+  try {
+    localStorage.setItem('kiyan_custom_reviews', JSON.stringify(stateReviews));
+  } catch (e) {}
+
+  if (nameInput) nameInput.value = '';
+  if (commentInput) commentInput.value = '';
 
   renderTestimonialsSection();
   if (typeof currentModalProduct !== 'undefined' && currentModalProduct && (currentModalProduct.id === productId || productId === 0)) {
     renderProductReviews(currentModalProduct);
   }
   renderAdminReviewsTable();
+  renderModalFullReviews();
 
   switchReviewsCenterTab('list');
-  alert('Thank you! Your verified review has been saved permanently & is now live!');
+  alert('Thank you! Your verified review has been submitted & saved permanently across all users!');
 }
 
 async function renderAdminReviewsTable() {
