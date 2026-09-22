@@ -164,9 +164,6 @@
           <button class="admin-tab-btn" id="tabBtnReviews" onclick="switchStandaloneAdminTab('reviews')" style="padding: 10px 20px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: #f0f4f2; color: var(--deep-green); transition: all 0.2s;">
             <i class="fas fa-star" style="color: var(--bright-gold);"></i> ⭐ Customer Reviews Manager <span class="badge-count" id="adminReviewBadge" style="background: #e74c3c; color: white; padding: 2px 7px; border-radius: 10px; font-size: 0.75rem; font-weight: 800; margin-left: 4px;">0</span>
           </button>
-          <button class="admin-tab-btn" id="tabBtnReviews" onclick="switchStandaloneAdminTab('reviews')" style="padding: 10px 20px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: #f0f4f2; color: var(--deep-green); transition: all 0.2s;">
-            <i class="fas fa-star" style="color: var(--bright-gold);"></i> ⭐ Customer Reviews Manager <span class="badge-count" id="adminReviewBadge" style="background: #e74c3c; color: white; padding: 2px 7px; border-radius: 10px; font-size: 0.75rem; font-weight: 800; margin-left: 4px;">0</span>
-          </button>
         </div>
 
         <!-- TAB 1: PRODUCTS & INVENTORY -->
@@ -473,38 +470,6 @@
               </table>
             </div>
           </div>
-
-        <!-- TAB 7: CUSTOMER REVIEWS MANAGER -->
-        <div id="standaloneTabReviews" class="standalone-admin-tab-panel" style="display: none;">
-          <div style="margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-            <div>
-              <h1 style="font-size: 1.8rem; color: var(--deep-green); margin: 0;"><i class="fas fa-star" style="color: var(--bright-gold);"></i> Verified Customer Reviews Manager</h1>
-              <p style="color: #666; margin: 5px 0 0 0; font-size: 0.9rem;">Approve, hide, pin top 5-star popups, or delete customer reviews submitted on products and website.</p>
-            </div>
-            <button class="btn-main" onclick="openAllReviewsModal()"><i class="fas fa-plus-circle"></i> Add Verified Review</button>
-          </div>
-
-          <div class="admin-card" style="background: white; border-radius: 16px; padding: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
-            <div class="admin-table-responsive">
-              <table class="admin-table" style="width: 100%; border-collapse: collapse;">
-                <thead>
-                  <tr style="background: #f8fafc; border-bottom: 2px solid #cbd5e1; text-align: left;">
-                    <th style="padding: 12px;">Target / Product</th>
-                    <th style="padding: 12px;">Reviewer & Location</th>
-                    <th style="padding: 12px;">Rating</th>
-                    <th style="padding: 12px;">Comment</th>
-                    <th style="padding: 12px;">Status</th>
-                    <th style="padding: 12px;">Top Popup Toast</th>
-                    <th style="padding: 12px;">Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="adminReviewsTableBody">
-                  <!-- Dynamically populated -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
 
         <!-- TAB 7: CUSTOMER REVIEWS MANAGER -->
         <div id="standaloneTabReviews" class="standalone-admin-tab-panel" style="display: none;">
@@ -1531,10 +1496,10 @@
             <div class="about-badge"><i class="fas fa-certificate"></i> GMP & ISO 22000 Certified Plant</div>
           </div>
           <div class="about-text">
-            <div class="about-header-pill" id="siteAboutPill">🏭 ESTABLISHED 2014 • LUCKNOW, INDIA</div>
-            <h2 id="siteAboutTitle">Leading Herbal Contract Manufacturer & Bulk Supplier</h2>
-            <p id="siteAboutP1"><strong>Kiyan Export & Herbal Manufacturing</strong> is a premier B2B contract manufacturer and bulk supplier operating since 2014. We specialize in contract manufacturing, OEM private label formulation, and bulk supply of organic herbal extracts, Shilajit resin, Ashwagandha, and health supplements.</p>
-            <p id="siteAboutP2">Equipped with state-of-the-art GMP certified extraction plants, we serve international buyers, Amazon sellers, wellness brands, and pharmaceutical distributors with custom packaging and factory-direct volume pricing.</p>
+            <div class="about-header-pill" id="siteAboutB2bPill">🏭 ESTABLISHED 2014 • LUCKNOW, INDIA</div>
+            <h2 id="siteAboutB2bTitle">Leading Herbal Contract Manufacturer & Bulk Supplier</h2>
+            <p id="siteAboutB2bP1"><strong>Kiyan Export & Herbal Manufacturing</strong> is a premier B2B contract manufacturer and bulk supplier operating since 2014. We specialize in contract manufacturing, OEM private label formulation, and bulk supply of organic herbal extracts, Shilajit resin, Ashwagandha, and health supplements.</p>
+            <p id="siteAboutB2bP2">Equipped with state-of-the-art GMP certified extraction plants, we serve international buyers, Amazon sellers, wellness brands, and pharmaceutical distributors with custom packaging and factory-direct volume pricing.</p>
           </div>
         </div>
 
@@ -3258,113 +3223,6 @@
           <button type="button" onclick="sendRfqViaWhatsApp()" class="rfq-btn-whatsapp"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
         </div>
       </form>
-    </div>
-  </div>
-
-  <!-- PRODUCT DETAIL & CUSTOMER REVIEWS MODAL -->
-  <div class="user-orders-modal" id="productModalOverlay" onclick="closeProductModal(event)">
-    <div class="user-orders-content product-modal-content" onclick="event.stopPropagation()" style="max-width: 900px; width: 95%; max-height: 90vh; overflow-y: auto; padding: 0; border-radius: 20px;">
-      
-      <!-- Modal Header -->
-      <div class="user-orders-header" style="background: linear-gradient(135deg, #07221a 0%, #0c3d2e 100%); color: white; padding: 18px 25px; display: flex; justify-content: space-between; align-items: center; border-radius: 20px 20px 0 0;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span class="product-badge" id="pmMoqBadge" style="position: static; font-size: 0.82rem; padding: 5px 12px; background: rgba(212, 175, 55, 0.2); border: 1px solid var(--accent-gold); color: var(--bright-gold);"><i class="fas fa-cubes"></i> Min. Order: 100 Pcs</span>
-          <span style="font-size: 0.85rem; color: #c0d8cc;"><i class="fas fa-shield-alt" style="color: var(--accent-gold);"></i> Verified Factory Quality</span>
-        </div>
-        <button class="close-modal-btn" onclick="closeProductModal()" style="background: none; border: none; color: var(--bright-gold); font-size: 1.4rem; cursor: pointer;"><i class="fas fa-times"></i></button>
-      </div>
-
-      <div style="padding: 25px;">
-        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; margin-bottom: 25px;">
-          <!-- Left: Image Gallery -->
-          <div>
-            <div class="pm-main-img-wrap skeleton-wrapper" style="border-radius: 16px; overflow: hidden; border: 1.5px solid #eef2f0; aspect-ratio: 1/1; position: relative; margin-bottom: 12px;">
-              <img id="pmMainImg" src="/Logo-2.webp" alt="Product Image" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div id="pmThumbnails" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px;"></div>
-          </div>
-
-          <!-- Right: Details & Tiered Pricing -->
-          <div>
-            <h2 id="pmTitle" style="font-size: 1.6rem; color: var(--text-dark); margin-bottom: 8px;">Product Title</h2>
-            <p id="pmDesc" style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px;">Product Description</p>
-
-            <!-- Volume Price Tiers -->
-            <div style="background: var(--soft-cream); border: 1.5px solid rgba(212, 175, 55, 0.3); border-radius: 14px; padding: 15px; margin-bottom: 18px;">
-              <div style="font-weight: 700; font-size: 0.85rem; color: var(--deep-green); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fas fa-tags" style="color: var(--accent-gold);"></i> Wholesale Volume Price Tiers</div>
-              <div id="pmTierGrid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;"></div>
-            </div>
-
-            <!-- Specifications & Customization -->
-            <div style="margin-bottom: 15px;">
-              <div style="font-weight: 700; font-size: 0.85rem; color: var(--text-dark); margin-bottom: 6px;">OEM Private Label Customizations:</div>
-              <div id="pmCustomization" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px; background: white; padding: 12px; border-radius: 10px; border: 1px solid #eef2f0;">
-              <div><i class="fas fa-truck" style="color: var(--accent-gold);"></i> <span id="pmDeliveryDate">Lead Time: 7-12 Days</span></div>
-              <div><i class="fas fa-boxes" style="color: var(--accent-gold);"></i> <span id="pmSupplyCapacity">Capacity: 100,000 Pcs/Mo</span></div>
-            </div>
-
-            <!-- Actions -->
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <div style="display: flex; align-items: center; border: 1.5px solid var(--accent-gold); border-radius: 25px; overflow: hidden; background: white;">
-                <button onclick="adjustModalQty(-50)" style="padding: 10px 14px; border: none; background: #f0f4f2; cursor: pointer; font-weight: bold;">-</button>
-                <input type="number" id="pmQtyInput" value="100" min="1" style="width: 65px; text-align: center; border: none; outline: none; font-weight: bold; font-size: 0.95rem;" oninput="updateModalPricingSlab()">
-                <button onclick="adjustModalQty(50)" style="padding: 10px 14px; border: none; background: #f0f4f2; cursor: pointer; font-weight: bold;">+</button>
-              </div>
-              <button onclick="addModalItemToCart()" class="btn-main" style="flex: 1; padding: 12px; font-size: 0.9rem;"><i class="fas fa-cart-plus"></i> Add to Bulk Order</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CUSTOMER REVIEWS & RATING SECTION -->
-        <div style="border-top: 2px solid #eef2f0; padding-top: 22px; margin-top: 20px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 18px;">
-            <div>
-              <h3 style="font-size: 1.3rem; color: var(--text-dark); margin: 0;"><i class="fas fa-star" style="color: var(--accent-gold);"></i> Customer Reviews & Verified Ratings</h3>
-              <p id="pmReviewSummaryText" style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">Overall Rating: 5.0 / 5.0 (2 Reviews)</p>
-            </div>
-            <button onclick="toggleReviewForm()" class="btn-main" style="padding: 9px 20px; font-size: 0.85rem; background: linear-gradient(135deg, #124e3c 0%, #1b6b53 100%); color: white;"><i class="fas fa-pen"></i> Write a Review</button>
-          </div>
-
-          <!-- Interactive Review Submission Form Box -->
-          <div id="pmReviewFormBox" style="display: none; background: var(--soft-cream); border: 1.5px solid var(--accent-gold); border-radius: 14px; padding: 20px; margin-bottom: 20px; animation: fadeInScale 0.3s ease;">
-            <h4 style="margin-bottom: 12px; color: var(--deep-green); font-size: 1.05rem;"><i class="fas fa-edit"></i> Submit Your Product Review</h4>
-            <form onsubmit="submitProductReview(event)">
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 12px;">
-                <div class="form-group" style="margin: 0;">
-                  <label style="font-weight: 700; font-size: 0.82rem;">Your Name / Company *</label>
-                  <input type="text" id="reviewAuthorInput" required placeholder="e.g. Apex Global Herbal Solutions">
-                </div>
-                <div class="form-group" style="margin: 0;">
-                  <label style="font-weight: 700; font-size: 0.82rem;">Your Rating (Click Stars) *</label>
-                  <div id="starRatingSelect" style="display: flex; gap: 6px; padding: 8px 12px; background: white; border: 1.5px solid rgba(212, 175, 55, 0.4); border-radius: 10px; cursor: pointer;">
-                    <i class="fas fa-star" onclick="setReviewStarRating(1)" onmouseover="hoverReviewStarRating(1)" onmouseout="resetReviewStarRating()" style="color: #f39c12; font-size: 1.2rem;"></i>
-                    <i class="fas fa-star" onclick="setReviewStarRating(2)" onmouseover="hoverReviewStarRating(2)" onmouseout="resetReviewStarRating()" style="color: #f39c12; font-size: 1.2rem;"></i>
-                    <i class="fas fa-star" onclick="setReviewStarRating(3)" onmouseover="hoverReviewStarRating(3)" onmouseout="resetReviewStarRating()" style="color: #f39c12; font-size: 1.2rem;"></i>
-                    <i class="fas fa-star" onclick="setReviewStarRating(4)" onmouseover="hoverReviewStarRating(4)" onmouseout="resetReviewStarRating()" style="color: #f39c12; font-size: 1.2rem;"></i>
-                    <i class="fas fa-star" onclick="setReviewStarRating(5)" onmouseover="hoverReviewStarRating(5)" onmouseout="resetReviewStarRating()" style="color: #f39c12; font-size: 1.2rem;"></i>
-                  </div>
-                  <input type="hidden" id="reviewRatingInput" value="5">
-                </div>
-              </div>
-              <div class="form-group" style="margin-bottom: 14px;">
-                <label style="font-weight: 700; font-size: 0.82rem;">Review Comment / Experience *</label>
-                <textarea id="reviewCommentInput" rows="3" required placeholder="Share your experience regarding purity, packaging, delivery, or quality..."></textarea>
-              </div>
-              <div style="display: flex; gap: 10px; justify-content: flex-end;">
-                <button type="button" onclick="toggleReviewForm()" class="btn-secondary" style="padding: 8px 18px; font-size: 0.85rem;">Cancel</button>
-                <button type="submit" id="submitReviewBtn" class="btn-main" style="padding: 8px 24px; font-size: 0.85rem;"><i class="fas fa-paper-plane"></i> Submit Review</button>
-              </div>
-            </form>
-          </div>
-
-          <!-- Reviews List Grid -->
-          <div id="pmReviewsList" style="display: grid; gap: 12px;"></div>
-        </div>
-
-      </div>
     </div>
   </div>
 

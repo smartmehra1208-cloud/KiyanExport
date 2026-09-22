@@ -4632,13 +4632,13 @@ async function renderProductReviews(target) {
     }
   }
 
-  const container = document.getElementById('pmReviewsList');
-  const summary = document.getElementById('pmReviewSummary');
-  const summaryText = document.getElementById('pmReviewSummaryText');
+  const containers = document.querySelectorAll('#pmReviewsList, #pmReviewsListBottom');
+  const summaries = document.querySelectorAll('#pmReviewSummary');
+  const summaryTexts = document.querySelectorAll('#pmReviewSummaryText');
   const reviewFormBox = document.getElementById('pmReviewFormBox');
   if (reviewFormBox) reviewFormBox.style.display = 'none';
 
-  if (!container) return;
+  if (containers.length === 0) return;
 
   if (stateReviews.length === 0) {
     await fetchServerReviews();
@@ -4677,26 +4677,25 @@ async function renderProductReviews(target) {
     avgRating = parseFloat(productObj.rating) || 5.0;
   }
 
-  if (summary) {
-    summary.innerHTML = count > 0 
-      ? `<b style="color:#27ae60;">★ ${avgRating.toFixed(1)} / 5.0</b> (${count} Verified Customer Review${count > 1 ? 's' : ''})`
-      : `No reviews yet for this product. Be the first to review!`;
-  }
+  summaries.forEach(s => {
+    if (s) {
+      s.innerHTML = count > 0 
+        ? `<b style="color:#27ae60;">★ ${avgRating.toFixed(1)} / 5.0</b> (${count} Verified Customer Review${count > 1 ? 's' : ''})`
+        : `No reviews yet for this product. Be the first to review!`;
+    }
+  });
 
-  if (summaryText) {
-    summaryText.innerHTML = `Overall Rating: <strong style="color: #1e4d2b;">${avgRating.toFixed(1)} / 5.0</strong> (${count} Verified Review${count > 1 ? 's' : ''})`;
-  }
+  summaryTexts.forEach(st => {
+    if (st) {
+      st.innerHTML = `Overall Rating: <strong style="color: #1e4d2b;">${avgRating.toFixed(1)} / 5.0</strong> (${count} Verified Review${count > 1 ? 's' : ''})`;
+    }
+  });
 
-  if (pReviews.length === 0) {
-    container.innerHTML = `
-      <div style="text-align: center; color: #94a3b8; padding: 18px; font-size: 0.85rem; background: #f8fafc; border-radius: 12px; border: 1px dashed #cbd5e1;">
-        No customer reviews for this product yet. Click <b>✍️ Review Product</b> above to share your rating & feedback!
-      </div>
-    `;
-    return;
-  }
-
-  container.innerHTML = pReviews.map(r => {
+  const pReviewsHtml = pReviews.length === 0 ? `
+    <div style="text-align: center; color: #94a3b8; padding: 18px; font-size: 0.85rem; background: #f8fafc; border-radius: 12px; border: 1px dashed #cbd5e1;">
+      No customer reviews for this product yet. Click <b>✍️ Review Product</b> above to share your rating & feedback!
+    </div>
+  ` : pReviews.map(r => {
     const starBtns = Array.from({ length: 5 }, (_, i) => 
       `<i class="fas fa-star" style="color: ${i < (r.rating || 5) ? '#fbbf24' : '#cbd5e1'}; font-size: 0.8rem;"></i>`
     ).join('');
@@ -4723,6 +4722,8 @@ async function renderProductReviews(target) {
       </div>
     `;
   }).join('');
+
+  containers.forEach(c => { if (c) c.innerHTML = pReviewsHtml; });
 }
 
 let currentSelectedRating = 5;
@@ -4980,22 +4981,20 @@ async function handleReviewSubmit(e) {
 }
 
 async function renderAdminReviewsTable() {
-  const tbody = document.getElementById('adminReviewsTableBody');
-  const badge = document.getElementById('adminReviewBadge');
-  if (!tbody) return;
+  const tbodies = document.querySelectorAll('#adminReviewsTableBody');
+  const badges = document.querySelectorAll('#adminReviewBadge');
 
   if (stateReviews.length === 0) {
     await fetchServerReviews();
   }
 
-  if (badge) badge.innerText = stateReviews.length;
+  badges.forEach(badge => { if (badge) badge.innerText = stateReviews.length; });
 
-  if (stateReviews.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 20px; color: #888;">No reviews recorded.</td></tr>`;
-    return;
-  }
+  if (tbodies.length === 0) return;
 
-  tbody.innerHTML = stateReviews.map(r => {
+  const tableHtml = stateReviews.length === 0 
+    ? `<tr><td colspan="7" style="text-align:center; padding: 20px; color: #888;">No reviews recorded.</td></tr>`
+    : stateReviews.map(r => {
     const isApproved = r.approved !== false;
     const isTop = !!r.isTop;
     const targetLabel = r.productId > 0 ? `<span style="font-weight:700; color:#1e5967;"><i class="fas fa-box"></i> ${escapeHtml(r.productName || 'Product #'+r.productId)}</span>` : `<span style="color:#27ae60; font-weight:700;"><i class="fas fa-globe"></i> Overall Site</span>`;
@@ -5031,6 +5030,8 @@ async function renderAdminReviewsTable() {
       </tr>
     `;
   }).join('');
+
+  tbodies.forEach(tbody => { if (tbody) tbody.innerHTML = tableHtml; });
 }
 
 async function toggleApproveReview(id) {
