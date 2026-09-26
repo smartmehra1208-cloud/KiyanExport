@@ -583,92 +583,32 @@
     </div>
   </div>
 
-  <!-- MAIN HEADER WRAPPER -->
+  <!-- MAIN HEADER WRAPPER (AMERA EXPORTS STYLE CLEAN WHITE HEADER) -->
   <header class="main-header" id="mainHeader">
-    <!-- LIVE FACTORY OPERATIONAL TELEMETRY STRIP -->
-    <div class="factory-telemetry-bar">
-      <div class="container telemetry-container">
-        <div>
-          <span class="live-status-dot"></span>
-          <strong>FACTORY TELEMETRY LIVE:</strong> 8 Extraction Lines Active &bull; Capacity: <strong>42,500 Kg / Day</strong> &bull; Air/Sea Export Readiness: <strong>100%</strong>
-        </div>
-        <div>
-          <span><i class="fas fa-certificate" style="color: #ffd700;"></i> ISO 22000 &bull; GMP &bull; US-FDA Registered &bull; FSSAI</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- TOP BAR -->
-    <div class="top-bar" id="topBar">
-      <div class="container">
-        <div class="top-info">
-          <span><i class="fas fa-industry"></i> <strong style="color: var(--accent-gold);">VERIFIED GOLD MANUFACTURER</strong> &bull; IEC: <strong>0514092811</strong> &bull; FDA Reg: <strong>17824910284</strong></span>
-          <span><i class="fas fa-envelope"></i> <a href="mailto:info@kiyanexports.com" class="site-contact-email">info@kiyanexports.com</a></span>
-          <span><a href="https://wa.me/919305834431?text=Hi%20Kiyan%20Exports" target="_blank" style="color: #f7ebe1; text-decoration: none;"><i class="fab fa-whatsapp" style="color: #25d366; font-size: 1rem;"></i> <strong>WhatsApp</strong></a></span>
-        </div>
-        <div class="top-social">
-          <span style="font-size: 0.8rem; font-weight: 700; color: #f7ebe1;"><i class="fas fa-globe"></i> Exporting to 🇺🇸 🇬🇧 🇦🇪 🇩🇪 🇨🇦 🇦🇺 &bull; Incoterms: FOB / CIF</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- NAVBAR -->
     <nav class="navbar">
-      <div class="container">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1380px; margin: 0 auto; padding: 0 20px;">
         <div class="logo-container">
           <a href="#home" onclick="showPage('home', this)">
-            <img src="/images/kiyan-logo-sm.webp" alt="Kiyan Export Logo" class="logo-img" width="180" height="52" fetchpriority="high" decoding="async" style="height: 52px; width: auto; object-fit: contain; background: white; padding: 4px 8px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <img src="/images/kiyan-logo-sm.webp" alt="Kiyan Export Logo" class="logo-img" width="180" height="52" fetchpriority="high" decoding="async" style="height: 48px; width: auto; object-fit: contain;">
           </a>
         </div>
 
-        <div class="nav-links">
+        <div class="nav-links" style="display: flex; gap: 8px; align-items: center;">
           <a href="#home" class="active" onclick="showPage('home', this)">Home</a>
-          <a href="#about" onclick="showPage('about', this)">About</a>
-          <a href="#global-reach" onclick="document.getElementById('global-reach').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-globe-americas" style="color: var(--bright-gold);"></i> Global Network</a>
-          <a href="#catalogue" onclick="showPage('catalogue', this)"><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> Catalogues</a>
-          <a href="#products" onclick="showPage('products', this)"><i class="fas fa-leaf" style="color: var(--accent-gold);"></i> Products</a>
-          <a href="#rfq" onclick="openRfqModal(); return false;"><i class="fas fa-file-signature" style="color: var(--accent-gold);"></i> RFQ</a>
-          <a href="#services" onclick="showPage('services', this)">OEM/Private Label</a>
-          <a href="#customer-reviews-section" onclick="openAllReviewsModal(); return false;"><i class="fas fa-star" style="color: #fbbf24;"></i> Reviews</a>
-          <a href="#certifications" onclick="showPage('certifications', this)">ISO/GMP</a>
-          <a href="#help-center" onclick="showPage('help-center', this)">Contact</a>
-          <a href="#admin" id="navAdminBtn" style="display: none; color: var(--accent-gold); font-weight: 700;" onclick="showPage('admin', this)"><i class="fas fa-crown"></i> Admin</a>
+          <a href="#products" onclick="showPage('products', this)">Products</a>
+          <a href="#services" onclick="showPage('services', this)">Services</a>
+          <a href="#certifications" onclick="showPage('certifications', this)">Certifications</a>
+          <a href="#global-reach" onclick="document.getElementById('global-reach').scrollIntoView({behavior: 'smooth'})">Global Export</a>
+          <a href="#about" onclick="showPage('about', this)">About Us</a>
+          <a href="#catalogue" onclick="showPage('catalogue', this)">Catalogues</a>
+          <a href="#admin" id="navAdminBtn" style="display: none; color: var(--amera-coral); font-weight: 700;" onclick="showPage('admin', this)"><i class="fas fa-crown"></i> Admin</a>
         </div>
 
-        <div class="nav-actions">
-          <!-- Currency Selector -->
-          <div class="currency-selector-box">
-            <select id="currencySelect" onchange="changeCurrency(this.value)" aria-label="Select Currency" style="background: var(--deep-green); color: var(--champagne-gold); border: 1.5px solid var(--accent-gold); padding: 5px 8px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; cursor: pointer; outline: none;">
-              <option value="USD" selected>🇺🇸 $ USD</option>
-              <option value="INR">🇮🇳 ₹ INR</option>
-              <option value="EUR">🇪🇺 € EUR</option>
-              <option value="GBP">🇬🇧 £ GBP</option>
-              <option value="AED">🇦🇪 AED</option>
-            </select>
-          </div>
-
-          <!-- Live Quick Search -->
-          <div class="nav-search-bar">
-            <i class="fas fa-search"></i>
-            <input type="text" id="navSearchInput" aria-label="Search herbal products" placeholder="Search products...">
-          </div>
-
-          <!-- Login / Register Account Button -->
-          <button class="nav-auth-btn" id="navAuthBtn" onclick="openAuthModal('login')" aria-label="Login or Register Account">
-            <i class="fas fa-user-circle"></i> Login / Register
+        <div class="nav-actions" style="display: flex; gap: 12px; align-items: center;">
+          <!-- Request Quote Primary Coral Button (Screenshot 2) -->
+          <button class="btn-amera-quote" onclick="openRfqModal(); return false;">
+            <i class="fas fa-paper-plane"></i> Request Quote
           </button>
-
-          <!-- Logged In User Profile Menu -->
-          <div class="user-profile-menu" id="navUserProfileMenu" style="display: none;">
-            <button class="user-profile-btn" aria-label="User Account Profile Menu">
-              <i class="fas fa-user-check"></i> Hi, <span id="navUserName">User</span> <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
-            </button>
-            <div class="user-dropdown-menu">
-              <a href="#admin" id="dropdownAdminBtn" style="display: none; color: var(--accent-gold); font-weight: 700;" onclick="showPage('admin', null); return false;"><i class="fas fa-crown"></i> 👑 No-Code Admin Panel</a>
-              <a href="#orders" onclick="openUserOrdersModal(); return false;"><i class="fas fa-box-open"></i> My Account & Orders</a>
-              <a href="#logout" onclick="logoutUser(); return false;"><i class="fas fa-sign-out-alt" style="color: #e74c3c;"></i> Logout Account</a>
-            </div>
-          </div>
           
           <!-- Mobile Menu Toggle Button -->
           <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu">
@@ -679,6 +619,21 @@
     </nav>
   </header>
 
+  <!-- AMERA EXPORTS SIGNATURE RIGHT FLOATING CONTACT DRAWER (SCREENSHOT 2 & 3) -->
+  <div class="amera-right-contact-drawer">
+    <a href="tel:+919305834431" class="amera-contact-icon" title="Call Sales (+91 9305834431)">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+    <a href="https://wa.me/919305834431?text=Hi%20Kiyan%20Exports,%20I%20want%20to%20inquire%20about%20wholesale%20manufacturing." target="_blank" class="amera-contact-icon wa" title="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="mailto:info@kiyanexports.com" class="amera-contact-icon" title="Send Email">
+      <i class="fas fa-envelope"></i>
+    </a>
+    <button onclick="openRfqModal()" class="amera-contact-icon" style="background: none; border: none; cursor: pointer;" title="Instant Quote">
+      <i class="fas fa-comment-dots"></i>
+    </button>
+  </div>
   <!-- FLOATING PURCHASE RECOMMENDATION POPUP (AI RE-ENGAGEMENT TOAST) -->
   <div id="recommendationPopupCard" style="display: none; position: fixed; bottom: 85px; right: 20px; z-index: 99990; background: #ffffff; border: 2px solid var(--accent-gold); border-radius: 16px; box-shadow: 0 12px 35px rgba(0,0,0,0.22); width: 310px; max-width: 90vw; padding: 14px; animation: slideUpToast 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #edf2f7; padding-bottom: 8px; margin-bottom: 10px;">
@@ -756,96 +711,85 @@
 
   <!-- HOME PAGE -->
   <main id="home" class="page-section active-page">
-    <!-- HERO SLIDER -->
-    <section class="hero-section">
-      <div class="slide slide-1 active">
-        <div class="slide-bg"></div>
-        <div class="slide-overlay"></div>
-        <div class="container">
-          <div class="slide-content">
-            <div class="hero-tag-pill" id="siteHeroTagline"><i class="fas fa-crown"></i> 100% Pure Herbal Wellness • Est. 2014</div>
-            <h1 id="siteHeroTitle">Pure <span>Herbal Extracts</span> for<br>Daily Vitality & Health</h1>
-            <p id="siteHeroDesc">Experience 100% organic Himalayan Shilajit, Ashwagandha, and herbal supplements crafted with purity & natural care.</p>
-            <button class="btn-main" onclick="showPage('products', null)">Explore Herbal Range <i class="fas fa-arrow-right"></i></button>
-
-            <div class="hero-stats-row">
-              <div class="hero-stat-item">
-                <h3>2014</h3>
-                <p>Established</p>
-              </div>
-              <div class="hero-stat-item">
-                <h3>100+</h3>
-                <p>Pure Herbal Products</p>
-              </div>
-              <div class="hero-stat-item">
-                <h3>50K+</h3>
-                <p>Happy Customers</p>
-              </div>
-            </div>
-          </div>
+    <!-- AMERA EXPORTS HERO SECTION (SCREENSHOT 2 EXACT MATCH) -->
+    <section class="amera-hero-container">
+      <div class="amera-hero-content">
+        <div class="amera-hero-pill">
+          <span class="red-dot">●</span> CUSTOM MANUFACTURING SOLUTIONS
         </div>
-      </div>
-      <div class="slide slide-2">
-        <div class="slide-bg"></div>
-        <div class="slide-overlay"></div>
-        <div class="container">
-          <div class="slide-content">
-            <div class="hero-tag-pill"><i class="fas fa-truck"></i> Fast Doorstep Delivery Across India</div>
-            <h1 id="siteHeroSlide2Title">Premium <span>B2C Retail</span> Herbal Store</h1>
-            <p id="siteHeroSlide2Desc">Direct to consumer online shopping with instant home delivery, lab-tested purity, and 100% secure checkout.</p>
-            <button class="btn-main" onclick="showPage('products', null)">Shop Now <i class="fas fa-arrow-right"></i></button>
-
-            <div class="hero-stats-row">
-              <div class="hero-stat-item">
-                <h3>100%</h3>
-                <p>Organic Certified</p>
-              </div>
-              <div class="hero-stat-item">
-                <h3>Est. 2014</h3>
-                <p>10+ Years Trust</p>
-              </div>
-              <div class="hero-stat-item">
-                <h3>FSSAI</h3>
-                <p>Certified Pure</p>
-              </div>
-            </div>
-          </div>
+        <h1 class="amera-hero-title">
+          ELEVATE YOUR <span class="coral-highlight">HERBAL & SUPPLEMENT</span> BRAND
+        </h1>
+        <p class="amera-hero-subtitle">
+          India's Premier Contract Manufacturer for Dietary Supplements, Shilajit & Herbal Extracts — <strong>Quality, Innovation, Reliability.</strong>
+        </p>
+        <div class="amera-hero-buttons">
+          <button onclick="openRfqModal()" class="amera-btn-coral">CONTACT US</button>
+          <button onclick="showPage('products', null)" class="amera-btn-outline">EXPLORE PRODUCTS</button>
         </div>
-      </div>
-      <div class="slide slide-3">
-        <div class="slide-bg"></div>
-        <div class="slide-overlay"></div>
-        <div class="container">
-          <div class="slide-content">
-            <div class="hero-tag-pill"><i class="fas fa-shield-alt"></i> Complete Lab Testing & Safety</div>
-            <h1 id="siteHeroSlide3Title">Certified Organic Quality for<br><span>Natural Wellness</span></h1>
-            <p id="siteHeroSlide3Desc">From organic herbal sourcing to third-party lab testing, every Kiyan product meets strict international standards.</p>
-            <button class="btn-main" onclick="showPage('certifications', null)">Certifications <i class="fas fa-arrow-right"></i></button>
-
-            <div class="hero-stats-row">
-              <div class="hero-stat-item">
-                <h3>2014</h3>
-                <p>Founded</p>
-              </div>
-              <div class="hero-stat-item">
-                <h3>24/7</h3>
-                <p>Customer Support</p>
-              </div>
-              <div class="hero-stat-item">
-                <h3>4.9/5</h3>
-                <p>Retail Rating</p>
-              </div>
-            </div>
-          </div>
+        <div class="amera-hero-chips">
+          <span class="amera-chip">Private Label</span>
+          <span class="amera-chip">Bulk Manufacturing</span>
+          <span class="amera-chip">Export Ready</span>
+          <span class="amera-chip">Quality Controlled</span>
         </div>
-      </div>
-      <div class="slider-dots">
-        <div class="dot active" onclick="goToSlide(0)"></div>
-        <div class="dot" onclick="goToSlide(1)"></div>
-        <div class="dot" onclick="goToSlide(2)"></div>
       </div>
     </section>
 
+    <!-- AMERA EXPORTS CATEGORY SECTION (SCREENSHOT 3 EXACT MATCH) -->
+    <section class="amera-category-section">
+      <div class="container" style="max-width: 1380px; margin: 0 auto; padding: 0 20px;">
+        <div class="amera-section-header">
+          <h2>Explore Our Core <span style="background: var(--amera-coral-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Supplement & Herbal Categories</span></h2>
+          <p>Full-dosage form production capabilities to meet all your dietary supplement & herbal extract brand requirements.</p>
+        </div>
+
+        <div class="amera-category-grid">
+          <div class="amera-cat-card active" onclick="filterCategory('all', this)">
+            <div class="amera-cat-img-box">
+              <img src="/Logo-2.webp" alt="All Categories">
+            </div>
+            <div class="amera-cat-title">All Range</div>
+            <div class="amera-cat-count">100+ Products</div>
+          </div>
+          <div class="amera-cat-card" onclick="filterCategory('herbal', this)">
+            <div class="amera-cat-img-box">
+              <img src="/images/kiyan-logo.jpg" alt="Capsules & Supplements">
+            </div>
+            <div class="amera-cat-title">Capsules</div>
+            <div class="amera-cat-count">24 Products</div>
+          </div>
+          <div class="amera-cat-card" onclick="filterCategory('shilajit', this)">
+            <div class="amera-cat-img-box">
+              <img src="/images/kiyan-logo.jpg" alt="Shilajit Resin">
+            </div>
+            <div class="amera-cat-title">Shilajit Resin</div>
+            <div class="amera-cat-count">8 Products</div>
+          </div>
+          <div class="amera-cat-card" onclick="filterCategory('gummies', this)">
+            <div class="amera-cat-img-box">
+              <img src="/images/kiyan-logo.jpg" alt="Herbal Gummies">
+            </div>
+            <div class="amera-cat-title">Gummies</div>
+            <div class="amera-cat-count">12 Products</div>
+          </div>
+          <div class="amera-cat-card" onclick="filterCategory('softgel', this)">
+            <div class="amera-cat-img-box">
+              <img src="/images/kiyan-logo.jpg" alt="Softgels">
+            </div>
+            <div class="amera-cat-title">Softgels</div>
+            <div class="amera-cat-count">10 Products</div>
+          </div>
+          <div class="amera-cat-card" onclick="filterCategory('spices', this)">
+            <div class="amera-cat-img-box">
+              <img src="/images/kiyan-logo.jpg" alt="Herbal Powders & Spices">
+            </div>
+            <div class="amera-cat-title">Herbal Powders</div>
+            <div class="amera-cat-count">30 Products</div>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- INTERACTIVE B2B BULK SAVINGS & PROFIT MARGIN CALCULATOR SECTION -->
     <div id="products" class="home-products-section">
     <div class="sub-page-header">

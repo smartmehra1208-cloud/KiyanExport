@@ -5778,3 +5778,372 @@ header#mainHeader .container {
 
 
 
+
+/* ===== AMERA EXPORTS INPIRED DESIGN SYSTEM ===== */
+:root {
+  --amera-coral: #f25c38;
+  --amera-coral-hover: #e04f2d;
+  --amera-coral-gradient: linear-gradient(135deg, #ff6b4a 0%, #ff4b5c 100%);
+  --amera-dark-bg: #111827;
+  --amera-hero-overlay: linear-gradient(180deg, rgba(17, 24, 39, 0.78) 0%, rgba(17, 24, 39, 0.88) 100%);
+  --amera-card-bg: #ffffff;
+  --amera-card-border: #eaede8;
+  --amera-text-main: #111827;
+  --amera-text-muted: #6b7280;
+}
+
+/* Hide heavy legacy topbars & telemetry bars */
+.factory-telemetry-bar, .top-bar, .marquee-section {
+  display: none !important;
+}
+
+/* Clean White Header */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #ffffff !important;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05) !important;
+  border-bottom: 1px solid #eaede8 !important;
+}
+
+.navbar {
+  background: #ffffff !important;
+  border: none !important;
+  padding: 12px 0 !important;
+}
+
+.nav-links a {
+  color: #374151 !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--amera-coral) !important;
+  background: #fff5f2 !important;
+}
+
+.nav-links a::after {
+  display: none !important;
+}
+
+/* Request Quote Primary Button */
+.btn-amera-quote {
+  background: var(--amera-coral-gradient) !important;
+  color: #ffffff !important;
+  padding: 10px 22px !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 14px rgba(242, 92, 56, 0.35) !important;
+  transition: all 0.25s ease !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-amera-quote:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(242, 92, 56, 0.45) !important;
+}
+
+/* Amera Hero Section */
+.amera-hero-container {
+  position: relative;
+  background: url('/images/hero-bg.jpg') center/cover no-repeat #111827;
+  padding: 100px 20px 80px 20px;
+  color: #ffffff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.amera-hero-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.82);
+  z-index: 1;
+}
+
+.amera-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.amera-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f3f4f6;
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.amera-hero-pill .red-dot {
+  color: #ff4b5c;
+  font-size: 0.9rem;
+}
+
+.amera-hero-title {
+  font-size: 3.4rem;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+.amera-hero-title .coral-highlight {
+  background: var(--amera-coral-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.amera-hero-subtitle {
+  font-size: 1.1rem;
+  color: #d1d5db;
+  max-width: 720px;
+  margin: 0 auto 35px auto;
+  line-height: 1.6;
+}
+
+.amera-hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.amera-btn-coral {
+  background: var(--amera-coral-gradient);
+  color: #ffffff;
+  padding: 14px 34px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(242, 92, 56, 0.4);
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+}
+
+.amera-btn-coral:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(242, 92, 56, 0.5);
+}
+
+.amera-btn-outline {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  padding: 14px 34px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+}
+
+.amera-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+}
+
+.amera-hero-chips {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.amera-chip {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  color: #e5e7eb;
+  font-weight: 600;
+}
+
+/* Amera Floating Right Contact Drawer */
+.amera-right-contact-drawer {
+  position: fixed;
+  right: 0;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.12);
+  border-radius: 12px 0 0 12px;
+  overflow: hidden;
+  border: 1px solid #eaede8;
+  border-right: none;
+}
+
+.amera-contact-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #374151;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f3f4f6;
+  text-decoration: none;
+}
+
+.amera-contact-icon:last-child {
+  border-bottom: none;
+}
+
+.amera-contact-icon:hover {
+  background: #fff5f2;
+  color: var(--amera-coral);
+}
+
+.amera-contact-icon.wa:hover {
+  color: #25d366;
+  background: #f0fdf4;
+}
+
+/* Category Cards Carousel/Grid (Screenshot 3) */
+.amera-category-section {
+  padding: 60px 0 40px 0;
+  background: #ffffff;
+}
+
+.amera-section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.amera-section-header h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 10px;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+.amera-section-header p {
+  color: #6b7280;
+  font-size: 0.98rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.amera-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 18px;
+}
+
+.amera-cat-card {
+  background: #ffffff;
+  border: 1.5px solid #eaede8;
+  border-radius: 14px;
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.amera-cat-card:hover, .amera-cat-card.active {
+  border-color: var(--amera-coral);
+  box-shadow: 0 8px 20px rgba(242, 92, 56, 0.12);
+  transform: translateY(-4px);
+}
+
+.amera-cat-img-box {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amera-cat-img-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.amera-cat-title {
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.amera-cat-count {
+  font-size: 0.75rem;
+  color: var(--amera-coral);
+  font-weight: 700;
+}
+
+/* Product Cards Container (Screenshot 3) */
+.amera-product-card {
+  background: #fbf9f6;
+  border: 1px solid #eae5db;
+  border-radius: 16px;
+  padding: 16px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.amera-product-card:hover {
+  border-color: var(--amera-coral);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.amera-product-img-wrap {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.amera-product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
