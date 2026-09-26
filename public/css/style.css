@@ -6552,3 +6552,59 @@ header#mainHeader .container {
 .amera-card-btn-quote:hover {
   background: #f0fdf4 !important;
 }
+
+/* Product Badge High Contrast Fix (Image 5 Fix) */
+.product-badge {
+  position: absolute !important;
+  top: 10px !important;
+  left: 10px !important;
+  background: #22c55e !important;
+  color: #ffffff !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 0.74rem !important;
+  font-weight: 700 !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.35) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  z-index: 5 !important;
+  letter-spacing: 0.3px !important;
+}
+
+.product-badge.sold-out-badge {
+  background: #ef4444 !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35) !important;
+}
+
+/* Category Card Image Sizing (Image 3 Fix) */
+.amera-cat-img-box {
+  width: 90px !important;
+  height: 90px !important;
+  margin-bottom: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  background: #f8fafc !important;
+  padding: 6px !important;
+}
+
+.amera-cat-img-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  transition: transform 0.3s ease !important;
+}
+
+.amera-cat-card:hover .amera-cat-img-box img {
+  transform: scale(1.08) !important;
+}
+
+/* Completely Hide Floating Contact Drawer (Image 2 Removal Request) */
+.amera-right-contact-drawer {
+  display: none !important;
+}
