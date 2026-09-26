@@ -7062,13 +7062,13 @@ header#mainHeader .container {
 }
 
 .country-flag-box {
-  width: 46px !important;
-  height: 46px !important;
-  border-radius: 50% !important;
+  width: 52px !important;
+  height: 34px !important;
+  border-radius: 6px !important;
   overflow: hidden !important;
   margin-bottom: 12px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
-  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
