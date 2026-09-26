@@ -892,8 +892,7 @@ function renderProductGrids(products) {
     const adminEditBtnHTML = isAdmin ? `<button class="admin-quick-edit-card-btn" onclick="event.stopPropagation(); showPage('admin'); switchAdminTab('products'); openAdminProductModal(${product.id});" title="Quick Edit Product"><i class="fas fa-pen"></i> Edit</button>` : '';
 
     const badgeHTML = isSoldOut ? 
-      `<div class="product-badge sold-out-badge"><i class="fas fa-ban"></i> 🔴 SOLD OUT</div>` : 
-      `<div class="product-badge"><i class="fas fa-industry"></i> Factory Direct</div>`;
+      `<div class="product-badge sold-out-badge"><i class="fas fa-ban"></i> 🔴 SOLD OUT</div>` : '';
 
     const cardHTML = `
       <div class="amera-product-card ${isSoldOut ? 'sold-out-card' : ''}" onclick="openProductModal(${product.id})">
