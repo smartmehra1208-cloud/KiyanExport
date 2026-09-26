@@ -23,3 +23,17 @@
   Header set Content-Disposition inline
   Header set X-Content-Type-Options nosniff
 </FilesMatch>
+
+<IfModule mod_headers.c>
+  # Never cache HTML files so visitors always see fresh website updates instantly
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0, private"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # Always revalidate CSS & JS assets
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
