@@ -1726,379 +1726,151 @@
     </section>
   </div>
 
-  <!-- GLOBAL EXPORT NETWORK & CONTINENT MAP SECTION -->
-  <section class="section" id="global-reach" style="background: #fdfbf7; color: #111111; padding: 65px 0; border-top: 2px solid #e2d7c5; border-bottom: 2px solid #e2d7c5; position: relative;">
-    <div class="container">
-      <!-- Section Header -->
-      <div style="margin-bottom: 35px;">
-        <span style="color: #c82333; font-weight: 800; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase;">GLOBAL MARKET FOOTPRINT</span>
-        <h2 style="font-size: 2.2rem; color: #1b365d; font-weight: 800; margin-top: 6px;">Company Trade Map & Processing Operations</h2>
-        <p style="color: #555555; font-size: 0.95rem; margin-top: 6px;">Highlights Kiyan Export global export supply chain, active processing units, and key distribution hubs across 5 major regions.</p>
+  <!-- GLOBAL EXPORT NETWORK SECTION (REDESIGNED LUXURY DARK THEME) -->
+  <section class="section global-export-section" id="global-reach">
+    <div class="global-export-container">
+      
+      <!-- Top Title Header -->
+      <div class="global-export-header">
+        <span class="global-export-badge"><i class="fas fa-globe-americas"></i> GLOBAL MARKET FOOTPRINT</span>
+        <h2 class="global-export-title">
+          Global <span class="global-gradient-text">Export Network</span>
+        </h2>
+        <p class="global-export-subtitle">
+          Delivering premium botanical extracts & nutraceuticals worldwide with trust, compliance, and efficiency.
+        </p>
       </div>
 
-      <div class="trade-map-grid-wrapper" style="display: grid; grid-template-columns: 1fr 360px; gap: 30px; align-items: stretch;">
-        <!-- Left Box: Minimalist Clean Grey Real World Map (Exact Uploaded Reference Design) -->
-        <div style="background: #eef7f2; border: 1.5px solid #d1e7dd; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); position: relative; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <span style="font-size: 0.9rem; font-weight: 800; color: #1b365d; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-globe"></i> Global Supply Footprint</span>
-            <span style="font-size: 0.82rem; color: #2e7d32; font-weight: 700; background: #d7efe1; padding: 6px 14px; border-radius: 20px;"><i class="fas fa-circle" style="font-size: 0.5rem; vertical-align: middle; color: #25d366; animation: blink 1.2s infinite;"></i> Delivering wellness worldwide to 55+ countries</span>
-          </div>
-
-          <!-- Interactive Real Google Maps / OpenStreetMap Container -->
-          <div style="position: relative; width: 100%; border-radius: 16px; overflow: hidden; background: #ffffff; border: 1px solid #e0ebf1; box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);">
-            <!-- Leaflet Map CSS -->
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-            <style>
-              #google-interactive-map {
-                width: 100%;
-                height: 480px;
-                border-radius: 16px;
-                z-index: 1;
-              }
-              .custom-green-pulse-pin {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-              }
-              .pulse-ring-map {
-                position: absolute;
-                width: 58px;
-                height: 58px;
-                border-radius: 50%;
-                background: rgba(37, 211, 102, 0.55);
-                animation: mapPinPulse 1.6s infinite ease-in-out;
-              }
-              .pin-core-map {
-                width: 24px;
-                height: 24px;
-                border-radius: 50%;
-                background: #25d366;
-                border: 3.5px solid #ffffff;
-                box-shadow: 0 0 16px rgba(37, 211, 102, 0.9);
-                z-index: 2;
-              }
-              .map-flag-label {
-                position: absolute;
-                top: -42px;
-                background: #1b365d;
-                color: #ffffff;
-                padding: 6px 12px;
-                border-radius: 8px;
-                font-size: 13px;
-                font-weight: 800;
-                white-space: nowrap;
-                box-shadow: 0 6px 16px rgba(0,0,0,0.35);
-                border: 2px solid #25d366;
-                z-index: 10;
-              }
-              .map-flag-label.hq {
-                background: #c82333;
-                border: 2px solid #ff4d4d;
-              }
-              @keyframes mapPinPulse {
-                0% { transform: scale(0.5); opacity: 1; }
-                50% { transform: scale(1.8); opacity: 0.25; }
-                100% { transform: scale(0.5); opacity: 1; }
-              }
-              .map-control-btn-group {
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                z-index: 1000;
-                display: flex;
-                gap: 8px;
-                background: rgba(255, 255, 255, 0.95);
-                padding: 6px;
-                border-radius: 8px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-              }
-              .map-mode-btn {
-                border: none;
-                background: #e2e8f0;
-                color: #334155;
-                padding: 7px 14px;
-                border-radius: 6px;
-                font-size: 0.82rem;
-                font-weight: 800;
-                cursor: pointer;
-                transition: all 0.2s ease;
-              }
-              .map-mode-btn.active {
-                background: #1b365d;
-                color: #ffffff;
-              }
-
-              /* Ratio Export Bar Graph Styles */
-              .export-graph-container {
-                margin-top: 22px;
-                background: #ffffff;
-                border: 1.5px solid #d1e7dd;
-                border-radius: 16px;
-                padding: 20px 24px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-              }
-              .export-graph-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 16px;
-              }
-              .export-graph-header h4 {
-                margin: 0;
-                font-size: 1.05rem;
-                color: #1b365d;
-                font-weight: 800;
-              }
-              .graph-bar-row {
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                margin-bottom: 12px;
-              }
-              .graph-bar-row:last-child {
-                margin-bottom: 0;
-              }
-              .graph-country-name {
-                width: 130px;
-                font-size: 0.88rem;
-                font-weight: 800;
-                color: #1b365d;
-                display: flex;
-                align-items: center;
-                gap: 6px;
-              }
-              .graph-bar-track {
-                flex: 1;
-                height: 14px;
-                background: #e2e8f0;
-                border-radius: 10px;
-                overflow: hidden;
-                position: relative;
-              }
-              .graph-bar-fill {
-                height: 100%;
-                border-radius: 10px;
-                background: linear-gradient(90deg, #1b8a41, #25d366);
-                transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-              }
-              .graph-bar-fill.hq-fill {
-                background: linear-gradient(90deg, #b01b2a, #c82333);
-              }
-              .graph-percent-tag {
-                width: 50px;
-                text-align: right;
-                font-weight: 800;
-                font-size: 0.9rem;
-                color: #1b8a41;
-              }
-              .graph-percent-tag.hq-tag {
-                color: #c82333;
-              }
-            </style>
-
-            <div id="google-interactive-map"></div>
-
-            <script>
-              let tradeMap;
-              let currentTileLayer;
-
-              const mapTileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-
-              function initGoogleTradeMap() {
-                if (typeof L === 'undefined') {
-                  setTimeout(initGoogleTradeMap, 300);
-                  return;
-                }
-
-                tradeMap = L.map('google-interactive-map', {
-                  center: [22.0, 20.0],
-                  zoom: 2,
-                  minZoom: 2,
-                  maxZoom: 12,
-                  scrollWheelZoom: false
-                });
-
-                currentTileLayer = L.tileLayer(mapTileUrl, {
-                  maxZoom: 19,
-                  attribution: '&copy; OpenStreetMap | Kiyan Export Global Trade Network'
-                }).addTo(tradeMap);
-
-                // Prominent Location Pins (USA > UK > EUROPE > AUSTRALIA > INDIA)
-                const exportLocations = [
-                  { lat: 37.0902, lng: -95.7129, label: '🇺🇸 USA (38%)', isHq: false },
-                  { lat: 55.3781, lng: -3.4360, label: '🇬🇧 UK (25%)', isHq: false },
-                  { lat: 48.8566, lng: 2.3522, label: '🇪🇺 EUROPE (18%)', isHq: false },
-                  { lat: -25.2744, lng: 133.7751, label: '🇦🇺 AUSTRALIA (11%)', isHq: false },
-                  { lat: 26.8467, lng: 80.9462, label: '🇮🇳 INDIA HQ (8%)', isHq: true }
-                ];
-
-                exportLocations.forEach(loc => {
-                  const pinColor = loc.isHq ? '#c82333' : '#10302b';
-                  const customIcon = L.divIcon({
-                    className: 'custom-location-pin-marker',
-                    html: `
-                      <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
-                        <div class="map-flag-label ${loc.isHq ? 'hq' : ''}" style="margin-bottom: 4px; white-space: nowrap;">${loc.label}</div>
-                        <svg viewBox="0 0 384 512" width="28" height="38" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.35));">
-                          <path fill="${pinColor}" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/>
-                        </svg>
-                      </div>
-                    `,
-                    iconSize: [120, 70],
-                    iconAnchor: [60, 68]
-                  });
-
-                  L.marker([loc.lat, loc.lng], { icon: customIcon })
-                    .addTo(tradeMap)
-                    .bindPopup(`
-                      <div style="font-family: sans-serif; padding: 4px;">
-                        <h4 style="margin: 0 0 4px 0; color: #1b365d; font-size: 14px;">${loc.label}</h4>
-                        <p style="margin: 0; font-size: 12px; color: #555;">Kiyan Export Active Export Hub & Global Supply Route.</p>
-                      </div>
-                    `);
-                });
-              }
-
-              document.addEventListener('DOMContentLoaded', function() {
-                initGoogleTradeMap();
-              });
-
-              if (document.readyState === 'complete' || document.readyState === 'interactive') {
-                setTimeout(initGoogleTradeMap, 500);
-              }
-
-              window.addEventListener('resize', function() {
-                if (tradeMap) {
-                  tradeMap.invalidateSize();
-                }
-              });
-            </script>
-          </div>
-
-          <!-- Interactive Export Ratio Percentage Bar Graph -->
-          <div class="export-graph-container">
-            <div class="export-graph-header">
-              <h4><i class="fas fa-chart-bar" style="color: #25d366;"></i> Regional Export Supply Volume Share (%)</h4>
-              <span style="font-size: 0.78rem; font-weight: 700; color: #64748b;">Order: US > UK > EUROPE > AUSTRALIA > INDIA</span>
-            </div>
-
-            <!-- US Bar -->
-            <div class="graph-bar-row">
-              <div class="graph-country-name">🇺🇸 USA</div>
-              <div class="graph-bar-track">
-                <div class="graph-bar-fill" style="width: 38%;"></div>
-              </div>
-              <div class="graph-percent-tag">38%</div>
-            </div>
-
-            <!-- UK Bar -->
-            <div class="graph-bar-row">
-              <div class="graph-country-name">🇬🇧 UK</div>
-              <div class="graph-bar-track">
-                <div class="graph-bar-fill" style="width: 25%;"></div>
-              </div>
-              <div class="graph-percent-tag">25%</div>
-            </div>
-
-            <!-- Europe Bar -->
-            <div class="graph-bar-row">
-              <div class="graph-country-name">🇪🇺 EUROPE</div>
-              <div class="graph-bar-track">
-                <div class="graph-bar-fill" style="width: 18%;"></div>
-              </div>
-              <div class="graph-percent-tag">18%</div>
-            </div>
-
-            <!-- Australia Bar -->
-            <div class="graph-bar-row">
-              <div class="graph-country-name">🇦🇺 AUSTRALIA</div>
-              <div class="graph-bar-track">
-                <div class="graph-bar-fill" style="width: 11%;"></div>
-              </div>
-              <div class="graph-percent-tag">11%</div>
-            </div>
-
-            <!-- India HQ Bar -->
-            <div class="graph-bar-row">
-              <div class="graph-country-name">🇮🇳 INDIA HQ</div>
-              <div class="graph-bar-track">
-                <div class="graph-bar-fill hq-fill" style="width: 8%;"></div>
-              </div>
-              <div class="graph-percent-tag hq-tag">8%</div>
-            </div>
-          </div>
-
-          <!-- Bottom Status Bar -->
-          <div style="margin-top: 18px; background: #ffffff; border: 1px solid #d1e7dd; border-radius: 12px; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; font-size: 0.86rem; font-weight: 700; color: #1b365d;">
-            <span><i class="fas fa-shipping-fast" style="color: #25d366;"></i> Express Air-Freight Shipping</span>
-            <span><i class="fas fa-award" style="color: #d4af37;"></i> GMP & FDA Registered Export Hub</span>
-          </div>
-        </div>
-
-        <!-- Right Box: Executive "Key Highlights" Card (Slide Reference 2 Exact Style) -->
-        <div style="background: #1b365d; color: #ffffff; border-radius: 18px; padding: 30px 24px; box-shadow: 0 12px 30px rgba(27,54,93,0.3); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
-          <div>
-            <!-- Header Icon Title -->
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 25px; border-bottom: 1.5px solid rgba(255,255,255,0.15); padding-bottom: 16px;">
-              <div style="width: 44px; height: 44px; background: rgba(255,255,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: #ff6b6b;">
-                <i class="fas fa-bullseye"></i>
-              </div>
-              <div>
-                <h3 style="font-size: 1.35rem; font-weight: 800; color: #ffffff; margin: 0;">Key Highlights</h3>
-                <span style="font-size: 0.78rem; color: #94a3b8;">Global Export Operations Summary</span>
-              </div>
-            </div>
-
-            <!-- List of Key Bullet Highlights -->
-            <div style="display: flex; flex-direction: column; gap: 20px; position: relative; padding-left: 15px; border-left: 2px stroke #3b82f6;">
-              <!-- Point 1: Offices & Plants -->
-              <div style="position: relative;">
-                <span style="position: absolute; left: -21px; top: 3px; width: 10px; height: 10px; background: #ff6b6b; border-radius: 50%; border: 2px solid #1b365d;"></span>
-                <p style="font-size: 0.95rem; line-height: 1.5; color: #e2e8f0; margin: 0;">
-                  More than <strong style="color: #ff6b6b; font-size: 1.05rem;">18+ Global Offices</strong> and <strong style="color: #ff6b6b; font-size: 1.05rem;">10+ Processing & Packing Plants</strong>
-                </p>
-              </div>
-
-              <!-- Point 2: Farmers & Cultivation -->
-              <div style="position: relative;">
-                <span style="position: absolute; left: -21px; top: 3px; width: 10px; height: 10px; background: #ff6b6b; border-radius: 50%; border: 2px solid #1b365d;"></span>
-                <p style="font-size: 0.95rem; line-height: 1.5; color: #e2e8f0; margin: 0;">
-                  Directly Connected to over <strong style="color: #ffffff; font-size: 1.05rem;">10,000+ Herbal Farmers</strong> & Himalayan Harvesters
-                </p>
-              </div>
-
-              <!-- Point 3: Hierarchical Market Ratio -->
-              <div style="position: relative;">
-                <span style="position: absolute; left: -21px; top: 3px; width: 10px; height: 10px; background: #ff6b6b; border-radius: 50%; border: 2px solid #1b365d;"></span>
-                <p style="font-size: 0.95rem; line-height: 1.5; color: #e2e8f0; margin: 0;">
-                  Export Demand Volume Hierarchy: <br>
-                  <strong style="color: #fbbf24; font-size: 0.9rem;">US (38%) &gt; UK (25%) &gt; EUROPE (18%) &gt; AUSTRALIA (11%) &gt; INDIA (8%)</strong>
-                </p>
-              </div>
-
-              <!-- Point 4: Certifications & Compliance -->
-              <div style="position: relative;">
-                <span style="position: absolute; left: -21px; top: 3px; width: 10px; height: 10px; background: #ff6b6b; border-radius: 50%; border: 2px solid #1b365d;"></span>
-                <p style="font-size: 0.95rem; line-height: 1.5; color: #e2e8f0; margin: 0;">
-                  Full Compliance with <strong style="color: #ffffff;">US-FDA Registration, EU GMP Standards & FSSAI Export Licenses</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bottom Call to Action Button -->
-          <div style="margin-top: 30px; border-top: 1.5px solid rgba(255,255,255,0.15); padding-top: 20px;">
-            <button onclick="openRfqModal()" class="btn-main" style="width: 100%; padding: 13px; background: #c82333; color: #ffffff; font-weight: 800; font-size: 0.9rem; border-radius: 10px; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(200,35,51,0.4); text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;">
-              <i class="fas fa-file-contract"></i> Contact B2B Export Team
-            </button>
-          </div>
+      <!-- Center Hero Stat Highlight with Background Wireframe 3D Globe Canvas -->
+      <div class="global-globe-wrapper">
+        <canvas id="exportGlobeCanvas"></canvas>
+        <div class="global-stat-content">
+          <span class="global-shipping-label">SHIPPING ACROSS</span>
+          <div class="global-big-stat">55+</div>
+          <p class="global-stat-desc">
+            Shipping premium dietary supplements & organic extracts to 55+ countries with absolute reliability and global quality standards.
+          </p>
         </div>
       </div>
+
+      <!-- Sub-heading for Country Presence Cards -->
+      <div class="global-presence-header">
+        <h3>Our Presence spans across 55+ countries</h3>
+      </div>
+
+      <!-- Country / Regional Presence Grid (Glassmorphic Cards) -->
+      <div class="global-countries-grid">
+        <!-- 1. USA -->
+        <div class="country-card">
+          <div class="country-flag-box">
+            <img src="https://flagcdn.com/w80/us.png" alt="USA Flag" loading="lazy" decoding="async">
+          </div>
+          <span class="country-name">USA</span>
+          <span class="country-share">38% Export Share</span>
+        </div>
+
+        <!-- 2. United Kingdom -->
+        <div class="country-card">
+          <div class="country-flag-box">
+            <img src="https://flagcdn.com/w80/gb.png" alt="UK Flag" loading="lazy" decoding="async">
+          </div>
+          <span class="country-name">United Kingdom</span>
+          <span class="country-share">25% Export Share</span>
+        </div>
+
+        <!-- 3. Europe -->
+        <div class="country-card">
+          <div class="country-flag-box">
+            <img src="https://flagcdn.com/w80/eu.png" alt="Europe Flag" loading="lazy" decoding="async">
+          </div>
+          <span class="country-name">Europe</span>
+          <span class="country-share">18% Export Share</span>
+        </div>
+
+        <!-- 4. Australia -->
+        <div class="country-card">
+          <div class="country-flag-box">
+            <img src="https://flagcdn.com/w80/au.png" alt="Australia Flag" loading="lazy" decoding="async">
+          </div>
+          <span class="country-name">Australia</span>
+          <span class="country-share">11% Export Share</span>
+        </div>
+
+        <!-- 5. India (HQ) -->
+        <div class="country-card hq-card">
+          <div class="country-flag-box">
+            <img src="https://flagcdn.com/w80/in.png" alt="India Flag" loading="lazy" decoding="async">
+          </div>
+          <span class="country-name">India (HQ)</span>
+          <span class="country-share">Global Operations</span>
+        </div>
+
+        <!-- 6. Canada -->
+        <div class="country-card">
+          <div class="country-flag-box">
+            <img src="https://flagcdn.com/w80/ca.png" alt="Canada Flag" loading="lazy" decoding="async">
+          </div>
+          <span class="country-name">Canada</span>
+          <span class="country-share">North America</span>
+        </div>
+
+        <!-- 7. Japan -->
+        <div class="country-card">
+          <div class="country-flag-box">
+            <img src="https://flagcdn.com/w80/jp.png" alt="Japan Flag" loading="lazy" decoding="async">
+          </div>
+          <span class="country-name">Japan</span>
+          <span class="country-share">East Asia</span>
+        </div>
+
+        <!-- 8. South Korea -->
+        <div class="country-card">
+          <div class="country-flag-box">
+            <img src="https://flagcdn.com/w80/kr.png" alt="South Korea Flag" loading="lazy" decoding="async">
+          </div>
+          <span class="country-name">South Korea</span>
+          <span class="country-share">East Asia</span>
+        </div>
+
+        <!-- 9. New Zealand -->
+        <div class="country-card">
+          <div class="country-flag-box">
+            <img src="https://flagcdn.com/w80/nz.png" alt="New Zealand Flag" loading="lazy" decoding="async">
+          </div>
+          <span class="country-name">New Zealand</span>
+          <span class="country-share">Oceania</span>
+        </div>
+
+        <!-- 10. Middle East / UAE -->
+        <div class="country-card">
+          <div class="country-flag-box">
+            <img src="https://flagcdn.com/w80/ae.png" alt="UAE Flag" loading="lazy" decoding="async">
+          </div>
+          <span class="country-name">Middle East</span>
+          <span class="country-share">GCC Region</span>
+        </div>
+      </div>
+
+      <!-- Bottom Highlights & CTA Bar -->
+      <div class="global-bottom-bar">
+        <div class="global-highlights-list">
+          <div class="global-highlight-item">
+            <i class="fas fa-building"></i> <span><strong>18+ Global Offices</strong> & 10+ Processing Plants</span>
+          </div>
+          <div class="global-highlight-item">
+            <i class="fas fa-users"></i> <span><strong>10,000+ Herbal Farmers</strong> Connected</span>
+          </div>
+          <div class="global-highlight-item">
+            <i class="fas fa-shield-alt"></i> <span><strong>US-FDA Registered</strong> & EU-GMP Certified</span>
+          </div>
+        </div>
+        <button onclick="openRfqModal()" class="global-export-cta-btn">
+          <i class="fas fa-paper-plane"></i> Contact B2B Export Team
+        </button>
+      </div>
+
     </div>
+  </section>
   <!-- VERIFIED GLOBAL CUSTOMER REVIEWS & TESTIMONIALS SECTION -->
   <section class="section" id="customer-reviews-section" style="background: linear-gradient(135deg, #f8fafc, #edf2f7); padding: 65px 0; border-top: 2px solid #e2e8f0; border-bottom: 2px solid #e2e8f0;">
     <div class="container">

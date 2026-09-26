@@ -6868,3 +6868,291 @@ header#mainHeader .container {
   }
 }
 
+/* GLOBAL EXPORT NETWORK SECTION (LUXURY DARK THEME DESIGN) */
+.global-export-section {
+  background: #090d16 !important;
+  color: #ffffff !important;
+  padding: 85px 20px 90px 20px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.global-export-container {
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.global-export-header {
+  text-align: center !important;
+  max-width: 780px !important;
+  margin: 0 auto 40px auto !important;
+}
+
+.global-export-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 9999px !important;
+  padding: 6px 18px !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  color: #f97316 !important;
+  margin-bottom: 20px !important;
+  text-transform: uppercase !important;
+}
+
+.global-export-title {
+  font-size: 3.2rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin-bottom: 14px !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.2 !important;
+}
+
+.global-gradient-text {
+  background: linear-gradient(135deg, #f97316 0%, #e11d48 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block !important;
+}
+
+.global-export-subtitle {
+  font-size: 1.1rem !important;
+  color: #94a3b8 !important;
+  line-height: 1.6 !important;
+  max-width: 660px !important;
+  margin: 0 auto !important;
+}
+
+.global-globe-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  height: 360px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 45px !important;
+}
+
+#exportGlobeCanvas {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+}
+
+.global-stat-content {
+  position: relative !important;
+  z-index: 5 !important;
+  text-align: center !important;
+  background: rgba(9, 13, 22, 0.65) !important;
+  backdrop-filter: blur(12px) !important;
+  padding: 24px 40px !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  max-width: 580px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+.global-shipping-label {
+  font-size: 0.8rem !important;
+  font-weight: 800 !important;
+  color: #94a3b8 !important;
+  letter-spacing: 2px !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+  text-transform: uppercase !important;
+}
+
+.global-big-stat {
+  font-size: 4.2rem !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  background: linear-gradient(135deg, #f97316 0%, #e11d48 50%, #fbbf24 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  margin-bottom: 10px !important;
+  letter-spacing: -1px !important;
+}
+
+.global-stat-desc {
+  font-size: 0.95rem !important;
+  color: #cbd5e1 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+.global-presence-header {
+  text-align: center !important;
+  margin-bottom: 30px !important;
+}
+
+.global-presence-header h3 {
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  color: #f1f5f9 !important;
+  margin: 0 !important;
+  letter-spacing: 0.2px !important;
+}
+
+.global-countries-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 18px !important;
+  margin-bottom: 50px !important;
+}
+
+@media (max-width: 1024px) {
+  .global-countries-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .global-countries-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .global-export-title {
+    font-size: 2.2rem !important;
+  }
+  .global-big-stat {
+    font-size: 3.2rem !important;
+  }
+}
+
+.country-card {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  padding: 20px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.country-card:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(249, 115, 22, 0.6) !important;
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2) !important;
+  transform: translateY(-5px) !important;
+}
+
+.country-card.hq-card {
+  border-color: rgba(225, 29, 72, 0.5) !important;
+  background: rgba(225, 29, 72, 0.08) !important;
+}
+
+.country-card.hq-card:hover {
+  border-color: #e11d48 !important;
+  box-shadow: 0 10px 30px rgba(225, 29, 72, 0.3) !important;
+}
+
+.country-flag-box {
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  margin-bottom: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #ffffff !important;
+}
+
+.country-flag-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.country-name {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin-bottom: 4px !important;
+  display: block !important;
+}
+
+.country-share {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: #f97316 !important;
+  display: block !important;
+}
+
+.country-card.hq-card .country-share {
+  color: #e11d48 !important;
+}
+
+.global-bottom-bar {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 20px !important;
+  padding: 24px 30px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 20px !important;
+}
+
+.global-highlights-list {
+  display: flex !important;
+  align-items: center !important;
+  gap: 28px !important;
+  flex-wrap: wrap !important;
+}
+
+.global-highlight-item {
+  font-size: 0.9rem !important;
+  color: #cbd5e1 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.global-highlight-item i {
+  color: #f97316 !important;
+  font-size: 1.1rem !important;
+}
+
+.global-export-cta-btn {
+  background: linear-gradient(135deg, #f97316 0%, #e11d48 100%) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 0.9rem !important;
+  padding: 12px 28px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 20px rgba(242, 92, 56, 0.35) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.global-export-cta-btn:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 10px 28px rgba(242, 92, 56, 0.5) !important;
+}
+
+
