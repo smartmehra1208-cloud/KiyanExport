@@ -5896,7 +5896,7 @@ header#mainHeader .container {
 }
 
 .amera-hero-pill .red-dot {
-  color: #ff4b5c;
+  color: #22c55e;
   font-size: 0.9rem;
 }
 
@@ -5912,7 +5912,7 @@ header#mainHeader .container {
 }
 
 .amera-hero-title .coral-highlight {
-  background: var(--amera-coral-gradient);
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -5935,7 +5935,7 @@ header#mainHeader .container {
 }
 
 .amera-btn-coral {
-  background: var(--amera-coral-gradient);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   color: #ffffff;
   padding: 14px 34px;
   border-radius: 8px;
@@ -5943,14 +5943,14 @@ header#mainHeader .container {
   font-size: 0.95rem;
   border: none;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(242, 92, 56, 0.4);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
   transition: all 0.25s ease;
   text-transform: uppercase;
 }
 
 .amera-btn-coral:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(242, 92, 56, 0.5);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.5);
 }
 
 .amera-btn-outline {
@@ -6148,9 +6148,9 @@ header#mainHeader .container {
 
 /* ===== AMERA EXPORTS EXACT DESIGN MATCH (IMAGE 1 & 2 FIX) ===== */
 :root {
-  --amera-coral: #f25c38;
-  --amera-coral-hover: #e04f2d;
-  --amera-coral-gradient: linear-gradient(135deg, #ff6b4a 0%, #ff4b5c 100%);
+  --amera-coral: #22c55e;
+  --amera-coral-hover: #16a34a;
+  --amera-coral-gradient: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   --amera-dark-bg: #111827;
   --amera-card-bg: #ffffff;
   --amera-card-border: #eaede8;
@@ -6190,17 +6190,17 @@ header#mainHeader .container {
 }
 
 .nav-links a:hover, .nav-links a.active {
-  color: #f25c38 !important;
-  background: #fff5f2 !important;
+  color: #16a34a !important;
+  background: #f0fdf4 !important;
 }
 
 .nav-links a::after {
   display: none !important;
 }
 
-/* Request Quote Primary Coral Button (Image 2 Fix) */
+/* Request Quote Primary Leaf Green Button (KE Logo Harmonized) */
 .btn-amera-quote {
-  background: linear-gradient(135deg, #ff6b4a 0%, #ff4b5c 100%) !important;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;
   color: #ffffff !important;
   padding: 10px 24px !important;
   border-radius: 8px !important;
@@ -6208,7 +6208,7 @@ header#mainHeader .container {
   font-size: 0.9rem !important;
   border: none !important;
   cursor: pointer !important;
-  box-shadow: 0 4px 14px rgba(242, 92, 56, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35) !important;
   transition: all 0.25s ease !important;
   display: inline-flex;
   align-items: center;
@@ -6217,7 +6217,7 @@ header#mainHeader .container {
 
 .btn-amera-quote:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(242, 92, 56, 0.45) !important;
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.45) !important;
 }
 
 /* Amera Right Contact Drawer (Image 1 & 2 Fix) */
@@ -6243,7 +6243,7 @@ header#mainHeader .container {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  color: #f25c38 !important;
+  color: #22c55e !important;
   font-size: 1.25rem !important;
   transition: all 0.2s ease !important;
   border-bottom: 1px solid #f3f4f6 !important;
@@ -6255,8 +6255,8 @@ header#mainHeader .container {
 }
 
 .amera-contact-icon:hover {
-  background: #fff5f2 !important;
-  color: #e04f2d !important;
+  background: #f0fdf4 !important;
+  color: #16a34a !important;
 }
 
 .amera-contact-icon.wa {
@@ -6293,8 +6293,8 @@ header#mainHeader .container {
 }
 
 .amera-cat-card:hover, .amera-cat-card.active {
-  border-color: #f25c38 !important;
-  box-shadow: 0 8px 20px rgba(242, 92, 56, 0.12) !important;
+  border-color: #22c55e !important;
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.15) !important;
   transform: translateY(-3px) !important;
 }
 
@@ -6323,7 +6323,7 @@ header#mainHeader .container {
 
 .amera-cat-count {
   font-size: 0.78rem !important;
-  color: #f25c38 !important;
+  color: #16a34a !important;
   font-weight: 700 !important;
 }
 
@@ -6340,8 +6340,8 @@ header#mainHeader .container {
 }
 
 .amera-product-card:hover {
-  border-color: #ff6b4a !important;
-  box-shadow: 0 10px 25px rgba(242, 92, 56, 0.12) !important;
+  border-color: #22c55e !important;
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.15) !important;
   transform: translateY(-4px) !important;
 }
 
@@ -6367,7 +6367,7 @@ header#mainHeader .container {
 }
 
 .amera-card-btn-view {
-  background: linear-gradient(135deg, #ff6b4a 0%, #ff4b5c 100%) !important;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;
   color: #ffffff !important;
   border: none !important;
   border-radius: 8px !important;
@@ -6386,8 +6386,8 @@ header#mainHeader .container {
 
 .amera-card-btn-quote {
   background: #ffffff !important;
-  color: #f25c38 !important;
-  border: 1.5px solid #ff6b4a !important;
+  color: #16a34a !important;
+  border: 1.5px solid #22c55e !important;
   border-radius: 8px !important;
   padding: 9px !important;
   font-weight: 700 !important;
@@ -6399,5 +6399,5 @@ header#mainHeader .container {
 }
 
 .amera-card-btn-quote:hover {
-  background: #fff5f2 !important;
+  background: #f0fdf4 !important;
 }

@@ -203,7 +203,7 @@ function toggleMobileMenu() {
 // ===== PAGE NAVIGATION (SPA) =====
 function openAdminDirectly() {
   const cleanEmail = currentUser ? (currentUser.email || '').toLowerCase().trim() : '';
-  const isAdmin = currentUser && (currentUser.role === 'admin' || cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiorawellness.com' || cleanEmail === 'kiyanexports.express@gmail.com' || cleanEmail === 'info@kiyanexports.com');
+  const isAdmin = currentUser && (currentUser.role === 'admin' || cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'kiyanexports.express@gmail.com' || cleanEmail === 'info@kiyanexports.com');
 
   if (!isAdmin) {
     alert('🔒 Administrator Access Required:\n\nPlease login with Admin credentials (e.g. admin@kiyanwellness.com) to access the Admin Panel.');

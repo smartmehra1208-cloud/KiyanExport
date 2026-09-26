@@ -538,7 +538,7 @@ const products = [
   },
   {
     "id": 10,
-    "name": "FADOGIA KIORA",
+    "name": "FADOGIA KIYAN",
     "category": "Herbal",
     "badge": "Health",
     "rating": 5,
@@ -1487,7 +1487,7 @@ const products = [
   },
   {
     "id": 26,
-    "name": "SHILAKIORA PURE",
+    "name": "SHILAKIYAN PURE",
     "category": "Herbal",
     "badge": "Lab Tested",
     "rating": 5,
@@ -1499,7 +1499,7 @@ const products = [
       "Herbal/shilajit.webp",
       "Herbal/shilaswa.webp"
     ],
-    "description": "Kiora Wellness signature safe, purified resin form Shilajit, third-party lab tested for purity.",
+    "description": "Kiyan Export signature safe, purified resin form Shilajit, third-party lab tested for purity.",
     "ingredients": [
       "Purified Shilajit Exudate"
     ],

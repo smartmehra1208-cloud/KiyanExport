@@ -704,7 +704,7 @@ router.post('/auth/register', async (req, res) => {
     }
 
     // Determine role (only explicit admin emails get admin role)
-    const isAdminEmail = cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'admin@kiorawellness.com' || cleanEmail === 'kiyanexports.express@gmail.com' || cleanEmail === 'info@kiyanexports.com';
+    const isAdminEmail = cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'kiyanexports.express@gmail.com' || cleanEmail === 'info@kiyanexports.com';
     const userRole = isAdminEmail ? 'admin' : 'user';
 
     // Salt and hash password securely
@@ -802,7 +802,7 @@ router.post('/auth/login', async (req, res) => {
     // If user does not exist in store, auto-register them seamlessly!
     if (!user) {
       const hashedPassword = await bcrypt.hash(password, 10);
-      const isAdminEmail = cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'admin@kiorawellness.com' || cleanEmail === 'kiyanexports.express@gmail.com' || cleanEmail === 'info@kiyanexports.com';
+      const isAdminEmail = cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'kiyanexports.express@gmail.com' || cleanEmail === 'info@kiyanexports.com';
       const userRole = isAdminEmail ? 'admin' : 'user';
 
       user = {
@@ -873,7 +873,7 @@ router.post('/auth/login', async (req, res) => {
     user.lastLoginAt = new Date().toISOString();
     saveLiveUsersBackup();
 
-    const userRole = user.role || ((cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'admin@kiorawellness.com' || cleanEmail === 'kiyanexports.express@gmail.com' || cleanEmail === 'info@kiyanexports.com') ? 'admin' : 'user');
+    const userRole = user.role || ((cleanEmail === 'admin@kiyanexports.com' || cleanEmail === 'sales@kiyanexports.com' || cleanEmail === 'admin@kiyanwellness.com' || cleanEmail === 'kiyanexports.express@gmail.com' || cleanEmail === 'info@kiyanexports.com') ? 'admin' : 'user');
 
     res.json({
       success: true,
