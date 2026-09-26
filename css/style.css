@@ -7212,4 +7212,66 @@ header#mainHeader .container {
   box-shadow: 0 10px 28px rgba(242, 92, 56, 0.5) !important;
 }
 
+/* HEADER & NAVIGATION RESPONSIVE STYLES */
+.mobile-menu-toggle {
+  display: none !important;
+  background: transparent;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #10302b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mobile-menu-toggle:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+@media (min-width: 993px) {
+  .mobile-menu-toggle {
+    display: none !important;
+  }
+  .navbar .container {
+    flex-wrap: nowrap !important;
+  }
+  .nav-links {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 993px) {
+  .nav-links {
+    gap: 5px !important;
+  }
+  .nav-links a {
+    font-size: 0.82rem !important;
+    padding: 4px 6px !important;
+  }
+  .myntra-search-wrap {
+    max-width: 180px !important;
+    margin: 0 8px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav-links {
+    display: none !important;
+  }
+  .mobile-menu-toggle {
+    display: flex !important;
+  }
+  .myntra-search-wrap {
+    display: none !important;
+  }
+  .navbar .container {
+    padding: 10px 16px !important;
+  }
+}
+
 
