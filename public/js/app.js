@@ -1383,47 +1383,8 @@ function trackRecentlyViewedProduct(product) {
 
 function renderRecentlyViewed() {
   const section = document.getElementById('recentlyViewedSection');
-  const grid = document.getElementById('recentlyViewedGrid');
-  if (!section || !grid) return;
-
-  try {
-    const recent = JSON.parse(localStorage.getItem('kiyan_recently_viewed') || '[]');
-    if (!recent || recent.length === 0) {
-      section.style.display = 'none';
-      return;
-    }
-
-    section.style.display = 'block';
-    grid.innerHTML = '';
-
-    recent.forEach(p => {
-      const fullProd = productsData.find(item => item.id === p.id) || p;
-      const isSoldOut = fullProd.stock !== undefined && fullProd.stock <= 0;
-      const imgUrl = fullProd.image.startsWith('/') ? fullProd.image : '/' + fullProd.image;
-      const uUnit = fullProd.unit || 'Pieces';
-
-      grid.insertAdjacentHTML('beforeend', `
-        <div class="product-card ${isSoldOut ? 'sold-out-card' : ''}" onclick="openProductModal(${fullProd.id})" style="border: 1.5px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(212,175,55,0.15); border-radius: 14px; overflow: hidden; background: #fff;">
-          <div class="product-image" style="background: #f8fafc; padding: 8px;">
-            <span class="product-badge" style="background: #1e431c; color: var(--bright-gold); font-size: 0.65rem;"><i class="fas fa-eye"></i> Viewed</span>
-            <img src="${imgUrl}" alt="${fullProd.name}" loading="lazy" decoding="async" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this)">
-          </div>
-          <div class="product-info" style="padding: 10px;">
-            <div class="category" style="font-size: 0.65rem;">${fullProd.category || 'HERBAL'}</div>
-            <h3 style="font-size: 0.9rem; line-height: 1.25; margin-bottom: 4px;">${fullProd.name}</h3>
-            <div class="product-price-box" style="font-size: 0.85rem; font-weight: 800; color: var(--deep-green); margin-bottom: 6px;">
-              ${fullProd.priceMin ? formatPrice(fullProd.priceMin) + ' - ' + formatPrice(fullProd.priceMax) : formatPrice(fullProd.price)} / ${uUnit}
-            </div>
-            <button class="add-to-cart-btn" onclick="event.stopPropagation(); inquireProductOnWhatsApp('${(fullProd.name || '').replace(/'/g, "\\'")}', ${fullProd.moq || 100}, '${fullProd.category || 'Herbal'}', '${fullProd.priceRange || ''}')" style="width: 100%; padding: 6px; font-size: 0.75rem; border-radius: 8px; background: #25d366; color: #fff; font-weight: 800; border: none; cursor: pointer;">
-              <i class="fab fa-whatsapp"></i> Inquire Now
-            </button>
-          </div>
-        </div>
-      `);
-    });
-    triggerRecommendationPopup();
-  } catch (err) {
-    console.error('Error rendering recently viewed products:', err);
+  if (section) {
+    section.style.display = 'none';
   }
 }
 
