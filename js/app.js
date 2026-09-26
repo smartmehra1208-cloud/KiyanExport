@@ -2324,6 +2324,42 @@ function enableAddressEdit() {
   }
 }
 
+function openImageFullscreenModal() {
+  const pmMainImg = document.getElementById('pmMainImg');
+  if (!pmMainImg || !pmMainImg.src) return;
+
+  let overlay = document.getElementById('imageFullscreenOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'imageFullscreenOverlay';
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
+    `;
+    overlay.onclick = () => { overlay.style.display = 'none'; };
+    overlay.innerHTML = `
+      <button onclick="document.getElementById('imageFullscreenOverlay').style.display='none'" aria-label="Close Fullscreen" style="position: absolute; top: 20px; right: 25px; background: rgba(255,255,255,0.2); border: none; color: white; width: 46px; height: 46px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.2s ease;"><i class="fas fa-times"></i></button>
+      <img id="fullscreenModalImg" src="" alt="Fullscreen Product View" style="max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 16px; box-shadow: 0 25px 60px rgba(0,0,0,0.6); background: #ffffff; padding: 15px;">
+    `;
+    document.body.appendChild(overlay);
+  }
+
+  const fullImg = document.getElementById('fullscreenModalImg');
+  if (fullImg) fullImg.src = pmMainImg.src;
+  overlay.style.display = 'flex';
+}
+
 function setupImageHoverZoom() {
   const container = document.getElementById('pmMainImgContainer');
   const img = document.getElementById('pmMainImg');
@@ -2346,8 +2382,8 @@ function setupImageHoverZoom() {
     lens.style.display = 'block';
     preview.style.display = 'block';
 
-    const lensW = 120;
-    const lensH = 120;
+    const lensW = 140;
+    const lensH = 140;
     let lensX = x - lensW / 2;
     let lensY = y - lensH / 2;
 

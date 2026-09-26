@@ -2359,14 +2359,24 @@
       <button class="pm-close" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
       <div class="pm-grid">
         <div class="pm-images" style="position: relative;">
-          <div class="pm-main-img-wrap skeleton-wrapper" id="pmMainImgContainer" style="position: relative; overflow: hidden; cursor: crosshair;">
+          <div class="pm-main-img-wrap skeleton-wrapper" id="pmMainImgContainer" style="position: relative; overflow: hidden; cursor: crosshair; border-radius: 16px; border: 1.5px solid #3b82f6;">
+            <button type="button" class="inspect-fullscreen-btn" onclick="openImageFullscreenModal()" aria-label="Inspect Fullscreen">
+              <i class="fas fa-expand-alt"></i> Inspect Fullscreen
+            </button>
             <img class="pm-main-img img-loading" id="pmMainImg" src="" alt="Product Detail Image" width="400" height="400" onload="onImageLoad(this)" onerror="onImageError(this, '/images/kiyan-logo.png')">
-            <!-- Amazon-Style Hover Zoom Lens (Matching Image 2) -->
+            <!-- Blue Grid Reticle Zoom Lens (Matching Reference Image) -->
             <div id="amazonZoomLens" class="amazon-zoom-lens" style="display: none;"></div>
           </div>
+          
+          <!-- Helper Zoom Bar (Matching Reference Image) -->
+          <div class="zoom-helper-bar">
+            <span><i class="fas fa-search-plus"></i> Roll over image to zoom in</span>
+            <a href="#" onclick="openImageFullscreenModal(); return false;">Click to see full view</a>
+          </div>
+
           <div class="pm-thumbnail-col" id="pmThumbnails"></div>
 
-          <!-- Amazon-Style External Side-by-Side Zoom Preview Window (Matching Image 2) -->
+          <!-- Amazon-Style External Side-by-Side Zoom Preview Window (Matching Reference Image) -->
           <div id="amazonZoomPreview" class="amazon-zoom-preview" style="display: none;"></div>
         </div>
 

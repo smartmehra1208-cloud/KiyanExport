@@ -6641,33 +6641,90 @@ header#mainHeader .container {
   display: none !important;
 }
 
-/* AMAZON-STYLE EXTERNAL SIDE-BY-SIDE LENS ZOOM (MATCHING IMAGE 2 REPLICA) */
+/* BLUE GRID MESH LENS & EXTERNAL SIDE-BY-SIDE ZOOM PREVIEW (MATCHING REFERENCE IMAGE) */
 .amazon-zoom-lens {
-  position: absolute;
-  border: 1.5px solid #22c55e;
-  background: rgba(34, 197, 94, 0.25);
-  box-shadow: 0 0 10px rgba(0,0,0,0.25);
-  width: 120px;
-  height: 120px;
-  cursor: crosshair;
-  z-index: 99;
-  pointer-events: none;
+  position: absolute !important;
+  border: 1.5px solid #3b82f6 !important;
+  background: rgba(59, 130, 246, 0.12) !important;
+  background-image: linear-gradient(to right, rgba(59, 130, 246, 0.4) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(59, 130, 246, 0.4) 1px, transparent 1px) !important;
+  background-size: 8px 8px !important;
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.35) !important;
+  width: 140px !important;
+  height: 140px !important;
+  cursor: crosshair !important;
+  z-index: 99 !important;
+  pointer-events: none !important;
+  border-radius: 4px !important;
 }
 
 .amazon-zoom-preview {
-  position: absolute;
-  top: 0;
-  left: 104%;
-  width: 440px;
-  height: 440px;
-  border: 2px solid #22c55e;
-  border-radius: 16px;
-  background-color: #ffffff;
-  background-repeat: no-repeat;
-  box-shadow: 0 14px 40px rgba(0,0,0,0.28);
-  z-index: 99999;
-  pointer-events: none;
-  overflow: hidden;
+  position: absolute !important;
+  top: 0 !important;
+  left: 104% !important;
+  width: 480px !important;
+  height: 480px !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  background-color: #ffffff !important;
+  background-repeat: no-repeat !important;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.12) !important;
+  z-index: 99999 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+}
+
+.inspect-fullscreen-btn {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  background: rgba(15, 23, 42, 0.75) !important;
+  backdrop-filter: blur(4px) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 6px 14px !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  z-index: 10 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.2s ease !important;
+}
+
+.inspect-fullscreen-btn:hover {
+  background: rgba(15, 23, 42, 0.95) !important;
+  transform: scale(1.04) !important;
+}
+
+.zoom-helper-bar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 10px !important;
+  font-size: 0.8rem !important;
+  color: #64748b !important;
+  font-weight: 600 !important;
+  padding: 0 4px !important;
+}
+
+.zoom-helper-bar i {
+  color: #3b82f6 !important;
+}
+
+.zoom-helper-bar a {
+  color: #0284c7 !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  transition: color 0.2s ease !important;
+}
+
+.zoom-helper-bar a:hover {
+  text-decoration: underline !important;
+  color: #0369a1 !important;
 }
 
 @media (max-width: 992px) {
