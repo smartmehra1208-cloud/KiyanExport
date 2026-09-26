@@ -59,59 +59,29 @@ app.use((req, res, next) => {
   next();
 });
 
+const fs = require('fs');
+
 // Serve static files with production cache control & PDF view-only protection
-app.use(['/catalogues', '/Catelouges', '/catelouges'], express.static(path.join(__dirname, 'public/catalogues'), {
-  maxAge: '1y',
-  etag: true,
-  setHeaders: (res, filePath) => {
-    if (filePath.toLowerCase().endsWith('.pdf')) {
-      res.setHeader('Content-Disposition', 'inline');
-      res.setHeader('X-Content-Type-Options', 'nosniff');
-      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
-    }
+const setStaticHeaders = (res, filePath) => {
+  if (filePath.endsWith('.html')) {
+    res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+  } else if (filePath.toLowerCase().endsWith('.pdf')) {
+    res.setHeader('Content-Disposition', 'inline');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+  } else {
+    res.setHeader('Cache-Control', 'public, max-age=2592000, immutable');
   }
-}));
+};
 
-app.use(['/certificates', '/Certificates'], express.static(path.join(__dirname, 'public/certificates'), {
-  maxAge: '1y',
-  etag: true,
-  setHeaders: (res, filePath) => {
-    if (filePath.toLowerCase().endsWith('.pdf')) {
-      res.setHeader('Content-Disposition', 'inline');
-      res.setHeader('X-Content-Type-Options', 'nosniff');
-      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
-    }
-  }
-}));
+app.use(['/catalogues', '/Catelouges', '/catelouges'], express.static(path.join(__dirname, 'catalogues'), { maxAge: '1y', etag: true, setHeaders: setStaticHeaders }));
+app.use(['/catalogues', '/Catelouges', '/catelouges'], express.static(path.join(__dirname, 'public/catalogues'), { maxAge: '1y', etag: true, setHeaders: setStaticHeaders }));
 
-app.use(express.static(path.join(__dirname, 'public'), {
-  maxAge: '30d',
-  etag: true,
-  setHeaders: (res, filePath) => {
-    if (filePath.endsWith('.html')) {
-      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
-    } else if (filePath.toLowerCase().endsWith('.pdf')) {
-      res.setHeader('Content-Disposition', 'inline');
-      res.setHeader('X-Content-Type-Options', 'nosniff');
-      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
-    } else {
-      res.setHeader('Cache-Control', 'public, max-age=2592000, immutable');
-    }
-  }
-}));
-app.use(express.static(__dirname, {
-  maxAge: '1y',
-  etag: true,
-  setHeaders: (res, filePath) => {
-    if (filePath.toLowerCase().endsWith('.pdf')) {
-      res.setHeader('Content-Disposition', 'inline');
-      res.setHeader('X-Content-Type-Options', 'nosniff');
-      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
-    } else if (!filePath.endsWith('.html')) {
-      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-    }
-  }
-}));
+app.use(['/certificates', '/Certificates'], express.static(path.join(__dirname, 'certificates'), { maxAge: '1y', etag: true, setHeaders: setStaticHeaders }));
+app.use(['/certificates', '/Certificates'], express.static(path.join(__dirname, 'public/certificates'), { maxAge: '1y', etag: true, setHeaders: setStaticHeaders }));
+
+app.use(express.static(__dirname, { maxAge: '30d', etag: true, setHeaders: setStaticHeaders }));
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: '30d', etag: true, setHeaders: setStaticHeaders }));
 
 // API Routes
 const apiRoutes = require('./src/routes/api');
@@ -122,7 +92,12 @@ app.use('/api/payment', razorpayRoutes);
 
 // Fallback single page router
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  const rootIndex = path.join(__dirname, 'index.html');
+  const publicIndex = path.join(__dirname, 'public', 'index.html');
+  if (fs.existsSync(rootIndex)) {
+    return res.sendFile(rootIndex);
+  }
+  return res.sendFile(publicIndex);
 });
 
 // Start Express Server & Connect to Database

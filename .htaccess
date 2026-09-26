@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS Redirection & Non-WWW Canonical URL
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+  RewriteRule ^(.*)$ https://kiyanexports.com/$1 [L,R=301]
+
+  # Fix case-sensitivity for Certificates and catalogues
+  RewriteRule ^certificates/(.*)$ Certificates/$1 [L,NC]
+  RewriteRule ^catelouges/(.*)$ catalogues/$1 [L,NC]
+  RewriteRule ^Catelouges/(.*)$ catalogues/$1 [L,NC]
+
+  # Route Admin & Auth API endpoints to PHP handlers on cPanel
+  RewriteRule ^api/admin/users/?$ api-users.php [L,QSA]
+  RewriteRule ^api/admin/orders/?$ api-orders.php [L,QSA]
+  RewriteRule ^api/auth/register/?$ api-auth.php?action=register [L,QSA]
+  RewriteRule ^api/auth/login/?$ api-auth.php?action=login [L,QSA]
+  RewriteRule ^api/user/orders/?$ api-orders.php [L,QSA]
+</IfModule>
+
+<FilesMatch "\.(pdf)$">
+  Header set Content-Disposition inline
+  Header set X-Content-Type-Options nosniff
+</FilesMatch>
