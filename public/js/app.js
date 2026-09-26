@@ -2364,30 +2364,55 @@ function enableAddressEdit() {
 }
 
 function setupImageHoverZoom() {
-  const wrap = document.querySelector('.pm-main-img-wrap');
+  const container = document.getElementById('pmMainImgContainer');
   const img = document.getElementById('pmMainImg');
-  if (!wrap || !img) return;
+  const lens = document.getElementById('amazonZoomLens');
+  const preview = document.getElementById('amazonZoomPreview');
+  if (!container || !img || !lens || !preview) return;
 
-  wrap.onmousemove = function(e) {
-    const rect = wrap.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    img.style.transformOrigin = `${x}% ${y}%`;
-  };
+  const updateZoom = (e) => {
+    if (window.innerWidth < 992) return;
+    const rect = img.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-  wrap.onmouseleave = function() {
-    img.style.transformOrigin = 'center center';
-  };
-
-  wrap.ontouchmove = function(e) {
-    if (e.touches && e.touches[0]) {
-      const touch = e.touches[0];
-      const rect = wrap.getBoundingClientRect();
-      const x = ((touch.clientX - rect.left) / rect.width) * 100;
-      const y = ((touch.clientY - rect.top) / rect.height) * 100;
-      img.style.transformOrigin = `${x}% ${y}%`;
+    if (x < 0 || x > rect.width || y < 0 || y > rect.height) {
+      lens.style.display = 'none';
+      preview.style.display = 'none';
+      return;
     }
+
+    lens.style.display = 'block';
+    preview.style.display = 'block';
+
+    const lensW = 120;
+    const lensH = 120;
+    let lensX = x - lensW / 2;
+    let lensY = y - lensH / 2;
+
+    if (lensX < 0) lensX = 0;
+    if (lensY < 0) lensY = 0;
+    if (lensX > rect.width - lensW) lensX = rect.width - lensW;
+    if (lensY > rect.height - lensH) lensY = rect.height - lensH;
+
+    lens.style.left = `${lensX}px`;
+    lens.style.top = `${lensY}px`;
+
+    const fx = preview.offsetWidth / lensW;
+    const fy = preview.offsetHeight / lensH;
+
+    preview.style.backgroundImage = `url("${img.src}")`;
+    preview.style.backgroundSize = `${rect.width * fx}px ${rect.height * fy}px`;
+    preview.style.backgroundPosition = `-${lensX * fx}px -${lensY * fy}px`;
   };
+
+  const hideZoom = () => {
+    if (lens) lens.style.display = 'none';
+    if (preview) preview.style.display = 'none';
+  };
+
+  container.onmousemove = updateZoom;
+  container.onmouseleave = hideZoom;
 }
 
 function selectPayment(method, element) {

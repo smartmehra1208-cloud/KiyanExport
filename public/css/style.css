@@ -6640,3 +6640,38 @@ header#mainHeader .container {
 .amera-right-contact-drawer {
   display: none !important;
 }
+
+/* AMAZON-STYLE EXTERNAL SIDE-BY-SIDE LENS ZOOM (MATCHING IMAGE 2 REPLICA) */
+.amazon-zoom-lens {
+  position: absolute;
+  border: 1.5px solid #22c55e;
+  background: rgba(34, 197, 94, 0.25);
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  width: 120px;
+  height: 120px;
+  cursor: crosshair;
+  z-index: 99;
+  pointer-events: none;
+}
+
+.amazon-zoom-preview {
+  position: absolute;
+  top: 0;
+  left: 104%;
+  width: 440px;
+  height: 440px;
+  border: 2px solid #22c55e;
+  border-radius: 16px;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.28);
+  z-index: 99999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+@media (max-width: 992px) {
+  .amazon-zoom-preview {
+    display: none !important;
+  }
+}
