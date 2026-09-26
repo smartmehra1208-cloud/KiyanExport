@@ -3908,6 +3908,14 @@ function renderCustomerCatalogues(catalogues) {
   }, 100);
 }
 
+function scrollCertCarousel(direction) {
+  const track = document.getElementById('customerCertificatesGrid') || document.getElementById('certCardsTrack');
+  if (track) {
+    const scrollAmount = track.clientWidth * 0.75 * direction;
+    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  }
+}
+
 function renderCustomerCertificates(certificates) {
   const grid = document.getElementById('customerCertificatesGrid');
   if (!grid) return;
@@ -3920,25 +3928,13 @@ function renderCustomerCertificates(certificates) {
     const canvasId = `pdfThumbCanvas_cert_${cert.id || idx}`;
 
     const previewMediaHTML = thumbUrl 
-      ? `<img src="${thumbUrl}" alt="${cert.title} Page 1 Preview" loading="lazy" decoding="async" class="pdf-page1-img" onload="onImageLoad(this)" onerror="onImageError(this)">`
-      : `<canvas id="${canvasId}" class="pdf-page1-img" style="width: 100%; height: 210px; object-fit: cover; border-radius: 10px; background: #fff;"></canvas>`;
+      ? `<img src="${thumbUrl}" alt="${cert.title} Page 1 Preview" loading="lazy" decoding="async" class="cert-doc-img" onload="onImageLoad(this)" onerror="onImageError(this)">`
+      : `<canvas id="${canvasId}" class="cert-doc-img" style="width: 100%; height: 440px; object-fit: contain; background: #fff;"></canvas>`;
 
     return `
-    <div style="background: white; border-radius: 16px; padding: 22px; border: 1.5px solid #d8e2dc; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease;">
-      <div>
-        <div class="pdf-card-preview-box" onclick="openPdfModal('${cleanUrl}', '${safeTitle}')">
-          <span class="pdf-badge"><i class="fas fa-award"></i> Quality Audit</span>
-          ${previewMediaHTML}
-          <div class="pdf-hover-overlay">
-            <div class="pdf-hover-btn"><i class="fas fa-search-plus"></i> View Audit PDF</div>
-          </div>
-        </div>
-        <h3 style="font-size: 1.25rem; color: var(--royal-emerald); margin: 12px 0 6px 0;">${cert.title}</h3>
-        <span style="display: inline-block; font-size: 0.75rem; font-weight: 700; background: #fef3c7; color: #92400e; padding: 3px 10px; border-radius: 12px; margin-bottom: 8px;"><i class="fas fa-shield-alt"></i> ${cert.authority || 'Quality Audit'}</span>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">${cert.description || 'Verified quality & compliance certificate.'}</p>
-      </div>
-      <div style="display: flex; gap: 10px;">
-        <button onclick="openPdfModal('${cleanUrl}', '${safeTitle}')" class="btn-main" style="width: 100%; padding: 9px 14px; font-size: 0.85rem; text-align: center; background: var(--royal-emerald); color: white; border: none; cursor: pointer; border-radius: 8px;"><i class="fas fa-eye"></i> View PDF (Protected)</button>
+    <div class="cert-card-item" onclick="openPdfModal('${cleanUrl}', '${safeTitle}')">
+      <div class="cert-card-inner">
+        ${previewMediaHTML}
       </div>
     </div>
   `;}).join('');
