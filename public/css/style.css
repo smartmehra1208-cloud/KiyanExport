@@ -172,6 +172,7 @@ img {
 .about-img-wrap::before,
 .skeleton-loading::before {
   display: none !important;
+  content: none !important;
 }
 
 .skeleton-wrapper.loaded,

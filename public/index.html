@@ -812,7 +812,7 @@
         </div>
       </div>
     </section>
-  </div>
+  </main>
 
   <!-- SPICES PAGE -->
   <div id="spices" class="page-section">
@@ -1346,9 +1346,6 @@
       </div>
     </section>
 
-    
-  </main>
-
   <!-- ABOUT PAGE -->
   <div id="about" class="page-section">
     <div class="sub-page-header">
@@ -1564,8 +1561,62 @@
     </div>
     <section class="products-section">
       <div class="container">
+        <!-- INTERACTIVE CATEGORY & FORMULATION CATALOGUE EXPLORER (MATCHING IMAGE 4 EXACT REPLICA) -->
+        <div class="catalogue-explorer-container" style="background: linear-gradient(135deg, #f8fafc, #edf2f7); border: 1.5px solid #e2e8f0; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); padding: 25px; margin-bottom: 45px; display: flex; flex-wrap: wrap; gap: 25px;">
+          <!-- LEFT COLUMN: CATEGORIES NAVIGATION SIDEBAR -->
+          <div style="flex: 0 0 280px; width: 280px; max-width: 100%; background: #ffffff; border-radius: 16px; padding: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 14px; padding-left: 8px;">
+                CATEGORIES
+              </div>
+              <div id="catExplorerList" style="display: flex; flex-direction: column; gap: 6px;">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </div>
+
+            <!-- Bottom Request Quote Box (Image 4 exact) -->
+            <div style="margin-top: 25px; background: #fdfbf7; border: 1.5px solid #fef3c7; border-radius: 14px; padding: 16px;">
+              <h5 style="margin: 0 0 6px 0; font-size: 0.88rem; color: #10302b; font-weight: 700;">Need custom formulation?</h5>
+              <p style="margin: 0 0 12px 0; font-size: 0.78rem; color: #64748b; line-height: 1.35;">Share category & requirements — we'll suggest the best options.</p>
+              <a href="#rfq" onclick="openRfqModal(); return false;" style="font-size: 0.82rem; font-weight: 800; color: #f25c38; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                Request Quote <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: MAIN CATEGORY FORMULATION DETAILS -->
+          <div style="flex: 1; min-width: 300px; background: #ffffff; border-radius: 16px; padding: 30px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <!-- Top Title & View Category Coral Button Strip -->
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
+                <div>
+                  <span style="font-size: 0.75rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.2px; display: block; margin-bottom: 4px;" id="catExplorerSubtitle">CATEGORIES</span>
+                  <h2 style="font-size: 1.8rem; color: #10302b; margin: 0; font-weight: 800;" id="catExplorerTitle">CAPSULES</h2>
+                  <p style="font-size: 0.95rem; color: #64748b; margin-top: 6px;" id="catExplorerDesc">Hard-shell vegetarian and gelatin capsules, filled to your formulation.</p>
+                </div>
+                <button id="catExplorerActionBtn" onclick="filterCategoryFromExplorer()" class="amera-btn-coral" style="padding: 12px 24px; font-size: 0.88rem; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(242, 92, 56, 0.25);">
+                  View Category <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+
+              <!-- Subcategory / Specification Cards Grid (Image 4 exact) -->
+              <div id="catExplorerSubGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-top: 25px;">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </div>
+
+            <!-- Bottom Feature Badges (Image 4 exact) -->
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #f1f5f9; display: flex; gap: 10px; flex-wrap: wrap;">
+              <span style="background: #f1f5f9; color: #475569; padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; border: 1px solid #e2e8f0;">OEM/ODM</span>
+              <span style="background: #f1f5f9; color: #475569; padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; border: 1px solid #e2e8f0;">Private Label</span>
+              <span style="background: #f1f5f9; color: #475569; padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; border: 1px solid #e2e8f0;">Export-ready</span>
+              <span style="background: #f1f5f9; color: #475569; padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; border: 1px solid #e2e8f0;">GMP Process</span>
+            </div>
+          </div>
+        </div>
+
         <div style="text-align: center; margin-bottom: 35px;">
-          <h2 style="font-size: 2.2rem; color: var(--royal-emerald);">Kiyan Export Product Line Catalogues</h2>
+          <h2 style="font-size: 2.2rem; color: var(--royal-emerald);">Kiyan Export PDF Document Catalogues</h2>
           <p style="color: var(--text-muted); font-size: 1.05rem;">Click on any catalogue's <strong>First Page Preview</strong> to read the complete PDF interactive document.</p>
         </div>
 
@@ -1954,7 +2005,7 @@
               let tradeMap;
               let currentTileLayer;
 
-              const mapTileUrl = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+              const mapTileUrl = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
 
               function initGoogleTradeMap() {
                 if (typeof L === 'undefined') {
@@ -1971,10 +2022,12 @@
                 });
 
                 currentTileLayer = L.tileLayer(mapTileUrl, {
-                  attribution: '&copy; Satellite Earth View | Kiyan Export Trade Network'
+                  subdomains: 'abcd',
+                  maxZoom: 19,
+                  attribution: '&copy; OpenStreetMap & CartoDB | Kiyan Export Global Trade Network'
                 }).addTo(tradeMap);
 
-                // Prominent Large Pins (USA > UK > EUROPE > AUSTRALIA > INDIA)
+                // Prominent Location Pins (USA > UK > EUROPE > AUSTRALIA > INDIA)
                 const exportLocations = [
                   { lat: 37.0902, lng: -95.7129, label: '🇺🇸 USA (38%)', isHq: false },
                   { lat: 55.3781, lng: -3.4360, label: '🇬🇧 UK (25%)', isHq: false },
@@ -1984,15 +2037,19 @@
                 ];
 
                 exportLocations.forEach(loc => {
+                  const pinColor = loc.isHq ? '#c82333' : '#10302b';
                   const customIcon = L.divIcon({
-                    className: 'custom-green-pulse-pin',
+                    className: 'custom-location-pin-marker',
                     html: `
-                      <div class="pulse-ring-map"></div>
-                      <div class="pin-core-map" style="${loc.isHq ? 'background:#c82333; box-shadow:0 0 16px rgba(200,35,51,0.9);' : ''}"></div>
-                      <div class="map-flag-label ${loc.isHq ? 'hq' : ''}">${loc.label}</div>
+                      <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
+                        <div class="map-flag-label ${loc.isHq ? 'hq' : ''}" style="margin-bottom: 4px; white-space: nowrap;">${loc.label}</div>
+                        <svg viewBox="0 0 384 512" width="28" height="38" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.35));">
+                          <path fill="${pinColor}" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/>
+                        </svg>
+                      </div>
                     `,
-                    iconSize: [60, 60],
-                    iconAnchor: [30, 30]
+                    iconSize: [120, 70],
+                    iconAnchor: [60, 68]
                   });
 
                   L.marker([loc.lat, loc.lng], { icon: customIcon })

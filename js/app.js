@@ -173,7 +173,149 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   updateB2BCalculator();
   renderRecentlyViewed();
+  renderCatalogueExplorer();
 });
+
+// ===== CATALOGUE & FORMULATION EXPLORER ENGINE (IMAGE 4 REPLICA) =====
+const CATALOGUE_EXPLORER_DATA = [
+  {
+    id: 'capsules',
+    name: 'Capsules',
+    desc: 'Hard-shell vegetarian and gelatin capsules, filled to your formulation.',
+    subcategories: [
+      'Vegetarian Capsules (HPMC)',
+      'Gelatin Capsules',
+      'Herbal Extract Capsules',
+      'Multivitamin Capsules',
+      'Probiotic Capsules'
+    ]
+  },
+  {
+    id: 'jelly-sticks',
+    name: 'Jelly Sticks',
+    desc: 'Convenient single-serve oral jelly sachet sticks with high absorption rate.',
+    subcategories: [
+      'Energy Jelly Sticks',
+      'Herbal Extract Jelly',
+      'Collagen & Beauty Jelly',
+      'Vitamin C Jelly'
+    ]
+  },
+  {
+    id: 'gummies',
+    name: 'Gummies',
+    desc: 'Pectin and gelatin fruit-flavored dietary supplement gummies for all ages.',
+    subcategories: [
+      'Ashwagandha Gummies',
+      'Multivitamin Gummies',
+      'Melatonin Sleep Gummies',
+      'Apple Cider Vinegar Gummies'
+    ]
+  },
+  {
+    id: 'softgels',
+    name: 'Softgels',
+    desc: 'Hermetically sealed liquid and oil extract softgel capsules.',
+    subcategories: [
+      'Black Seed Oil Softgels',
+      'Omega-3 Fish Oil Softgels',
+      'CoQ10 Softgels',
+      'Herbal Oil Softgels'
+    ]
+  },
+  {
+    id: 'liquid-supplements',
+    name: 'Liquid Supplements',
+    desc: 'Liquid botanical extracts and standard high-potency tonics.',
+    subcategories: [
+      'Herbal Extract Drops',
+      'Botanical Tinctures',
+      'Herbal Syrups & Elixirs',
+      'Concentrated Tonics'
+    ]
+  },
+  {
+    id: 'liquid-drops',
+    name: 'Liquid Drops',
+    desc: 'Precision dropper bottles for sublingual herbal and vitamin drops.',
+    subcategories: [
+      'Shilajit Liquid Drops',
+      'Vitamin D3+K2 Drops',
+      'Sublingual B12 Drops',
+      'Adaptogen Tincture Drops'
+    ]
+  },
+  {
+    id: 'chewing-gum',
+    name: 'Chewing Gum',
+    desc: 'Fast-acting functional gum for direct sublingual nutrient absorption.',
+    subcategories: [
+      'Energy & Caffeine Gum',
+      'Nootropic Focus Gum',
+      'Herbal Breath Fresh Gum',
+      'Vitamin C Chews'
+    ]
+  },
+  {
+    id: 'premixes',
+    name: 'Premixes',
+    desc: 'Custom dry blend powders packaged in tubs, pouches, or single-serve sachets.',
+    subcategories: [
+      'Herbal Powder Premixes',
+      'Protein & Collagen Powder',
+      'Electrolyte Hydration Powders',
+      'Superfood Blends'
+    ]
+  }
+];
+
+let activeExplorerCatId = 'capsules';
+
+function selectExplorerCategory(catId) {
+  activeExplorerCatId = catId;
+  renderCatalogueExplorer();
+}
+
+function renderCatalogueExplorer() {
+  const listEl = document.getElementById('catExplorerList');
+  const titleEl = document.getElementById('catExplorerTitle');
+  const descEl = document.getElementById('catExplorerDesc');
+  const subGridEl = document.getElementById('catExplorerSubGrid');
+  if (!listEl || !titleEl || !subGridEl) return;
+
+  const currentCat = CATALOGUE_EXPLORER_DATA.find(c => c.id === activeExplorerCatId) || CATALOGUE_EXPLORER_DATA[0];
+
+  listEl.innerHTML = CATALOGUE_EXPLORER_DATA.map(cat => {
+    const isActive = cat.id === currentCat.id;
+    return `
+      <div onclick="selectExplorerCategory('${cat.id}')" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-radius: 10px; cursor: pointer; transition: all 0.2s; font-size: 0.88rem; font-weight: 700; ${isActive ? 'background: #ffffff; color: #10302b; border: 1.5px solid #d8e2dc; box-shadow: 0 2px 8px rgba(0,0,0,0.04);' : 'color: #64748b;'}">
+        <span>${cat.name}</span>
+        <span style="width: 7px; height: 7px; border-radius: 50%; background: ${isActive ? '#f25c38' : '#e2e8f0'}; display: inline-block;"></span>
+      </div>
+    `;
+  }).join('');
+
+  titleEl.textContent = currentCat.name.toUpperCase();
+  descEl.textContent = currentCat.desc;
+
+  subGridEl.innerHTML = currentCat.subcategories.map(sub => `
+    <div onclick="filterCategoryFromExplorer('${currentCat.id}')" style="background: #ffffff; border: 1.5px solid #eaede8; border-radius: 12px; padding: 14px; transition: all 0.25s ease; cursor: pointer; position: relative;" onmouseover="this.style.borderColor='#f25c38'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='#eaede8'; this.style.transform='none';">
+      <h4 style="font-size: 0.86rem; color: #1e293b; margin: 0 0 8px 0; font-weight: 700; line-height: 1.3;">${sub}</h4>
+      <div style="width: 25px; height: 2px; background: #fecdd3; border-radius: 2px;"></div>
+    </div>
+  `).join('');
+}
+
+function filterCategoryFromExplorer(catId) {
+  const targetId = catId || activeExplorerCatId;
+  const match = CATALOGUE_EXPLORER_DATA.find(c => c.id === targetId);
+  if (match) {
+    if (typeof setCategoryFilter === 'function') {
+      setCategoryFilter(match.id, null);
+    }
+    showPage('products');
+  }
+}
 
 // ===== TOP BAR SCROLL HIDE LISTENER =====
 function setupScrollListener() {
@@ -272,6 +414,10 @@ function showPage(pageId, element) {
   navLinks.forEach(link => link.classList.remove('active'));
   if (element) {
     element.classList.add('active');
+  }
+
+  if (pageId === 'catalogue') {
+    renderCatalogueExplorer();
   }
 
   // Ensure grids render cleanly on page change
@@ -1140,7 +1286,7 @@ function renderRecentlyViewed() {
         <div class="product-card ${isSoldOut ? 'sold-out-card' : ''}" onclick="openProductModal(${fullProd.id})" style="border: 1.5px solid var(--accent-gold); box-shadow: 0 4px 15px rgba(212,175,55,0.15); border-radius: 14px; overflow: hidden; background: #fff;">
           <div class="product-image" style="background: #f8fafc; padding: 8px;">
             <span class="product-badge" style="background: #1e431c; color: var(--bright-gold); font-size: 0.65rem;"><i class="fas fa-eye"></i> Viewed</span>
-            <img src="${imgUrl}" alt="${fullProd.name}" loading="lazy">
+            <img src="${imgUrl}" alt="${fullProd.name}" loading="lazy" decoding="async" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this)">
           </div>
           <div class="product-info" style="padding: 10px;">
             <div class="category" style="font-size: 0.65rem;">${fullProd.category || 'HERBAL'}</div>
