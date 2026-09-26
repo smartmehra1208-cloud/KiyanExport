@@ -998,10 +998,10 @@ async function openProductModal(id) {
       pmDesc.innerHTML = rawDesc
         .split('\n')
         .filter(l => l.trim())
-        .map(p => `<p style="margin-bottom: 10px; line-height: 1.6; color: #2c3e50; font-size: 0.95rem; text-align: justify; white-space: pre-wrap;">${p.trim()}</p>`)
+        .map(p => `<p style="margin-bottom: 10px; line-height: 1.6; color: #334155; font-size: 0.92rem; line-height: 1.6; text-align: justify; white-space: pre-wrap;">${p.trim()}</p>`)
         .join('');
     } else {
-      pmDesc.innerHTML = `<p style="line-height: 1.6; color: #2c3e50; font-size: 0.95rem; text-align: justify; white-space: pre-wrap;">${rawDesc}</p>`;
+      pmDesc.innerHTML = `<p style="line-height: 1.6; color: #334155; font-size: 0.92rem; line-height: 1.6; text-align: justify; white-space: pre-wrap;">${rawDesc}</p>`;
     }
   }
 
