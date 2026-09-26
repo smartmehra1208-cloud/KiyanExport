@@ -845,6 +845,15 @@ function renderFilteredProducts() {
   renderProductGrids(filtered);
 }
 
+function handleNavbarSearch(val) {
+  currentSearchQuery = (val || '').toLowerCase().trim();
+  const productsPage = document.getElementById('products');
+  if (productsPage && productsPage.style.display === 'none') {
+    if (typeof showPage === 'function') showPage('products');
+  }
+  renderFilteredProducts();
+}
+
 // ===== RENDER PRODUCT CARDS (ALIBABA STYLE B2B WHOLESALE) =====
 function renderProductGrids(products) {
   if (!products || !Array.isArray(products) || products.length === 0) {
