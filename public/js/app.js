@@ -886,26 +886,18 @@ function renderProductGrids(products) {
       `<div class="product-badge sold-out-badge"><i class="fas fa-ban"></i> 🔴 SOLD OUT</div>` : 
       `<div class="product-badge"><i class="fas fa-industry"></i> Factory Direct</div>`;
 
-    const cartBtnHTML = isSoldOut ?
-      `<button class="add-to-cart-btn disabled" disabled onclick="event.stopPropagation(); alert('This item is currently out of stock.');" style="background: #e74c3c; cursor: not-allowed; opacity: 0.85; flex: 1;"><i class="fas fa-times-circle"></i> Out of Stock</button>` :
-      `<button class="add-to-cart-btn" style="flex: 1; padding: 10px 8px; font-size: 0.8rem;" onclick="event.stopPropagation(); openProductModal(${product.id})"><i class="fas fa-cubes"></i> View Tiers</button>`;
-
     const cardHTML = `
-      <div class="product-card ${isSoldOut ? 'sold-out-card' : ''}" onclick="openProductModal(${product.id})">
-        <div class="product-image skeleton-wrapper">
+      <div class="amera-product-card ${isSoldOut ? 'sold-out-card' : ''}" onclick="openProductModal(${product.id})">
+        <div class="amera-product-img-wrap skeleton-wrapper">
           <img src="${imgUrl}" alt="${product.name}" loading="lazy" decoding="async" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this, '/Logo-2.webp')">
           ${badgeHTML}
           ${adminEditBtnHTML}
         </div>
-        <div class="product-info">
-          <div class="category">${product.category} &bull; OEM/ODM</div>
-          <h3 style="font-size: 1.15rem;">${product.name}</h3>
-          <div class="moq-tag-card"><i class="fas fa-cubes" style="color: #1e5967;"></i> Min. Order: <strong>${moq} ${getProductUnit(product)}</strong></div>
-          <div class="b2b-price-range" style="margin-top: 8px;">${priceRange}</div>
-          <p class="product-desc" style="margin-top: 6px; font-size: 0.82rem; color: #555; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; line-height: 1.45; max-height: 2.9em;">${product.description}</p>
-          <div style="display: flex; gap: 8px; margin-top: 12px; align-items: center;">
-            ${cartBtnHTML}
-            <button onclick="event.stopPropagation(); inquireProductOnWhatsApp('${(product.name || '').replace(/'/g, "\\'")}', ${moq}, '${product.category}', '${(priceRange || '').replace(/'/g, "\\'")}')" class="wa-card-inquire-btn" style="flex: 1.1; padding: 10px 8px; background: #25d366; color: white; border: none; border-radius: 25px; font-size: 0.8rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 3px 10px rgba(37,211,102,0.35); transition: transform 0.2s;" title="Inquire about ${product.name} on WhatsApp (+91 9305834431)"><i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> WhatsApp Inquiry</button>
+        <div class="amera-product-body" style="display: flex; flex-direction: column; flex: 1;">
+          <h3 class="amera-product-title">${product.name}</h3>
+          <div class="amera-btn-stack" style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+            <button onclick="event.stopPropagation(); openProductModal(${product.id})" class="amera-card-btn-view">View Details</button>
+            <button onclick="event.stopPropagation(); openRfqModal(${product.id});" class="amera-card-btn-quote">Request Quote</button>
           </div>
         </div>
       </div>
@@ -913,6 +905,8 @@ function renderProductGrids(products) {
 
     if (herbalGrid) herbalGrid.insertAdjacentHTML('beforeend', cardHTML);
     if (herbalGridFull) herbalGridFull.insertAdjacentHTML('beforeend', cardHTML);
+    if (spicesGrid) spicesGrid.insertAdjacentHTML('beforeend', cardHTML);
+    if (copperGrid) copperGrid.insertAdjacentHTML('beforeend', cardHTML);
   });
 
   initSkeletonLoaders();

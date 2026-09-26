@@ -171,7 +171,7 @@
             <i class="fas fa-users"></i> 👥 Registered Customers & Database Users
           </button>
           <button class="admin-tab-btn" id="tabBtnReviews" onclick="switchStandaloneAdminTab('reviews')" style="padding: 10px 20px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; background: #f0f4f2; color: var(--deep-green); transition: all 0.2s;">
-            <i class="fas fa-star" style="color: var(--bright-gold);"></i> ⭐ Customer Reviews Manager <span class="badge-count" id="adminReviewBadge" style="background: #e74c3c; color: white; padding: 2px 7px; border-radius: 10px; font-size: 0.75rem; font-weight: 800; margin-left: 4px;">0</span>
+            <i class="fas fa-star" style="color: var(--bright-gold);"></i> ⭐ Customer Reviews Manager <span class="badge-count" id="dashAdminReviewBadge" style="background: #e74c3c; color: white; padding: 2px 7px; border-radius: 10px; font-size: 0.75rem; font-weight: 800; margin-left: 4px;">0</span>
           </button>
         </div>
 
@@ -504,7 +504,7 @@
                     <th style="padding: 12px;">Actions</th>
                   </tr>
                 </thead>
-                <tbody id="adminReviewsTableBody">
+                <tbody id="dashAdminReviewsTableBody">
                   <!-- Dynamically populated -->
                 </tbody>
               </table>
@@ -2750,7 +2750,7 @@
               </form>
             </div>
 
-            <div id="pmReviewsList" style="max-height: 250px; overflow-y: auto; padding-right: 5px; display: flex; flex-direction: column; gap: 10px;">
+            <div id="pmReviewsListTop" style="max-height: 250px; overflow-y: auto; padding-right: 5px; display: flex; flex-direction: column; gap: 10px;">
               <!-- Dynamically populated product reviews -->
             </div>
           </div>
