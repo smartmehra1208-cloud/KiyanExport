@@ -736,47 +736,47 @@
         </div>
 
         <div class="amera-category-grid">
-          <div class="amera-cat-card active" onclick="filterCategory('all', this)">
+          <div class="amera-cat-card active" id="catCardAll" onclick="filterCategory('all', this)">
             <div class="amera-cat-img-box">
-              <img src="/Herbal/arjuna.webp" alt="All Range Products">
+              <img src="/Herbal/arjuna.webp" alt="All Range Products" loading="lazy" decoding="async" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this)">
             </div>
             <div class="amera-cat-title">All Range</div>
-            <div class="amera-cat-count">100+ Products</div>
+            <div class="amera-cat-count" id="catCountAll">35 Products</div>
           </div>
-          <div class="amera-cat-card" onclick="filterCategory('herbal', this)">
+          <div class="amera-cat-card" id="catCardCapsule" onclick="filterCategory('capsule', this)">
             <div class="amera-cat-img-box">
-              <img src="/Herbal/Aswagandhacapsule.webp" alt="Capsules & Supplements">
+              <img src="/Herbal/Aswagandhacapsule.webp" alt="Capsules & Supplements" loading="lazy" decoding="async" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this)">
             </div>
             <div class="amera-cat-title">Capsules</div>
-            <div class="amera-cat-count">24 Products</div>
+            <div class="amera-cat-count" id="catCountCapsule">11 Products</div>
           </div>
-          <div class="amera-cat-card" onclick="filterCategory('shilajit', this)">
+          <div class="amera-cat-card" id="catCardShilajit" onclick="filterCategory('shilajit', this)">
             <div class="amera-cat-img-box">
-              <img src="/Herbal/shilajit.webp" alt="Shilajit Resin">
+              <img src="/Herbal/shilajit.webp" alt="Shilajit Resin" loading="lazy" decoding="async" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this)">
             </div>
             <div class="amera-cat-title">Shilajit Resin</div>
-            <div class="amera-cat-count">8 Products</div>
+            <div class="amera-cat-count" id="catCountShilajit">8 Products</div>
           </div>
-          <div class="amera-cat-card" onclick="filterCategory('gummies', this)">
+          <div class="amera-cat-card" id="catCardGummies" onclick="filterCategory('gummies', this)">
             <div class="amera-cat-img-box">
-              <img src="/Herbal/Aswagandhagummies.webp" alt="Herbal Gummies">
+              <img src="/Herbal/Aswagandhagummies.webp" alt="Herbal Gummies" loading="lazy" decoding="async" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this)">
             </div>
             <div class="amera-cat-title">Gummies</div>
-            <div class="amera-cat-count">12 Products</div>
+            <div class="amera-cat-count" id="catCountGummies">6 Products</div>
           </div>
-          <div class="amera-cat-card" onclick="filterCategory('softgel', this)">
+          <div class="amera-cat-card" id="catCardSoftgel" onclick="filterCategory('softgel', this)">
             <div class="amera-cat-img-box">
-              <img src="/Herbal/shilajit2.webp" alt="Softgels & Extracts">
+              <img src="/Herbal/shilajit2.webp" alt="Softgels & Extracts" loading="lazy" decoding="async" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this)">
             </div>
             <div class="amera-cat-title">Softgels</div>
-            <div class="amera-cat-count">10 Products</div>
+            <div class="amera-cat-count" id="catCountSoftgel">6 Products</div>
           </div>
-          <div class="amera-cat-card" onclick="filterCategory('spices', this)">
+          <div class="amera-cat-card" id="catCardSpices" onclick="filterCategory('spices', this)">
             <div class="amera-cat-img-box">
-              <img src="/Herbal/arjunapowder.webp" alt="Herbal Powders & Spices">
+              <img src="/Herbal/arjunapowder.webp" alt="Herbal Powders & Spices" loading="lazy" decoding="async" class="img-loading" onload="onImageLoad(this)" onerror="onImageError(this)">
             </div>
             <div class="amera-cat-title">Herbal Powders</div>
-            <div class="amera-cat-count">30 Products</div>
+            <div class="amera-cat-count" id="catCountSpices">20 Products</div>
           </div>
         </div>
       </div>
@@ -789,9 +789,21 @@
     </div>
     <section class="products-section">
       <div class="container">
-        <div class="section-header">
-          <span>Organic Range</span>
-          <h2>Herbal Extracts & Remedies</h2>
+        <!-- DYNAMIC CATEGORY PRODUCTS HEADER WITH DEFAULT SORTING DROPDOWN (SCREENSHOT 3 EXACT REPLICA) -->
+        <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 25px;">
+          <div>
+            <span style="font-size: 0.82rem; font-weight: 800; color: #25d366; text-transform: uppercase; letter-spacing: 1px;">ORGANIC RANGE</span>
+            <h2 id="currentCategoryTitle" style="font-size: 1.8rem; color: #10302b; margin: 4px 0 0 0; font-weight: 800;">All Products</h2>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <label for="productSortSelect" style="font-size: 0.88rem; font-weight: 700; color: #64748b;">Sort By:</label>
+            <select id="productSortSelect" onchange="sortCategoryProducts(this.value)" style="padding: 9px 18px; border-radius: 20px; border: 1.5px solid #d1d5db; background: #ffffff; font-size: 0.88rem; font-weight: 700; color: #1e293b; outline: none; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <option value="default">Default Sorting</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+            </select>
+          </div>
         </div>
         <!-- Recently Viewed & Personal Recommended Products Widget -->
         <div id="recentlyViewedSection" style="display: none; margin-bottom: 45px; background: linear-gradient(135deg, #fdfbf7, #f4efe6); border: 2px solid var(--accent-gold); border-radius: 18px; padding: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.06);">

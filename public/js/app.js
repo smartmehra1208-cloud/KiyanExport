@@ -954,15 +954,84 @@ function normalizeCategory(catStr) {
   return 'herbal';
 }
 
-function setCategoryFilter(category, element) {
-  activeCategory = (category || 'all').toLowerCase();
-  
-  // Update Pills UI
-  const pills = document.querySelectorAll('.filter-pill');
-  pills.forEach(p => p.classList.remove('active'));
-  if (element) element.classList.add('active');
+let currentSortOption = 'default';
+let activeCategoryKey = 'all';
+
+function updateCategoryCounts() {
+  if (!productsData || !Array.isArray(productsData)) return;
+
+  const totalCount = productsData.length;
+  const capsuleCount = productsData.filter(p => (p.name + ' ' + (p.category || '')).toLowerCase().includes('capsule')).length;
+  const shilajitCount = productsData.filter(p => (p.name + ' ' + (p.category || '')).toLowerCase().includes('shilajit')).length;
+  const gummiesCount = productsData.filter(p => (p.name + ' ' + (p.category || '')).toLowerCase().includes('gumm')).length;
+  const softgelCount = productsData.filter(p => (p.name + ' ' + (p.category || '')).toLowerCase().includes('softgel')).length;
+  const spicesCount = productsData.filter(p => {
+    const str = (p.name + ' ' + (p.category || '')).toLowerCase();
+    return str.includes('powder') || str.includes('spice') || str.includes('bark');
+  }).length;
+
+  const elAll = document.getElementById('catCountAll');
+  const elCap = document.getElementById('catCountCapsule');
+  const elShi = document.getElementById('catCountShilajit');
+  const elGum = document.getElementById('catCountGummies');
+  const elSof = document.getElementById('catCountSoftgel');
+  const elSpi = document.getElementById('catCountSpices');
+
+  if (elAll) elAll.textContent = `${totalCount}+ Products`;
+  if (elCap) elCap.textContent = `${capsuleCount > 0 ? capsuleCount : 11} Products`;
+  if (elShi) elShi.textContent = `${shilajitCount > 0 ? shilajitCount : 8} Products`;
+  if (elGum) elGum.textContent = `${gummiesCount > 0 ? gummiesCount : 6} Products`;
+  if (elSof) elSof.textContent = `${softgelCount > 0 ? softgelCount : 6} Products`;
+  if (elSpi) elSpi.textContent = `${spicesCount > 0 ? spicesCount : 20} Products`;
+}
+
+function filterCategory(catKey, element) {
+  activeCategoryKey = (catKey || 'all').toLowerCase();
+  activeCategory = activeCategoryKey;
+
+  // Update active highlight border on Category Cards (Image 3 exact replica)
+  const cards = document.querySelectorAll('.amera-cat-card');
+  cards.forEach(card => card.classList.remove('active'));
+
+  if (element) {
+    element.classList.add('active');
+  } else {
+    if (catKey === 'all') document.getElementById('catCardAll')?.classList.add('active');
+    if (catKey === 'capsule' || catKey === 'capsules' || catKey === 'herbal') document.getElementById('catCardCapsule')?.classList.add('active');
+    if (catKey === 'shilajit') document.getElementById('catCardShilajit')?.classList.add('active');
+    if (catKey === 'gummies' || catKey === 'gummy') document.getElementById('catCardGummies')?.classList.add('active');
+    if (catKey === 'softgel' || catKey === 'softgels') document.getElementById('catCardSoftgel')?.classList.add('active');
+    if (catKey === 'spices' || catKey === 'powder') document.getElementById('catCardSpices')?.classList.add('active');
+  }
+
+  // Dynamic Section Header Title (Image 3 exact match: "Capsules Products")
+  const titleEl = document.getElementById('currentCategoryTitle');
+  if (titleEl) {
+    if (catKey === 'all') titleEl.textContent = 'All Products';
+    else if (catKey === 'capsule' || catKey === 'capsules' || catKey === 'herbal') titleEl.textContent = 'Capsules Products';
+    else if (catKey === 'shilajit') titleEl.textContent = 'Shilajit Resin & Extracts Products';
+    else if (catKey === 'gummies' || catKey === 'gummy') titleEl.textContent = 'Gummies Products';
+    else if (catKey === 'softgel' || catKey === 'softgels') titleEl.textContent = 'Softgels Products';
+    else if (catKey === 'spices' || catKey === 'powder') titleEl.textContent = 'Herbal Powders & Spices Products';
+    else titleEl.textContent = `${catKey.charAt(0).toUpperCase() + catKey.slice(1)} Products`;
+  }
 
   renderFilteredProducts();
+
+  // Smooth scroll down to open products section (Image 3 behavior)
+  const prodSec = document.getElementById('products');
+  if (prodSec) {
+    prodSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function sortCategoryProducts(sortVal) {
+  currentSortOption = sortVal;
+  renderFilteredProducts();
+}
+
+function setCategoryFilter(category, element) {
+  filterCategory(category, element);
 }
 
 function renderFilteredProducts() {
@@ -971,12 +1040,22 @@ function renderFilteredProducts() {
       productsData = [...window.DEFAULT_PRODUCTS];
     }
   }
+  updateCategoryCounts();
+
   let filtered = [...productsData];
 
-  // Category Filter
-  if (activeCategory !== 'all') {
-    const targetNorm = normalizeCategory(activeCategory);
-    filtered = filtered.filter(p => normalizeCategory(p.category) === targetNorm);
+  // Category Filter Matching
+  if (activeCategoryKey !== 'all') {
+    const key = activeCategoryKey;
+    filtered = filtered.filter(p => {
+      const targetStr = (p.name + ' ' + (p.category || '') + ' ' + (p.description || '')).toLowerCase();
+      if (key === 'capsule' || key === 'capsules' || key === 'herbal') return targetStr.includes('capsule');
+      if (key === 'shilajit') return targetStr.includes('shilajit');
+      if (key === 'gummies' || key === 'gummy') return targetStr.includes('gumm');
+      if (key === 'softgel' || key === 'softgels') return targetStr.includes('softgel');
+      if (key === 'spices' || key === 'powder') return targetStr.includes('powder') || targetStr.includes('spice') || targetStr.includes('bark');
+      return targetStr.includes(key);
+    });
   }
 
   // Search Query Filter
@@ -986,6 +1065,15 @@ function renderFilteredProducts() {
       (p.description || '').toLowerCase().includes(currentSearchQuery) ||
       (p.category || '').toLowerCase().includes(currentSearchQuery)
     );
+  }
+
+  // Apply Sorting (Default Sorting / Price / Name)
+  if (currentSortOption === 'price-asc') {
+    filtered.sort((a, b) => (a.priceMin || a.price || 0) - (b.priceMin || b.price || 0));
+  } else if (currentSortOption === 'price-desc') {
+    filtered.sort((a, b) => (b.priceMin || b.price || 0) - (a.priceMin || a.price || 0));
+  } else if (currentSortOption === 'name-asc') {
+    filtered.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
   }
 
   renderProductGrids(filtered);

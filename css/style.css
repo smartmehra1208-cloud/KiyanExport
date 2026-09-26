@@ -6071,10 +6071,27 @@ header#mainHeader .container {
   align-items: center;
 }
 
-.amera-cat-card:hover, .amera-cat-card.active {
-  border-color: var(--amera-coral);
-  box-shadow: 0 8px 20px rgba(242, 92, 56, 0.12);
+.amera-cat-card:hover {
+  border-color: #25d366;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.15);
   transform: translateY(-4px);
+}
+
+.amera-cat-card.active {
+  border: 2px solid #25d366 !important;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.22) !important;
+  transform: translateY(-4px) !important;
+  background: #fdfefd !important;
+}
+
+.amera-cat-card.active .amera-cat-title {
+  color: #10302b !important;
+  font-weight: 800 !important;
+}
+
+.amera-cat-card.active .amera-cat-count {
+  color: #25d366 !important;
+  font-weight: 800 !important;
 }
 
 .amera-cat-img-box {
