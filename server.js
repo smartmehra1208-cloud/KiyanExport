@@ -43,6 +43,32 @@ app.use((req, res, next) => {
   next();
 });
 
+// 301 Permanent Redirects for legacy .php pages (Fixes Google Search indexing)
+app.use((req, res, next) => {
+  const url = req.path.toLowerCase();
+  if (url === '/about_us.php' || url === '/about.php') {
+    return res.redirect(301, 'https://kiyanexports.com/#about');
+  }
+  if (url === '/shilajit_manufacturing.php' || url === '/manufacturing.php') {
+    return res.redirect(301, 'https://kiyanexports.com/#services');
+  }
+  if (url === '/products.php' || url === '/product.php' || url === '/herbal_products.php') {
+    return res.redirect(301, 'https://kiyanexports.com/#products');
+  }
+  if (url === '/contact_us.php' || url === '/contact.php') {
+    return res.redirect(301, 'https://kiyanexports.com/#help-center');
+  }
+  if (url === '/catalogue.php' || url === '/catalog.php') {
+    return res.redirect(301, 'https://kiyanexports.com/#catalogue');
+  }
+  if (url === '/certifications.php' || url === '/certificates.php') {
+    return res.redirect(301, 'https://kiyanexports.com/#certifications');
+  }
+  if (url.endsWith('.php') && !url.startsWith('/api') && !url.includes('send-mail')) {
+    return res.redirect(301, 'https://kiyanexports.com/');
+  }
+  next();
+});
 
 // Enable CORS
 app.use(cors());
