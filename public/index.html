@@ -2029,7 +2029,7 @@
               let tradeMap;
               let currentTileLayer;
 
-              const mapTileUrl = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+              const mapTileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 
               function initGoogleTradeMap() {
                 if (typeof L === 'undefined') {
@@ -2046,9 +2046,8 @@
                 });
 
                 currentTileLayer = L.tileLayer(mapTileUrl, {
-                  subdomains: 'abcd',
                   maxZoom: 19,
-                  attribution: '&copy; OpenStreetMap & CartoDB | Kiyan Export Global Trade Network'
+                  attribution: '&copy; OpenStreetMap | Kiyan Export Global Trade Network'
                 }).addTo(tradeMap);
 
                 // Prominent Location Pins (USA > UK > EUROPE > AUSTRALIA > INDIA)

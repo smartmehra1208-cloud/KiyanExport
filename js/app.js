@@ -174,7 +174,31 @@ document.addEventListener('DOMContentLoaded', () => {
   updateB2BCalculator();
   renderRecentlyViewed();
   renderCatalogueExplorer();
+  initHeroVideoAutoplay();
 });
+
+// ===== HERO BACKGROUND VIDEO AUTOPLAY ENGINE =====
+function initHeroVideoAutoplay() {
+  const heroVideo = document.querySelector('.hero-bg-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    heroVideo.playsInline = true;
+    const playPromise = heroVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.warn('Hero video autoplay fallback triggered:', error);
+        const enableVideoPlay = () => {
+          heroVideo.muted = true;
+          heroVideo.play();
+        };
+        document.addEventListener('click', enableVideoPlay, { once: true });
+        document.addEventListener('touchstart', enableVideoPlay, { once: true });
+        document.addEventListener('scroll', enableVideoPlay, { once: true });
+      });
+    }
+  }
+}
 
 // ===== CATALOGUE & FORMULATION EXPLORER ENGINE (IMAGE 4 REPLICA) =====
 const CATALOGUE_EXPLORER_DATA = [
