@@ -467,6 +467,7 @@ function updateHint(id, isValid, text) {
 
 function updateAuthUI() {
   const authBtn = document.getElementById('navAuthBtn');
+  const navAuthText = document.getElementById('navAuthText');
   const userProfileMenu = document.getElementById('navUserProfileMenu');
   const navUserName = document.getElementById('navUserName');
   const navAdminBtn = document.getElementById('navAdminBtn');
@@ -476,7 +477,14 @@ function updateAuthUI() {
   const standaloneEmail = document.getElementById('standaloneAdminEmail');
 
   if (currentUser) {
-    if (authBtn) authBtn.style.display = 'none';
+    if (navAuthText) navAuthText.innerHTML = `<i class="fas fa-user-check" style="color: #22c55e;"></i> ${currentUser.fullName.split(' ')[0]}`;
+    if (authBtn) {
+      authBtn.style.display = 'inline-flex';
+      authBtn.onclick = () => {
+        const logoutConfirm = confirm(`Logged in as: ${currentUser.fullName} (${currentUser.email})\n\nDo you want to logout?`);
+        if (logoutConfirm) logoutUser();
+      };
+    }
     if (userProfileMenu) userProfileMenu.style.display = 'inline-block';
     if (navUserName) navUserName.textContent = currentUser.fullName.split(' ')[0];
 

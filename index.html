@@ -609,7 +609,13 @@
           <a href="#admin" id="navAdminBtn" style="display: none; color: var(--amera-coral); font-weight: 700;" onclick="showPage('admin', this)"><i class="fas fa-crown"></i> Admin</a>
         </div>
 
-        <div class="nav-actions" style="display: flex; gap: 12px; align-items: center;">
+        <div class="nav-actions" style="display: flex; gap: 10px; align-items: center;">
+          <!-- Login / Register Button -->
+          <button class="btn-nav-auth" id="navAuthBtn" onclick="openAuthModal('login')" style="padding: 8px 16px; border-radius: 20px; border: 1.5px solid #22c55e; background: #ffffff; color: #10302b; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;" onmouseover="this.style.background='#f0fdf4';" onmouseout="this.style.background='#ffffff';">
+            <i class="fas fa-user-circle" style="color: #22c55e; font-size: 1rem;"></i>
+            <span id="navAuthText">Login / Register</span>
+          </button>
+
           <!-- Request Quote Primary Coral Button (Screenshot 2) -->
           <button class="btn-amera-quote" onclick="openRfqModal(); return false;">
             <i class="fas fa-paper-plane"></i> Request Quote
@@ -704,6 +710,12 @@
   <main id="home" class="page-section active-page">
     <!-- AMERA EXPORTS HERO SECTION (SCREENSHOT 2 EXACT MATCH) -->
     <section class="amera-hero-container">
+      <!-- HERO BACKGROUND VIDEO WITH OPACITY OVERLAY -->
+      <video autoplay loop muted playsinline class="hero-bg-video">
+        <source src="/images/hero-bg-video.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+
       <div class="amera-hero-content">
         <div class="amera-hero-pill">
           <span class="red-dot">●</span> CUSTOM MANUFACTURING SOLUTIONS
